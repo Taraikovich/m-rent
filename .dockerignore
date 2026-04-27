@@ -1,0 +1,8 @@
+.env
+.git/
+node_modules/
+assets/build/
+docker-compose.yml
+*.log
+.idea/
+.vscode/
