@@ -60,7 +60,7 @@ if (! function_exists('mrent_nav_fallback')) {
 <body <?php body_class('min-h-screen antialiased'); ?>>
 	<?php wp_body_open(); ?>
 
-	<header class="mrent-header-surface fixed top-0 inset-x-0 z-50">
+	<header class="mrent-header-surface fixed top-0 inset-x-0 z-50 bg-mrent-black/50 backdrop-blur-[11.8px]">
 		<?php /* ─── Десктопная раскладка ─── */ ?>
 		<div class="hidden 2xl:grid 2xl:grid-cols-[1fr_auto_1fr] items-center py-[24px] gap-8 2xl:gap-12 max-w-[1720px] mx-auto w-full">
 			<nav aria-label="<?php esc_attr_e('Главное меню', 'm-rent'); ?>">
