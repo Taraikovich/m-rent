@@ -11,6 +11,7 @@ require_once __DIR__ . '/inc/vite.php';
 require_once __DIR__ . '/inc/icons.php';
 require_once __DIR__ . '/inc/class-mrent-nav-walker.php';
 require_once __DIR__ . '/inc/svg.php';
+require_once __DIR__ . '/inc/cars.php';
 
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'title-tag' );
