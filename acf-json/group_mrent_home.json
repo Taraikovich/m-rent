@@ -190,6 +190,23 @@
             ]
         },
         {
+            "key": "field_mrent_home_tab_categories",
+            "label": "Категории",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_mrent_home_categories",
             "label": "Категории автомобилей",
             "name": "home_categories",
@@ -279,6 +296,139 @@
                     "parent_repeater": "field_mrent_home_categories"
                 }
             ]
+        },
+        {
+            "key": "field_mrent_home_tab_benefits",
+            "label": "Преимущества",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_mrent_home_benefits_image",
+            "label": "Фото автомобиля",
+            "name": "home_benefits_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Картинка по центру блока (вид сверху). Рекомендуем 1536×1024.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_mrent_home_benefits",
+            "label": "Преимущества",
+            "name": "home_benefits",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Ровно 6 пунктов — по дизайну (3 слева, 3 справа от фото).",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 6,
+            "max": 6,
+            "layout": "block",
+            "button_label": "Добавить",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_mrent_home_benefit_icon",
+                    "label": "Иконка",
+                    "name": "benefit_icon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "SVG, ~50×50.",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": "svg,png",
+                    "parent_repeater": "field_mrent_home_benefits"
+                },
+                {
+                    "key": "field_mrent_home_benefit_title",
+                    "label": "Заголовок",
+                    "name": "benefit_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_mrent_home_benefits"
+                },
+                {
+                    "key": "field_mrent_home_benefit_description",
+                    "label": "Описание",
+                    "name": "benefit_description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 3,
+                    "new_lines": "",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_mrent_home_benefits"
+                }
+            ]
         }
     ],
     "location": [
@@ -295,9 +445,9 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": [],
+    "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": false,
-    "modified": 1777374905
+    "show_in_rest": 0,
+    "modified": 1777380824
 }

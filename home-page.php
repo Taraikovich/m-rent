@@ -9,7 +9,7 @@
  * Сюда добавляем только новые секции в нужном порядке.
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -17,7 +17,9 @@ get_header();
 ?>
 
 <main>
-	<?php get_template_part( 'sections/home/hero' ); ?>
+	<?php get_template_part('sections/home/hero'); ?>
+	<?php get_template_part('sections/home/benefits'); ?>
+
 </main>
 
 <?php get_footer();
