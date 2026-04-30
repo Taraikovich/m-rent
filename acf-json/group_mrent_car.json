@@ -3,6 +3,22 @@
     "title": "Автомобиль",
     "fields": [
         {
+            "key": "field_mrent_car_is_popular",
+            "label": "Популярная модель",
+            "name": "car_is_popular",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Если включено — машина показывается на главной в секции «Популярные модели».",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
             "key": "field_mrent_car_subtitle",
             "label": "Подпись под названием (опц.)",
             "name": "car_subtitle",
@@ -199,5 +215,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1777380900
+    "modified": 1777381000
 }

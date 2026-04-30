@@ -19,6 +19,8 @@ get_header();
 <main>
 	<?php get_template_part('sections/home/hero'); ?>
 	<?php get_template_part('sections/home/benefits'); ?>
+	<?php get_template_part('sections/home/popular'); ?>
+	<?php get_template_part('sections/home/why-us'); ?>
 
 </main>
 

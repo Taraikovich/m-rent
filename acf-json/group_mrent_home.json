@@ -429,6 +429,94 @@
                     "parent_repeater": "field_mrent_home_benefits"
                 }
             ]
+        },
+        {
+            "key": "field_mrent_home_tab_why_us",
+            "label": "Почему выбирают нас",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_mrent_home_why_us",
+            "label": "Карточки",
+            "name": "home_why_us",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Ровно 6 карточек по дизайну (3 кол × 2 строки на десктопе; 2 свайпа по 3 карточки на мобайле). Каждая карточка: иконка + жирный заголовок + описание.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "min": 6,
+            "max": 6,
+            "layout": "block",
+            "button_label": "Добавить",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_mrent_home_why_us_icon",
+                    "label": "Иконка",
+                    "name": "why_us_icon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "SVG, ~60×60.",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": "svg,png",
+                    "parent_repeater": "field_mrent_home_why_us"
+                },
+                {
+                    "key": "field_mrent_home_why_us_title",
+                    "label": "Заголовок",
+                    "name": "why_us_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Жирная вступительная фраза (например, «Полная конфиденциальность.»). Точку добавляет редактор.",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_mrent_home_why_us"
+                },
+                {
+                    "key": "field_mrent_home_why_us_description",
+                    "label": "Описание",
+                    "name": "why_us_description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Идёт сразу после заголовка инлайном.",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "rows": 3,
+                    "new_lines": "",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_mrent_home_why_us"
+                }
+            ]
         }
     ],
     "location": [
@@ -449,5 +537,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1777380824
+    "modified": 1777381100
 }

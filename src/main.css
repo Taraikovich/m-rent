@@ -265,6 +265,23 @@
     );
   }
 
+  /* Пагинация-полоски для Swiper'ов на главной (секции «Популярные модели»,
+     «Почему выбирают нас»). Подключается через bulletClass / bulletActiveClass
+     в src/cars.js. По дизайну 2317:3621: 40×4, rounded-2, активная белая,
+     неактивные #302F31. */
+  .mrent-bullet-bar {
+    display: inline-block;
+    width: 40px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #302f31;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .mrent-bullet-bar-active {
+    background-color: var(--color-mrent-white);
+  }
+
   /* Мобильное меню — оверлей */
   .mrent-mobile-panel {
     position: fixed;

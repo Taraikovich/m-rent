@@ -8,10 +8,13 @@
  *     остаточных inline-transform'ов).
  *
  *   • .mrent-car-gallery — карусель фото на странице модели. Активна всегда.
+ *
+ *   • .mrent-popular — секция «Популярные модели» на главной. На мобайле — 1
+ *     карточка + полоски пагинации, на xl+ — 4 карточки в ряд (без пагинации).
  */
 
 import Swiper from 'swiper';
-import { Navigation, FreeMode } from 'swiper/modules';
+import { Navigation, FreeMode, Pagination } from 'swiper/modules';
 import 'swiper/css';
 
 const MQ_DESKTOP = window.matchMedia('(min-width: 1280px)');
@@ -59,5 +62,75 @@ function initGalleries() {
   });
 }
 
+function initPopular() {
+  document.querySelectorAll('[data-mrent-popular]').forEach((el) => {
+    const paginationEl = el.parentElement.querySelector('.mrent-popular-pagination');
+    new Swiper(el, {
+      modules: [Pagination],
+      slidesPerView: 1,
+      spaceBetween: 15,
+      pagination: paginationEl
+        ? {
+            el: paginationEl,
+            clickable: true,
+            bulletClass: 'mrent-bullet-bar',
+            bulletActiveClass: 'mrent-bullet-bar-active',
+          }
+        : false,
+      breakpoints: {
+        // xl: 4 карточки в ряд, gap 29px (по дизайну 1720 = 4×408 + 3×29).
+        1280: {
+          slidesPerView: 4,
+          spaceBetween: 29,
+        },
+      },
+    });
+  });
+}
+
+/**
+ * «Почему выбирают нас»: на мобайле — Swiper из N слайдов (по 3 карточки в
+ * каждом) с пагинацией-полосками; на xl+ — статическая 3-кол сетка через
+ * `xl:!contents` на промежуточных обёртках, поэтому Swiper не нужен и при
+ * desktop-брейкпоинте уничтожается, чтобы не накладывать transform/инлайны
+ * поверх grid-раскладки.
+ */
+function initWhyUs() {
+  document.querySelectorAll('[data-mrent-why-us]').forEach((el) => {
+    const paginationEl = el.parentElement.querySelector('.mrent-why-us-pagination');
+    let instance = null;
+
+    const ensure = () => {
+      if (MQ_DESKTOP.matches) {
+        if (instance) {
+          instance.destroy(true, true);
+          instance = null;
+        }
+        return;
+      }
+      if (!instance) {
+        instance = new Swiper(el, {
+          modules: [Pagination],
+          slidesPerView: 1,
+          spaceBetween: 0,
+          pagination: paginationEl
+            ? {
+                el: paginationEl,
+                clickable: true,
+                bulletClass: 'mrent-bullet-bar',
+                bulletActiveClass: 'mrent-bullet-bar-active',
+              }
+            : false,
+        });
+      }
+    };
+
+    ensure();
+    MQ_DESKTOP.addEventListener('change', ensure);
+  });
+}
+
 initFilters();
 initGalleries();
+initPopular();
+initWhyUs();
