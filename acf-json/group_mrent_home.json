@@ -517,6 +517,67 @@
                     "parent_repeater": "field_mrent_home_why_us"
                 }
             ]
+        },
+        {
+            "key": "field_mrent_home_tab_services",
+            "label": "Услуги-виджет",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_mrent_home_services_title",
+            "label": "Заголовок секции",
+            "name": "home_services_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Заголовок над свайпером услуг (Figma 92:402). Если пусто — секция не выводится.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Аренда авто для мероприятий",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_home_services_button_text",
+            "label": "Текст кнопки",
+            "name": "home_services_button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Подпись на жёлтой кнопке. По умолчанию — «Все услуги».",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "Все услуги",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_home_services_button_url",
+            "label": "Ссылка кнопки (опц.)",
+            "name": "home_services_button_url",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Куда ведёт кнопка. Если пусто — на архив /services/.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "/services/",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [

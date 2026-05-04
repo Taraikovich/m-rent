@@ -1,0 +1,41 @@
+{
+    "key": "group_mrent_service_category",
+    "title": "Категория услуг",
+    "fields": [
+        {
+            "key": "field_mrent_service_category_heading",
+            "label": "Заголовок секции (опц.)",
+            "name": "service_category_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Заголовок над сеткой карточек этой категории на архиве /services/. Если пусто — берётся стандартное название категории. Пример: терм называется «Трансфер», но в секции на архиве выводим «Услуги по трансферу».",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "service_category"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1777380950
+}

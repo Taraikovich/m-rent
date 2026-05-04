@@ -21,6 +21,7 @@ get_header();
 	<?php get_template_part('sections/home/benefits'); ?>
 	<?php get_template_part('sections/home/popular'); ?>
 	<?php get_template_part('sections/home/why-us'); ?>
+	<?php get_template_part('sections/home/services'); ?>
 
 </main>
 
