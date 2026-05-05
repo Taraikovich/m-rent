@@ -24,6 +24,7 @@ get_header();
 	<?php get_template_part('sections/home/services'); ?>
 	<?php get_template_part('sections/home/delivery'); ?>
 	<?php get_template_part('sections/home/specials'); ?>
+	<?php get_template_part('sections/home/about'); ?>
 
 </main>
 
