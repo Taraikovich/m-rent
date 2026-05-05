@@ -352,6 +352,44 @@
     }
   }
 
+  /* SEO-блок с WYSIWYG-контентом (sections/common/seo-text.php).
+     Юзер пишет в админке обычные абзацы / списки / ссылки — выводим их с
+     минимальным prose-форматированием в стиле сайта. Размеры/цвета задаёт
+     сам шаблон через Tailwind (`text-base 2xl:text-3xl`, `text-mrent-white`),
+     здесь — только межблочные отступы и стили inline-элементов. */
+  .mrent-seo-prose > * {
+    margin: 0;
+  }
+  .mrent-seo-prose > * + * {
+    margin-top: 0.8em;
+  }
+  .mrent-seo-prose a {
+    color: var(--color-mrent-yellow);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .mrent-seo-prose strong,
+  .mrent-seo-prose b {
+    font-weight: 700;
+  }
+  .mrent-seo-prose em,
+  .mrent-seo-prose i {
+    font-style: italic;
+  }
+  .mrent-seo-prose ul,
+  .mrent-seo-prose ol {
+    padding-left: 1.4em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+  }
+  .mrent-seo-prose ul {
+    list-style: disc;
+  }
+  .mrent-seo-prose ol {
+    list-style: decimal;
+  }
+
   /* Карточка статьи в архиве блога: описание затухает к низу (Figma 2147:1876
      `bg-clip-text` от white 39.68% до transparent). Реализуем через clip-text
      градиент — текст внутри сам становится «прозрачным» по вертикали. */

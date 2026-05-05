@@ -28,6 +28,7 @@ get_header();
 	<?php get_template_part('sections/blog/latest'); ?>
 	<?php get_template_part('sections/home/club-cards'); ?>
 	<?php get_template_part('sections/home/import'); ?>
+	<?php get_template_part('sections/common/seo-text'); ?>
 
 </main>
 

@@ -1044,6 +1044,83 @@
             "max_height": 0,
             "max_size": 0,
             "mime_types": ""
+        },
+        {
+            "key": "field_mrent_home_tab_seo",
+            "label": "SEO-текст",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_mrent_home_seo_title",
+            "label": "Заголовок",
+            "name": "home_seo_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Заголовок SEO-блока (Figma 2760:7230). Если пусто — секция не выводится.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Аренда авто в Минске и Бресте",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_home_seo_lead",
+            "label": "Текст",
+            "name": "home_seo_lead",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "SEO-описание под заголовком. Поддерживает форматирование (абзацы, списки, ссылки, жирный/курсив). На странице плавно затухает к низу — полный текст раскрывается по кнопке «Подробнее».",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_mrent_home_seo_more_label",
+            "label": "Кнопка «Подробнее»",
+            "name": "home_seo_more_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Подпись жёлтой кнопки в свёрнутом состоянии. Клик плавно разворачивает текст.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "Подробнее",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_home_seo_less_label",
+            "label": "Кнопка «Свернуть»",
+            "name": "home_seo_less_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Подпись жёлтой кнопки в раскрытом состоянии.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "Свернуть",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -1064,5 +1141,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1778976000
+    "modified": 1778976003
 }

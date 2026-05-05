@@ -3,3 +3,4 @@ import './header.js';
 import './cars.js';
 import './services.js';
 import './blog.js';
+import './seo-text.js';
