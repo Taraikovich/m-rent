@@ -130,7 +130,45 @@ function initWhyUs() {
   });
 }
 
+/**
+ * «Спецпредложения»: простой свайпер картинок (Figma 171:389).
+ *   • Mobile (<xl) → 2 карточки в видимой области, gap 10px, пагинация-полоски.
+ *   • Desktop (xl+) → 4 карточки в ряд, gap 30px, кнопки prev/next в шапке секции.
+ * Кнопки prev/next и контейнер пагинации лежат в общем родителе свайпера —
+ * по тому же шаблону, что и `[data-mrent-services-swiper]`.
+ */
+function initSpecials() {
+  document.querySelectorAll('[data-mrent-specials]').forEach((el) => {
+    const container = el.parentElement;
+    const prev = container.querySelector('.mrent-specials-prev');
+    const next = container.querySelector('.mrent-specials-next');
+    const paginationEl = container.querySelector('.mrent-specials-pagination');
+
+    new Swiper(el, {
+      modules: [Navigation, Pagination],
+      slidesPerView: 2,
+      spaceBetween: 10,
+      navigation: prev && next ? { prevEl: prev, nextEl: next } : false,
+      pagination: paginationEl
+        ? {
+            el: paginationEl,
+            clickable: true,
+            bulletClass: 'mrent-bullet-bar',
+            bulletActiveClass: 'mrent-bullet-bar-active',
+          }
+        : false,
+      breakpoints: {
+        1280: {
+          slidesPerView: 4,
+          spaceBetween: 30,
+        },
+      },
+    });
+  });
+}
+
 initFilters();
 initGalleries();
 initPopular();
 initWhyUs();
+initSpecials();

@@ -580,6 +580,59 @@
             "append": ""
         },
         {
+            "key": "field_mrent_home_tab_specials",
+            "label": "Спецпредложения",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_mrent_home_specials_title",
+            "label": "Заголовок секции",
+            "name": "home_specials_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Заголовок над свайпером (Figma 171:389). Пусто → «Спецпредложения».",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Спецпредложения",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_home_specials_images",
+            "label": "Баннеры",
+            "name": "home_specials_images",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "Картинки-баннеры. Пропорции 408×613 (≈ 2:3). Если пусто — используются дефолтные баннеры из assets/images/special-offer-1..4.png.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min": 0,
+            "max": 0,
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": "",
+            "insert": "append"
+        },
+        {
             "key": "field_mrent_home_tab_delivery",
             "label": "Доставка-баннер",
             "name": "",
@@ -696,5 +749,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1777381100
+    "modified": 1778544000
 }
