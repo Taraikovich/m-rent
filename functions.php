@@ -81,3 +81,18 @@ function mrent_get_footer_columns(): array {
 add_action( 'wp_enqueue_scripts', function () {
 	mrent_vite_enqueue( 'main.js' );
 } );
+
+/**
+ * Архив блога — Swiper листает карточки в пределах одной WP-страницы.
+ * Бампим `posts_per_page` до 12, чтобы Swiper охватывал больше записей до
+ * перехода на /page/2/. На taxonomy-архивах (`category_*`, `tag_*`) и поиске —
+ * тоже, чтобы пользователь редко натыкался на «WP-пагинацию» под свайпером.
+ */
+add_action( 'pre_get_posts', function ( $query ) {
+	if ( is_admin() || ! $query->is_main_query() ) {
+		return;
+	}
+	if ( $query->is_home() || $query->is_category() || $query->is_tag() || $query->is_author() || $query->is_date() ) {
+		$query->set( 'posts_per_page', 12 );
+	}
+} );
