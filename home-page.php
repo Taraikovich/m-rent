@@ -26,6 +26,7 @@ get_header();
 	<?php get_template_part('sections/home/specials'); ?>
 	<?php get_template_part('sections/home/about'); ?>
 	<?php get_template_part('sections/blog/latest'); ?>
+	<?php get_template_part('sections/home/club-cards'); ?>
 
 </main>
 
