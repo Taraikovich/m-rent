@@ -6,3 +6,5 @@ assets/build/
 .vscode/
 vendor/
 .DS_Store
+bin/
+dist/

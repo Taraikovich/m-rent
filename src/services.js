@@ -29,7 +29,9 @@
  */
 
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Grid } from 'swiper/modules';
+// CSS модуля Grid — без него Swiper не выставляет высоту/позицию рядов в slidesPerView<auto.
+import 'swiper/css/grid';
 
 const MQ_DESKTOP = window.matchMedia('(min-width: 1280px)');
 
@@ -108,9 +110,11 @@ function initHomeServices(el) {
   const paginationEl = el.parentElement.querySelector('.mrent-home-services-pagination');
 
   new Swiper(el, {
-    modules: [Pagination],
+    modules: [Pagination, Grid],
+    // Mobile: 1 колонка × 2 ряда — 2 карточки на видимую страницу.
     slidesPerView: 1,
     spaceBetween: 10,
+    grid: { rows: 2, fill: 'row' },
     pagination: paginationEl
       ? {
           el: paginationEl,
@@ -120,12 +124,104 @@ function initHomeServices(el) {
         }
       : false,
     breakpoints: {
+      // Desktop: 2 карточки в ряд, без grid.
       1280: {
         slidesPerView: 2,
         spaceBetween: 20,
+        grid: { rows: 1 },
       },
     },
   });
 }
 
 document.querySelectorAll('[data-mrent-home-services]').forEach(initHomeServices);
+
+/**
+ * Виджет «Услуги по категориям с табами» (Figma 2169:2145 / 2345:3873).
+ *
+ * DOM (см. sections/common/services-tabbed.php):
+ *   <div data-mrent-services-tabbed>
+ *     <button data-mrent-tab-trigger data-mrent-tab-id="..."> ... </button> ×N (desktop pills)
+ *     <select data-mrent-tab-select> ... </select>            (mobile)
+ *     <div data-mrent-tab-panel data-mrent-tab-id="..." [hidden]>
+ *       <div class="mrent-services-tabbed-swiper swiper">...</div>
+ *       <div data-mrent-tab-pagination></div>
+ *     </div> ×N
+ *   </div>
+ *
+ * На каждый tab-панель — отдельный Swiper с собственной полосочной пагинацией
+ * (1 карточка <xl, 2 ≥xl, gap 10/20). При переключении таба активный panel
+ * раскрывается, остальные `hidden`. Swiper.update() после показа — нужен,
+ * чтобы Swiper пересчитал slidesPerView/ширины слайдов после display:none.
+ *
+ * Селект на мобайле и пилюли на десктопе — два UI к одному и тому же
+ * стейту: всегда оба синхронизированы через `activate(id)`.
+ */
+function initServicesTabbed(root) {
+  const triggers = root.querySelectorAll('[data-mrent-tab-trigger]');
+  const select = root.querySelector('[data-mrent-tab-select]');
+  const panels = root.querySelectorAll('[data-mrent-tab-panel]');
+
+  const swipers = new Map();
+  panels.forEach((panel) => {
+    const id = panel.dataset.mrentTabId;
+    const swiperEl = panel.querySelector('.mrent-services-tabbed-swiper');
+    const paginationEl = panel.querySelector('[data-mrent-tab-pagination]');
+    if (!swiperEl) return;
+
+    const instance = new Swiper(swiperEl, {
+      modules: [Pagination, Grid],
+      // Mobile: 1 колонка × 2 ряда — 2 карточки на видимую страницу,
+      // свайп горизонтальный, gap 10px между рядами.
+      slidesPerView: 1,
+      spaceBetween: 10,
+      grid: { rows: 2, fill: 'row' },
+      pagination: paginationEl
+        ? {
+            el: paginationEl,
+            clickable: true,
+            bulletClass: 'mrent-bullet-bar',
+            bulletActiveClass: 'mrent-bullet-bar-active',
+          }
+        : false,
+      breakpoints: {
+        // Desktop: 2 карточки в ряд, без grid (1 ряд).
+        1280: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+          grid: { rows: 1 },
+        },
+      },
+    });
+    swipers.set(id, instance);
+  });
+
+  function activate(id) {
+    panels.forEach((panel) => {
+      const isActive = panel.dataset.mrentTabId === id;
+      if (isActive) panel.removeAttribute('hidden');
+      else panel.setAttribute('hidden', '');
+    });
+    triggers.forEach((trigger) => {
+      const isActive = trigger.dataset.mrentTabId === id;
+      if (isActive) trigger.setAttribute('aria-current', 'true');
+      else trigger.removeAttribute('aria-current');
+    });
+    if (select && select.value !== id) select.value = id;
+    const swiper = swipers.get(id);
+    if (swiper) swiper.update();
+  }
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => activate(trigger.dataset.mrentTabId));
+  });
+  if (select) {
+    select.addEventListener('change', () => activate(select.value));
+  }
+
+  // Активируем первый таб (по DOM-порядку), чтобы изначально проставить
+  // aria-current на пилюле и сделать первый panel видимым.
+  if (panels[0]) activate(panels[0].dataset.mrentTabId);
+}
+
+document.querySelectorAll('[data-mrent-services-tabbed]').forEach(initServicesTabbed);

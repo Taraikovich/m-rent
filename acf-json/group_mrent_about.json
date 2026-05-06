@@ -1,0 +1,767 @@
+{
+    "key": "group_mrent_about",
+    "title": "О нас",
+    "fields": [
+        {
+            "key": "field_mrent_about_tab_hero",
+            "label": "Hero",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_mrent_about_hero_image",
+            "label": "Фото на фоне",
+            "name": "about_hero_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "BMW во всю ширину под хедером. Рекомендуем 1920×900 и шире.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_mrent_about_hero_title",
+            "label": "Заголовок",
+            "name": "about_hero_title",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Если оставить пустым — секция не будет показана.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3,
+            "new_lines": "",
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_mrent_about_hero_lead",
+            "label": "Подзаголовок",
+            "name": "about_hero_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 2,
+            "new_lines": "",
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_mrent_about_hero_cta_label",
+            "label": "Текст кнопки",
+            "name": "about_hero_cta_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_about_hero_cta_url",
+            "label": "Ссылка кнопки",
+            "name": "about_hero_cta_url",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Якорь (#section) или полный URL.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_about_tab_team",
+            "label": "Команда",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_mrent_about_team_title",
+            "label": "Заголовок",
+            "name": "about_team_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Если оставить пустым — секция не будет показана.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "О нас и нашей команде",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_about_team_lead_bold",
+            "label": "Лид · жирная часть",
+            "name": "about_team_lead_bold",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Например: «Наша команда».",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_about_team_lead_rest",
+            "label": "Лид · остальной текст",
+            "name": "about_team_lead_rest",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Продолжение фразы после жирного префикса (без переноса строки в начале).",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3,
+            "new_lines": "",
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_mrent_about_team_body",
+            "label": "Описание",
+            "name": "about_team_body",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Второй параграф под лидом.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 4,
+            "new_lines": "",
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_mrent_about_team_image",
+            "label": "Фото",
+            "name": "about_team_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "На десктопе 500×385, на мобайле full-width с пропорцией 330/270.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_mrent_about_team_list_title",
+            "label": "Заголовок списка",
+            "name": "about_team_list_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Например: «Мы всегда:».",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Мы всегда:",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_about_team_list",
+            "label": "Пункты списка",
+            "name": "about_team_list",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "По дизайну — 5 пунктов.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Добавить пункт",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_mrent_about_team_list_item",
+                    "label": "Текст пункта",
+                    "name": "item",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_mrent_about_team_list"
+                }
+            ]
+        },
+        {
+            "key": "field_mrent_about_tab_benefits",
+            "label": "Преимущества",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_mrent_about_benefits_image",
+            "label": "Фото автомобиля",
+            "name": "about_benefits_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Картинка по центру блока (вид сверху). Рекомендуем 1536×1024.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_mrent_about_benefits",
+            "label": "Преимущества",
+            "name": "about_benefits",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Ровно 6 пунктов — по дизайну (3 слева, 3 справа от фото).",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 6,
+            "max": 6,
+            "layout": "block",
+            "button_label": "Добавить",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_mrent_about_benefit_icon",
+                    "label": "Иконка",
+                    "name": "benefit_icon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "SVG, ~50×50.",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": "svg,png",
+                    "parent_repeater": "field_mrent_about_benefits"
+                },
+                {
+                    "key": "field_mrent_about_benefit_title",
+                    "label": "Заголовок",
+                    "name": "benefit_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_mrent_about_benefits"
+                },
+                {
+                    "key": "field_mrent_about_benefit_description",
+                    "label": "Описание",
+                    "name": "benefit_description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 3,
+                    "new_lines": "",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_mrent_about_benefits"
+                }
+            ]
+        },
+        {
+            "key": "field_mrent_about_tab_services_tabbed",
+            "label": "Услуги под запрос",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_mrent_about_services_tabs_title",
+            "label": "Заголовок",
+            "name": "about_services_tabs_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Если оставить пустым — отрисуется без заголовка.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Аренда авто под ваш запрос",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_about_services_tabs_terms",
+            "label": "Категории услуг",
+            "name": "about_services_tabs_terms",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "По 4 услуги из каждой выбранной категории. Порядок в виджете — порядок выбора.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "service_category",
+            "field_type": "multi_select",
+            "allow_null": 1,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0,
+            "bidirectional": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_mrent_about_services_tabs_button_text",
+            "label": "Текст кнопки",
+            "name": "about_services_tabs_button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Все услуги",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_about_services_tabs_button_url",
+            "label": "Ссылка кнопки",
+            "name": "about_services_tabs_button_url",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "По умолчанию — архив услуг.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_about_tab_philosophy",
+            "label": "Философия",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_mrent_about_philosophy_image",
+            "label": "Фото на фоне",
+            "name": "about_philosophy_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Карточка-баннер на всю ширину. Рекомендуем 1720×935 и шире.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_mrent_about_philosophy_title",
+            "label": "Заголовок",
+            "name": "about_philosophy_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Если оставить пустым — секция не будет показана.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Наша философия",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_about_philosophy_lead",
+            "label": "Подзаголовок",
+            "name": "about_philosophy_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 4,
+            "new_lines": "",
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_mrent_about_philosophy_cta_label",
+            "label": "Текст кнопки",
+            "name": "about_philosophy_cta_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Выбрать автомобиль",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_about_philosophy_cta_url",
+            "label": "Ссылка кнопки",
+            "name": "about_philosophy_cta_url",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Якорь (#section) или полный URL.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_about_tab_seo",
+            "label": "SEO-текст",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_mrent_about_seo_title",
+            "label": "Заголовок",
+            "name": "about_seo_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Если пусто — секция не выводится.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_about_seo_lead",
+            "label": "Текст",
+            "name": "about_seo_lead",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "SEO-описание под заголовком. Поддерживает форматирование (абзацы, списки, ссылки, жирный/курсив). Плавно затухает к низу — полный текст раскрывается по кнопке «Подробнее».",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_mrent_about_seo_more_label",
+            "label": "Кнопка «Подробнее»",
+            "name": "about_seo_more_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Подпись жёлтой кнопки в свёрнутом состоянии.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "default_value": "Подробнее",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_about_seo_less_label",
+            "label": "Кнопка «Свернуть»",
+            "name": "about_seo_less_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Подпись жёлтой кнопки в раскрытом состоянии.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "default_value": "Свернуть",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "about-us-page.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1778991000
+}

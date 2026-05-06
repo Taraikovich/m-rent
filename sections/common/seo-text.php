@@ -3,14 +3,17 @@
 /**
  * Общий SEO-текстовый блок (Footer text block, Figma 2760:7230 / 2324:2851).
  *
- * Используется на нескольких страницах — лежит в `sections/common/`. Сейчас
- * подключён только на главной (home-page.php), но шаблон не привязан к ней:
- * берёт значения через `get_queried_object_id()` + ACF, поэтому может работать
- * на любой странице, где определены поля `home_seo_*` (или их аналоги после
- * расширения ACF-группы / location'а).
+ * Используется на нескольких страницах — поля у каждой свои. Тонкие обёртки
+ * в `sections/{page}/seo-text.php` читают ACF и передают сюда через args:
  *
- * Контент: ACF-группа «Главная», таб «SEO-текст». Если заголовок пустой — секция
- * не выводится.
+ *     get_template_part( 'sections/common/seo-text', null, [
+ *         'title'      => 'Заголовок',
+ *         'lead'       => '<p>HTML или plain-text</p>',  // прогоняется через the_content
+ *         'more_label' => 'Подробнее',
+ *         'less_label' => 'Свернуть',
+ *     ] );
+ *
+ * Если `title` пустой — секция не выводится.
  *
  * Один DOM, адаптив через `2xl:`-варианты:
  *   • < 2xl  — flex-col gap-40 (gap-15 внутри текст-блока):
@@ -32,16 +35,15 @@ if (! defined('ABSPATH')) {
 	exit;
 }
 
-$mrent_page_id = get_queried_object_id();
-$mrent_title   = (string) get_field('home_seo_title', $mrent_page_id);
+$mrent_title = isset($args['title']) ? (string) $args['title'] : '';
 
 if ($mrent_title === '') {
 	return;
 }
 
-$mrent_lead        = (string) get_field('home_seo_lead', $mrent_page_id);
-$mrent_more_label  = get_field('home_seo_more_label', $mrent_page_id) ?: __('Подробнее', 'm-rent');
-$mrent_less_label  = get_field('home_seo_less_label', $mrent_page_id) ?: __('Свернуть', 'm-rent');
+$mrent_lead       = isset($args['lead']) ? (string) $args['lead'] : '';
+$mrent_more_label = ! empty($args['more_label']) ? (string) $args['more_label'] : __('Подробнее', 'm-rent');
+$mrent_less_label = ! empty($args['less_label']) ? (string) $args['less_label'] : __('Свернуть', 'm-rent');
 ?>
 
 <section class="bg-mrent-black px-3.75 py-15 2xl:px-25 2xl:py-25">

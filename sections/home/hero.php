@@ -50,7 +50,7 @@ $mrent_hero_alt = $mrent_hero_image['alt'] ?? '';
 				default    => 'w-[162px]',
 			};
 		?>
-			<a href="#category-<?php echo esc_attr($slug); ?>" class="<?php echo $mrent_pill_width_class; ?> bg-[#252426] hover:bg-[#2f2e30] transition-colors rounded-[15px] px-[15px] py-[12px] flex items-center justify-center text-white text-[14px] leading-[1.2] whitespace-nowrap">
+			<a href="<?php echo esc_attr($slug); ?>" class="<?php echo $mrent_pill_width_class; ?> bg-[#252426] hover:bg-[#2f2e30] transition-colors rounded-[15px] px-[15px] py-[12px] flex items-center justify-center text-white text-[14px] leading-[1.2] whitespace-nowrap">
 				<?php echo esc_html($cat['category_label']); ?>
 			</a>
 		<?php endforeach; ?>
@@ -117,7 +117,7 @@ $mrent_hero_alt = $mrent_hero_image['alt'] ?? '';
 			$slug = $cat['category_slug'] ?: sanitize_title($cat['category_label']);
 			$img  = $cat['category_image'];
 		?>
-			<a href="#category-<?php echo esc_attr($slug); ?>" class="bg-[#252426] hover:bg-[#2f2e30] transition-colors rounded-[15px] p-[20px] flex flex-col gap-[20px] items-center flex-1 min-w-0">
+			<a href="<?php echo esc_attr($slug); ?>" class="bg-[#252426] hover:bg-[#2f2e30] transition-colors rounded-[15px] p-[20px] flex flex-col gap-[20px] items-center flex-1 min-w-0">
 				<p class="text-white text-[18px] leading-[1.2] text-center whitespace-nowrap"><?php echo esc_html($cat['category_label']); ?></p>
 				<div class="h-[65px] w-full">
 					<img src="<?php echo esc_url($img['url']); ?>" alt="<?php echo esc_attr($img['alt'] ?: $cat['category_label']); ?>" class="size-full object-contain" loading="lazy" decoding="async">
