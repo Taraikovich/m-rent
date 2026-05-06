@@ -23,8 +23,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$mrent_page_id = get_queried_object_id();
-$mrent_items   = (array) get_field( 'home_why_us', $mrent_page_id );
+// Источник данных: либо `$args['items']` (если секцию подключают со «стороны»,
+// например с club-page), либо ACF-поле `home_why_us` текущей страницы.
+$mrent_items = ( isset( $args['items'] ) && is_array( $args['items'] ) )
+	? $args['items']
+	: (array) get_field( 'home_why_us', get_queried_object_id() );
 
 if ( ! $mrent_items ) {
 	return;
