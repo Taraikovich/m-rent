@@ -422,6 +422,49 @@
     background-color: var(--color-mrent-white);
   }
 
+  /* Свайпер «Страны поставки» (car-import / таб 2): на мобайле полоски
+     уже (20×4 в Figma 3004:9371), на десктопе — стандартные 40×4. */
+  .mrent-car-import-countries-pagination .mrent-bullet-bar {
+    width: 20px;
+  }
+  @media (min-width: 1280px) {
+    .mrent-car-import-countries-pagination .mrent-bullet-bar {
+      width: 40px;
+    }
+  }
+
+  /* FAQ-аккордеон в табе «Вопрос-ответ» (car-import / Figma 2989:7572).
+     Используем нативный <details>: убираем дефолтный треугольник,
+     поворачиваем шеврон на 180° при раскрытии и плавно анимируем высоту
+     контента через `::details-content` + `interpolate-size`.
+
+     Поддержка анимации: Chrome/Edge 131+, Firefox 137+, Safari 18.4+.
+     В старых браузерах селектор `::details-content` просто не сматчится —
+     <details> работает как раньше (мгновенно). */
+  .mrent-faq-item summary {
+    list-style: none;
+  }
+  .mrent-faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .mrent-faq-item .mrent-faq-icon {
+    transition: transform 0.3s ease;
+  }
+  .mrent-faq-item[open] .mrent-faq-icon {
+    transform: rotate(180deg);
+  }
+  .mrent-faq-item {
+    interpolate-size: allow-keywords;
+  }
+  .mrent-faq-item::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size 0.3s ease, content-visibility 0.3s allow-discrete;
+  }
+  .mrent-faq-item[open]::details-content {
+    block-size: auto;
+  }
+
   /* Мобильное меню — оверлей */
   .mrent-mobile-panel {
     position: fixed;
@@ -477,5 +520,257 @@
   .mrent-nav-mobile .sub-menu .sub-menu .mrent-nav-link {
     font-size: 16px;
     line-height: 1.2;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   Секция «Закажите консультацию» — стилизация CF7 формы
+   ────────────────────────────────────────────────────────── */
+@layer components {
+  .mrent-consultation-form .wpcf7 {
+    width: 100%;
+  }
+  .mrent-consultation-form .wpcf7-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+  }
+
+  /* Обёртки полей */
+  .mrent-consultation-form .mrent-cf7-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .mrent-consultation-form .mrent-cf7-row {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .mrent-consultation-form .mrent-cf7-field {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Лейбл — только текст, без звёздочки */
+  .mrent-consultation-form .mrent-cf7-label {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.2;
+    color: var(--color-mrent-white);
+    display: block;
+  }
+
+  /* Обёртка CF7 вокруг поля — relative для псевдо-элемента со * */
+  .mrent-consultation-form .wpcf7-form-control-wrap {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  /* Жёлтая * внутри обязательных полей (справа по центру) */
+  .mrent-consultation-form .wpcf7-form-control-wrap:has(.wpcf7-validates-as-required)::after {
+    content: '*';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-mrent-yellow);
+    font-family: var(--font-display);
+    font-size: 14px;
+    line-height: 1.24;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Input и Select */
+  .mrent-consultation-form .mrent-cf7-input,
+  .mrent-consultation-form .mrent-cf7-select {
+    background-color: #252426;
+    color: var(--color-mrent-white);
+    border: none;
+    border-radius: 15px;
+    padding: 20px;
+    padding-right: 44px; /* место под * */
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    width: 100%;
+    height: 55px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  /* Textarea — не имеет * (поле необязательное) */
+  .mrent-consultation-form .mrent-cf7-textarea {
+    background-color: #252426;
+    color: var(--color-mrent-white);
+    border: none;
+    border-radius: 15px;
+    padding: 20px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    width: 100%;
+    height: 130px;
+    resize: none;
+    outline: none;
+    display: block;
+  }
+
+  /* Placeholder */
+  .mrent-consultation-form .mrent-cf7-input::placeholder,
+  .mrent-consultation-form .mrent-cf7-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  /* Select — опции с тёмным фоном */
+  .mrent-consultation-form .mrent-cf7-select option {
+    background-color: #252426;
+    color: var(--color-mrent-white);
+  }
+
+  /* Согласие (чекбокс) */
+  .mrent-consultation-form .mrent-cf7-consent {
+    display: flex;
+    align-items: center;
+  }
+  .mrent-consultation-form .mrent-cf7-consent .wpcf7-form-control-wrap {
+    position: static;
+    width: auto;
+  }
+  /* Убираем * у чекбокса (acceptance не обязательное в смысле required) */
+  .mrent-consultation-form .mrent-cf7-consent .wpcf7-form-control-wrap::after {
+    display: none;
+  }
+  .mrent-consultation-form .mrent-cf7-consent .wpcf7-list-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+  }
+  .mrent-consultation-form .mrent-cf7-consent .wpcf7-list-item label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+  }
+  .mrent-consultation-form .mrent-cf7-consent .wpcf7-list-item input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+    accent-color: var(--color-mrent-yellow);
+    cursor: pointer;
+  }
+  .mrent-consultation-form .mrent-cf7-consent .wpcf7-list-item-label {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.3;
+    color: var(--color-mrent-white);
+  }
+
+  /* Кнопка «Оставить заявку» */
+  .mrent-consultation-form .mrent-cf7-submit {
+    background-color: var(--color-mrent-yellow);
+    color: var(--color-mrent-black);
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    width: 100%;
+    height: 55px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    display: block;
+  }
+  .mrent-consultation-form .mrent-cf7-submit:hover {
+    opacity: 0.9;
+  }
+  .mrent-consultation-form .mrent-cf7-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* Валидация */
+  .mrent-consultation-form .wpcf7-not-valid-tip {
+    color: #ff5555;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+  }
+  .mrent-consultation-form .mrent-cf7-input.wpcf7-not-valid,
+  .mrent-consultation-form .mrent-cf7-select.wpcf7-not-valid,
+  .mrent-consultation-form .mrent-cf7-textarea.wpcf7-not-valid {
+    outline: 1px solid #ff5555;
+  }
+
+  /* Статусное сообщение формы */
+  .mrent-consultation-form .wpcf7-response-output {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--color-mrent-white);
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* ── Desktop (xl = 1280px+) ── */
+  @media (min-width: 1280px) {
+    .mrent-consultation-form .wpcf7-form {
+      gap: 40px;
+    }
+    .mrent-consultation-form .mrent-cf7-fields {
+      gap: 25px;
+    }
+    .mrent-consultation-form .mrent-cf7-row {
+      flex-direction: row;
+      gap: 25px;
+    }
+    .mrent-consultation-form .mrent-cf7-row .mrent-cf7-field {
+      flex: 1;
+      min-width: 0;
+    }
+    .mrent-consultation-form .mrent-cf7-label {
+      font-size: 24px;
+    }
+    /* * внутри поля — крупнее на desktop */
+    .mrent-consultation-form .wpcf7-form-control-wrap:has(.wpcf7-validates-as-required)::after {
+      font-size: 24px;
+      right: 25px;
+    }
+    .mrent-consultation-form .mrent-cf7-input,
+    .mrent-consultation-form .mrent-cf7-select {
+      font-size: 24px;
+      padding: 25px;
+      padding-right: 56px; /* место под * */
+      height: 75px;
+    }
+    .mrent-consultation-form .mrent-cf7-textarea {
+      font-size: 24px;
+      padding: 25px;
+    }
+    .mrent-consultation-form .mrent-cf7-submit {
+      font-size: 20px;
+      height: 65px;
+    }
+    .mrent-consultation-form .mrent-cf7-consent .wpcf7-list-item-label {
+      font-size: 18px;
+    }
+    .mrent-consultation-form .wpcf7-not-valid-tip {
+      font-size: 14px;
+    }
+    .mrent-consultation-form .wpcf7-response-output {
+      font-size: 16px;
+    }
   }
 }

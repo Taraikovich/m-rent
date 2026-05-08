@@ -210,6 +210,19 @@ function initServicesTabbed(root) {
     if (select && select.value !== id) select.value = id;
     const swiper = swipers.get(id);
     if (swiper) swiper.update();
+
+    // Тоже триггерим update на любом стороннем Swiper'е внутри активного panel
+    // (например, свайпер «Страны поставки» в car-import). Swiper хранит инстанс
+    // в `el.swiper` после init — без этого свайпер, инициализированный поверх
+    // hidden-панели, не пересчитает ширины слайдов при первом показе.
+    panels.forEach((panel) => {
+      if (panel.dataset.mrentTabId !== id) return;
+      panel.querySelectorAll('.swiper').forEach((swiperEl) => {
+        if (swiperEl.swiper && swiperEl.swiper !== swiper) {
+          swiperEl.swiper.update();
+        }
+      });
+    });
   }
 
   triggers.forEach((trigger) => {
