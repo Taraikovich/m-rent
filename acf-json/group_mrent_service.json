@@ -176,6 +176,11 @@
                 "param": "post_template",
                 "operator": "!=",
                 "value": "car-import-page.php"
+            },
+            {
+                "param": "post_template",
+                "operator": "!=",
+                "value": "business-services-page.php"
             }
         ]
     ],
@@ -188,5 +193,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1778070854
+    "modified": 1778100001
 }
