@@ -1,0 +1,101 @@
+{
+    "key": "group_mrent_services_archive",
+    "title": "Архив услуг",
+    "fields": [
+        {
+            "key": "field_mrent_services_archive_tab_seo",
+            "label": "SEO-текст",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_mrent_services_archive_seo_title",
+            "label": "Заголовок",
+            "name": "services_archive_seo_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "SEO-блок под сеткой на /services/. Если пусто — секция не выводится.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_services_archive_seo_lead",
+            "label": "Текст",
+            "name": "services_archive_seo_lead",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "SEO-описание под заголовком. Поддерживает форматирование (абзацы, списки, ссылки, жирный/курсив). Плавно затухает к низу — полный текст раскрывается по кнопке «Подробнее».",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_mrent_services_archive_seo_more_label",
+            "label": "Кнопка «Подробнее»",
+            "name": "services_archive_seo_more_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Подпись жёлтой кнопки в свёрнутом состоянии.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "default_value": "Подробнее",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_services_archive_seo_less_label",
+            "label": "Кнопка «Свернуть»",
+            "name": "services_archive_seo_less_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Подпись жёлтой кнопки в раскрытом состоянии.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "default_value": "Свернуть",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "mrent-services-archive"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "SEO-текстовый блок под сеткой архива /services/. Редактируется в «Услуги → Настройки архива».",
+    "show_in_rest": 0
+}

@@ -29,7 +29,7 @@ $mrent_prices      = (array) get_field('car_prices');
 $mrent_booking_url = get_field('car_booking_url') ?: '#booking';
 ?>
 
-<div class="px-[15px] 2xl:px-0">
+<div class="px-[15px] 2xl:px-0 mt-[30px] xl:mt-[60px]">
 	<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px]">
 
 		<?php /* ── Заголовок + описание ── (mobile стопкой, desktop в строку 50/50) */ ?>

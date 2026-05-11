@@ -9,7 +9,7 @@
  * Это позволяет редактору либо оставить общий контент с главной (поле пустое),
  * либо задать карточки отдельно.
  *
- * Разметку рендерит общий шаблон `sections/home/why-us`.
+ * Разметку рендерит общий шаблон `sections/common/why-us`.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -37,7 +37,7 @@ if ( ! $mrent_items ) {
 }
 
 get_template_part(
-	'sections/home/why-us',
+	'sections/common/why-us',
 	null,
 	[ 'items' => $mrent_items ]
 );

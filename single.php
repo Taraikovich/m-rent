@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Одиночная запись блога (Figma 2253:2829 / 2345:3401).
  *
@@ -13,21 +14,21 @@
  * Featured остаётся обложкой для архивных карточек.
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
 get_header();
 
-while ( have_posts() ) :
+while (have_posts()) :
 	the_post();
 ?>
 
 	<main class="bg-mrent-black pt-[60px] xl:pt-[93px] pb-[60px] xl:pb-[100px]">
-		<?php get_template_part( 'sections/blog/breadcrumbs' ); ?>
-		<?php get_template_part( 'sections/blog/single-header' ); ?>
+		<?php get_template_part('sections/blog/breadcrumbs'); ?>
+		<?php get_template_part('sections/blog/single-header'); ?>
 
-		<?php if ( get_the_content() ) : ?>
+		<?php if (get_the_content()) : ?>
 			<section class="bg-mrent-black pt-[30px] xl:pt-[60px]">
 				<div class="px-[15px] xl:px-[100px]">
 					<article class="mrent-article max-w-[1720px] mx-auto text-mrent-white">
@@ -36,6 +37,13 @@ while ( have_posts() ) :
 				</div>
 			</section>
 		<?php endif; ?>
+
+		<?php get_template_part('sections/home/popular'); ?>
+		<?php get_template_part('sections/blog/latest', null, [
+			'count'   => 3,
+			'exclude' => [ get_the_ID() ],
+		]); ?>
+
 	</main>
 
 <?php endwhile; ?>

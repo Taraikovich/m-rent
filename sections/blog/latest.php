@@ -17,6 +17,7 @@
  *   • subtitle    (string) — подзаголовок
  *   • button_text (string) — текст CTA-кнопки
  *   • button_url  (string) — URL CTA (по умолчанию — страница блога)
+ *   • exclude     (int|int[]) — ID записей, которые нужно исключить из выборки
  *
  * Любой параметр можно опустить — будет дефолт по дизайну. Если записей нет,
  * секция не рендерится.
@@ -45,13 +46,21 @@ if ( $mrent_button_url === '' ) {
 	}
 }
 
-$mrent_query = new WP_Query( [
+$mrent_exclude = $mrent_args['exclude'] ?? [];
+$mrent_exclude = array_filter( array_map( 'absint', (array) $mrent_exclude ) );
+
+$mrent_query_args = [
 	'post_type'      => 'post',
 	'posts_per_page' => $mrent_count,
 	'post_status'    => 'publish',
 	'no_found_rows'  => true,
 	'ignore_sticky_posts' => true,
-] );
+];
+if ( $mrent_exclude ) {
+	$mrent_query_args['post__not_in'] = $mrent_exclude;
+}
+
+$mrent_query = new WP_Query( $mrent_query_args );
 
 if ( ! $mrent_query->have_posts() ) {
 	wp_reset_postdata();

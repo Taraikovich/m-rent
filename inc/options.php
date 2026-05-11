@@ -39,6 +39,24 @@ add_action('acf/init', function () {
 		'position'   => 30,
 		'redirect'   => false,
 	]);
+
+	acf_add_options_sub_page([
+		'page_title'  => __('Архив услуг — настройки', 'm-rent'),
+		'menu_title'  => __('Настройки архива', 'm-rent'),
+		'menu_slug'   => 'mrent-services-archive',
+		'parent_slug' => 'edit.php?post_type=service',
+		'capability'  => 'edit_theme_options',
+		'redirect'    => false,
+	]);
+
+	acf_add_options_sub_page([
+		'page_title'  => __('Архив автомобилей — настройки', 'm-rent'),
+		'menu_title'  => __('Настройки архива', 'm-rent'),
+		'menu_slug'   => 'mrent-cars-archive',
+		'parent_slug' => 'edit.php?post_type=car',
+		'capability'  => 'edit_theme_options',
+		'redirect'    => false,
+	]);
 });
 
 /**

@@ -22,13 +22,16 @@ while (have_posts()) :
 	the_post();
 ?>
 
-	<main class="bg-mrent-black pt-[60px] xl:pt-[93px] pb-[60px] xl:pb-[100px]">
+	<main class="bg-mrent-black pt-[60px] xl:pt-[93px]">
 		<?php get_template_part('sections/cars/breadcrumbs'); ?>
 		<?php get_template_part('sections/cars/single-gallery'); ?>
-
-		<div class="mt-[30px] xl:mt-[60px]">
-			<?php get_template_part('sections/cars/single-details'); ?>
-		</div>
+		<?php get_template_part('sections/cars/single-details'); ?>
+		<?php get_template_part('sections/cars/single-tabs'); ?>
+		<?php get_template_part('sections/cars/single-booking'); ?>
+		<?php get_template_part('sections/cars/services-tabbed'); ?>
+		<?php get_template_part('sections/cars/why-us'); ?>
+		<?php get_template_part('sections/home/popular'); ?>
+		<?php get_template_part('sections/cars/single-seo-text'); ?>
 
 		<?php if (get_the_content()) : ?>
 			<div class="px-[15px] xl:px-[100px] mt-[40px] xl:mt-[80px]">

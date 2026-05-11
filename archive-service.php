@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Архив услуг: /services/
  *
@@ -11,7 +12,7 @@
  * роутинга и заголовка/SEO.
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -19,9 +20,11 @@ get_header();
 ?>
 
 <main class="bg-mrent-black pt-[60px] xl:pt-[93px] pb-[60px] xl:pb-[100px]">
-	<?php get_template_part( 'sections/services/breadcrumbs' ); ?>
-	<?php get_template_part( 'sections/services/filters' ); ?>
-	<?php get_template_part( 'sections/services/grid' ); ?>
+	<?php get_template_part('sections/services/breadcrumbs'); ?>
+	<?php get_template_part('sections/services/filters'); ?>
+	<?php get_template_part('sections/services/grid'); ?>
+	<?php get_template_part('sections/services/archive-seo-text'); ?>
+	<?php get_template_part('sections/common/contact'); ?>
 </main>
 
 <?php get_footer();

@@ -548,6 +548,15 @@
     flex-direction: column;
     gap: 15px;
   }
+  /* Вариант ряда: на любом разрешении 2 колонки (для дат «Начало/Конец аренды»). */
+  .mrent-consultation-form .mrent-cf7-row--inline {
+    flex-direction: row;
+    gap: 15px;
+  }
+  .mrent-consultation-form .mrent-cf7-row--inline .mrent-cf7-field {
+    flex: 1;
+    min-width: 0;
+  }
   .mrent-consultation-form .mrent-cf7-field {
     display: flex;
     flex-direction: column;
@@ -734,6 +743,9 @@
     }
     .mrent-consultation-form .mrent-cf7-row {
       flex-direction: row;
+      gap: 25px;
+    }
+    .mrent-consultation-form .mrent-cf7-row--inline {
       gap: 25px;
     }
     .mrent-consultation-form .mrent-cf7-row .mrent-cf7-field {

@@ -100,6 +100,197 @@ function initFeatureGallery(el) {
 document.querySelectorAll('[data-mrent-feature-gallery]').forEach(initFeatureGallery);
 
 /**
+ * Карусель тарифов на single-странице услуги (Figma 2960:7082).
+ *   • Mobile (<xl) → Swiper по 1 карточке + полосочная пагинация под слайдером.
+ *   • Desktop (xl+) → Swiper уничтожается, раскладку держит flex
+ *     (.swiper-wrapper остаётся display:flex, на слайдах включены
+ *     `xl:flex-1!`/`xl:w-auto!`).
+ */
+function initPackagesSwiper(el) {
+  let instance = null;
+
+  // Кнопки лежат в общем `.relative`-родителе (parentElement), а пагинация —
+  // ниже как сиблинг этого родителя, поэтому ищем её в ближайшей <section>.
+  const container = el.parentElement;
+  const section = el.closest('section') || container;
+  const prev = container.querySelector('.mrent-packages-prev');
+  const next = container.querySelector('.mrent-packages-next');
+  const paginationEl = section.querySelector('.mrent-packages-pagination');
+
+  const ensure = () => {
+    if (MQ_DESKTOP.matches) {
+      if (instance) {
+        instance.destroy(true, true);
+        instance = null;
+      }
+      return;
+    }
+    if (!instance) {
+      instance = new Swiper(el, {
+        modules: [Navigation, Pagination],
+        slidesPerView: 1,
+        spaceBetween: 10,
+        autoHeight: true,
+        navigation: prev && next ? { prevEl: prev, nextEl: next } : false,
+        pagination: paginationEl
+          ? {
+              el: paginationEl,
+              clickable: true,
+              bulletClass: 'mrent-bullet-bar',
+              bulletActiveClass: 'mrent-bullet-bar-active',
+            }
+          : false,
+      });
+    }
+  };
+
+  ensure();
+  MQ_DESKTOP.addEventListener('change', ensure);
+}
+
+document.querySelectorAll('[data-mrent-packages-swiper]').forEach(initPackagesSwiper);
+
+/**
+ * Карусель доп. опций (вторая вкладка секции «Тарифы и пакеты»,
+ * Figma 2120:1493). Поведение идентично пакетному свайперу.
+ */
+function initOptionsSwiper(el) {
+  let instance = null;
+
+  const container = el.parentElement;
+  const prev = container.querySelector('.mrent-options-prev');
+  const next = container.querySelector('.mrent-options-next');
+  const paginationEl = container.querySelector('.mrent-options-pagination');
+
+  const ensure = () => {
+    if (MQ_DESKTOP.matches) {
+      if (instance) {
+        instance.destroy(true, true);
+        instance = null;
+      }
+      return;
+    }
+    if (!instance) {
+      instance = new Swiper(el, {
+        modules: [Navigation, Pagination],
+        slidesPerView: 1,
+        spaceBetween: 10,
+        autoHeight: true,
+        navigation: prev && next ? { prevEl: prev, nextEl: next } : false,
+        pagination: paginationEl
+          ? {
+              el: paginationEl,
+              clickable: true,
+              bulletClass: 'mrent-bullet-bar',
+              bulletActiveClass: 'mrent-bullet-bar-active',
+            }
+          : false,
+      });
+    }
+  };
+
+  ensure();
+  MQ_DESKTOP.addEventListener('change', ensure);
+}
+
+document.querySelectorAll('[data-mrent-options-swiper]').forEach(initOptionsSwiper);
+
+/**
+ * Карусель «Преимущества» на single-странице услуги (Figma 2135:1436 / 2535:6110).
+ *   • Mobile (<xl) → Swiper, 1 колонка × 3 ряда на видимую страницу
+ *     (Grid module, fill:row), горизонтальный свайп, полосочная пагинация
+ *     + жёлтые prev/next 55×55 под слайдером.
+ *   • Desktop (xl+) → Swiper уничтожается, `.swiper-wrapper` становится
+ *     3-кол CSS-grid'ом через `xl:!grid` в разметке.
+ */
+function initBenefitsSwiper(el) {
+  let instance = null;
+
+  const container = el.parentElement;
+  const prev = container.querySelector('.mrent-benefits-prev');
+  const next = container.querySelector('.mrent-benefits-next');
+  const paginationEl = container.querySelector('.mrent-benefits-pagination');
+
+  const ensure = () => {
+    if (MQ_DESKTOP.matches) {
+      if (instance) {
+        instance.destroy(true, true);
+        instance = null;
+      }
+      return;
+    }
+    if (!instance) {
+      instance = new Swiper(el, {
+        modules: [Navigation, Pagination, Grid],
+        slidesPerView: 1,
+        spaceBetween: 15,
+        grid: { rows: 3, fill: 'row' },
+        navigation: prev && next ? { prevEl: prev, nextEl: next } : false,
+        pagination: paginationEl
+          ? {
+              el: paginationEl,
+              clickable: true,
+              bulletClass: 'mrent-bullet-bar',
+              bulletActiveClass: 'mrent-bullet-bar-active',
+            }
+          : false,
+      });
+    }
+  };
+
+  ensure();
+  MQ_DESKTOP.addEventListener('change', ensure);
+}
+
+document.querySelectorAll('[data-mrent-benefits-swiper]').forEach(initBenefitsSwiper);
+
+/**
+ * Переключатель табов «Тарифы и пакеты» / «Дополнительные опции»
+ * на single-странице услуги (Figma 2960:7082, 2120:1493).
+ *
+ * UI: два набора пилюль (по одному на панель, на xl+) + один общий
+ * native <select> на мобайле. Клик/change → активируется панель,
+ * остальные `hidden`. После показа дёргаем swiper.update() — слайды,
+ * инициализированные поверх hidden-панели, иначе считают ширину 0.
+ */
+function initSinglePackagesTabs(root) {
+  const panels = root.querySelectorAll('[data-mrent-pkg-panel]');
+  if (panels.length < 2) return;
+
+  const triggers = root.querySelectorAll('[data-mrent-pkg-trigger]');
+  const select = root.querySelector('[data-mrent-pkg-select]');
+
+  function activate(id) {
+    panels.forEach((panel) => {
+      const isActive = panel.dataset.mrentPkgId === id;
+      if (isActive) panel.removeAttribute('hidden');
+      else panel.setAttribute('hidden', '');
+
+      if (isActive) {
+        panel.querySelectorAll('.swiper').forEach((swiperEl) => {
+          if (swiperEl.swiper) swiperEl.swiper.update();
+        });
+      }
+    });
+    triggers.forEach((trigger) => {
+      const isActive = trigger.dataset.mrentPkgId === id;
+      if (isActive) trigger.setAttribute('aria-current', 'true');
+      else trigger.removeAttribute('aria-current');
+    });
+    if (select && select.value !== id) select.value = id;
+  }
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => activate(trigger.dataset.mrentPkgId));
+  });
+  if (select) {
+    select.addEventListener('change', () => activate(select.value));
+  }
+}
+
+document.querySelectorAll('[data-mrent-single-packages]').forEach(initSinglePackagesTabs);
+
+/**
  * Свайпер услуг-виджета на главной (Figma 199:109).
  *   • Mobile (<xl) → 1 карточка в видимой области, gap 10px.
  *   • Desktop (xl+) → 2 карточки в ряд, gap 20px.
@@ -238,3 +429,40 @@ function initServicesTabbed(root) {
 }
 
 document.querySelectorAll('[data-mrent-services-tabbed]').forEach(initServicesTabbed);
+
+/**
+ * «Похожие услуги» на single-странице услуги (Figma 2120:1425 / 2535:6239).
+ *   • Mobile (<xl) → 1 карточка в видимой области, gap 10.
+ *   • Desktop (xl+) → 2 карточки в ряд, gap 20.
+ * Полосочная пагинация (mrent-bullet-bar) лежит сиблингом свайпера в той же
+ * flex-col-обёртке секции; находим её через parentElement.
+ */
+function initRelatedServices(el) {
+  const paginationEl = el.parentElement.querySelector('.mrent-related-services-pagination');
+
+  new Swiper(el, {
+    modules: [Pagination, Grid],
+    // Mobile: 1 колонка × 2 ряда (2 карточки на видимой странице).
+    slidesPerView: 1,
+    spaceBetween: 10,
+    grid: { rows: 2, fill: 'row' },
+    pagination: paginationEl
+      ? {
+          el: paginationEl,
+          clickable: true,
+          bulletClass: 'mrent-bullet-bar',
+          bulletActiveClass: 'mrent-bullet-bar-active',
+        }
+      : false,
+    breakpoints: {
+      // Desktop: 2 карточки в ряд, без grid.
+      1280: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        grid: { rows: 1 },
+      },
+    },
+  });
+}
+
+document.querySelectorAll('[data-mrent-related-services]').forEach(initRelatedServices);
