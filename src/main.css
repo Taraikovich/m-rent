@@ -465,6 +465,37 @@
     block-size: auto;
   }
 
+  /* Info-карточки в секции «Условия аренды» (sections/contacts/terms-faq.php).
+     Юзер пишет содержимое в WYSIWYG (обычно <ul>/<li> + <strong>) — даём
+     дискам видимое маркирование и Heavy для bold-фрагментов вроде
+     «от 20 лет». Размеры/цвета задаёт сам шаблон. */
+  .mrent-terms-info ul {
+    list-style: disc;
+    padding-left: 1.4em;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+  }
+  @media (min-width: 1280px) {
+    .mrent-terms-info ul {
+      gap: 20px;
+    }
+  }
+  .mrent-terms-info li {
+    line-height: 1.2;
+  }
+  .mrent-terms-info strong,
+  .mrent-terms-info b {
+    font-weight: 800; /* Heavy — как в Figma */
+  }
+  .mrent-terms-info p {
+    margin: 0;
+  }
+  .mrent-terms-info > * + * {
+    margin-top: 10px;
+  }
+
   /* Мобильное меню — оверлей */
   .mrent-mobile-panel {
     position: fixed;
