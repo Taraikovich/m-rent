@@ -24,7 +24,7 @@ $mrent_email_url    = 'mailto:' . $mrent_email;
 
 $mrent_logo_url   = get_stylesheet_directory_uri() . '/assets/images/logo.png';
 $mrent_home_url   = esc_url(home_url('/'));
-$mrent_contact_url = '#contact';
+$mrent_contact_url = '#booking-form';
 
 // Колонки футера тянутся из WP-меню локации `footer` (Внешний вид → Меню).
 // Верхний уровень меню = колонки (title — заголовок), дочерние = ссылки.
@@ -217,6 +217,8 @@ $mrent_privacy_url  = '#privacy';
 		</div>
 	</div>
 </footer>
+
+<?php get_template_part('sections/common/booking-modal'); ?>
 
 <?php wp_footer(); ?>
 </body>

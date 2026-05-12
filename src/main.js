@@ -5,3 +5,4 @@ import './single-car-tabs.js';
 import './services.js';
 import './blog.js';
 import './seo-text.js';
+import './booking-modal.js';

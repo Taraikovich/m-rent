@@ -733,6 +733,23 @@
     padding: 0 !important;
   }
 
+  /* Сетка «Начало аренды + Конец аренды + Способ связи» (модалка «Оставьте заявку»).
+     Mobile: 2 колонки (даты в первом ряду, способ связи во втором — растянут).
+     Desktop: 3 равных колонки в один ряд.
+     Реализовано через CSS Grid поверх flex-родителя `.mrent-cf7-row` —
+     `display: grid` перебивает `display: flex`. */
+  .mrent-consultation-form .mrent-cf7-row--dates-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "start end"
+      "contact contact";
+    gap: 15px;
+  }
+  .mrent-consultation-form .mrent-cf7-field--rent-start { grid-area: start; }
+  .mrent-consultation-form .mrent-cf7-field--rent-end { grid-area: end; }
+  .mrent-consultation-form .mrent-cf7-field--contact-method { grid-area: contact; }
+
   /* ── Desktop (xl = 1280px+) ── */
   @media (min-width: 1280px) {
     .mrent-consultation-form .wpcf7-form {
@@ -784,5 +801,31 @@
     .mrent-consultation-form .wpcf7-response-output {
       font-size: 16px;
     }
+    .mrent-consultation-form .mrent-cf7-row--dates-contact {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas: "start end contact";
+      gap: 25px;
+    }
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     Модальное окно «Оставьте заявку» (sections/common/booking-modal.php)
+     ────────────────────────────────────────────────────────── */
+  /* Tailwind-утилиты (`flex flex-col`) на дочерних элементах живут в более позднем
+     слое, чем `@layer components`, поэтому без `!important` они перебивают наш
+     `display: none`, и success-стейт виден всегда. */
+  .mrent-booking-modal[data-state="form"] .mrent-booking-modal__success { display: none !important; }
+  .mrent-booking-modal[data-state="success"] .mrent-booking-modal__form { display: none !important; }
+
+  /* Блокировка скролла фона при открытой модалке. Класс ставит JS на <html>. */
+  html.mrent-booking-modal-open,
+  html.mrent-booking-modal-open body {
+    overflow: hidden;
+  }
+
+  /* В CF7 ответное сообщение (mail_sent_ok) дублирует наш success-стейт —
+     скрываем его внутри модалки, чтобы не было «двойного» подтверждения. */
+  .mrent-booking-modal .wpcf7-response-output {
+    display: none !important;
   }
 }
