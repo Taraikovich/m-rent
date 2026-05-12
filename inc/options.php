@@ -115,6 +115,33 @@ function mrent_options_socials(): array
 }
 
 /**
+ * URL iframe Яндекс.Карт, собранный из координат и зума из ACF Options.
+ * Метка ставится в той же точке (pt=lng,lat,pm2rdm — красный «капля»).
+ * Если координаты не заданы — '' (шаблон сам решит, что показать).
+ */
+function mrent_options_map_iframe_src(): string
+{
+	$lat  = mrent_options_get('map_lat');
+	$lng  = mrent_options_get('map_lng');
+	$zoom = mrent_options_get('map_zoom');
+
+	if ($lat === '' || $lng === '') {
+		return '';
+	}
+
+	$zoom_int = $zoom !== '' ? max(0, min(19, (int) $zoom)) : 16;
+
+	return add_query_arg(
+		[
+			'll' => $lng . ',' . $lat,
+			'z'  => $zoom_int,
+			'pt' => $lng . ',' . $lat . ',pm2rdm',
+		],
+		'https://yandex.ru/map-widget/v1/'
+	);
+}
+
+/**
  * Карта мессенджеров: [slug => url] в порядке для рендера.
  */
 function mrent_options_messengers(): array
