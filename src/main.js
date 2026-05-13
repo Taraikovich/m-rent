@@ -8,3 +8,4 @@ import './seo-text.js';
 import './booking-modal.js';
 import './review-modal.js';
 import './reviews.js';
+import './cards-grid.js';
