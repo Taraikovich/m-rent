@@ -422,6 +422,17 @@
     background-color: var(--color-mrent-white);
   }
 
+  /* Свайпер «Отзывы» (страница reviews-page). Swiper Grid в горизонтальном
+     режиме ставит каждому слайду inline `height: Npx` — это делает все
+     слайды одной высоты, но завязывает её на высоту .swiper-контейнера
+     (которой у нас нет). Перебиваем на `height: auto`, плюс делаем слайд
+     flex-контейнером — flex по умолчанию `align-items: stretch`, поэтому
+     все слайды в одном ряду тянутся до самого высокого, а <article>
+     внутри с `h-full` заполняет полученную высоту. */
+  .mrent-reviews .swiper-slide {
+    height: auto !important;
+  }
+
   /* Свайпер «Страны поставки» (car-import / таб 2): на мобайле полоски
      уже (20×4 в Figma 3004:9371), на десктопе — стандартные 40×4. */
   .mrent-car-import-countries-pagination .mrent-bullet-bar {
