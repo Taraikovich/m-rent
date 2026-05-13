@@ -57,7 +57,7 @@ $mrent_booking_url = get_field('car_booking_url') ?: '#booking';
 						<?php echo esc_html($row['duration']); ?>
 					</div>
 					<div class="bg-[#252426] flex items-center justify-center px-[10px] py-[15px] xl:p-[20px] text-[16px] xl:text-[20px] text-center leading-[1.2] min-h-[50px] font-[800] whitespace-nowrap">
-						<?php echo esc_html($row['price']); ?>
+						<?php echo esc_html(mrent_byn_price((float) $row['price'], (string) ($row['price_suffix'] ?? ''))); ?>
 						<?php if (! empty($row['discount'])) : ?>
 							<sup class="ml-[2px] text-mrent-yellow text-[9px] xl:text-[13px] font-[800]"><?php echo esc_html($row['discount']); ?></sup>
 						<?php endif; ?>
@@ -86,7 +86,7 @@ $mrent_booking_url = get_field('car_booking_url') ?: '#booking';
 					</svg>
 					<p class="leading-[1.2] text-[16px] xl:text-[30px]">
 						<span class="font-[700]"><?php esc_html_e('Депозит:', 'm-rent'); ?></span>
-						<?php echo esc_html(mrent_format_price($mrent_deposit)); ?>$
+						<?php echo esc_html(mrent_byn_price($mrent_deposit)); ?>
 					</p>
 				</div>
 			<?php endif; ?>

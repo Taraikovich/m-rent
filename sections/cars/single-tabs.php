@@ -143,7 +143,10 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 						$svc_title        = (string) ($svc['title'] ?? '');
 						$svc_title_accent = (string) ($svc['title_accent'] ?? '');
 						$svc_body         = (string) ($svc['body'] ?? '');
-						$svc_price_main   = (string) ($svc['price_main'] ?? '');
+						$svc_price_usd    = (float) ($svc['price_usd'] ?? 0);
+						$svc_price_main   = $svc_price_usd > 0
+							? '+ ' . mrent_byn_price($svc_price_usd)
+							: (string) ($svc['price_main'] ?? '');
 						$svc_price_suffix = (string) ($svc['price_suffix'] ?? '');
 						$svc_btn_text     = (string) ($svc['button_text'] ?? '');
 						$svc_btn_url      = (string) ($svc['button_url'] ?? '#booking');
@@ -159,7 +162,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 									</h3>
 									<?php if ($svc_body !== '') : ?>
 										<div class="mrent-article text-[14px] xl:text-[24px] leading-[1.2]">
-											<?php echo wp_kses_post($svc_body); ?>
+											<?php echo wp_kses_post(mrent_convert_usd_in_text($svc_body)); ?>
 										</div>
 									<?php endif; ?>
 								</div>

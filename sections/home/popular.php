@@ -85,7 +85,7 @@ $mrent_catalog_url = get_post_type_archive_link( 'car' ) ?: home_url( '/cars/' )
 									</h3>
 
 									<p class="w-full font-[400] text-[16px] xl:text-[30px] leading-[1.2] text-mrent-white">
-										<?php echo esc_html( mrent_format_price( $mrent_price ) ); ?>$/<?php esc_html_e( 'сутки', 'm-rent' ); ?>
+										<?php echo esc_html( mrent_byn_price( $mrent_price, '/' . __( 'сутки', 'm-rent' ) ) ); ?>
 									</p>
 
 									<?php /* В отличие от каталога мобильные кнопки здесь — в ряд (Figma 2994:8984). */ ?>

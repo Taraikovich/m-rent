@@ -127,7 +127,7 @@ if ( $mrent_pkg_has_options ) {
 							$mrent_pkg_item_title    = (string) ( $mrent_pkg['title'] ?? '' );
 							$mrent_pkg_item_subtitle = (string) ( $mrent_pkg['subtitle'] ?? '' );
 							$mrent_pkg_item_specs    = (array) ( $mrent_pkg['specs'] ?? [] );
-							$mrent_pkg_item_price    = (string) ( $mrent_pkg['price'] ?? '' );
+							$mrent_pkg_item_price    = mrent_convert_usd_in_text( (string) ( $mrent_pkg['price'] ?? '' ) );
 							$mrent_pkg_item_unit     = (string) ( $mrent_pkg['price_unit'] ?? '' );
 							$mrent_pkg_item_cta      = $mrent_pkg['cta_text'] ?? '';
 							if ( ! $mrent_pkg_item_cta ) {
@@ -280,7 +280,7 @@ if ( $mrent_pkg_has_options ) {
 						<?php foreach ( $mrent_pkg_options as $mrent_opt ) :
 							$mrent_opt_icon  = is_array( $mrent_opt['icon'] ?? null ) ? $mrent_opt['icon'] : null;
 							$mrent_opt_title = (string) ( $mrent_opt['title'] ?? '' );
-							$mrent_opt_price = (string) ( $mrent_opt['price'] ?? '' );
+							$mrent_opt_price = mrent_convert_usd_in_text( (string) ( $mrent_opt['price'] ?? '' ) );
 							$mrent_opt_unit  = (string) ( $mrent_opt['price_unit'] ?? '' );
 							$mrent_opt_cta   = $mrent_opt['cta_text'] ?? '';
 							if ( ! $mrent_opt_cta ) {

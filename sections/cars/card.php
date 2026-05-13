@@ -60,7 +60,7 @@ if ( ! $mrent_thumb_url ) {
 		         На мобайле mt-auto не активен (заголовок скрыт, выравнивать нечего). */ ?>
 		<div class="flex flex-col gap-[15px] xl:gap-[30px] items-start w-full xl:mt-auto">
 			<p class="w-full font-[400] text-[16px] xl:text-[30px] leading-[1.2] text-mrent-white">
-				<?php echo esc_html( mrent_format_price( $mrent_price ) ); ?>$/<?php esc_html_e( 'сутки', 'm-rent' ); ?>
+				<?php echo esc_html( mrent_byn_price( $mrent_price, '/' . __( 'сутки', 'm-rent' ) ) ); ?>
 			</p>
 
 			<?php /* Мобайл (2326:3645): кнопки колонкой, каждая w-full + shrink-0 + h-55,
