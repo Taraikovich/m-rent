@@ -352,6 +352,86 @@
     }
   }
 
+  /* Контент-страницы (page.php) — длинные тексты вроде «Политики
+     конфиденциальности» / «Публичной оферты». Гутенберг-редактор пишет h2/p/ol,
+     отдаём их сразу с типографикой по Figma 2187:3647 (desktop) / 2353:5521
+     (mobile).
+
+     Тело: 16/30px Book, line-height 1.2. h2: 20/35px Heavy. Отступы между
+     соседями — 15/30, на границе секций (перед h2) — 30/60. Списки нумерованные
+     с явным десятичным маркером (отступ 24/45px). */
+  .mrent-page-content {
+    color: var(--color-mrent-white);
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 400;
+  }
+  @media (min-width: 1280px) {
+    .mrent-page-content {
+      font-size: 30px;
+    }
+  }
+  .mrent-page-content > * {
+    margin: 0;
+  }
+  .mrent-page-content > * + * {
+    margin-top: 15px;
+  }
+  .mrent-page-content > * + h2 {
+    margin-top: 30px;
+  }
+  @media (min-width: 1280px) {
+    .mrent-page-content > * + * {
+      margin-top: 30px;
+    }
+    .mrent-page-content > * + h2 {
+      margin-top: 60px;
+    }
+  }
+  .mrent-page-content h2 {
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  @media (min-width: 1280px) {
+    .mrent-page-content h2 {
+      font-size: 35px;
+    }
+  }
+  .mrent-page-content p {
+    line-height: 1.2;
+  }
+  .mrent-page-content a {
+    color: var(--color-mrent-yellow);
+    text-decoration: underline;
+  }
+  .mrent-page-content strong,
+  .mrent-page-content b {
+    font-weight: 700;
+  }
+  .mrent-page-content ul,
+  .mrent-page-content ol {
+    padding-left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  @media (min-width: 1280px) {
+    .mrent-page-content ul,
+    .mrent-page-content ol {
+      padding-left: 45px;
+    }
+  }
+  .mrent-page-content ol {
+    list-style: decimal;
+  }
+  .mrent-page-content ul {
+    list-style: disc;
+  }
+  .mrent-page-content li {
+    line-height: 1.2;
+  }
+
   /* SEO-блок с WYSIWYG-контентом (sections/common/seo-text.php).
      Юзер пишет в админке обычные абзацы / списки / ссылки — выводим их с
      минимальным prose-форматированием в стиле сайта. Размеры/цвета задаёт
