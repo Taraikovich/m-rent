@@ -63,7 +63,7 @@ $mrent_image_alt = $mrent_image['alt'] ?? '';
 		<?php /* Фото. На мобайле — w-full h-148 (≈ Figma 330×148, object-cover кроп).
 		         На ≥2xl — фикс 960×431 по Figma 2786:7363. rounded-15 + object-cover
 		         повторяет Figma-кроп (h-166.92% top-[-43.27%]). */ ?>
-		<div class="w-full h-37 2xl:w-240 2xl:h-107.75 2xl:shrink-0 rounded-[15px] overflow-hidden">
+		<div class="w-full h-37 2xl:flex-1 2xl:min-w-0 2xl:max-w-240 2xl:h-107.75 rounded-[15px] overflow-hidden">
 			<img
 				src="<?php echo esc_url($mrent_image_url); ?>"
 				alt="<?php echo esc_attr($mrent_image_alt); ?>"

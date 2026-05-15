@@ -67,16 +67,16 @@ if ( is_array( $mrent_list_raw ) ) {
 
 				<?php /* Текст-колонка. Mobile — full-width; 2xl — фикс 620px. */ ?>
 				<?php if ( $mrent_lead_bold !== '' || $mrent_lead_rest !== '' || $mrent_body !== '' ) : ?>
-					<div class="flex flex-col gap-[30px] text-mrent-white leading-[1.2] 2xl:w-[620px] 2xl:shrink-0">
+					<div class="flex flex-col gap-[30px] text-mrent-white leading-[1.2] 2xl:basis-[620px] 2xl:min-w-0">
 						<?php if ( $mrent_lead_bold !== '' || $mrent_lead_rest !== '' ) : ?>
-							<p class="text-[16px] 2xl:text-[30px]">
+							<p class="text-[16px] 2xl:text-[clamp(20px,1.65vw,30px)]">
 								<?php if ( $mrent_lead_bold !== '' ) : ?>
 									<strong class="font-[700]"><?php echo esc_html( $mrent_lead_bold ); ?></strong><?php endif; ?>
 								<?php echo esc_html( $mrent_lead_rest ); ?>
 							</p>
 						<?php endif; ?>
 						<?php if ( $mrent_body !== '' ) : ?>
-							<p class="text-[16px] 2xl:text-[30px]"><?php echo nl2br( esc_html( $mrent_body ) ); ?></p>
+							<p class="text-[16px] 2xl:text-[clamp(20px,1.65vw,30px)]"><?php echo nl2br( esc_html( $mrent_body ) ); ?></p>
 						<?php endif; ?>
 					</div>
 				<?php endif; ?>
@@ -87,10 +87,10 @@ if ( is_array( $mrent_list_raw ) ) {
 				                   потоке (z-10) задаёт высоту блока. Фото — absolute
 				                   right-0 top-0 bottom-0 w-500: высота = высоте карточки,
 				                   карточка наплывает на фото ~40px слева. */ ?>
-				<div class="flex flex-col w-full 2xl:block 2xl:relative 2xl:w-260 2xl:shrink-0">
+				<div class="flex flex-col w-full 2xl:block 2xl:relative 2xl:basis-260 2xl:min-w-0">
 
 					<?php if ( ! empty( $mrent_list ) ) : ?>
-						<div class="bg-[#252426] rounded-[15px] p-[25px] 2xl:p-[40px] w-full 2xl:relative 2xl:z-10 2xl:w-145">
+						<div class="bg-[#252426] rounded-[15px] p-[25px] 2xl:p-[40px] w-full 2xl:relative 2xl:z-10 2xl:w-[55.77%]">
 							<div class="flex flex-col gap-[20px]">
 								<?php if ( $mrent_list_title !== '' ) : ?>
 									<p class="font-display font-[600] text-[20px] 2xl:text-[35px] leading-[1.2] text-mrent-white">
@@ -110,7 +110,7 @@ if ( is_array( $mrent_list_raw ) ) {
 					<?php endif; ?>
 
 					<?php if ( $mrent_image_url ) : ?>
-						<div class="w-full aspect-[330/270] rounded-[15px] overflow-hidden 2xl:absolute 2xl:inset-y-0 2xl:right-0 2xl:w-125 2xl:h-auto 2xl:aspect-auto">
+						<div class="w-full aspect-[330/270] rounded-[15px] overflow-hidden 2xl:absolute 2xl:inset-y-0 2xl:right-0 2xl:w-[48.08%] 2xl:h-auto 2xl:aspect-auto">
 							<img
 								src="<?php echo esc_url( $mrent_image_url ); ?>"
 								alt="<?php echo esc_attr( $mrent_image_alt ); ?>"

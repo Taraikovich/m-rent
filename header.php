@@ -62,7 +62,7 @@ if (! function_exists('mrent_nav_fallback')) {
 
 	<header class="mrent-header-surface fixed top-0 inset-x-0 z-50 bg-mrent-black/50 backdrop-blur-[11.8px]">
 		<?php /* ─── Десктопная раскладка ─── */ ?>
-		<div class="hidden 2xl:grid 2xl:grid-cols-[1fr_auto_1fr] items-center py-[24px] gap-8 2xl:gap-12 max-w-[1720px] mx-auto w-full">
+		<div class="hidden header:grid header:grid-cols-[1fr_auto_1fr] items-center py-[24px] px-[10px] gap-8 header:gap-12 max-w-[1720px] mx-auto w-full">
 			<nav aria-label="<?php esc_attr_e('Главное меню', 'm-rent'); ?>">
 				<?php wp_nav_menu($mrent_menu_args_desktop); ?>
 			</nav>
@@ -104,7 +104,7 @@ if (! function_exists('mrent_nav_fallback')) {
 		</div>
 
 		<?php /* ─── Мобильная раскладка ─── */ ?>
-		<div class="flex 2xl:hidden items-center justify-between p-[15px] gap-3">
+		<div class="flex header:hidden items-center justify-between p-[15px] gap-3">
 			<a href="<?php echo $mrent_home_url; ?>" class="block shrink-0" aria-label="<?php esc_attr_e('M-RENT.BY — на главную', 'm-rent'); ?>">
 				<img src="<?php echo esc_url($mrent_logo_url); ?>" alt="M-RENT.BY" class="h-[30px] w-auto" width="136" height="30">
 			</a>
@@ -126,7 +126,7 @@ if (! function_exists('mrent_nav_fallback')) {
 	</header>
 
 	<?php /* ─── Мобильный оверлей ─── */ ?>
-	<div id="mrent-mobile-menu" class="mrent-mobile-panel xl:hidden" data-mrent-mobile-menu aria-hidden="true">
+	<div id="mrent-mobile-menu" class="mrent-mobile-panel header:hidden" data-mrent-mobile-menu aria-hidden="true">
 		<div class="flex flex-col items-center gap-[40px] px-[15px] pt-[15px] pb-[30px] min-h-screen">
 			<div class="flex items-center justify-between w-full">
 				<a href="<?php echo $mrent_home_url; ?>" class="block shrink-0" aria-label="<?php esc_attr_e('M-RENT.BY — на главную', 'm-rent'); ?>">

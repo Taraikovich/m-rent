@@ -82,17 +82,17 @@ $mrent_image_2_alt = $mrent_image_2['alt'] ?? '';
 		           430×257 (Figma 334:302), `aspect-auto` сбрасывает мобильное
 		           aspect-ratio. DOM-порядок gold → silver — silver сверху
 		           в зоне пересечения. */ ?>
-		<div class="relative shrink-0 w-full aspect-[330/214] 2xl:w-[801px] 2xl:h-[398px] 2xl:aspect-auto">
+		<div class="relative w-full aspect-[330/214] 2xl:flex-1 2xl:min-w-0 2xl:max-w-[801px] 2xl:aspect-[801/398]">
 			<img
 				src="<?php echo esc_url($mrent_image_1_url); ?>"
 				alt="<?php echo esc_attr($mrent_image_1_alt); ?>"
-				class="absolute top-0 left-1/3 block w-2/3 aspect-[220/131] object-cover 2xl:left-[371px] 2xl:w-[430px] 2xl:h-[257px] 2xl:aspect-auto"
+				class="absolute top-0 left-1/3 block w-2/3 aspect-[220/131] object-contain 2xl:left-[46.317%] 2xl:w-[53.683%] 2xl:aspect-[430/257]"
 				loading="lazy"
 				decoding="async">
 			<img
 				src="<?php echo esc_url($mrent_image_2_url); ?>"
 				alt="<?php echo esc_attr($mrent_image_2_alt); ?>"
-				class="absolute top-[38.785%] left-0 block w-2/3 aspect-[220/131] object-cover 2xl:top-[141px] 2xl:w-[430px] 2xl:h-[257px] 2xl:aspect-auto"
+				class="absolute top-[38.785%] left-0 block w-2/3 aspect-[220/131] object-contain 2xl:top-[35.427%] 2xl:w-[53.683%] 2xl:aspect-[430/257]"
 				loading="lazy"
 				decoding="async">
 		</div>

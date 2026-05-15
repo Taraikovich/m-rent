@@ -55,7 +55,7 @@ $mrent_image_alt = $mrent_image['alt'] ?? '';
 				<?php endif; ?>
 
 				<?php /* Градиент: тёмный сверху → прозрачный снизу. Стопы из Figma. */ ?>
-				<span class="absolute inset-0 bg-gradient-to-b from-[rgba(30,29,31,0.81)] from-[26.827%] to-[rgba(30,29,31,0)] to-[68.668%]" aria-hidden="true"></span>
+				<span class="absolute inset-0 bg-gradient-to-b from-[rgba(30,29,31,0.81)] from-[26.827%] to-[rgba(30,29,31,0)] to-[67.05%]" aria-hidden="true"></span>
 
 				<?php /* Контент. На mobile — full-width, на 2xl — max-w-845, центр.
 				         Padding: mobile py-30 px-25, desktop pt-100 pb-422 (большое

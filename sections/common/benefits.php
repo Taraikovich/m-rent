@@ -62,7 +62,7 @@ $mrent_right = array_slice( $mrent_benefits, 3, 3 );
 
 		<?php /* Центральное фото — 244×229 на мобайле, 458×419 на десктопе.
 		         object-contain: картинка целиком вписывается в бокс, без обрезки. */ ?>
-		<div class="w-61 h-57.25 2xl:w-114.5 2xl:h-104.75 shrink-0">
+		<div class="w-61 h-57.25 2xl:w-auto 2xl:flex-1 2xl:min-w-0 2xl:max-w-114.5 2xl:h-104.75 shrink-0 2xl:shrink">
 			<img src="<?php echo esc_url( $mrent_image_url ); ?>" alt="<?php echo esc_attr( $mrent_image_alt ); ?>" class="block w-full h-full object-contain" loading="lazy" decoding="async">
 		</div>
 

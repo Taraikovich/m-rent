@@ -69,15 +69,15 @@ $mrent_messenger_icons = [
 ];
 ?>
 
-<section id="booking" class="bg-mrent-black px-[15px] xl:px-[100px] mt-[40px] xl:mt-[100px]">
-	<div class="max-w-[1720px] mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[30px] xl:gap-[40px]">
+<section id="booking" class="bg-mrent-black px-[15px] xl:px-[40px] 2xl:px-[100px] mt-[40px] xl:mt-[100px]">
+	<div class="max-w-[1720px] mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[30px] xl:gap-[40px] min-w-0">
 
 		<?php /* Левая колонка: заголовок + контакты. На desktop тянется на всю высоту правой колонки и распределяется justify-between. */ ?>
 		<div class="flex flex-col xl:justify-between xl:self-stretch gap-[30px] xl:gap-0">
 
 			<?php /* Заголовок (+ лид только на desktop). */ ?>
 			<div class="flex flex-col gap-[20px] text-mrent-white leading-[1.2]">
-				<h2 class="font-display font-bold text-[28px] xl:text-[74px] xl:w-[577px]">
+				<h2 class="font-display font-bold text-[28px] xl:text-[74px] xl:max-w-[577px]">
 					<?php esc_html_e( 'Забронировать автомобиль', 'm-rent' ); ?>
 				</h2>
 				<p class="font-display text-[16px] xl:text-[30px] xl:max-w-[639px] hidden xl:block">
@@ -170,7 +170,7 @@ $mrent_messenger_icons = [
 		</div>
 
 		<?php /* Правая колонка: CF7 форма. Использует общие стили `.mrent-consultation-form`. */ ?>
-		<div class="mrent-consultation-form shrink-0 w-full xl:w-[845px]">
+		<div class="mrent-consultation-form w-full xl:w-[845px] xl:min-w-0 xl:shrink xl:max-w-full">
 			<?php echo do_shortcode( '[contact-form-7 id="' . $mrent_form_id . '"]' ); ?>
 		</div>
 

@@ -70,10 +70,12 @@ if ( $mrent_image_url === '' ) {
 		<span class="absolute inset-0 bg-gradient-to-b from-transparent from-[38%] xl:from-[60%] to-mrent-black to-[80%] xl:to-[92%]" aria-hidden="true"></span>
 	</div>
 
-	<?php /* Текст-overlay. Абсолютное позиционирование относительно <section>
-	         (а не картинки) — чтобы при коротких/длинных подзаголовках текст
-	         мог выходить за нижнюю границу картинки на мобайле без клиппинга. */ ?>
-	<div class="absolute inset-x-0 top-[325px] xl:top-[574px] px-[15px] xl:px-[100px]">
+	<?php /* Текст-overlay в потоке после картинки с отрицательным mt — визуально
+	         сидит поверх низа картинки (как в макете: top:325 на мобайле,
+	         top:574 на десктопе), но занимает реальную высоту, поэтому кнопка
+	         ниже не подъезжает под текст при длинном подзаголовке.
+	         Мобайл: 450 - 325 = 125. Десктоп: 805 - 574 = 231. */ ?>
+	<div class="relative -mt-[125px] xl:-mt-[231px] px-[15px] xl:px-[100px]">
 		<div class="max-w-[1720px] mx-auto flex justify-center">
 			<div class="w-full max-w-[330px] xl:w-[915px] xl:max-w-none flex flex-col gap-[15px] xl:gap-[20px] items-center text-center">
 				<h1 class="text-mrent-white font-[700] text-[28px] xl:text-[74px] leading-[1.2] w-full">
@@ -88,12 +90,12 @@ if ( $mrent_image_url === '' ) {
 		</div>
 	</div>
 
-	<?php /* CTA-кнопка.
-	          Мобайл: в потоке после картинки. mt-[30px] от низа картинки —
-	            стыкуется с переносом текста (~5px ниже картинки) ≈ gap 25-30 как в макете.
-	          Десктоп: mt-0 → начинается ровно от низа картинки (top:805 в макете),
-	            и свешивается на свою высоту (65px) ниже неё. */ ?>
-	<div class="px-[15px] xl:px-[100px] mt-[30px] xl:mt-0">
+	<?php /* CTA-кнопка идёт в потоке после текста, mt-[30px] = гарантированный
+	         отступ от низа текста. В макете на десктопе кнопка ровно у низа
+	         картинки (top:805), но реальная вертикальная позиция теперь зависит
+	         от высоты подзаголовка — это сознательный компромисс, чтобы кнопка
+	         никогда не уезжала под текст. */ ?>
+	<div class="px-[15px] xl:px-[100px] mt-[30px]">
 		<div class="max-w-[1720px] mx-auto flex justify-center">
 			<a
 				href="<?php echo esc_url( $mrent_cta_url ); ?>"

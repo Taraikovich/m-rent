@@ -72,6 +72,53 @@ function mrent_options_get(string $field): string
 }
 
 /**
+ * URL кастомной иконки соцсети из Options, либо '' если не загружено.
+ */
+function mrent_options_social_icon(string $slug): string
+{
+	return mrent_options_get('social_' . $slug . '_icon');
+}
+
+/**
+ * URL кастомной иконки мессенджера из Options, либо '' если не загружено.
+ */
+function mrent_options_messenger_icon(string $slug): string
+{
+	return mrent_options_get('contact_' . $slug . '_icon');
+}
+
+/**
+ * Разрешаем загрузку SVG в медиабиблиотеку (нужно для иконок соцсетей).
+ * Только для пользователей с правом upload_files.
+ */
+add_filter('upload_mimes', function (array $mimes): array {
+	if (current_user_can('upload_files')) {
+		$mimes['svg']  = 'image/svg+xml';
+		$mimes['svgz'] = 'image/svg+xml';
+	}
+	return $mimes;
+});
+
+/**
+ * WP с PHP-7+ и без библиотеки определения SVG падает на проверке mime
+ * (`wp_check_filetype_and_ext` возвращает ext=false для svg). Подменяем.
+ */
+add_filter('wp_check_filetype_and_ext', function (array $data, string $file, string $filename, $mimes) {
+	if (! empty($data['ext']) && ! empty($data['type'])) {
+		return $data;
+	}
+	$ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+	if ($ext === 'svg') {
+		$data['ext']  = 'svg';
+		$data['type'] = 'image/svg+xml';
+	} elseif ($ext === 'svgz') {
+		$data['ext']  = 'svgz';
+		$data['type'] = 'image/svg+xml';
+	}
+	return $data;
+}, 10, 4);
+
+/**
  * Готовый `tel:`-URL телефона. Если поле пустое — '' (шаблон скроет ссылку).
  * Очищаем от пробелов/скобок, сохраняем ведущий «+».
  */

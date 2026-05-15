@@ -70,21 +70,21 @@ $mrent_catalog_url = get_post_type_archive_link( 'car' ) ?: home_url( '/cars/' )
 						$mrent_thumb_url   = get_the_post_thumbnail_url( get_post(), 'large' );
 						?>
 						<div class="swiper-slide">
-							<article class="flex flex-col gap-[20px] xl:gap-[30px] w-full">
+							<article class="flex flex-col gap-[20px] xl:gap-[30px] w-full h-full">
 								<a href="<?php the_permalink(); ?>" class="block relative rounded-[15px] overflow-hidden h-[450px] xl:h-[600px] bg-[#252426]">
 									<?php if ( $mrent_thumb_url ) : ?>
 										<img src="<?php echo esc_url( $mrent_thumb_url ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="absolute inset-0 size-full object-cover" loading="lazy" decoding="async">
 									<?php endif; ?>
 								</a>
 
-								<div class="flex flex-col gap-[15px] xl:gap-[30px] items-start w-full">
+								<div class="flex flex-col gap-[15px] xl:gap-[30px] items-start w-full flex-1">
 									<h3 class="w-full font-[700] text-[16px] xl:text-[26px] leading-[1.2] text-mrent-white">
 										<a href="<?php the_permalink(); ?>" class="hover:text-mrent-yellow transition-colors">
 											<?php the_title(); ?>
 										</a>
 									</h3>
 
-									<p class="w-full font-[400] text-[16px] xl:text-[30px] leading-[1.2] text-mrent-white">
+									<p class="w-full font-[400] text-[16px] xl:text-[30px] leading-[1.2] text-mrent-white mt-auto">
 										<?php echo esc_html( mrent_byn_price( $mrent_price, '/' . __( 'сутки', 'm-rent' ) ) ); ?>
 									</p>
 

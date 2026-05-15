@@ -60,6 +60,26 @@
             "placeholder": "https://wa.me/..."
         },
         {
+            "key": "field_mrent_options_contact_whatsapp_icon",
+            "label": "Иконка WhatsApp",
+            "name": "contact_whatsapp_icon",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Необязательно. Если загружено — заменит дефолтную иконку. Рекомендация: квадратное PNG/WEBP 50×50px или больше.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "return_format": "url",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "png,webp,jpg,jpeg,svg"
+        },
+        {
             "key": "field_mrent_options_contact_viber",
             "label": "Viber",
             "name": "contact_viber",
@@ -71,6 +91,20 @@
             "wrapper": { "width": "50", "class": "", "id": "" },
             "default_value": "",
             "placeholder": "viber://chat?number=..."
+        },
+        {
+            "key": "field_mrent_options_contact_viber_icon",
+            "label": "Иконка Viber",
+            "name": "contact_viber_icon",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Необязательно. Если загружено — заменит дефолтную иконку.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "return_format": "url",
+            "library": "all",
+            "mime_types": "png,webp,jpg,jpeg,svg"
         },
         {
             "key": "field_mrent_options_contact_messenger",
@@ -86,6 +120,20 @@
             "placeholder": "https://m.me/..."
         },
         {
+            "key": "field_mrent_options_contact_messenger_icon",
+            "label": "Иконка Messenger",
+            "name": "contact_messenger_icon",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Необязательно. Если загружено — заменит дефолтную иконку.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "return_format": "url",
+            "library": "all",
+            "mime_types": "png,webp,jpg,jpeg,svg"
+        },
+        {
             "key": "field_mrent_options_contact_telegram",
             "label": "Telegram (личный чат)",
             "name": "contact_telegram",
@@ -97,6 +145,20 @@
             "wrapper": { "width": "50", "class": "", "id": "" },
             "default_value": "",
             "placeholder": "https://t.me/..."
+        },
+        {
+            "key": "field_mrent_options_contact_telegram_icon",
+            "label": "Иконка Telegram (личный чат)",
+            "name": "contact_telegram_icon",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Необязательно. Если загружено — заменит дефолтную иконку.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "return_format": "url",
+            "library": "all",
+            "mime_types": "png,webp,jpg,jpeg,svg"
         },
         {
             "key": "field_mrent_options_tab_map",
@@ -188,6 +250,20 @@
             "placeholder": "https://www.youtube.com/@..."
         },
         {
+            "key": "field_mrent_options_social_youtube_icon",
+            "label": "Иконка YouTube",
+            "name": "social_youtube_icon",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Необязательно. Если загружено — заменит дефолтную SVG-иконку. Рекомендация: PNG/WEBP/SVG 50×50px.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "return_format": "url",
+            "library": "all",
+            "mime_types": "png,webp,jpg,jpeg,svg"
+        },
+        {
             "key": "field_mrent_options_social_tiktok",
             "label": "TikTok",
             "name": "social_tiktok",
@@ -199,6 +275,20 @@
             "wrapper": { "width": "50", "class": "", "id": "" },
             "default_value": "",
             "placeholder": "https://www.tiktok.com/@..."
+        },
+        {
+            "key": "field_mrent_options_social_tiktok_icon",
+            "label": "Иконка TikTok",
+            "name": "social_tiktok_icon",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Необязательно. Если загружено — заменит дефолтную SVG-иконку.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "return_format": "url",
+            "library": "all",
+            "mime_types": "png,webp,jpg,jpeg,svg"
         },
         {
             "key": "field_mrent_options_social_instagram",
@@ -214,6 +304,20 @@
             "placeholder": "https://www.instagram.com/..."
         },
         {
+            "key": "field_mrent_options_social_instagram_icon",
+            "label": "Иконка Instagram",
+            "name": "social_instagram_icon",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Необязательно. Если загружено — заменит дефолтную SVG-иконку.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "return_format": "url",
+            "library": "all",
+            "mime_types": "png,webp,jpg,jpeg,svg"
+        },
+        {
             "key": "field_mrent_options_social_telegram",
             "label": "Telegram (канал)",
             "name": "social_telegram",
@@ -225,6 +329,20 @@
             "wrapper": { "width": "50", "class": "", "id": "" },
             "default_value": "",
             "placeholder": "https://t.me/..."
+        },
+        {
+            "key": "field_mrent_options_social_telegram_icon",
+            "label": "Иконка Telegram (канал)",
+            "name": "social_telegram_icon",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Необязательно. Если загружено — заменит дефолтную SVG-иконку.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "return_format": "url",
+            "library": "all",
+            "mime_types": "png,webp,jpg,jpeg,svg"
         }
     ],
     "location": [

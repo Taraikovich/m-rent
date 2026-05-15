@@ -44,7 +44,7 @@ if (empty($mrent_slides)) {
 <?php /* Полная ширина контейнера (до 1720px). Высота 280 на мобайле, 600 на xl+.
          Стрелки 50/65px фростед-белые, прижаты к краям с отступом 20/50px.
          Absolute-позиционирование — Swiper-wrapper занимает весь контейнер. */ ?>
-<div class="p-[15px] my-[30px] xl:my-[70px]">
+<div class="px-[15px] xl:px-[100px] my-[30px] xl:my-[70px]">
 	<div class="mrent-car-gallery swiper relative max-w-[1720px] mx-auto rounded-[15px] overflow-hidden h-[280px] xl:h-[800px] bg-[#252426]" data-mrent-car-gallery>
 		<div class="swiper-wrapper">
 			<?php foreach ($mrent_slides as $slide) : ?>

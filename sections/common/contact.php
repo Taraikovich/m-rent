@@ -99,10 +99,14 @@ $mrent_icon_class = 'block size-10 2xl:size-[50px]';
 							</p>
 							<div class="flex gap-2.5 items-center">
 								<?php foreach ($mrent_socials as $mrent_slug => $mrent_url) : ?>
-									<?php $mrent_file = $mrent_social_icons[$mrent_slug] ?? null; ?>
-									<?php if (! $mrent_file) continue; ?>
-									<a href="<?php echo esc_url($mrent_url); ?>" class="<?php echo esc_attr($mrent_icon_class); ?> hover:opacity-80 transition-opacity" aria-label="<?php echo esc_attr(ucfirst($mrent_slug)); ?>" target="_blank" rel="noopener">
-										<img src="<?php echo esc_url($mrent_icons_url . $mrent_file); ?>" alt="" class="size-full object-contain" width="50" height="50" loading="lazy" decoding="async">
+									<?php if (! isset($mrent_social_icons[$mrent_slug])) continue; ?>
+									<?php $mrent_custom_icon = mrent_options_social_icon($mrent_slug); ?>
+									<a href="<?php echo esc_url($mrent_url); ?>" class="<?php echo esc_attr($mrent_icon_class); ?> text-mrent-white hover:opacity-80 transition-opacity inline-flex items-center justify-center" aria-label="<?php echo esc_attr(ucfirst($mrent_slug)); ?>" target="_blank" rel="noopener">
+										<?php if ($mrent_custom_icon) : ?>
+											<img src="<?php echo esc_url($mrent_custom_icon); ?>" alt="" class="size-full object-contain" width="50" height="50" loading="lazy" decoding="async">
+										<?php else : ?>
+											<?php echo mrent_icon($mrent_slug, ['class' => 'size-full']); ?>
+										<?php endif; ?>
 									</a>
 								<?php endforeach; ?>
 							</div>
@@ -116,10 +120,14 @@ $mrent_icon_class = 'block size-10 2xl:size-[50px]';
 							</p>
 							<div class="flex gap-2.5 items-center">
 								<?php foreach ($mrent_messengers as $mrent_slug => $mrent_url) : ?>
-									<?php $mrent_file = $mrent_messenger_icons[$mrent_slug] ?? null; ?>
-									<?php if (! $mrent_file) continue; ?>
+									<?php
+									$mrent_custom_icon = mrent_options_messenger_icon($mrent_slug);
+									$mrent_file        = $mrent_messenger_icons[$mrent_slug] ?? null;
+									if (! $mrent_custom_icon && ! $mrent_file) continue;
+									$mrent_src = $mrent_custom_icon ?: $mrent_icons_url . $mrent_file;
+									?>
 									<a href="<?php echo esc_url($mrent_url); ?>" class="<?php echo esc_attr($mrent_icon_class); ?> hover:opacity-80 transition-opacity" aria-label="<?php echo esc_attr(ucfirst($mrent_slug)); ?>" target="_blank" rel="noopener">
-										<img src="<?php echo esc_url($mrent_icons_url . $mrent_file); ?>" alt="" class="size-full object-contain" width="50" height="50" loading="lazy" decoding="async">
+										<img src="<?php echo esc_url($mrent_src); ?>" alt="" class="size-full object-contain" width="50" height="50" loading="lazy" decoding="async">
 									</a>
 								<?php endforeach; ?>
 							</div>
@@ -155,7 +163,7 @@ $mrent_icon_class = 'block size-10 2xl:size-[50px]';
 		         тянет блок ровно до высоты текстовой колонки, `object-cover` режет
 		         фото по высоте без искажений. На мобилке всё проще — фиксированный
 		         aspect 2:1 + относительный img. */ ?>
-		<div class="relative w-full aspect-[2/1] 2xl:w-247.5 2xl:aspect-auto 2xl:shrink-0 rounded-[15px] overflow-hidden">
+		<div class="relative w-full aspect-[2/1] 2xl:flex-1 2xl:min-w-0 2xl:max-w-247.5 2xl:aspect-auto rounded-[15px] overflow-hidden">
 			<img
 				src="<?php echo esc_url($mrent_image_url); ?>"
 				alt=""

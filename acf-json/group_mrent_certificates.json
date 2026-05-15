@@ -645,6 +645,13 @@
                 "operator": "==",
                 "value": "certificates-page.php"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "single-certificates.php"
+            }
         ]
     ],
     "menu_order": 0,

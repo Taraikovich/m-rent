@@ -63,16 +63,19 @@ $mrent_render_pill = function ( string $url, string $label, ?array $image, bool 
 ?>
 
 <section class="bg-mrent-black pt-[30px] xl:pt-[50px]">
-	<?php /* Wrapper Swiper'а. На <xl это горизонтальная карусель (свободный
-	         скролл, edge-bleed справа). На xl+ — обычный flex-ряд без JS.
-	         Класс .mrent-cars-filter — точка инициализации в src/cars-filters.js. */ ?>
+	<?php /* Wrapper Swiper'а. До cars-filter (1700px) — горизонтальная карусель
+	         (свободный скролл, edge-bleed справа). На cars-filter+ — обычный
+	         flex-ряд без JS. Брейкпоинт выше xl: при 1280–1699 пилюли
+	         (197px × N + gap 20 + px-100×2) переполняли вьюпорт и давали
+	         горизонтальный скролл страницы. Класс .mrent-cars-filter — точка
+	         инициализации в src/cars.js. */ ?>
 	<div
-		class="mrent-cars-filter swiper xl:!overflow-visible xl:px-[100px] max-w-[1720px] xl:mx-auto"
+		class="mrent-cars-filter swiper cars-filter:!overflow-visible cars-filter:px-[100px] max-w-[1720px] cars-filter:mx-auto"
 		data-mrent-cars-filter
 	>
-		<div class="swiper-wrapper xl:!flex xl:!gap-[20px] xl:!transform-none xl:!w-auto xl:items-stretch">
+		<div class="swiper-wrapper cars-filter:!flex cars-filter:!gap-[20px] cars-filter:!transform-none cars-filter:!w-auto cars-filter:items-stretch">
 			<?php /* «Все автомобили» — всегда первый, ведёт на /cars/ */ ?>
-			<div class="swiper-slide !w-auto xl:!flex-1 xl:!min-w-0">
+			<div class="swiper-slide !w-auto cars-filter:!flex-1 cars-filter:!min-w-0">
 				<?php
 				echo $mrent_render_pill(
 					$mrent_archive_url,
@@ -87,7 +90,7 @@ $mrent_render_pill = function ( string $url, string $label, ?array $image, bool 
 				$image_field = get_field( 'category_image', 'car_category_' . $term->term_id );
 				$image       = is_array( $image_field ) ? $image_field : null;
 			?>
-				<div class="swiper-slide !w-auto xl:!flex-1 xl:!min-w-0">
+				<div class="swiper-slide !w-auto cars-filter:!flex-1 cars-filter:!min-w-0">
 					<?php
 					echo $mrent_render_pill(
 						get_term_link( $term ),

@@ -127,7 +127,7 @@ if ($mrent_image_url === '') {
 			</a>
 		</div>
 
-		<div class="relative w-full h-[172px] xl:w-[854px] xl:h-[658px] xl:shrink-0 overflow-hidden">
+		<div class="relative w-full h-[172px] xl:h-[658px] xl:flex-1 xl:min-w-0 xl:max-w-[854px] overflow-hidden">
 			<img
 				src="<?php echo esc_url($mrent_image_url); ?>"
 				alt="<?php echo esc_attr($mrent_image_alt); ?>"

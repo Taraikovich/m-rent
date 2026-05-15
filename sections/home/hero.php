@@ -80,12 +80,12 @@ $mrent_hero_alt = $mrent_hero_image['alt'] ?? '';
 <section class="hidden 2xl:block relative bg-mrent-black">
 	<?php /* Hero-фото в полную ширину 1920+, высота 802px по дизайну.
 	         object-position смещает кадр чуть ниже середины — авто оказываются по центру. */ ?>
-	<div class="relative h-[802px]">
+	<div class="relative min-h-[802px]">
 		<div class="absolute inset-0 overflow-hidden">
 			<img src="<?php echo esc_url($mrent_hero_url); ?>" alt="<?php echo esc_attr($mrent_hero_alt); ?>" class="absolute inset-0 size-full object-cover object-[center_90%]" loading="eager" decoding="async" fetchpriority="high">
 			<div class="absolute inset-0 mrent-hero-overlay-desktop"></div>
 		</div>
-		<div class="absolute inset-x-0 top-[457px] flex flex-col gap-[19px] items-center text-center text-white px-[100px]">
+		<div class="relative pt-[457px] pb-[30px] flex flex-col gap-[19px] items-center text-center text-white px-[100px]">
 			<h1 class="font-display font-[700] text-[74px] leading-[1.24] max-w-[1488px]"><?php echo esc_html($mrent_title); ?></h1>
 			<p class="text-[30px] leading-[1.24] max-w-[1488px]"><?php echo esc_html($mrent_lead); ?></p>
 			<a href="<?php echo esc_url($mrent_cta_url); ?>" class="bg-mrent-yellow hover:bg-[#FFF831] text-mrent-black flex items-center justify-center w-[300px] h-[65px] rounded-[15px] font-display font-medium text-[20px] leading-none transition-colors mt-[55px]">

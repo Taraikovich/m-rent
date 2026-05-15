@@ -47,15 +47,15 @@ $mrent_messenger_icons = [
 ];
 ?>
 
-<section class="bg-mrent-black px-[15px] xl:px-[100px] py-[60px] xl:py-[100px]">
-	<div class="max-w-[1720px] mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[30px] xl:gap-[40px]">
+<section class="bg-mrent-black px-[15px] xl:px-[40px] 2xl:px-[100px] py-[60px] xl:py-[100px]">
+	<div class="max-w-[1720px] mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[30px] xl:gap-[40px] min-w-0">
 
 		<?php /* Левая колонка: заголовок + контакты. На desktop растягивается на всю высоту, justify-between. */ ?>
 		<div class="flex flex-col xl:justify-between xl:self-stretch gap-[30px] xl:gap-0">
 
 			<?php /* Заголовок + лид. */ ?>
 			<div class="flex flex-col gap-[20px] text-mrent-white leading-[1.2]">
-				<h2 class="font-display font-bold text-[28px] xl:text-[74px] xl:w-[577px]">
+				<h2 class="font-display font-bold text-[28px] xl:text-[74px] xl:max-w-[577px]">
 					<?php esc_html_e( 'Закажите консультацию', 'm-rent' ); ?>
 				</h2>
 				<p class="font-display text-base xl:text-[30px] xl:max-w-[639px] hidden xl:block">
@@ -133,7 +133,7 @@ $mrent_messenger_icons = [
 		</div>
 
 		<?php /* Правая колонка: CF7 форма. */ ?>
-		<div class="mrent-consultation-form shrink-0 w-full xl:w-[845px]">
+		<div class="mrent-consultation-form w-full xl:w-[845px] xl:max-w-full xl:min-w-0 xl:shrink">
 			<?php echo do_shortcode( '[contact-form-7 id="' . $mrent_form_id . '"]' ); ?>
 		</div>
 

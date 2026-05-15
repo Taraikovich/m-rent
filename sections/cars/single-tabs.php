@@ -94,7 +94,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 	: [];
 ?>
 
-<section class="px-[15px] 2xl:px-0 mt-[40px] xl:mt-[100px]" data-car-tabs>
+<section class="px-[15px] xl:px-[100px] mt-[40px] xl:mt-[100px]" data-car-tabs>
 	<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px]">
 
 		<?php /* ── Mobile: dropdown с активным табом ── */ ?>
@@ -202,7 +202,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 			<div class="relative flex flex-col xl:flex-row xl:items-start xl:justify-between gap-[20px] xl:gap-[40px] text-mrent-white">
 
 				<?php if (! empty($mrent_specs_rows)) : ?>
-					<div class="flex flex-col gap-[10px] text-[16px] xl:text-[30px] leading-[1.24]">
+					<div class="xl:flex-1 xl:basis-0 xl:min-w-0 flex flex-col gap-[10px] text-[16px] xl:text-[30px] leading-[1.24]">
 						<?php foreach ($mrent_specs_rows as $row) :
 							$row_label  = (string) ($row['label'] ?? '');
 							$row_value  = (string) ($row['value'] ?? '');
@@ -220,7 +220,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 				<?php endif; ?>
 
 				<?php if (! empty($mrent_specs_ideal_lines)) : ?>
-					<div data-spec-extra class="max-xl:hidden flex flex-col gap-[10px] text-[16px] xl:text-[30px] leading-[1.24]">
+					<div data-spec-extra class="max-xl:hidden xl:flex-1 xl:basis-0 xl:min-w-0 flex flex-col gap-[10px] text-[16px] xl:text-[30px] leading-[1.24]">
 						<p class="font-[700]"><?php echo esc_html($mrent_specs_ideal_title); ?></p>
 						<ul class="list-disc pl-[20px] xl:pl-[45px] flex flex-col gap-[2px] xl:gap-0 font-[400]">
 							<?php foreach ($mrent_specs_ideal_lines as $line) : ?>
@@ -231,7 +231,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 				<?php endif; ?>
 
 				<?php if (! empty($mrent_specs_pros_lines)) : ?>
-					<div data-spec-extra class="max-xl:hidden flex flex-col gap-[10px] text-[16px] xl:text-[30px] leading-[1.24]">
+					<div data-spec-extra class="max-xl:hidden xl:flex-1 xl:basis-0 xl:min-w-0 flex flex-col gap-[10px] text-[16px] xl:text-[30px] leading-[1.24]">
 						<p class="font-[700]"><?php echo esc_html($mrent_specs_pros_title); ?></p>
 						<ul class="list-disc pl-[20px] xl:pl-[45px] flex flex-col gap-[2px] xl:gap-0 font-[400]">
 							<?php foreach ($mrent_specs_pros_lines as $line) : ?>
@@ -258,7 +258,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 	<?php /* ─────────────── Tab: Условия аренды ─────────────── */ ?>
 	<?php if (isset($mrent_tabs['terms'])) : ?>
 		<div<?php echo $mrent_active === 'terms' ? '' : ' hidden'; ?> class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[30px] xl:gap-[40px]" data-tab-panel="terms">
-			<div class="flex flex-col gap-[15px] xl:gap-[30px] text-mrent-white xl:max-w-[756px]">
+			<div class="flex flex-col gap-[15px] xl:gap-[30px] text-mrent-white xl:w-[756px] xl:shrink-0">
 				<h2 class="font-[700] text-[28px] xl:text-[74px] leading-[1.2]">
 					<?php esc_html_e('Условия аренды', 'm-rent'); ?>
 				</h2>
@@ -278,7 +278,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 			</div>
 
 			<?php if ($mrent_terms_image) : ?>
-				<div class="rounded-[15px] overflow-hidden w-full xl:w-[850px] h-[267px] xl:h-[480px] shrink-0">
+				<div class="rounded-[15px] overflow-hidden w-full xl:w-auto xl:flex-1 xl:min-w-0 h-[267px] xl:h-[480px]">
 					<img src="<?php echo esc_url($mrent_terms_image); ?>" alt="" class="w-full h-full object-cover">
 				</div>
 			<?php endif; ?>

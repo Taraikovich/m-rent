@@ -61,11 +61,11 @@ $mrent_image_alt = $mrent_image['alt'] ?? '';
 		</div>
 
 		<?php /* Фото. На мобайле — w-full с aspect 806/433 (≈ Figma 330×177).
-		         На ≥2xl — фикс 806×108.25rem (806×433) по Figma 2994:9046, без aspect.
-		         object-cover внутри overflow-hidden даёт «cover»-кроп без магических
-		         процентов, как было в исходных стилях Figma. */ ?>
+		         На ≥2xl — flex-1 + max-w 806px (Figma 2994:9046); аспект 806/433
+		         сохраняется, чтобы блок не вылезал за контейнер при недостатке ширины
+		         (текст-колонка 844px фиксирована). */ ?>
 		<?php if ($mrent_image_url) : ?>
-			<div class="w-full aspect-[806/433] 2xl:w-201.5 2xl:h-108.25 2xl:aspect-auto 2xl:shrink-0 rounded-[15px] overflow-hidden">
+			<div class="w-full aspect-[806/433] 2xl:flex-1 2xl:min-w-0 2xl:max-w-201.5 rounded-[15px] overflow-hidden">
 				<img
 					src="<?php echo esc_url($mrent_image_url); ?>"
 					alt="<?php echo esc_attr($mrent_image_alt); ?>"

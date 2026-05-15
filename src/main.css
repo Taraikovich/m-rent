@@ -83,6 +83,9 @@
   --color-mrent-black: #1e1d1f;
 
   --font-display: "Futura PT", "Futura", "Trebuchet MS", system-ui, sans-serif;
+
+  --breakpoint-header: 1440px;
+  --breakpoint-cars-filter: 1700px;
 }
 
 @layer base {
@@ -511,6 +514,15 @@
      внутри с `h-full` заполняет полученную высоту. */
   .mrent-reviews .swiper-slide {
     height: auto !important;
+  }
+
+  /* Свайпер «Популярные модели». Тот же приём, что и в reviews: слайды
+     одинаковой высоты в ряду через flex + align-items: stretch, чтобы
+     карточки с разной длиной названия были одной высоты, а цена и кнопки
+     прижимались к низу через mt-auto. */
+  .mrent-popular .swiper-slide {
+    height: auto !important;
+    display: flex;
   }
 
   /* Свайпер «Страны поставки» (car-import / таб 2): на мобайле полоски

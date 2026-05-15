@@ -83,11 +83,11 @@ $mrent_addr_2   = __( 'г. Брест, ул.Название, 1', 'm-rent' );
 $mrent_hours    = __( 'Мы работаем круглосуточно', 'm-rent' );
 ?>
 
-<section class="bg-mrent-black px-[15px] xl:px-[100px] pt-[30px] xl:pt-[70px] pb-[40px] xl:pb-[100px]">
-	<div class="max-w-[1720px] mx-auto flex flex-col xl:flex-row xl:items-stretch gap-[30px] xl:gap-[70px]">
+<section class="bg-mrent-black px-[15px] xl:px-[40px] 2xl:px-[100px] pt-[30px] xl:pt-[70px] pb-[40px] xl:pb-[100px]">
+	<div class="max-w-[1720px] mx-auto flex flex-col xl:flex-row xl:items-stretch gap-[30px] xl:gap-[70px] min-w-0">
 
 		<?php /* Левая колонка: контакты + соцсети. Растягивается под высоту формы (justify-between). */ ?>
-		<div class="flex flex-col xl:w-[805px] xl:shrink-0 xl:justify-between gap-[30px] xl:gap-0">
+		<div class="flex flex-col xl:w-[805px] xl:min-w-0 xl:shrink xl:justify-between gap-[30px] xl:gap-0">
 
 			<?php /* Верхняя часть: заголовок + контакт-инфо. */ ?>
 			<div class="flex flex-col gap-[30px] xl:gap-[80px]">
@@ -196,7 +196,7 @@ $mrent_hours    = __( 'Мы работаем круглосуточно', 'm-ren
 
 		<?php /* Правая колонка: CF7 форма «Бронирование автомобиля». */ ?>
 		<?php if ( $mrent_form_id ) : ?>
-			<div class="mrent-consultation-form w-full xl:w-[845px] xl:shrink-0">
+			<div class="mrent-consultation-form w-full xl:w-[845px] xl:min-w-0 xl:shrink xl:max-w-full">
 				<?php echo do_shortcode( '[contact-form-7 id="' . $mrent_form_id . '"]' ); ?>
 			</div>
 		<?php endif; ?>

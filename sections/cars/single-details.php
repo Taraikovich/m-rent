@@ -29,7 +29,7 @@ $mrent_prices      = (array) get_field('car_prices');
 $mrent_booking_url = get_field('car_booking_url') ?: '#booking';
 ?>
 
-<div class="px-[15px] 2xl:px-0 mt-[30px] xl:mt-[60px]">
+<div class="px-[15px] xl:px-[100px] mt-[30px] xl:mt-[60px]">
 	<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px]">
 
 		<?php /* ── Заголовок + описание ── (mobile стопкой, desktop в строку 50/50) */ ?>
@@ -53,13 +53,13 @@ $mrent_booking_url = get_field('car_booking_url') ?: '#booking';
 		<?php if (! empty($mrent_prices)) : ?>
 			<div class="grid grid-cols-2 xl:grid-cols-8 xl:grid-rows-2 xl:grid-flow-col gap-px bg-[#302f31] rounded-[15px] overflow-hidden w-full text-mrent-white">
 				<?php foreach ($mrent_prices as $row) : ?>
-					<div class="bg-[#252426] flex items-center justify-center px-[10px] py-[15px] xl:p-[20px] text-[16px] xl:text-[24px] text-center leading-[1.2] min-h-[50px]">
+					<div class="bg-[#252426] flex items-center justify-center px-[10px] py-[15px] xl:p-[clamp(10px,1.2vw,20px)] text-[16px] xl:text-[clamp(16px,1.4vw,24px)] text-center leading-[1.2] min-h-[50px]">
 						<?php echo esc_html($row['duration']); ?>
 					</div>
-					<div class="bg-[#252426] flex items-center justify-center px-[10px] py-[15px] xl:p-[20px] text-[16px] xl:text-[20px] text-center leading-[1.2] min-h-[50px] font-[800] whitespace-nowrap">
+					<div class="bg-[#252426] flex items-center justify-center px-[10px] py-[15px] xl:p-[clamp(10px,1.2vw,20px)] text-[16px] xl:text-[clamp(14px,1.16vw,20px)] text-center leading-[1.2] min-h-[50px] font-[800] whitespace-nowrap">
 						<?php echo esc_html(mrent_byn_price((float) $row['price'], (string) ($row['price_suffix'] ?? ''))); ?>
 						<?php if (! empty($row['discount'])) : ?>
-							<sup class="ml-[2px] text-mrent-yellow text-[9px] xl:text-[13px] font-[800]"><?php echo esc_html($row['discount']); ?></sup>
+							<sup class="ml-[2px] text-mrent-yellow text-[9px] xl:text-[clamp(9px,0.75vw,13px)] font-[800]"><?php echo esc_html($row['discount']); ?></sup>
 						<?php endif; ?>
 					</div>
 				<?php endforeach; ?>

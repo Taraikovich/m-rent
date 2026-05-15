@@ -79,7 +79,7 @@ $mrent_booking_has_image = is_array($mrent_booking_image) && ! empty($mrent_book
 		</div>
 
 		<?php if ($mrent_booking_has_image) : ?>
-			<div class="h-[175px] xl:h-auto xl:self-stretch xl:w-[850px] xl:shrink-0 rounded-[15px] overflow-hidden">
+			<div class="h-[175px] xl:h-auto xl:self-stretch xl:flex-1 xl:min-w-0 xl:max-w-[850px] rounded-[15px] overflow-hidden">
 				<img
 					src="<?php echo esc_url($mrent_booking_image['url']); ?>"
 					alt="<?php echo esc_attr($mrent_booking_image['alt'] ?? ''); ?>"
