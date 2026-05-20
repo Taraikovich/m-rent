@@ -65,7 +65,7 @@ $mrent_info_icons = [
 <section class="bg-mrent-black px-[15px] xl:px-[100px] mt-[40px] xl:mt-[80px]">
 	<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[52px] text-mrent-white">
 
-		<h2 class="font-[700] text-[28px] xl:text-[74px] leading-[1.2] w-full">
+		<h2 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] w-full">
 			<?php echo esc_html($mrent_terms_title); ?>
 		</h2>
 
@@ -84,18 +84,19 @@ $mrent_info_icons = [
 						<div class="relative bg-[#252426] rounded-[15px] p-[20px] xl:p-[40px] flex-1 flex flex-col gap-[15px] xl:gap-[30px] xl:min-h-[244px] xl:justify-center">
 							<?php if ($mrent_icon_svg !== '') : ?>
 								<span class="absolute top-[20px] right-[20px] xl:top-[40px] xl:right-[40px] size-[30px] xl:size-[70px] text-mrent-white">
-									<?php echo $mrent_icon_svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- inline SVG ?>
+									<?php echo $mrent_icon_svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- inline SVG 
+									?>
 								</span>
 							<?php endif; ?>
 
 							<?php if ($mrent_card_title !== '') : ?>
-								<p class="font-[600] text-[18px] xl:text-[35px] leading-[1.2] pr-[40px] xl:pr-[90px]">
+								<p class="font-[600] text-[clamp(16px,14.06px+0.52vw,24px)] leading-[1.2] pr-[40px] xl:pr-[90px]">
 									<?php echo esc_html($mrent_card_title); ?>
 								</p>
 							<?php endif; ?>
 
 							<?php if ($mrent_card_content !== '') : ?>
-								<div class="mrent-terms-info text-[16px] xl:text-[30px] leading-[1.2] font-[400] pr-[40px] xl:pr-[90px]">
+								<div class="mrent-terms-info text-[clamp(14px,12.54px+0.39vw,20px)] leading-[1.2] font-[400] pr-[40px] xl:pr-[90px]">
 									<?php echo wp_kses_post($mrent_card_content); ?>
 								</div>
 							<?php endif; ?>
@@ -113,7 +114,7 @@ $mrent_info_icons = [
 			?>
 				<details class="mrent-faq-item group bg-[#252426] border border-[#302F31] rounded-[15px] p-[20px] xl:p-[40px]">
 					<summary class="flex items-center justify-between gap-[20px] cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-						<span class="font-[600] text-[18px] xl:text-[35px] leading-[1.2] text-mrent-white">
+						<span class="font-[600] text-[clamp(16px,14.06px+0.52vw,24px)] leading-[1.2] text-mrent-white">
 							<?php echo esc_html($mrent_q); ?>
 						</span>
 						<span class="shrink-0 flex items-center justify-center bg-mrent-yellow rounded-[6px] xl:rounded-[8px] size-[25px] xl:size-[36px] text-mrent-black transition-transform group-open:rotate-180" aria-hidden="true">
@@ -124,7 +125,7 @@ $mrent_info_icons = [
 					</summary>
 
 					<?php if ($mrent_a !== '') : ?>
-						<div class="mt-[15px] xl:mt-[25px] font-[400] text-[16px] xl:text-[24px] leading-[1.5] text-mrent-white/90 whitespace-pre-line">
+						<div class="mt-[15px] xl:mt-[25px] font-[400] text-[clamp(14px,12.54px+0.39vw,20px)] leading-[1.5] text-mrent-white/90 whitespace-pre-line">
 							<?php echo wp_kses_post(wpautop($mrent_a)); ?>
 						</div>
 					<?php endif; ?>

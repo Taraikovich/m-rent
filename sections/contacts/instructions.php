@@ -106,12 +106,12 @@ if (! $mrent_steps) {
 
 			<?php /* Заголовок + (десктопная) CTA */ ?>
 			<div class="flex items-center justify-between gap-[20px] xl:h-[89px]">
-				<h2 class="text-mrent-white font-[700] text-[28px] xl:text-[74px] leading-[1.2]">
+				<h2 class="text-mrent-white font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2]">
 					<?php echo esc_html($mrent_title); ?>
 				</h2>
 				<a
 					href="<?php echo esc_url($mrent_cta_url); ?>"
-					class="hidden xl:flex bg-mrent-yellow hover:bg-[#FFF831] rounded-[15px] h-[65px] w-[300px] items-center justify-center text-mrent-black font-[500] text-[20px] whitespace-nowrap transition-colors shrink-0">
+					class="hidden xl:flex bg-mrent-yellow hover:bg-[#FFF831] rounded-[15px] h-[65px] w-[300px] items-center justify-center text-mrent-black font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] whitespace-nowrap transition-colors shrink-0">
 					<?php echo esc_html($mrent_cta_text); ?>
 				</a>
 			</div>
@@ -142,13 +142,13 @@ if (! $mrent_steps) {
 										loading="lazy"
 										decoding="async">
 								</div>
-								<span class="flex items-center justify-center size-[15px] xl:size-[36px] rounded-[3.333px] bg-mrent-yellow text-mrent-black text-[10px] xl:text-[16px] leading-[1.3] font-[600]">
+								<span class="flex items-center justify-center size-[15px] xl:size-[36px] rounded-[3.333px] bg-mrent-yellow text-mrent-black text-[clamp(10px,8.54px+0.39vw,16px)] leading-[1.3] font-[600]">
 									<?php echo esc_html((string) ($i + 1)); ?>
 								</span>
 							</div>
 							<div class="flex flex-col gap-[10px] flex-1 min-w-0 text-mrent-white leading-[1.2]">
-								<p class="font-[700] text-[20px] xl:text-[35px]"><?php echo esc_html($step['title']); ?></p>
-								<p class="font-[400] text-[14px] xl:text-[24px]"><?php echo esc_html($step['text']); ?></p>
+								<p class="font-[700] text-[clamp(16px,14.06px+0.52vw,24px)]"><?php echo esc_html($step['title']); ?></p>
+								<p class="font-[400] text-[clamp(14px,13.03px+0.26vw,18px)]"><?php echo esc_html($step['text']); ?></p>
 							</div>
 						</li>
 					<?php endforeach; ?>
@@ -158,7 +158,7 @@ if (! $mrent_steps) {
 			<?php /* Мобайл: CTA */ ?>
 			<a
 				href="<?php echo esc_url($mrent_cta_url); ?>"
-				class="xl:hidden mt-[30px] flex h-[55px] items-center justify-center rounded-[15px] bg-mrent-yellow hover:bg-[#FFF831] px-[15px] text-mrent-black font-[500] text-[14px] whitespace-nowrap transition-colors">
+				class="xl:hidden mt-[30px] flex h-[55px] items-center justify-center rounded-[15px] bg-mrent-yellow hover:bg-[#FFF831] px-[15px] text-mrent-black font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] whitespace-nowrap transition-colors">
 				<?php echo esc_html($mrent_cta_text); ?>
 			</a>
 

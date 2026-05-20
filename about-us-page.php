@@ -16,7 +16,7 @@ get_header();
 
 <main>
     <?php get_template_part('sections/about/hero'); ?>
-    <?php get_template_part('sections/about/breadcrumbs'); ?>
+    <?php get_template_part('sections/common/breadcrumbs'); ?>
     <?php get_template_part('sections/about/team'); ?>
     <?php get_template_part('sections/about/philosophy'); ?>
     <?php get_template_part('sections/about/benefits'); ?>

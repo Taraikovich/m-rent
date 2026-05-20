@@ -16,7 +16,7 @@ get_header();
 
 <main>
     <?php get_template_part('sections/club/hero'); ?>
-    <?php get_template_part('sections/club/breadcrumbs'); ?>
+    <?php get_template_part('sections/common/breadcrumbs'); ?>
     <?php get_template_part('sections/club/cards'); ?>
     <?php get_template_part('sections/home/popular'); ?>
     <?php get_template_part('sections/club/why-us'); ?>

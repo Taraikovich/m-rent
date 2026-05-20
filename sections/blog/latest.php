@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Секция «Полезные статьи» (Figma 355:677 / 2324:2806).
  *
@@ -23,31 +24,31 @@
  * секция не рендерится.
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
-$mrent_args = is_array( $args ?? null ) ? $args : [];
+$mrent_args = is_array($args ?? null) ? $args : [];
 
-$mrent_count = max( 1, min( 6, (int) ( $mrent_args['count'] ?? 3 ) ) );
+$mrent_count = max(1, min(6, (int) ($mrent_args['count'] ?? 3)));
 
-$mrent_title       = $mrent_args['title']       ?? __( 'Полезные статьи об аренде авто', 'm-rent' );
-$mrent_subtitle    = $mrent_args['subtitle']    ?? __( 'Cоветы по выбору авто, идеи для мероприятий, особенности проката и ответы на популярные вопросы', 'm-rent' );
-$mrent_button_text = $mrent_args['button_text'] ?? __( 'Все статьи', 'm-rent' );
+$mrent_title       = $mrent_args['title']       ?? __('Полезные статьи об аренде авто', 'm-rent');
+$mrent_subtitle    = $mrent_args['subtitle']    ?? __('Cоветы по выбору авто, идеи для мероприятий, особенности проката и ответы на популярные вопросы', 'm-rent');
+$mrent_button_text = $mrent_args['button_text'] ?? __('Все статьи', 'm-rent');
 
 $mrent_button_url = $mrent_args['button_url'] ?? '';
-if ( $mrent_button_url === '' ) {
-	$mrent_posts_page_id = (int) get_option( 'page_for_posts' );
-	if ( $mrent_posts_page_id > 0 ) {
-		$mrent_button_url = get_permalink( $mrent_posts_page_id );
+if ($mrent_button_url === '') {
+	$mrent_posts_page_id = (int) get_option('page_for_posts');
+	if ($mrent_posts_page_id > 0) {
+		$mrent_button_url = get_permalink($mrent_posts_page_id);
 	}
-	if ( ! $mrent_button_url ) {
-		$mrent_button_url = home_url( '/blog/' );
+	if (! $mrent_button_url) {
+		$mrent_button_url = home_url('/blog/');
 	}
 }
 
 $mrent_exclude = $mrent_args['exclude'] ?? [];
-$mrent_exclude = array_filter( array_map( 'absint', (array) $mrent_exclude ) );
+$mrent_exclude = array_filter(array_map('absint', (array) $mrent_exclude));
 
 $mrent_query_args = [
 	'post_type'      => 'post',
@@ -56,19 +57,19 @@ $mrent_query_args = [
 	'no_found_rows'  => true,
 	'ignore_sticky_posts' => true,
 ];
-if ( $mrent_exclude ) {
+if ($mrent_exclude) {
 	$mrent_query_args['post__not_in'] = $mrent_exclude;
 }
 
-$mrent_query = new WP_Query( $mrent_query_args );
+$mrent_query = new WP_Query($mrent_query_args);
 
-if ( ! $mrent_query->have_posts() ) {
+if (! $mrent_query->have_posts()) {
 	wp_reset_postdata();
 	return;
 }
 
 // Соответствует tailwind-набору grid-cols-{N} — нужно литералом для сканера.
-$mrent_cols_class = match ( $mrent_count ) {
+$mrent_cols_class = match ($mrent_count) {
 	1, 2 => 'xl:grid-cols-2',
 	3    => 'xl:grid-cols-3',
 	4    => 'xl:grid-cols-4',
@@ -83,20 +84,15 @@ $mrent_cols_class = match ( $mrent_count ) {
 
 			<?php /* ── Заголовок + подзаголовок (центрированный) ── */ ?>
 			<div class="flex flex-col gap-[15px] xl:gap-[30px] items-center text-center text-mrent-white">
-				<h2 class="font-[700] text-[28px] xl:text-[74px] leading-[1.2] xl:whitespace-nowrap">
-					<?php echo esc_html( $mrent_title ); ?>
+				<h2 class="font-[700] text-[clamp(24px,calc(16.83px+2.98vw),50px)] leading-[1.2] xl:whitespace-nowrap">
+					<?php echo esc_html($mrent_title); ?>
 				</h2>
-				<?php if ( $mrent_subtitle !== '' ) : ?>
-					<p class="font-[400] text-[16px] xl:text-[30px] leading-[1.24] max-w-[306px] xl:max-w-[675px]">
-						<?php echo esc_html( $mrent_subtitle ); ?>
-					</p>
-				<?php endif; ?>
 			</div>
 
 			<?php /* ── Desktop (xl+): статичная сетка карточек. ── */ ?>
-			<div class="hidden xl:grid <?php echo esc_attr( $mrent_cols_class ); ?> gap-[30px] items-stretch w-full">
-				<?php while ( $mrent_query->have_posts() ) : $mrent_query->the_post(); ?>
-					<?php get_template_part( 'sections/blog/card' ); ?>
+			<div class="hidden xl:grid <?php echo esc_attr($mrent_cols_class); ?> gap-[30px] items-stretch w-full">
+				<?php while ($mrent_query->have_posts()) : $mrent_query->the_post(); ?>
+					<?php get_template_part('sections/blog/card'); ?>
 				<?php endwhile; ?>
 			</div>
 
@@ -108,9 +104,9 @@ $mrent_cols_class = match ( $mrent_count ) {
 					<div class="swiper-wrapper">
 						<?php
 						$mrent_query->rewind_posts();
-						while ( $mrent_query->have_posts() ) : $mrent_query->the_post(); ?>
+						while ($mrent_query->have_posts()) : $mrent_query->the_post(); ?>
 							<div class="swiper-slide h-auto">
-								<?php get_template_part( 'sections/blog/card' ); ?>
+								<?php get_template_part('sections/blog/card'); ?>
 							</div>
 						<?php endwhile; ?>
 					</div>
@@ -123,10 +119,9 @@ $mrent_cols_class = match ( $mrent_count ) {
 			<?php /* ── CTA «Все статьи». Мобайл: full-width × 55, текст 14.
 			           Десктоп: w-300 × 65, текст 20. ── */ ?>
 			<a
-				href="<?php echo esc_url( $mrent_button_url ); ?>"
-				class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[55px] xl:h-[65px] w-full xl:w-[300px] px-[15px] text-mrent-black font-[500] text-[14px] xl:text-[20px] whitespace-nowrap transition-colors"
-			>
-				<?php echo esc_html( $mrent_button_text ); ?>
+				href="<?php echo esc_url($mrent_button_url); ?>"
+				class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[55px] xl:h-[65px] w-full xl:w-[300px] px-[15px] text-mrent-black font-[500] text-[clamp(14px,calc(12.54px+0.39vw),18px)] whitespace-nowrap transition-colors">
+				<?php echo esc_html($mrent_button_text); ?>
 			</a>
 
 		</div>

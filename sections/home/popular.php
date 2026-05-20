@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Главная: секция «Популярные модели».
  *
@@ -17,11 +18,11 @@
  * на мобайле здесь видно название, кнопки в ряд, фото 450px высотой.
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
-$mrent_popular = new WP_Query( [
+$mrent_popular = new WP_Query([
 	'post_type'      => 'car',
 	'posts_per_page' => -1,
 	'meta_query'     => [
@@ -30,16 +31,16 @@ $mrent_popular = new WP_Query( [
 			'value' => '1',
 		],
 	],
-	'orderby'        => [ 'menu_order' => 'ASC', 'date' => 'DESC' ],
+	'orderby'        => ['menu_order' => 'ASC', 'date' => 'DESC'],
 	'no_found_rows'  => true,
-] );
+]);
 
-if ( ! $mrent_popular->have_posts() ) {
+if (! $mrent_popular->have_posts()) {
 	wp_reset_postdata();
 	return;
 }
 
-$mrent_catalog_url = get_post_type_archive_link( 'car' ) ?: home_url( '/cars/' );
+$mrent_catalog_url = get_post_type_archive_link('car') ?: home_url('/cars/');
 ?>
 
 <section class="bg-mrent-black py-[60px] xl:py-[100px]">
@@ -48,11 +49,11 @@ $mrent_catalog_url = get_post_type_archive_link( 'car' ) ?: home_url( '/cars/' )
 
 			<?php /* ── Заголовок (+ ссылка на каталог справа на десктопе) ── */ ?>
 			<div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[15px]">
-				<h2 class="font-[700] text-[28px] xl:text-[74px] leading-[1.2] text-mrent-white text-center xl:text-left">
-					<?php esc_html_e( 'Популярные модели', 'm-rent' ); ?>
+				<h2 class="font-[700] text-[clamp(24px,16.83px+2.98vw,50px)] leading-[1.2] text-mrent-white text-center xl:text-left">
+					<?php esc_html_e('Популярные модели', 'm-rent'); ?>
 				</h2>
-				<a href="<?php echo esc_url( $mrent_catalog_url ); ?>" class="hidden xl:inline-flex text-mrent-yellow underline font-[500] text-[30px] hover:text-[#FFF831] transition-colors">
-					<?php esc_html_e( 'Смотреть каталог', 'm-rent' ); ?>
+				<a href="<?php echo esc_url($mrent_catalog_url); ?>" class="hidden xl:inline-flex text-mrent-yellow underline font-[500] text-[18px] hover:text-[#FFF831] transition-colors">
+					<?php esc_html_e('Смотреть каталог', 'm-rent'); ?>
 				</a>
 			</div>
 
@@ -63,38 +64,38 @@ $mrent_catalog_url = get_post_type_archive_link( 'car' ) ?: home_url( '/cars/' )
 			         intrinsic width контента. min-w-0 фиксирует это. */ ?>
 			<div class="mrent-popular swiper w-full min-w-0" data-mrent-popular>
 				<div class="swiper-wrapper">
-					<?php while ( $mrent_popular->have_posts() ) :
+					<?php while ($mrent_popular->have_posts()) :
 						$mrent_popular->the_post();
-						$mrent_price       = (float) get_field( 'car_price_per_day' );
-						$mrent_booking_url = get_field( 'car_booking_url' ) ?: '#booking';
-						$mrent_thumb_url   = get_the_post_thumbnail_url( get_post(), 'large' );
-						?>
+						$mrent_price       = (float) get_field('car_price_per_day');
+						$mrent_booking_url = get_field('car_booking_url') ?: '#booking';
+						$mrent_thumb_url   = get_the_post_thumbnail_url(get_post(), 'large');
+					?>
 						<div class="swiper-slide">
 							<article class="flex flex-col gap-[20px] xl:gap-[30px] w-full h-full">
-								<a href="<?php the_permalink(); ?>" class="block relative rounded-[15px] overflow-hidden h-[450px] xl:h-[600px] bg-[#252426]">
-									<?php if ( $mrent_thumb_url ) : ?>
-										<img src="<?php echo esc_url( $mrent_thumb_url ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="absolute inset-0 size-full object-cover" loading="lazy" decoding="async">
+								<a href="<?php the_permalink(); ?>" class="block relative rounded-[15px] overflow-hidden h-[225px] xl:h-[300px] bg-[#252426]">
+									<?php if ($mrent_thumb_url) : ?>
+										<img src="<?php echo esc_url($mrent_thumb_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" class="absolute inset-0 size-full object-cover" loading="lazy" decoding="async">
 									<?php endif; ?>
 								</a>
 
 								<div class="flex flex-col gap-[15px] xl:gap-[30px] items-start w-full flex-1">
-									<h3 class="w-full font-[700] text-[16px] xl:text-[26px] leading-[1.2] text-mrent-white">
+									<h3 class="w-full font-[700] text-[clamp(16px,13.57px+0.65vw,24px)] leading-[1.2] text-mrent-white">
 										<a href="<?php the_permalink(); ?>" class="hover:text-mrent-yellow transition-colors">
 											<?php the_title(); ?>
 										</a>
 									</h3>
 
-									<p class="w-full font-[400] text-[16px] xl:text-[30px] leading-[1.2] text-mrent-white mt-auto">
-										<?php echo esc_html( mrent_byn_price( $mrent_price, '/' . __( 'сутки', 'm-rent' ) ) ); ?>
+									<p class="w-full font-[400] text-[clamp(14px,12.6px+0.91vw,20px)] leading-[1.2] text-mrent-white mt-auto">
+										<?php echo esc_html(mrent_byn_price($mrent_price, '/' . __('сутки', 'm-rent'))); ?>
 									</p>
 
 									<?php /* В отличие от каталога мобильные кнопки здесь — в ряд (Figma 2994:8984). */ ?>
 									<div class="flex gap-[10px] items-stretch w-full">
-										<a href="<?php echo esc_url( $mrent_booking_url ); ?>" class="bg-mrent-yellow hover:bg-[#FFF831] flex-1 h-[55px] xl:h-[60px] flex items-center justify-center rounded-[15px] text-mrent-black font-[500] text-[14px] xl:text-[20px] whitespace-nowrap transition-colors">
-											<?php esc_html_e( 'Забронировать', 'm-rent' ); ?>
+										<a href="<?php echo esc_url($mrent_booking_url); ?>" class="bg-mrent-yellow hover:bg-[#FFF831] flex-1 h-[55px] xl:h-[60px] flex items-center justify-center rounded-[15px] text-mrent-black font-[500] text-[clamp(14px,12.54px+0.39vw,18px)] whitespace-nowrap transition-colors">
+											<?php esc_html_e('Забронировать', 'm-rent'); ?>
 										</a>
-										<a href="<?php the_permalink(); ?>" class="border border-mrent-white hover:bg-mrent-white/10 flex-1 h-[55px] xl:h-[60px] flex items-center justify-center rounded-[15px] text-mrent-white font-[500] text-[14px] xl:text-[20px] whitespace-nowrap transition-colors">
-											<?php esc_html_e( 'Подробнее', 'm-rent' ); ?>
+										<a href="<?php the_permalink(); ?>" class="border border-mrent-white hover:bg-mrent-white/10 flex-1 h-[55px] xl:h-[60px] flex items-center justify-center rounded-[15px] text-mrent-white font-[500] text-[clamp(14px,12.54px+0.39vw,18px)] whitespace-nowrap transition-colors">
+											<?php esc_html_e('Подробнее', 'm-rent'); ?>
 										</a>
 									</div>
 								</div>
@@ -108,8 +109,8 @@ $mrent_catalog_url = get_post_type_archive_link( 'car' ) ?: home_url( '/cars/' )
 			<?php /* ── Mobile-only: пагинация-полоски + ссылка «Смотреть каталог» ── */ ?>
 			<div class="xl:hidden flex flex-col items-center gap-[30px]">
 				<div class="mrent-popular-pagination flex flex-wrap gap-[10px] justify-center"></div>
-				<a href="<?php echo esc_url( $mrent_catalog_url ); ?>" class="text-mrent-yellow underline font-[500] text-[18px] hover:text-[#FFF831] transition-colors">
-					<?php esc_html_e( 'Смотреть каталог', 'm-rent' ); ?>
+				<a href="<?php echo esc_url($mrent_catalog_url); ?>" class="text-mrent-yellow underline font-[500] text-[14px] hover:text-[#FFF831] transition-colors">
+					<?php esc_html_e('Смотреть каталог', 'm-rent'); ?>
 				</a>
 			</div>
 

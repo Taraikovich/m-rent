@@ -47,7 +47,7 @@ $mrent_hero_alt = $mrent_hero_image['alt'] ?? '';
 				default    => 'w-[162px]',
 			};
 		?>
-			<a href="<?php echo esc_attr($slug); ?>" class="<?php echo $mrent_pill_width_class; ?> bg-[#252426] hover:bg-[#2f2e30] transition-colors rounded-[15px] px-[15px] py-[12px] flex items-center justify-center text-white text-[clamp(0.875rem,0.826rem+0.217vw,1rem)] leading-[1.2] whitespace-nowrap">
+			<a href="<?php echo esc_attr($slug); ?>" class="<?php echo $mrent_pill_width_class; ?> bg-[#252426] hover:bg-[#2f2e30] transition-colors rounded-[15px] px-[15px] py-[12px] flex items-center justify-center text-white text-[clamp(0.875rem,0.826rem+0.217vw,18px)] leading-[1.2] whitespace-nowrap">
 				<?php echo esc_html($cat['category_label']); ?>
 			</a>
 		<?php endforeach; ?>
@@ -65,18 +65,18 @@ $mrent_hero_alt = $mrent_hero_image['alt'] ?? '';
 		</div>
 
 		<div class="relative z-10 -mt-[74px] pb-[20px] px-[15px] flex flex-col gap-[30px] items-center text-white xl:mt-0 xl:pt-[457px] xl:px-[100px] xl:gap-0">
-			<div class="flex flex-col gap-[15px] items-center text-center xl:max-w-[1488px] xl:gap-[19px]">
-				<h1 class="font-display font-[700] text-[clamp(28px,1.456rem+1.304vw,74px)] xl:text-[clamp(3.7rem,3.854vw,4.625rem)] leading-[1.2] xl:leading-[1.24]"><?php echo esc_html($mrent_title); ?></h1>
-				<p class="text-[clamp(1rem,0.902rem+0.435vw,1.25rem)] xl:text-[clamp(1.5rem,1.5625vw,1.875rem)] leading-[1.2] xl:leading-[1.24]"><?php echo esc_html($mrent_lead); ?></p>
+			<div class="flex flex-col gap-[15px] items-center text-center xl:max-w-[980px] xl:gap-[19px]">
+				<h1 class="font-display font-[700] text-[clamp(24px,1.456rem+1.304vw,50px)] leading-[1.2] xl:leading-[1.24]"><?php echo esc_html($mrent_title); ?></h1>
+				<p class="text-[clamp(14px,0.902rem+0.435vw,20px)] leading-[1.2] xl:leading-[1.24]"><?php echo esc_html($mrent_lead); ?></p>
 			</div>
-			<a href="<?php echo esc_url($mrent_cta_url); ?>" class="bg-mrent-yellow hover:bg-[#FFF831] text-mrent-black flex items-center justify-center w-full max-w-[330px] h-[55px] px-[15px] rounded-[15px] font-display font-medium text-[clamp(0.875rem,0.826rem+0.217vw,1rem)] xl:text-[clamp(1rem,1.0417vw,1.25rem)] leading-none transition-colors xl:w-[300px] xl:max-w-none xl:h-[65px] xl:px-0 xl:mt-[50px]">
+			<a href="<?php echo esc_url($mrent_cta_url); ?>" class="bg-mrent-yellow hover:bg-[#FFF831] text-mrent-black flex items-center justify-center w-full max-w-[330px] h-[55px] px-[15px] rounded-[15px] font-display font-medium text-[clamp(15px,0.826rem+0.217vw,18px)] xl:text-[clamp(1rem,1.0417vw,1.25rem)] leading-none transition-colors xl:w-[300px] xl:max-w-none xl:h-[65px] xl:px-0 xl:mt-[50px]">
 				<?php echo esc_html($mrent_cta_label); ?>
 			</a>
 		</div>
 	</div>
 
 	<?php /* ─── 4 преимущества — только xl. Колонки равной ширины через grid. ─── */ ?>
-	<div class="hidden xl:grid grid-cols-4 max-w-[1720px] mx-auto px-[100px] mt-[20px] gap-[50px] text-white text-[clamp(1.2rem,1.25vw,24px)] leading-[1.2] text-center">
+	<div class="hidden xl:grid grid-cols-4 max-w-[1720px] mx-auto px-[100px] mt-[20px] gap-[50px] text-white text-[clamp(1.2rem,1.25vw,18px)] leading-[1.2] text-center">
 		<?php foreach ($mrent_advantages as $adv) : ?>
 			<p><span class="font-[700]"><?php echo esc_html($adv['advantage_bold']); ?></span> <?php echo esc_html($adv['advantage_rest']); ?></p>
 		<?php endforeach; ?>
@@ -89,7 +89,7 @@ $mrent_hero_alt = $mrent_hero_image['alt'] ?? '';
 			$img  = $cat['category_image'];
 		?>
 			<a href="<?php echo esc_attr($slug); ?>" class="bg-[#252426] hover:bg-[#2f2e30] transition-colors rounded-[15px] p-[20px] flex flex-col gap-[20px] items-center flex-1 min-w-0">
-				<p class="text-white text-[clamp(0.9rem,0.9375vw,1.125rem)] leading-[1.2] text-center whitespace-nowrap"><?php echo esc_html($cat['category_label']); ?></p>
+				<p class="text-white text-[clamp(0.9rem,0.9375vw,18px)] leading-[1.2] text-center whitespace-nowrap"><?php echo esc_html($cat['category_label']); ?></p>
 				<div class="h-[65px] w-full">
 					<img src="<?php echo esc_url($img['url']); ?>" alt="<?php echo esc_attr($img['alt'] ?: $cat['category_label']); ?>" class="size-full object-contain" loading="lazy" decoding="async">
 				</div>

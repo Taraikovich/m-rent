@@ -15,10 +15,10 @@
  *
  * Если `title` пустой — секция не выводится.
  *
- * Один DOM, адаптив через `2xl:`-варианты:
- *   • < 2xl  — flex-col gap-40 (gap-15 внутри текст-блока):
+ * Один DOM, адаптив через `xl:`-варианты:
+ *   • < xl  — flex-col gap-40 (gap-15 внутри текст-блока):
  *              заголовок 28px Bold (white) + лид 16px Book → кнопка 18px Medium yellow.
- *   • ≥ 2xl  — flex-col gap-40 (gap-30 внутри текст-блока):
+ *   • ≥ xl  — flex-col gap-40 (gap-30 внутри текст-блока):
  *              заголовок 74px, лид 30px → кнопка 30px.
  *
  * Кнопка «Подробнее» — НЕ ссылка, а toggle: плавно разворачивает полный текст.
@@ -46,24 +46,24 @@ $mrent_more_label = ! empty($args['more_label']) ? (string) $args['more_label'] 
 $mrent_less_label = ! empty($args['less_label']) ? (string) $args['less_label'] : __('Свернуть', 'm-rent');
 ?>
 
-<section class="bg-mrent-black px-3.75 py-15 2xl:px-25 2xl:py-25">
+<section class="bg-mrent-black px-3.75 py-15 xl:px-25 xl:py-25">
 	<div class="group max-w-430 mx-auto flex flex-col gap-10" data-seo-block data-expanded="false">
 
-		<div class="flex flex-col gap-3.75 2xl:gap-7.5 leading-[1.2]">
-			<h2 class="font-display font-bold text-mrent-white text-[28px] 2xl:text-[74px]">
+		<div class="flex flex-col gap-3.75 xl:gap-7.5 leading-[1.2]">
+			<h2 class="font-display font-bold text-mrent-white text-[clamp(24px,calc(16.83px+2.98vw),50px)]">
 				<?php echo esc_html($mrent_title); ?>
 			</h2>
 
 			<?php if ($mrent_lead) : ?>
 				<div class="relative">
-					<div data-seo-content class="overflow-hidden max-h-[150px] 2xl:max-h-[260px] transition-[max-height] duration-500 ease-out">
-						<div class="mrent-seo-prose font-display font-normal text-mrent-white text-base 2xl:text-3xl">
+					<div data-seo-content class="overflow-hidden max-h-[150px] xl:max-h-[72px] transition-[max-height] duration-500 ease-out">
+						<div class="mrent-seo-prose font-display font-normal text-mrent-white text-[clamp(14px,calc(12.6px+0.91vw),20px)]">
 							<?php echo apply_filters('the_content', $mrent_lead); ?>
 						</div>
 					</div>
 					<div
 						data-seo-fade
-						class="pointer-events-none absolute inset-x-0 bottom-0 h-15 2xl:h-25 bg-linear-to-b from-transparent to-mrent-black opacity-100 transition-opacity duration-300 group-data-[expanded=true]:opacity-0"
+						class="pointer-events-none absolute inset-x-0 bottom-0 h-15 xl:h-25 bg-linear-to-b from-transparent to-mrent-black opacity-100 transition-opacity duration-300 group-data-[expanded=true]:opacity-0"
 						aria-hidden="true"></div>
 				</div>
 			<?php endif; ?>
@@ -76,7 +76,7 @@ $mrent_less_label = ! empty($args['less_label']) ? (string) $args['less_label'] 
 				data-label-more="<?php echo esc_attr($mrent_more_label); ?>"
 				data-label-less="<?php echo esc_attr($mrent_less_label); ?>"
 				aria-expanded="false"
-				class="self-start font-display font-medium text-mrent-yellow text-lg 2xl:text-3xl underline underline-offset-2 hover:opacity-80 transition-opacity cursor-pointer">
+				class="self-start font-display font-medium text-mrent-yellow text-[clamp(14px,calc(15.09px+0.78vw),18px)] underline underline-offset-2 hover:opacity-80 transition-opacity cursor-pointer">
 				<?php echo esc_html($mrent_more_label); ?>
 			</button>
 		<?php endif; ?>

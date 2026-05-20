@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Главная: секция «Спецпредложения» — простой свайпер баннеров.
  *
@@ -17,21 +18,21 @@
  *     остаётся неактивным (Swiper сам делает кнопки disabled).
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
 $mrent_page_id = get_queried_object_id();
-$mrent_title   = (string) get_field( 'home_specials_title', $mrent_page_id );
-if ( $mrent_title === '' ) {
-	$mrent_title = __( 'Спецпредложения', 'm-rent' );
+$mrent_title   = (string) get_field('home_specials_title', $mrent_page_id);
+if ($mrent_title === '') {
+	$mrent_title = __('Спецпредложения', 'm-rent');
 }
 
-$mrent_gallery = get_field( 'home_specials_images', $mrent_page_id );
+$mrent_gallery = get_field('home_specials_images', $mrent_page_id);
 $mrent_images  = [];
-if ( is_array( $mrent_gallery ) ) {
-	foreach ( $mrent_gallery as $mrent_item ) {
-		if ( ! empty( $mrent_item['url'] ) ) {
+if (is_array($mrent_gallery)) {
+	foreach ($mrent_gallery as $mrent_item) {
+		if (! empty($mrent_item['url'])) {
 			$mrent_images[] = [
 				'url' => $mrent_item['url'],
 				'alt' => $mrent_item['alt'] ?? '',
@@ -39,9 +40,9 @@ if ( is_array( $mrent_gallery ) ) {
 		}
 	}
 }
-if ( empty( $mrent_images ) ) {
+if (empty($mrent_images)) {
 	$mrent_dir = get_template_directory_uri() . '/assets/images';
-	for ( $i = 1; $i <= 4; $i++ ) {
+	for ($i = 1; $i <= 4; $i++) {
 		$mrent_images[] = [
 			'url' => $mrent_dir . '/special-offer-' . $i . '.png',
 			'alt' => '',
@@ -56,19 +57,19 @@ if ( empty( $mrent_images ) ) {
 
 			<?php /* ── Заголовок (+ кнопки prev/next справа на десктопе) ── */ ?>
 			<div class="flex items-center justify-between gap-[15px]">
-				<h2 class="font-[700] text-[28px] xl:text-[74px] leading-[1.2] text-mrent-white text-center xl:text-left w-full xl:w-auto">
-					<?php echo esc_html( $mrent_title ); ?>
+				<h2 class="font-[700] text-[clamp(24px,calc(16.83px+2.98vw),50px)] leading-[1.2] text-mrent-white text-center xl:text-left w-full xl:w-auto">
+					<?php echo esc_html($mrent_title); ?>
 				</h2>
 
 				<div class="hidden xl:flex gap-[10px] shrink-0">
-					<button type="button" class="mrent-specials-prev bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] size-[65px] transition-colors disabled:opacity-50 disabled:cursor-not-allowed" aria-label="<?php esc_attr_e( 'Предыдущий', 'm-rent' ); ?>">
+					<button type="button" class="mrent-specials-prev bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] size-[65px] transition-colors disabled:opacity-50 disabled:cursor-not-allowed" aria-label="<?php esc_attr_e('Предыдущий', 'm-rent'); ?>">
 						<svg width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-							<path d="M10 1L1 10L10 19" stroke="#1E1D1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M10 1L1 10L10 19" stroke="#1E1D1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 						</svg>
 					</button>
-					<button type="button" class="mrent-specials-next bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] size-[65px] transition-colors disabled:opacity-50 disabled:cursor-not-allowed" aria-label="<?php esc_attr_e( 'Следующий', 'm-rent' ); ?>">
+					<button type="button" class="mrent-specials-next bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] size-[65px] transition-colors disabled:opacity-50 disabled:cursor-not-allowed" aria-label="<?php esc_attr_e('Следующий', 'm-rent'); ?>">
 						<svg width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-							<path d="M1 1L10 10L1 19" stroke="#1E1D1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M1 1L10 10L1 19" stroke="#1E1D1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 						</svg>
 					</button>
 				</div>
@@ -79,10 +80,10 @@ if ( empty( $mrent_images ) ) {
 			         иначе подстраивается под intrinsic ширину контента и расползается. */ ?>
 			<div class="mrent-specials swiper w-full min-w-0" data-mrent-specials>
 				<div class="swiper-wrapper">
-					<?php foreach ( $mrent_images as $mrent_image ) : ?>
+					<?php foreach ($mrent_images as $mrent_image) : ?>
 						<div class="swiper-slide">
 							<div class="aspect-[408/613] rounded-[15px] overflow-hidden bg-[#252426]">
-								<img src="<?php echo esc_url( $mrent_image['url'] ); ?>" alt="<?php echo esc_attr( $mrent_image['alt'] ); ?>" class="block size-full object-cover" loading="lazy" decoding="async">
+								<img src="<?php echo esc_url($mrent_image['url']); ?>" alt="<?php echo esc_attr($mrent_image['alt']); ?>" class="block size-full object-cover" loading="lazy" decoding="async">
 							</div>
 						</div>
 					<?php endforeach; ?>

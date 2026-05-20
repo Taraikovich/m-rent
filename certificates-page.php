@@ -15,7 +15,7 @@ get_header();
 ?>
 
 <main class="bg-mrent-black pt-15 xl:pt-23.25">
-    <?php get_template_part('sections/certificates/breadcrumbs'); ?>
+    <?php get_template_part('sections/common/breadcrumbs'); ?>
     <?php get_template_part('sections/certificates/hero'); ?>
     <?php get_template_part('sections/certificates/formats'); ?>
     <?php get_template_part('sections/certificates/audience'); ?>

@@ -7,20 +7,16 @@
  *   • Десктоп (≥ lg): nav слева | логотип в центре | контакты+lang+социалки справа.
  *   • Мобайл  (< lg): логотип | RU/USD | бургер. Открытие — оверлей с полным меню.
  *
- * Контактные данные пока захардкожены — позже вынесем в ACF Options.
+ * Контакты и соцсети тянутся из ACF Options («Контакты и соцсети»).
  */
 
-// Контактная информация (из Figma 355:915 / 2353:5409)
-$mrent_phone        = '+375 (29) 123-45-67';
-$mrent_phone_url    = 'tel:+375291234567';
-$mrent_email        = 'info@m-rent.by';
-$mrent_email_url    = 'mailto:' . $mrent_email;
-$mrent_socials = [
-	'instagram' => '#',
-	'youtube'   => '#',
-	'tiktok'    => '#',
-	'telegram'  => '#',
-];
+// Контакты и соцсети — из ACF Options. Хелперы из inc/options.php возвращают
+// '' / [] при незаполненных полях; шаблон ниже скрывает пустые ссылки/блоки.
+$mrent_phone     = mrent_options_get('contact_phone');
+$mrent_phone_url = mrent_options_phone_url();
+$mrent_email     = mrent_options_get('contact_email');
+$mrent_email_url = mrent_options_email_url();
+$mrent_socials   = mrent_options_socials();
 
 $mrent_logo_url = get_stylesheet_directory_uri() . '/assets/images/logo.png';
 $mrent_home_url = esc_url(home_url('/'));
@@ -74,32 +70,38 @@ if (! function_exists('mrent_nav_fallback')) {
 			<div class="flex items-center justify-between gap-6 2xl:gap-8 w-full">
 				<div class="flex gap-[10px] items-center shrink-0">
 					<button type="button" class="border border-white px-[7px] py-[5px] rounded-[5px] inline-flex items-center" aria-label="<?php esc_attr_e('Сменить язык', 'm-rent'); ?>">
-						<span class="mrent-stack-text text-[18px] leading-none" data-text="RU">RU</span>
+						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="RU">RU</span>
 					</button>
 					<button type="button" class="border border-white px-[7px] py-[5px] rounded-[5px] inline-flex items-center gap-[2px]" aria-label="<?php esc_attr_e('Сменить валюту', 'm-rent'); ?>">
-						<span class="mrent-stack-text text-[18px] leading-none" data-text="USD">USD</span>
-						<span class="mrent-stack-text text-[18px] leading-none" data-text="$">$</span>
+						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="USD">USD</span>
+						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="$">$</span>
 					</button>
 				</div>
 
 				<div class="flex gap-[24px] items-center shrink-0">
-					<a href="<?php echo esc_url($mrent_phone_url); ?>" class="flex gap-[8px] items-center text-white text-[16px] leading-[1.2] whitespace-nowrap hover:text-mrent-yellow transition-colors">
-						<span class="text-white"><?php echo mrent_icon('phone', ['width' => '14', 'height' => '20']); ?></span>
-						<?php echo esc_html($mrent_phone); ?>
-					</a>
-					<a href="<?php echo esc_url($mrent_email_url); ?>" class="flex gap-[4px] items-center text-white text-[16px] leading-[1.2] whitespace-nowrap hover:text-mrent-yellow transition-colors">
-						<span class="text-white"><?php echo mrent_icon('mail', ['width' => '24', 'height' => '24']); ?></span>
-						<?php echo esc_html($mrent_email); ?>
-					</a>
+					<?php if ($mrent_phone_url) : ?>
+						<a href="<?php echo esc_url($mrent_phone_url); ?>" class="flex gap-[8px] items-center text-white text-[16px] leading-[1.2] whitespace-nowrap hover:text-mrent-yellow transition-colors">
+							<span class="text-white"><?php echo mrent_icon('phone', ['width' => '14', 'height' => '20']); ?></span>
+							<?php echo esc_html($mrent_phone); ?>
+						</a>
+					<?php endif; ?>
+					<?php if ($mrent_email_url) : ?>
+						<a href="<?php echo esc_url($mrent_email_url); ?>" class="flex gap-[4px] items-center text-white text-[16px] leading-[1.2] whitespace-nowrap hover:text-mrent-yellow transition-colors">
+							<span class="text-white"><?php echo mrent_icon('mail', ['width' => '24', 'height' => '24']); ?></span>
+							<?php echo esc_html($mrent_email); ?>
+						</a>
+					<?php endif; ?>
 				</div>
 
-				<div class="flex gap-[10px] items-center shrink-0 text-white">
-					<?php foreach ($mrent_socials as $name => $href) : ?>
-						<a href="<?php echo esc_url($href); ?>" class="hover:text-mrent-yellow transition-colors" aria-label="<?php echo esc_attr(ucfirst($name)); ?>">
-							<?php echo mrent_icon($name, ['width' => '24', 'height' => '24']); ?>
-						</a>
-					<?php endforeach; ?>
-				</div>
+				<?php if ($mrent_socials) : ?>
+					<div class="flex gap-[10px] items-center shrink-0 text-white">
+						<?php foreach ($mrent_socials as $name => $href) : ?>
+							<a href="<?php echo esc_url($href); ?>" class="hover:text-mrent-yellow transition-colors" aria-label="<?php echo esc_attr(ucfirst($name)); ?>">
+								<?php echo mrent_icon($name, ['width' => '24', 'height' => '24']); ?>
+							</a>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 
@@ -111,11 +113,11 @@ if (! function_exists('mrent_nav_fallback')) {
 
 			<div class="flex gap-[5px] items-center shrink-0">
 				<button type="button" class="border border-white h-[30px] px-[7px] py-[5px] rounded-[5px] inline-flex items-center" aria-label="<?php esc_attr_e('Сменить язык', 'm-rent'); ?>">
-					<span class="mrent-stack-text text-[14px] leading-none" data-text="RU">RU</span>
+					<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="RU">RU</span>
 				</button>
 				<button type="button" class="border border-white h-[30px] px-[7px] py-[5px] rounded-[5px] inline-flex items-center gap-[2px]" aria-label="<?php esc_attr_e('Сменить валюту', 'm-rent'); ?>">
-					<span class="mrent-stack-text text-[14px] leading-none" data-text="USD">USD</span>
-					<span class="mrent-stack-text text-[14px] leading-none" data-text="$">$</span>
+					<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="USD">USD</span>
+					<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="$">$</span>
 				</button>
 			</div>
 
@@ -135,11 +137,11 @@ if (! function_exists('mrent_nav_fallback')) {
 
 				<div class="flex gap-[5px] items-center shrink-0">
 					<button type="button" class="border border-white h-[30px] px-[7px] py-[5px] rounded-[5px] inline-flex items-center" aria-label="<?php esc_attr_e('Сменить язык', 'm-rent'); ?>">
-						<span class="mrent-stack-text text-[14px] leading-none" data-text="RU">RU</span>
+						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="RU">RU</span>
 					</button>
 					<button type="button" class="border border-white h-[30px] px-[7px] py-[5px] rounded-[5px] inline-flex items-center gap-[2px]" aria-label="<?php esc_attr_e('Сменить валюту', 'm-rent'); ?>">
-						<span class="mrent-stack-text text-[14px] leading-none" data-text="USD">USD</span>
-						<span class="mrent-stack-text text-[14px] leading-none" data-text="$">$</span>
+						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="USD">USD</span>
+						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="$">$</span>
 					</button>
 				</div>
 
@@ -153,24 +155,32 @@ if (! function_exists('mrent_nav_fallback')) {
 			</nav>
 
 			<div class="flex flex-col items-center gap-[30px]">
-				<div class="flex flex-col items-center gap-[24px]">
-					<a href="<?php echo esc_url($mrent_phone_url); ?>" class="flex gap-[10px] items-center text-white text-[16px] leading-[1.2] whitespace-nowrap">
-						<span class="text-white"><?php echo mrent_icon('phone', ['width' => '14', 'height' => '20']); ?></span>
-						<?php echo esc_html($mrent_phone); ?>
-					</a>
-					<a href="<?php echo esc_url($mrent_email_url); ?>" class="flex gap-[10px] items-center text-white text-[16px] leading-[1.2] whitespace-nowrap">
-						<span class="text-white"><?php echo mrent_icon('mail', ['width' => '24', 'height' => '24']); ?></span>
-						<?php echo esc_html($mrent_email); ?>
-					</a>
-				</div>
+				<?php if ($mrent_phone_url || $mrent_email_url) : ?>
+					<div class="flex flex-col items-center gap-[24px]">
+						<?php if ($mrent_phone_url) : ?>
+							<a href="<?php echo esc_url($mrent_phone_url); ?>" class="flex gap-[10px] items-center text-white text-[16px] leading-[1.2] whitespace-nowrap">
+								<span class="text-white"><?php echo mrent_icon('phone', ['width' => '14', 'height' => '20']); ?></span>
+								<?php echo esc_html($mrent_phone); ?>
+							</a>
+						<?php endif; ?>
+						<?php if ($mrent_email_url) : ?>
+							<a href="<?php echo esc_url($mrent_email_url); ?>" class="flex gap-[10px] items-center text-white text-[16px] leading-[1.2] whitespace-nowrap">
+								<span class="text-white"><?php echo mrent_icon('mail', ['width' => '24', 'height' => '24']); ?></span>
+								<?php echo esc_html($mrent_email); ?>
+							</a>
+						<?php endif; ?>
+					</div>
+				<?php endif; ?>
 
-				<div class="flex gap-[10px] items-center text-white">
-					<?php foreach ($mrent_socials as $name => $href) : ?>
-						<a href="<?php echo esc_url($href); ?>" aria-label="<?php echo esc_attr(ucfirst($name)); ?>">
-							<?php echo mrent_icon($name, ['width' => '24', 'height' => '24']); ?>
-						</a>
-					<?php endforeach; ?>
-				</div>
+				<?php if ($mrent_socials) : ?>
+					<div class="flex gap-[10px] items-center text-white">
+						<?php foreach ($mrent_socials as $name => $href) : ?>
+							<a href="<?php echo esc_url($href); ?>" aria-label="<?php echo esc_attr(ucfirst($name)); ?>">
+								<?php echo mrent_icon($name, ['width' => '24', 'height' => '24']); ?>
+							</a>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Главная: секция-виджет «Услуги».
  *
@@ -20,22 +21,22 @@
  * featured image (тот же каскад, что в hero на single-странице).
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
-$mrent_title       = (string) get_field( 'home_services_title' );
-$mrent_button_text = get_field( 'home_services_button_text' ) ?: __( 'Все услуги', 'm-rent' );
-$mrent_button_url  = get_field( 'home_services_button_url' );
-if ( ! $mrent_button_url ) {
-	$mrent_button_url = get_post_type_archive_link( 'service' ) ?: home_url( '/services/' );
+$mrent_title       = (string) get_field('home_services_title');
+$mrent_button_text = get_field('home_services_button_text') ?: __('Все услуги', 'm-rent');
+$mrent_button_url  = get_field('home_services_button_url');
+if (! $mrent_button_url) {
+	$mrent_button_url = get_post_type_archive_link('service') ?: home_url('/services/');
 }
 
-if ( $mrent_title === '' ) {
+if ($mrent_title === '') {
 	return;
 }
 
-$mrent_query = new WP_Query( [
+$mrent_query = new WP_Query([
 	'post_type'      => 'service',
 	'posts_per_page' => -1,
 	'meta_query'     => [
@@ -44,11 +45,11 @@ $mrent_query = new WP_Query( [
 			'value' => '1',
 		],
 	],
-	'orderby'        => [ 'menu_order' => 'ASC', 'date' => 'DESC' ],
+	'orderby'        => ['menu_order' => 'ASC', 'date' => 'DESC'],
 	'no_found_rows'  => true,
-] );
+]);
 
-if ( ! $mrent_query->have_posts() ) {
+if (! $mrent_query->have_posts()) {
 	wp_reset_postdata();
 	return;
 }
@@ -60,49 +61,46 @@ if ( ! $mrent_query->have_posts() ) {
 
 			<?php /* ── Заголовок (+ кнопка справа на десктопе) ── */ ?>
 			<div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[15px] w-full">
-				<h2 class="font-[700] text-[28px] xl:text-[74px] leading-[1.2] text-mrent-white text-center xl:text-left">
-					<?php echo esc_html( $mrent_title ); ?>
+				<h2 class="font-[700] text-[clamp(24px,calc(16.83px+2.98vw),50px)] leading-[1.2] text-mrent-white text-center xl:text-left">
+					<?php echo esc_html($mrent_title); ?>
 				</h2>
 				<a
-					href="<?php echo esc_url( $mrent_button_url ); ?>"
-					class="hidden xl:flex bg-mrent-yellow hover:bg-[#FFF831] items-center justify-center rounded-[15px] h-[65px] w-[300px] px-[15px] text-mrent-black font-[500] text-[20px] whitespace-nowrap transition-colors"
-				>
-					<?php echo esc_html( $mrent_button_text ); ?>
+					href="<?php echo esc_url($mrent_button_url); ?>"
+					class="hidden xl:flex bg-mrent-yellow hover:bg-[#FFF831] items-center justify-center rounded-[15px] h-[65px] w-[300px] px-[15px] text-mrent-black font-[500] text-[18px] whitespace-nowrap transition-colors">
+					<?php echo esc_html($mrent_button_text); ?>
 				</a>
 			</div>
 
 			<?php /* ── Swiper с карточками ── */ ?>
 			<div class="mrent-home-services swiper w-full min-w-0" data-mrent-home-services>
 				<div class="swiper-wrapper">
-					<?php while ( $mrent_query->have_posts() ) :
+					<?php while ($mrent_query->have_posts()) :
 						$mrent_query->the_post();
 
 						// Каскад: hero → card → featured (как в single-hero.php).
 						$mrent_image_url = '';
-						foreach ( [ 'service_hero_image', 'service_card_image' ] as $mrent_field ) {
-							$mrent_value = get_field( $mrent_field );
-							if ( is_array( $mrent_value ) && ! empty( $mrent_value['url'] ) ) {
+						foreach (['service_hero_image', 'service_card_image'] as $mrent_field) {
+							$mrent_value = get_field($mrent_field);
+							if (is_array($mrent_value) && ! empty($mrent_value['url'])) {
 								$mrent_image_url = $mrent_value['url'];
 								break;
 							}
 						}
-						if ( $mrent_image_url === '' ) {
-							$mrent_image_url = get_the_post_thumbnail_url( get_post(), 'large' ) ?: '';
+						if ($mrent_image_url === '') {
+							$mrent_image_url = get_the_post_thumbnail_url(get_post(), 'large') ?: '';
 						}
 					?>
 						<div class="swiper-slide">
 							<a
 								href="<?php the_permalink(); ?>"
-								class="group relative flex flex-col items-start h-[233px] xl:h-[600px] w-full p-[25px] xl:p-[50px] rounded-[15px] border border-[#302f31] overflow-hidden bg-[#252426]"
-							>
-								<?php if ( $mrent_image_url ) : ?>
+								class="group relative flex flex-col items-start aspect-[850/600] w-full p-[25px] xl:p-[50px] rounded-[15px] border border-[#302f31] overflow-hidden bg-[#252426]">
+								<?php if ($mrent_image_url) : ?>
 									<img
-										src="<?php echo esc_url( $mrent_image_url ); ?>"
-										alt="<?php echo esc_attr( get_the_title() ); ?>"
+										src="<?php echo esc_url($mrent_image_url); ?>"
+										alt="<?php echo esc_attr(get_the_title()); ?>"
 										class="absolute inset-0 size-full object-cover"
 										loading="lazy"
-										decoding="async"
-									>
+										decoding="async">
 								<?php endif; ?>
 
 								<?php /* Корнерный градиент: тёмный в top-left, прозрачный в bottom-right.
@@ -110,15 +108,14 @@ if ( ! $mrent_query->have_posts() ) {
 								<span
 									class="absolute inset-0 pointer-events-none rounded-[15px]"
 									style="background: linear-gradient(135deg, rgba(30,29,31,0.85) 0%, rgba(30,29,31,0.6) 25%, rgba(30,29,31,0) 60%);"
-									aria-hidden="true"
-								></span>
+									aria-hidden="true"></span>
 
 								<div class="relative flex flex-col gap-[15px] xl:gap-[30px] items-start max-w-[55%]">
-									<h3 class="text-mrent-white font-[800] text-[20px] xl:text-[35px] leading-[1.2]">
+									<h3 class="text-mrent-white font-[800] text-[clamp(16px,calc(16.36px+0.97vw),24px)] leading-[1.2]">
 										<?php the_title(); ?>
 									</h3>
-									<span class="text-mrent-white font-[500] text-[18px] xl:text-[30px] leading-[1.2] underline whitespace-nowrap group-hover:text-mrent-yellow transition-colors">
-										<?php esc_html_e( 'Подробнее', 'm-rent' ); ?>
+									<span class="text-mrent-white font-[500] text-[clamp(14px,calc(15.09px+0.78vw),18px)] leading-[1.2] underline whitespace-nowrap group-hover:text-mrent-yellow transition-colors">
+										<?php esc_html_e('Подробнее', 'm-rent'); ?>
 									</span>
 								</div>
 							</a>
@@ -133,10 +130,9 @@ if ( ! $mrent_query->have_posts() ) {
 
 			<?php /* ── Mobile-only: жёлтая кнопка-CTA на всю ширину ── */ ?>
 			<a
-				href="<?php echo esc_url( $mrent_button_url ); ?>"
-				class="xl:hidden bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[55px] w-full px-[15px] text-mrent-black font-[500] text-[14px] whitespace-nowrap transition-colors"
-			>
-				<?php echo esc_html( $mrent_button_text ); ?>
+				href="<?php echo esc_url($mrent_button_url); ?>"
+				class="xl:hidden bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[55px] w-full px-[15px] text-mrent-black font-[500] text-[14px] whitespace-nowrap transition-colors">
+				<?php echo esc_html($mrent_button_text); ?>
 			</a>
 
 		</div>
