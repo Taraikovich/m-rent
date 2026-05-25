@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Hero — «Аренда для юридических лиц» (Figma 2809:7253 desktop / 2846:7009 mobile).
  *
@@ -25,24 +26,24 @@
  *   • biz_cta_url    — Text; default «#contact»
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
-$mrent_subtitle = (string) get_field( 'biz_subtitle' );
-$mrent_cta_text = get_field( 'biz_cta_text' );
-if ( ! $mrent_cta_text ) {
-	$mrent_cta_text = __( 'Выбрать автомобиль', 'm-rent' );
+$mrent_subtitle = (string) get_field('biz_subtitle');
+$mrent_cta_text = get_field('biz_cta_text');
+if (! $mrent_cta_text) {
+	$mrent_cta_text = __('Выбрать автомобиль', 'm-rent');
 }
-$mrent_cta_url = get_field( 'biz_cta_url' ) ?: '#contact';
+$mrent_cta_url = get_field('biz_cta_url') ?: '#contact';
 
 $mrent_image_url = '';
-$mrent_hero_img  = get_field( 'biz_hero_image' );
-if ( is_array( $mrent_hero_img ) && ! empty( $mrent_hero_img['url'] ) ) {
+$mrent_hero_img  = get_field('biz_hero_image');
+if (is_array($mrent_hero_img) && ! empty($mrent_hero_img['url'])) {
 	$mrent_image_url = $mrent_hero_img['url'];
 }
-if ( $mrent_image_url === '' ) {
-	$mrent_image_url = get_the_post_thumbnail_url( null, 'full' ) ?: '';
+if ($mrent_image_url === '') {
+	$mrent_image_url = get_the_post_thumbnail_url(null, 'full') ?: '';
 }
 ?>
 
@@ -52,21 +53,19 @@ if ( $mrent_image_url === '' ) {
 	         Мобайл: h-[450px], сверху — ниже идёт чёрная область секции.
 	         Десктоп: h-full — заполняет всю секцию (870px). */ ?>
 	<div class="absolute inset-x-0 top-0 h-[450px] xl:h-full overflow-hidden">
-		<?php if ( $mrent_image_url ) : ?>
+		<?php if ($mrent_image_url) : ?>
 			<img
-				src="<?php echo esc_url( $mrent_image_url ); ?>"
-				alt="<?php echo esc_attr( get_the_title() ); ?>"
+				src="<?php echo esc_url($mrent_image_url); ?>"
+				alt="<?php echo esc_attr(get_the_title()); ?>"
 				class="absolute inset-0 size-full object-cover"
 				loading="eager"
-				decoding="async"
-			>
+				decoding="async">
 		<?php endif; ?>
 		<?php /* Мобайл: transparent 38% → #1E1D1F 81% (Figma 2846:7010).
 		         Десктоп: transparent 49% → rgba(30,29,31,0.8) 64% → #1E1D1F 100% (Figma 2809:7254). */ ?>
 		<span
 			class="absolute inset-0 bg-gradient-to-b from-transparent from-[38%] to-mrent-black to-[81%] xl:from-[49%] xl:via-[rgba(30,29,31,0.8)] xl:via-[64%] xl:to-[100%]"
-			aria-hidden="true"
-		></span>
+			aria-hidden="true"></span>
 	</div>
 
 	<?php /* Текст + кнопка.
@@ -79,21 +78,20 @@ if ( $mrent_image_url === '' ) {
 		<div class="flex flex-col gap-[30px] xl:gap-[50px] items-center w-full xl:max-w-[1316px] xl:mx-auto">
 
 			<div class="flex flex-col gap-[15px] xl:gap-[20px] items-center text-center w-full">
-				<h1 class="text-mrent-white font-[700] text-[28px] xl:text-[74px] leading-[1.2] w-full">
+				<h1 class="text-mrent-white font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] w-full">
 					<?php the_title(); ?>
 				</h1>
-				<?php if ( $mrent_subtitle !== '' ) : ?>
-					<p class="text-mrent-white font-[400] text-[16px] xl:text-[30px] leading-[1.2] w-full">
-						<?php echo esc_html( $mrent_subtitle ); ?>
+				<?php if ($mrent_subtitle !== '') : ?>
+					<p class="text-mrent-white font-[400] text-[clamp(14px,12.54px+0.39vw,20px)] leading-[1.2] w-full">
+						<?php echo esc_html($mrent_subtitle); ?>
 					</p>
 				<?php endif; ?>
 			</div>
 
 			<a
-				href="<?php echo esc_url( $mrent_cta_url ); ?>"
-				class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[55px] xl:h-[65px] w-full xl:w-[300px] px-[15px] text-mrent-black font-[500] text-[14px] xl:text-[20px] whitespace-nowrap transition-colors shrink-0"
-			>
-				<?php echo esc_html( $mrent_cta_text ); ?>
+				href="<?php echo esc_url($mrent_cta_url); ?>"
+				class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[55px] xl:h-[65px] w-full xl:w-[300px] px-[15px] text-mrent-black font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] whitespace-nowrap transition-colors shrink-0">
+				<?php echo esc_html($mrent_cta_text); ?>
 			</a>
 
 		</div>

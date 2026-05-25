@@ -32,7 +32,7 @@ if ($mrent_faq_title === '') {
 <section class="bg-mrent-black px-[15px] xl:px-[100px] mt-[40px] xl:mt-[80px]">
 	<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px] text-mrent-white">
 
-		<h2 class="font-[700] text-[28px] xl:text-[73px] leading-[1.2] w-full">
+		<h2 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] w-full">
 			<?php echo esc_html($mrent_faq_title); ?>
 		</h2>
 
@@ -46,7 +46,7 @@ if ($mrent_faq_title === '') {
 			?>
 				<details class="mrent-faq-item group bg-[#252426] border border-[#302F31] rounded-[15px] p-[20px] xl:p-[40px]">
 					<summary class="flex items-center justify-between gap-[20px] cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-						<span class="font-[600] text-[18px] xl:text-[30px] leading-[1.2] text-mrent-white">
+						<span class="font-[600] text-[clamp(16px,14.06px+0.52vw,24px)] leading-[1.2] text-mrent-white">
 							<?php echo esc_html($mrent_faq_q); ?>
 						</span>
 						<span class="shrink-0 flex items-center justify-center bg-mrent-yellow rounded-[8px] xl:rounded-[12px] size-[25px] xl:size-[55px] text-mrent-black transition-transform group-open:rotate-180" aria-hidden="true">
@@ -57,7 +57,7 @@ if ($mrent_faq_title === '') {
 					</summary>
 
 					<?php if ($mrent_faq_a !== '') : ?>
-						<div class="mt-[15px] xl:mt-[25px] font-[400] text-[16px] xl:text-[24px] leading-[1.5] text-mrent-white/90 whitespace-pre-line">
+						<div class="mt-[15px] xl:mt-[25px] font-[400] text-[clamp(14px,13.03px+0.26vw,18px)] leading-[1.5] text-mrent-white/90 whitespace-pre-line">
 							<?php echo wp_kses_post(wpautop($mrent_faq_a)); ?>
 						</div>
 					<?php endif; ?>

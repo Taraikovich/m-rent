@@ -85,7 +85,6 @@
   --font-display: "Futura PT", "Futura", "Trebuchet MS", system-ui, sans-serif;
 
   --breakpoint-header: 1440px;
-  --breakpoint-cars-filter: 1700px;
 }
 
 @layer base {
@@ -365,14 +364,9 @@
      с явным десятичным маркером (отступ 24/45px). */
   .mrent-page-content {
     color: var(--color-mrent-white);
-    font-size: 16px;
+    font-size: clamp(14px, 10.12px + 1.04vw, 30px);
     line-height: 1.2;
     font-weight: 400;
-  }
-  @media (min-width: 1280px) {
-    .mrent-page-content {
-      font-size: 30px;
-    }
   }
   .mrent-page-content > * {
     margin: 0;
@@ -393,13 +387,8 @@
   }
   .mrent-page-content h2 {
     font-weight: 800;
-    font-size: 20px;
+    font-size: clamp(16px, 16.36px + 0.97vw, 24px);
     line-height: 1.2;
-  }
-  @media (min-width: 1280px) {
-    .mrent-page-content h2 {
-      font-size: 35px;
-    }
   }
   .mrent-page-content p {
     line-height: 1.2;

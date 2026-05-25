@@ -1,18 +1,19 @@
 <?php
+
 /**
  * About: секция «О нас и нашей команде».
  *
  * Контент: ACF-группа «О нас», таб «Команда».
  * Если поле «Заголовок» (about_team_title) не заполнено — секция не выводится.
  *
- * Один DOM, адаптив через `2xl:`-варианты (Figma 2218:3280 desktop / 2345:3792 mobile):
+ * Один DOM, адаптив через `xl:`-варианты (Figma 2218:3280 desktop / 2345:3792 mobile):
  *
- *   < 2xl  — flex-col gap-30: заголовок 28px Bold → лид 16px (Bold-префикс
+ *   < xl  — flex-col gap-30: заголовок 28px Bold → лид 16px (Bold-префикс
  *            + остальной текст) → второй параграф 16px → карточка списка
  *            (bg #252426, p-25, rounded-15) → фото (full-width, aspect 330/270,
  *            rounded-15). Карточка и фото стыкуются вплотную (gap-0), как в макете.
  *
- *   ≥ 2xl  — flex-row gap-60 items-center: слева текст-колонка 620px, справа
+ *   ≥ xl  — flex-row gap-60 items-center: слева текст-колонка 620px, справа
  *            блок 1040px (relative). Карточка 580px в нормальном потоке —
  *            задаёт высоту блока, фото w-500 absolute right-0 top-0 bottom-0
  *            тянется на всю высоту карточки. Карточка z-10 наплывает на фото
@@ -23,85 +24,85 @@
  * с подполем `item`. По примеру `home_advantages`.
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
 $mrent_page_id = get_queried_object_id();
-$mrent_title   = (string) get_field( 'about_team_title', $mrent_page_id );
+$mrent_title   = (string) get_field('about_team_title', $mrent_page_id);
 
-if ( $mrent_title === '' ) {
+if ($mrent_title === '') {
 	return;
 }
 
-$mrent_lead_bold  = (string) get_field( 'about_team_lead_bold', $mrent_page_id );
-$mrent_lead_rest  = (string) get_field( 'about_team_lead_rest', $mrent_page_id );
-$mrent_body       = (string) get_field( 'about_team_body', $mrent_page_id );
-$mrent_image      = get_field( 'about_team_image', $mrent_page_id );
-$mrent_list_title = (string) get_field( 'about_team_list_title', $mrent_page_id );
-$mrent_list_raw   = get_field( 'about_team_list', $mrent_page_id );
+$mrent_lead_bold  = (string) get_field('about_team_lead_bold', $mrent_page_id);
+$mrent_lead_rest  = (string) get_field('about_team_lead_rest', $mrent_page_id);
+$mrent_body       = (string) get_field('about_team_body', $mrent_page_id);
+$mrent_image      = get_field('about_team_image', $mrent_page_id);
+$mrent_list_title = (string) get_field('about_team_list_title', $mrent_page_id);
+$mrent_list_raw   = get_field('about_team_list', $mrent_page_id);
 
 $mrent_image_url = $mrent_image['url'] ?? '';
 $mrent_image_alt = $mrent_image['alt'] ?? '';
 
 $mrent_list = [];
-if ( is_array( $mrent_list_raw ) ) {
-	foreach ( $mrent_list_raw as $mrent_row ) {
-		$mrent_item = isset( $mrent_row['item'] ) ? (string) $mrent_row['item'] : '';
-		if ( $mrent_item !== '' ) {
+if (is_array($mrent_list_raw)) {
+	foreach ($mrent_list_raw as $mrent_row) {
+		$mrent_item = isset($mrent_row['item']) ? (string) $mrent_row['item'] : '';
+		if ($mrent_item !== '') {
 			$mrent_list[] = $mrent_item;
 		}
 	}
 }
 ?>
 
-<section class="bg-mrent-black py-[60px] 2xl:py-[100px]">
-	<div class="px-[15px] 2xl:px-[100px]">
-		<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] 2xl:gap-[60px]">
+<section class="bg-mrent-black py-[60px] xl:py-[100px]">
+	<div class="px-[15px] xl:px-[100px]">
+		<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px]">
 
-			<h2 class="font-display font-[700] text-[28px] 2xl:text-[74px] leading-[1.2] text-mrent-white">
-				<?php echo esc_html( $mrent_title ); ?>
-			</h2>
 
-			<div class="flex flex-col gap-[30px] 2xl:flex-row 2xl:items-center 2xl:gap-[60px]">
+			<div class="flex flex-col gap-[30px] xl:flex-row xl:items-center xl:gap-[60px]">
 
-				<?php /* Текст-колонка. Mobile — full-width; 2xl — фикс 620px. */ ?>
-				<?php if ( $mrent_lead_bold !== '' || $mrent_lead_rest !== '' || $mrent_body !== '' ) : ?>
-					<div class="flex flex-col gap-[30px] text-mrent-white leading-[1.2] 2xl:basis-[620px] 2xl:min-w-0">
-						<?php if ( $mrent_lead_bold !== '' || $mrent_lead_rest !== '' ) : ?>
-							<p class="text-[16px] 2xl:text-[clamp(20px,1.65vw,30px)]">
-								<?php if ( $mrent_lead_bold !== '' ) : ?>
-									<strong class="font-[700]"><?php echo esc_html( $mrent_lead_bold ); ?></strong><?php endif; ?>
-								<?php echo esc_html( $mrent_lead_rest ); ?>
+				<?php /* Текст-колонка. Mobile — full-width; xl — фикс 620px. */ ?>
+				<?php if ($mrent_lead_bold !== '' || $mrent_lead_rest !== '' || $mrent_body !== '') : ?>
+					<div class="flex flex-col gap-[30px] text-mrent-white leading-[1.2] xl:basis-[620px] xl:min-w-0">
+						<h2 class="font-display font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] text-mrent-white">
+							<?php echo esc_html($mrent_title); ?>
+						</h2>
+						<?php if ($mrent_lead_bold !== '' || $mrent_lead_rest !== '') : ?>
+							<p class="text-[clamp(14px,12.54px+0.39vw,20px)]">
+								<?php if ($mrent_lead_bold !== '') : ?>
+									<strong class="font-[700]"><?php echo esc_html($mrent_lead_bold); ?></strong><?php endif; ?>
+								<?php echo esc_html($mrent_lead_rest); ?>
 							</p>
 						<?php endif; ?>
-						<?php if ( $mrent_body !== '' ) : ?>
-							<p class="text-[16px] 2xl:text-[clamp(20px,1.65vw,30px)]"><?php echo nl2br( esc_html( $mrent_body ) ); ?></p>
+						<?php if ($mrent_body !== '') : ?>
+							<p class="text-[clamp(14px,12.54px+0.39vw,20px)]"><?php echo nl2br(esc_html($mrent_body)); ?></p>
 						<?php endif; ?>
 					</div>
 				<?php endif; ?>
 
 				<?php /* Правый блок:
 				         • mobile — flex-col (карточка → фото), фото с aspect-ratio.
-				         • 2xl   — relative-контейнер 1040px. Карточка w-580 в нормальном
+				         • xl   — relative-контейнер 1040px. Карточка w-580 в нормальном
 				                   потоке (z-10) задаёт высоту блока. Фото — absolute
 				                   right-0 top-0 bottom-0 w-500: высота = высоте карточки,
 				                   карточка наплывает на фото ~40px слева. */ ?>
-				<div class="flex flex-col w-full 2xl:block 2xl:relative 2xl:basis-260 2xl:min-w-0">
+				<div class="flex flex-col w-full xl:block xl:relative xl:basis-260 xl:min-w-0">
 
-					<?php if ( ! empty( $mrent_list ) ) : ?>
-						<div class="bg-[#252426] rounded-[15px] p-[25px] 2xl:p-[40px] w-full 2xl:relative 2xl:z-10 2xl:w-[55.77%]">
+					<?php if (! empty($mrent_list)) : ?>
+						<div class="bg-[#252426] rounded-[15px] p-[25px] xl:p-[40px] w-full xl:relative xl:z-10 xl:w-[55.77%]">
 							<div class="flex flex-col gap-[20px]">
-								<?php if ( $mrent_list_title !== '' ) : ?>
-									<p class="font-display font-[600] text-[20px] 2xl:text-[35px] leading-[1.2] text-mrent-white">
-										<?php echo esc_html( $mrent_list_title ); ?>
+								<?php if ($mrent_list_title !== '') : ?>
+									<p class="font-display font-[600] text-[clamp(16px,14.06px+0.52vw,24px)] leading-[1.2] text-mrent-white">
+										<?php echo esc_html($mrent_list_title); ?>
 									</p>
 								<?php endif; ?>
 								<ul class="flex flex-col gap-[10px]">
-									<?php foreach ( $mrent_list as $mrent_item ) : ?>
+									<?php foreach ($mrent_list as $mrent_item) : ?>
 										<li class="flex gap-[15px] items-center text-mrent-white">
 											<span class="size-[6px] rounded-full bg-mrent-white shrink-0" aria-hidden="true"></span>
-											<span class="text-[14px] 2xl:text-[24px] leading-[1.2]"><?php echo esc_html( $mrent_item ); ?></span>
+											<span class="text-[clamp(14px,13.03px+0.26vw,18px)] leading-[1.2]"><?php echo esc_html($mrent_item); ?></span>
 										</li>
 									<?php endforeach; ?>
 								</ul>
@@ -109,15 +110,14 @@ if ( is_array( $mrent_list_raw ) ) {
 						</div>
 					<?php endif; ?>
 
-					<?php if ( $mrent_image_url ) : ?>
-						<div class="w-full aspect-[330/270] rounded-[15px] overflow-hidden 2xl:absolute 2xl:inset-y-0 2xl:right-0 2xl:w-[48.08%] 2xl:h-auto 2xl:aspect-auto">
+					<?php if ($mrent_image_url) : ?>
+						<div class="w-full aspect-[330/270] rounded-[15px] overflow-hidden xl:absolute xl:inset-y-0 xl:right-0 xl:w-[48.08%] xl:h-auto xl:aspect-auto">
 							<img
-								src="<?php echo esc_url( $mrent_image_url ); ?>"
-								alt="<?php echo esc_attr( $mrent_image_alt ); ?>"
+								src="<?php echo esc_url($mrent_image_url); ?>"
+								alt="<?php echo esc_attr($mrent_image_alt); ?>"
 								class="block w-full h-full object-cover"
 								loading="lazy"
-								decoding="async"
-							>
+								decoding="async">
 						</div>
 					<?php endif; ?>
 

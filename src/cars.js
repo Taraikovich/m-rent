@@ -18,17 +18,13 @@ import { Navigation, FreeMode, Pagination } from 'swiper/modules';
 import 'swiper/css';
 
 const MQ_DESKTOP = window.matchMedia('(min-width: 1280px)');
-// Фильтры переключаются позже (1700px) — при 1280–1699 пилюли не помещаются
-// в ряд и давали горизонтальный скролл страницы. Соответствует
-// --breakpoint-cars-filter в main.css.
-const MQ_FILTERS_DESKTOP = window.matchMedia('(min-width: 1700px)');
 
 function initFilters() {
   document.querySelectorAll('[data-mrent-cars-filter]').forEach((el) => {
     let instance = null;
 
     const ensure = () => {
-      if (MQ_FILTERS_DESKTOP.matches) {
+      if (MQ_DESKTOP.matches) {
         if (instance) {
           instance.destroy(true, true);
           instance = null;
@@ -48,7 +44,7 @@ function initFilters() {
     };
 
     ensure();
-    MQ_FILTERS_DESKTOP.addEventListener('change', ensure);
+    MQ_DESKTOP.addEventListener('change', ensure);
   });
 }
 

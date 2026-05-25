@@ -93,9 +93,9 @@ if ($mrent_image_url === '') {
 <section class="bg-mrent-black px-[15px] xl:px-[100px] pt-[40px] xl:pt-[100px] pb-[40px] xl:pb-[100px]">
 	<div class="max-w-[1720px] mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[30px] xl:gap-[100px]">
 
-		<div class="flex flex-col gap-[30px] xl:gap-[60px] xl:w-[717px] xl:shrink-0">
+		<div class="flex flex-col gap-[30px] xl:gap-[60px] xl:shrink-0">
 			<div class="flex flex-col gap-[15px] xl:gap-[40px]">
-				<h2 class="font-display font-[700] text-mrent-white text-[28px] xl:text-[74px] leading-[1.2]">
+				<h2 class="font-display font-[700] text-mrent-white text-[24px] xl:text-[50px] leading-[1.2]">
 					<?php echo esc_html($mrent_title); ?>
 				</h2>
 
@@ -103,12 +103,12 @@ if ($mrent_image_url === '') {
 					<?php foreach ($mrent_groups as $mrent_group) : ?>
 						<div class="flex flex-col gap-[20px]">
 							<?php if ($mrent_group['title'] !== '') : ?>
-								<h3 class="font-display font-[600] text-mrent-white text-[20px] xl:text-[35px] leading-[1.2]">
+								<h3 class="font-display font-[600] text-mrent-white text-[16px] xl:text-[24px] leading-[1.2]">
 									<?php echo esc_html($mrent_group['title']); ?>
 								</h3>
 							<?php endif; ?>
 							<?php if ($mrent_group['items']) : ?>
-								<ul class="flex flex-col gap-[10px] xl:gap-[15px] font-[400] text-mrent-white text-[14px] xl:text-[24px] leading-[1.2]">
+								<ul class="flex flex-col gap-[10px] xl:gap-[15px] font-[400] text-mrent-white text-[14px] xl:text-[18px] leading-[1.2]">
 									<?php foreach ($mrent_group['items'] as $mrent_item) : ?>
 										<li class="list-disc ms-[21px] xl:ms-[30px]">
 											<?php echo esc_html($mrent_item); ?>
@@ -122,12 +122,12 @@ if ($mrent_image_url === '') {
 			</div>
 
 			<a href="<?php echo esc_url($mrent_link_url); ?>"
-				class="self-start font-display font-[450] text-[18px] xl:text-[24px] leading-[1] text-mrent-yellow underline decoration-solid">
+				class="self-start font-display font-[450] text-[14px] xl:text-[18px] leading-[1] text-mrent-yellow underline decoration-solid">
 				<?php echo esc_html($mrent_link_text); ?>
 			</a>
 		</div>
 
-		<div class="relative w-full h-[172px] xl:h-[658px] xl:flex-1 xl:min-w-0 xl:max-w-[854px] overflow-hidden">
+		<div class="relative w-full h-[172px] xl:h-auto xl:self-stretch xl:min-h-[658px] xl:flex-1 xl:min-w-0 xl:max-w-[854px] overflow-hidden">
 			<img
 				src="<?php echo esc_url($mrent_image_url); ?>"
 				alt="<?php echo esc_attr($mrent_image_alt); ?>"

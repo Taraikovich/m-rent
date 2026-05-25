@@ -48,7 +48,7 @@ $mrent_booking_has_image = is_array($mrent_booking_image) && ! empty($mrent_book
 		<div class="flex flex-col gap-[30px] xl:gap-[50px] xl:shrink-0">
 			<div class="flex flex-col gap-[15px] xl:gap-[30px]">
 				<?php if ($mrent_booking_title !== '') : ?>
-					<h2 class="font-[700] text-[28px] xl:text-[74px] leading-[1.2]">
+					<h2 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2]">
 						<?php echo esc_html($mrent_booking_title); ?>
 					</h2>
 				<?php endif; ?>
@@ -62,7 +62,7 @@ $mrent_booking_has_image = is_array($mrent_booking_image) && ! empty($mrent_book
 					?>
 						<li class="flex items-center gap-[10px] xl:gap-[15px]">
 							<span class="shrink-0 size-[5px] xl:size-[8px] rounded-full bg-mrent-white" aria-hidden="true"></span>
-							<span class="font-[400] text-[14px] xl:text-[24px] leading-[1.2]">
+							<span class="font-[400] text-[clamp(14px,13.03px+0.26vw,18px)] leading-[1.2]">
 								<?php echo esc_html($mrent_booking_step_text); ?>
 							</span>
 						</li>
@@ -72,8 +72,7 @@ $mrent_booking_has_image = is_array($mrent_booking_image) && ! empty($mrent_book
 
 			<a
 				href="<?php echo esc_url($mrent_booking_cta_url); ?>"
-				class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[55px] xl:h-[65px] w-full xl:w-[300px] px-[15px] text-mrent-black font-[500] text-[16px] xl:text-[20px] whitespace-nowrap transition-colors"
-			>
+				class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[55px] xl:h-[65px] w-full xl:w-[300px] px-[15px] text-mrent-black font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] whitespace-nowrap transition-colors">
 				<?php echo esc_html($mrent_booking_cta_text); ?>
 			</a>
 		</div>

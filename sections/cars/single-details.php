@@ -34,9 +34,9 @@ $mrent_booking_url = get_field('car_booking_url') ?: '#booking';
 
 		<?php /* ── Заголовок + описание ── (mobile стопкой, desktop в строку 50/50) */ ?>
 		<div class="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-[15px] xl:gap-[60px] text-mrent-white w-full leading-[1.2]">
-			<h1 class="font-[700] text-[28px] xl:text-[70px] xl:flex-1 xl:max-w-[872px]"><?php the_title(); ?></h1>
+			<h1 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] xl:flex-1 xl:max-w-[872px]"><?php the_title(); ?></h1>
 			<?php if ($mrent_short) : ?>
-				<p class="text-[16px] xl:text-[24px] xl:flex-1 xl:max-w-[774px] mt-[20px]"><?php echo nl2br(esc_html($mrent_short)); ?></p>
+				<p class="text-[clamp(14px,13.03px+0.26vw,18px)] xl:flex-1 xl:max-w-[774px] mt-[20px]"><?php echo nl2br(esc_html($mrent_short)); ?></p>
 			<?php endif; ?>
 		</div>
 
@@ -53,13 +53,13 @@ $mrent_booking_url = get_field('car_booking_url') ?: '#booking';
 		<?php if (! empty($mrent_prices)) : ?>
 			<div class="grid grid-cols-2 xl:grid-cols-8 xl:grid-rows-2 xl:grid-flow-col gap-px bg-[#302f31] rounded-[15px] overflow-hidden w-full text-mrent-white">
 				<?php foreach ($mrent_prices as $row) : ?>
-					<div class="bg-[#252426] flex items-center justify-center px-[10px] py-[15px] xl:p-[clamp(10px,1.2vw,20px)] text-[16px] xl:text-[clamp(16px,1.4vw,24px)] text-center leading-[1.2] min-h-[50px]">
+					<div class="bg-[#252426] flex items-center justify-center px-[10px] py-[15px] xl:p-[clamp(14px,1.2vw,18px)] text-[clamp(10px,11.06px+0.52vw,24px)] text-center leading-[1.2] min-h-[50px]">
 						<?php echo esc_html($row['duration']); ?>
 					</div>
-					<div class="bg-[#252426] flex items-center justify-center px-[10px] py-[15px] xl:p-[clamp(10px,1.2vw,20px)] text-[16px] xl:text-[clamp(14px,1.16vw,20px)] text-center leading-[1.2] min-h-[50px] font-[800] whitespace-nowrap">
+					<div class="bg-[#252426] flex items-center justify-center px-[10px] py-[15px] xl:p-[clamp(14px,1.2vw,20px)] text-[clamp(10px,11.03px+0.26vw,20px)] text-center leading-[1.2] min-h-[50px] font-[800] whitespace-nowrap">
 						<?php echo esc_html(mrent_byn_price((float) $row['price'], (string) ($row['price_suffix'] ?? ''))); ?>
 						<?php if (! empty($row['discount'])) : ?>
-							<sup class="ml-[2px] text-mrent-yellow text-[9px] xl:text-[clamp(9px,0.75vw,13px)] font-[800]"><?php echo esc_html($row['discount']); ?></sup>
+							<sup class="ml-[2px] text-mrent-yellow text-[clamp(9px,8.03px+0.26vw,13px)] font-[800]"><?php echo esc_html($row['discount']); ?></sup>
 						<?php endif; ?>
 					</div>
 				<?php endforeach; ?>
@@ -84,14 +84,14 @@ $mrent_booking_url = get_field('car_booking_url') ?: '#booking';
 							</clipPath>
 						</defs>
 					</svg>
-					<p class="leading-[1.2] text-[16px] xl:text-[30px]">
+					<p class="leading-[1.2] text-[clamp(14px,11.57px+0.65vw,24px)]">
 						<span class="font-[700]"><?php esc_html_e('Депозит:', 'm-rent'); ?></span>
 						<?php echo esc_html(mrent_byn_price($mrent_deposit)); ?>
 					</p>
 				</div>
 			<?php endif; ?>
 
-			<a href="<?php echo esc_url($mrent_booking_url); ?>" class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center w-full xl:w-[300px] h-[55px] xl:h-[65px] rounded-[15px] text-mrent-black font-[500] text-[14px] xl:text-[20px] transition-colors">
+			<a href="<?php echo esc_url($mrent_booking_url); ?>" class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center w-full xl:w-[300px] h-[55px] xl:h-[65px] rounded-[15px] text-mrent-black font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] transition-colors">
 				<?php esc_html_e('Забронировать', 'm-rent'); ?>
 			</a>
 		</div>

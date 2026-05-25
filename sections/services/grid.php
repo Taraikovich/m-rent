@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Сетка услуг по секциям-категориям.
  *
@@ -19,25 +20,25 @@
  * мы вручную поднимаем глобальный $post через setup_postdata().
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
 $mrent_terms       = mrent_get_service_categories();
-$mrent_active_slug = isset( $_GET['cat'] ) ? sanitize_title( wp_unslash( $_GET['cat'] ) ) : '';
-if ( $mrent_active_slug === 'all' ) {
+$mrent_active_slug = isset($_GET['cat']) ? sanitize_title(wp_unslash($_GET['cat'])) : '';
+if ($mrent_active_slug === 'all') {
 	$mrent_active_slug = '';
 }
 
-if ( $mrent_active_slug !== '' ) {
-	$mrent_terms = array_values( array_filter( $mrent_terms, fn( $t ) => $t->slug === $mrent_active_slug ) );
+if ($mrent_active_slug !== '') {
+	$mrent_terms = array_values(array_filter($mrent_terms, fn($t) => $t->slug === $mrent_active_slug));
 }
 
-if ( empty( $mrent_terms ) ) : ?>
+if (empty($mrent_terms)) : ?>
 	<section class="bg-mrent-black pt-[40px] xl:pt-[80px]">
 		<div class="px-[15px] xl:px-[100px]">
 			<p class="max-w-[1720px] mx-auto text-mrent-white text-center text-[18px] py-[60px]">
-				<?php esc_html_e( 'Категории не найдены.', 'm-rent' ); ?>
+				<?php esc_html_e('Категории не найдены.', 'm-rent'); ?>
 			</p>
 		</div>
 	</section>
@@ -52,15 +53,15 @@ endif;
  * @param int[] $ids
  * @return int[][]
  */
-$mrent_chunks_alternating = function ( array $ids ) : array {
-	$sizes  = [ 3, 4 ];
+$mrent_chunks_alternating = function (array $ids): array {
+	$sizes  = [3, 4];
 	$rows   = [];
 	$offset = 0;
 	$i      = 0;
-	$count  = count( $ids );
-	while ( $offset < $count ) {
-		$size   = $sizes[ $i % 2 ];
-		$rows[] = array_slice( $ids, $offset, $size );
+	$count  = count($ids);
+	while ($offset < $count) {
+		$size   = $sizes[$i % 2];
+		$rows[] = array_slice($ids, $offset, $size);
 		$offset += $size;
 		$i++;
 	}
@@ -70,15 +71,32 @@ $mrent_chunks_alternating = function ( array $ids ) : array {
 /**
  * Рендер одной карточки по ID. Поднимает global $post, чтобы card.php
  * (использующий get_field/the_title) работал из контекста.
+ *
+ * @param int   $id   ID поста-услуги.
+ * @param array $args Прокидывается в card.php как $args. Для desktop сюда
+ *                    кладётся `card_width` — расчётная ширина карточки в ряду
+ *                    при максимуме контейнера (1720px). По ней card.php строит
+ *                    aspect-ratio и пропорциональный padding (см. card.php).
  */
-$mrent_render_card = function ( int $id ) : void {
+$mrent_render_card = function (int $id, array $args = []): void {
 	global $post;
-	$post = get_post( $id );
-	if ( ! $post ) {
+	$post = get_post($id);
+	if (! $post) {
 		return;
 	}
-	setup_postdata( $post );
-	get_template_part( 'sections/services/card' );
+	setup_postdata($post);
+	get_template_part('sections/services/card', null, $args);
+};
+
+/**
+ * Расчётная ширина одной карточки в ряду из $n штук при максимуме
+ * контейнера (max-w-1720, gap-20). card.php использует её как «дизайн-ширину»:
+ * aspect-ratio = card_width / 450, padding = 5000% / card_width.
+ *
+ * @param int $n Количество карточек в ряду.
+ */
+$mrent_card_width = static function (int $n): float {
+	return ($n > 0) ? (1720 - ($n - 1) * 20) / $n : 1720;
 };
 ?>
 
@@ -86,11 +104,11 @@ $mrent_render_card = function ( int $id ) : void {
 	<div class="px-[15px] xl:px-[100px]">
 		<div class="max-w-[1720px] mx-auto flex flex-col gap-[40px] xl:gap-[80px]">
 
-			<?php foreach ( $mrent_terms as $mrent_term ) :
-				$mrent_post_ids = get_posts( [
+			<?php foreach ($mrent_terms as $mrent_term) :
+				$mrent_post_ids = get_posts([
 					'post_type'      => 'service',
 					'posts_per_page' => -1,
-					'orderby'        => [ 'menu_order' => 'ASC', 'date' => 'DESC' ],
+					'orderby'        => ['menu_order' => 'ASC', 'date' => 'DESC'],
 					'tax_query'      => [
 						[
 							'taxonomy' => 'service_category',
@@ -100,42 +118,48 @@ $mrent_render_card = function ( int $id ) : void {
 					],
 					'fields'         => 'ids',
 					'no_found_rows'  => true,
-				] );
+				]);
 
-				$mrent_count = count( $mrent_post_ids );
-				if ( $mrent_count === 0 ) {
+				$mrent_count = count($mrent_post_ids);
+				if ($mrent_count === 0) {
 					continue;
 				}
 
 				// Скрываем категории с одной карточкой на «Все услуги», но при
 				// явном фильтре по этому slug всё равно показываем.
-				if ( $mrent_count === 1 && $mrent_active_slug === '' ) {
+				if ($mrent_count === 1 && $mrent_active_slug === '') {
 					continue;
 				}
 
-				$mrent_heading = (string) get_field( 'service_category_heading', 'term_' . $mrent_term->term_id );
-				if ( $mrent_heading === '' ) {
+				$mrent_heading = (string) get_field('service_category_heading', 'term_' . $mrent_term->term_id);
+				if ($mrent_heading === '') {
 					$mrent_heading = $mrent_term->name;
 				}
 
-				$mrent_rows          = ( $mrent_count <= 4 ) ? [ $mrent_post_ids ] : $mrent_chunks_alternating( $mrent_post_ids );
+				$mrent_rows          = ($mrent_count <= 4) ? [$mrent_post_ids] : $mrent_chunks_alternating($mrent_post_ids);
 				$mrent_mobile_swiper = $mrent_count > 7;
-				$mrent_pages         = $mrent_mobile_swiper ? array_chunk( $mrent_post_ids, 4 ) : [];
+				$mrent_pages         = $mrent_mobile_swiper ? array_chunk($mrent_post_ids, 4) : [];
 			?>
 
-				<div class="flex flex-col gap-[30px] xl:gap-[60px]" id="cat-<?php echo esc_attr( $mrent_term->slug ); ?>">
-					<h2 class="text-mrent-white font-[700] text-[28px] xl:text-[74px] leading-[1.2] w-full">
-						<?php echo esc_html( $mrent_heading ); ?>
+				<div class="flex flex-col gap-[30px] xl:gap-[60px]" id="cat-<?php echo esc_attr($mrent_term->slug); ?>">
+					<h2 class="text-mrent-white font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] w-full">
+						<?php echo esc_html($mrent_heading); ?>
 					</h2>
 
 					<?php /* ── Desktop: чередующиеся ряды через flex-1 (ширина карточки
-					           зависит от количества в ряду — 3 или 4 — автоматически). */ ?>
+					           зависит от количества в ряду — 3 или 4 — автоматически).
+					           card_width даёт card.php «дизайн-ширину» ряда → карточка
+					           тянет высоту через aspect-ratio и масштабирует padding,
+					           поэтому при сужении xl-вьюпорта она уменьшается
+					           пропорционально, а не остаётся в фикс. 450px. */ ?>
 					<div class="hidden xl:flex flex-col gap-[20px]">
-						<?php foreach ( $mrent_rows as $mrent_row ) : ?>
+						<?php foreach ($mrent_rows as $mrent_row) :
+							$mrent_row_w = $mrent_card_width(count($mrent_row));
+						?>
 							<div class="flex gap-[20px] items-stretch">
-								<?php foreach ( $mrent_row as $mrent_id ) : ?>
+								<?php foreach ($mrent_row as $mrent_id) : ?>
 									<div class="flex-1 min-w-0">
-										<?php $mrent_render_card( (int) $mrent_id ); ?>
+										<?php $mrent_render_card((int) $mrent_id, ['card_width' => $mrent_row_w]); ?>
 									</div>
 								<?php endforeach; ?>
 							</div>
@@ -143,7 +167,7 @@ $mrent_render_card = function ( int $id ) : void {
 					</div>
 
 					<?php /* ── Mobile: либо обычный стек, либо swiper по 4 карточки. */ ?>
-					<?php if ( $mrent_mobile_swiper ) : ?>
+					<?php if ($mrent_mobile_swiper) : ?>
 						<div class="xl:hidden flex flex-col gap-[30px]">
 							<?php /* w-full + min-w-0: фиксируем ширину Swiper'а внутри
 							         flex-col-родителя. Без этого .swiper auto-size берёт
@@ -152,11 +176,11 @@ $mrent_render_card = function ( int $id ) : void {
 							         бесконечно расширяется. */ ?>
 							<div class="mrent-services-swiper swiper w-full min-w-0 overflow-hidden" data-mrent-services-swiper>
 								<div class="swiper-wrapper">
-									<?php foreach ( $mrent_pages as $mrent_page_ids ) : ?>
+									<?php foreach ($mrent_pages as $mrent_page_ids) : ?>
 										<div class="swiper-slide">
 											<div class="flex flex-col gap-[10px]">
-												<?php foreach ( $mrent_page_ids as $mrent_id ) : ?>
-													<?php $mrent_render_card( (int) $mrent_id ); ?>
+												<?php foreach ($mrent_page_ids as $mrent_id) : ?>
+													<?php $mrent_render_card((int) $mrent_id); ?>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -170,28 +194,26 @@ $mrent_render_card = function ( int $id ) : void {
 								<button
 									type="button"
 									class="mrent-services-prev bg-mrent-yellow rounded-[15px] size-[55px] shrink-0 flex items-center justify-center text-mrent-black"
-									aria-label="<?php esc_attr_e( 'Предыдущие услуги', 'm-rent' ); ?>"
-								>
+									aria-label="<?php esc_attr_e('Предыдущие услуги', 'm-rent'); ?>">
 									<svg viewBox="0 0 9 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-[8px] h-[15px]" aria-hidden="true">
-										<polyline points="8 1 1 8 8 15"/>
+										<polyline points="8 1 1 8 8 15" />
 									</svg>
 								</button>
 								<div class="mrent-services-pagination flex items-center gap-[10px]"></div>
 								<button
 									type="button"
 									class="mrent-services-next bg-mrent-yellow rounded-[15px] size-[55px] shrink-0 flex items-center justify-center text-mrent-black"
-									aria-label="<?php esc_attr_e( 'Следующие услуги', 'm-rent' ); ?>"
-								>
+									aria-label="<?php esc_attr_e('Следующие услуги', 'm-rent'); ?>">
 									<svg viewBox="0 0 9 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-[8px] h-[15px]" aria-hidden="true">
-										<polyline points="1 1 8 8 1 15"/>
+										<polyline points="1 1 8 8 1 15" />
 									</svg>
 								</button>
 							</div>
 						</div>
 					<?php else : ?>
 						<div class="xl:hidden flex flex-col gap-[10px]">
-							<?php foreach ( $mrent_post_ids as $mrent_id ) : ?>
-								<?php $mrent_render_card( (int) $mrent_id ); ?>
+							<?php foreach ($mrent_post_ids as $mrent_id) : ?>
+								<?php $mrent_render_card((int) $mrent_id); ?>
 							<?php endforeach; ?>
 						</div>
 					<?php endif; ?>

@@ -64,7 +64,7 @@ $mrent_right = array_slice($mrent_benefits, 3, 3);
 		<?php /* Центральное фото — 244×229 на мобайле, 458×419 на десктопе.
 		         object-contain: картинка целиком вписывается в бокс, без обрезки. */ ?>
 		<div class="w-61 h-57.25 xl:w-[clamp(400px,21.97vw,458px)] xl:h-auto shrink-0">
-			<img src="<?php echo esc_url($mrent_image_url); ?>" alt="<?php echo esc_attr($mrent_image_alt); ?>" class="block w-full h-full object-contain xl:object-cover" loading="lazy" decoding="async">
+			<img src="<?php echo esc_url($mrent_image_url); ?>" alt="<?php echo esc_attr($mrent_image_alt); ?>" class="block w-full h-full object-contain loading=" lazy" decoding="async">
 		</div>
 
 		<?php /* Правая колонка — фикс 598px по Figma. Items right-aligned, icon идёт справа от текста (через flex-row-reverse). */ ?>

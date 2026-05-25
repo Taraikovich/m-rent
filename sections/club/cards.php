@@ -6,14 +6,14 @@
  * Контент: ACF-группа «Клубные карты», таб «Карты».
  * Если поле «Заголовок» (club_cards_title) не заполнено — секция не выводится.
  *
- * Один DOM, адаптив через `2xl:`-варианты (Figma 2597:6159 desktop / 2353:5663 mobile):
+ * Один DOM, адаптив через `xl:`-варианты (Figma 2597:6159 desktop / 2353:5663 mobile):
  *
- *   < 2xl  — flex-col gap-30: section description (заголовок 28px Bold + лид 16px,
+ *   < xl  — flex-col gap-30: section description (заголовок 28px Bold + лид 16px,
  *            gap-15 внутри) → список карт flex-col gap-10. Каждая карта:
  *            bg #252426, border #302F31, rounded-15, p-25, gap-20 внутри
  *            (image → название/описание → заголовок списка/буллеты).
  *
- *   ≥ 2xl  — flex-row gap-30 items-stretch: слева текст-колонка 554px
+ *   ≥ xl  — flex-row gap-30 items-stretch: слева текст-колонка 554px
  *            (заголовок 74px max-w-373 + лид 30px max-w-433, gap-30 внутри),
  *            справа карты flex-1 в одну строку. Каждая карта p-40, gap-40
  *            внутри, border-radius 15. items-stretch выравнивает высоты
@@ -40,23 +40,23 @@ $mrent_dir     = get_template_directory_uri() . '/assets/images';
 $mrent_fallbacks = [$mrent_dir . '/club-card-silver.png', $mrent_dir . '/club-card-gold.png'];
 ?>
 
-<section class="bg-mrent-black px-[15px] 2xl:px-[100px] py-[60px] 2xl:py-[100px]">
-	<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] 2xl:flex-row 2xl:items-stretch 2xl:gap-[30px]">
+<section class="bg-mrent-black px-[15px] xl:px-[100px] py-[60px] xl:py-[100px]">
+	<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:flex-row xl:items-stretch xl:gap-[40px]">
 
-		<?php /* Левая текст-колонка. Mobile — full-width; 2xl — фикс 554px. */ ?>
-		<div class="flex flex-col gap-[15px] 2xl:gap-[30px] text-mrent-white leading-[1.2] 2xl:w-[554px] 2xl:shrink-0">
-			<h2 class="font-display font-[700] text-[28px] 2xl:text-[74px] 2xl:max-w-[373px]">
+		<?php /* Левая текст-колонка. Mobile — full-width; xl — фикс 554px. */ ?>
+		<div class="flex flex-col gap-[15px] xl:gap-[30px] text-mrent-white leading-[1.2] xl:shrink-0">
+			<h2 class="font-display font-[700] text-[clamp(24px,17.69px+1.68vw,50px)]">
 				<?php echo esc_html($mrent_title); ?>
 			</h2>
 			<?php if ($mrent_lead !== '') : ?>
-				<p class="text-[16px] 2xl:text-[30px] 2xl:max-w-[433px] whitespace-pre-line">
+				<p class="text-[clamp(14px,12.54px+0.39vw,20px)] xl:max-w-[433px] whitespace-pre-line">
 					<?php echo esc_html($mrent_lead); ?>
 				</p>
 			<?php endif; ?>
 		</div>
 
 		<?php if (is_array($mrent_items) && ! empty($mrent_items)) : ?>
-			<div class="flex flex-col gap-[10px] 2xl:flex-row 2xl:flex-1 2xl:items-stretch 2xl:gap-[30px]">
+			<div class="flex flex-col gap-[10px] xl:flex-row xl:flex-1 xl:items-stretch xl:gap-[30px]">
 				<?php foreach ($mrent_items as $mrent_index => $mrent_card) :
 					$mrent_card_title       = isset($mrent_card['card_title']) ? (string) $mrent_card['card_title'] : '';
 					$mrent_card_description = isset($mrent_card['card_description']) ? (string) $mrent_card['card_description'] : '';
@@ -77,7 +77,7 @@ $mrent_fallbacks = [$mrent_dir . '/club-card-silver.png', $mrent_dir . '/club-ca
 						}
 					}
 				?>
-					<article class="bg-[#252426] border border-[#302F31] rounded-[15px] p-[25px] 2xl:p-[40px] flex flex-col gap-[20px] 2xl:gap-[40px] 2xl:flex-1">
+					<article class="bg-[#252426] border border-[#302F31] rounded-[15px] p-[25px] xl:p-[40px] flex flex-col gap-[20px] xl:gap-[40px] xl:flex-1">
 
 						<?php if ($mrent_image_url) : ?>
 							<div class="w-full aspect-[481/288] overflow-hidden rounded-[10px]">
@@ -86,20 +86,19 @@ $mrent_fallbacks = [$mrent_dir . '/club-card-silver.png', $mrent_dir . '/club-ca
 									alt="<?php echo esc_attr($mrent_image_alt); ?>"
 									class="block w-full h-full object-cover"
 									loading="lazy"
-									decoding="async"
-								>
+									decoding="async">
 							</div>
 						<?php endif; ?>
 
 						<?php if ($mrent_card_title !== '' || $mrent_card_description !== '') : ?>
-							<div class="flex flex-col gap-[10px] 2xl:gap-[20px] text-mrent-white leading-[1.2]">
+							<div class="flex flex-col gap-[10px] xl:gap-[20px] text-mrent-white leading-[1.2]">
 								<?php if ($mrent_card_title !== '') : ?>
-									<h3 class="font-display font-[600] text-[20px] 2xl:text-[35px]">
+									<h3 class="font-display font-[600] text-[clamp(16px,14.06px+0.52vw,24px)]">
 										<?php echo esc_html($mrent_card_title); ?>
 									</h3>
 								<?php endif; ?>
 								<?php if ($mrent_card_description !== '') : ?>
-									<p class="text-[16px] 2xl:text-[30px]">
+									<p class="text-[clamp(14px,12.54px+0.39vw,20px)]">
 										<?php echo esc_html($mrent_card_description); ?>
 									</p>
 								<?php endif; ?>
@@ -107,17 +106,17 @@ $mrent_fallbacks = [$mrent_dir . '/club-card-silver.png', $mrent_dir . '/club-ca
 						<?php endif; ?>
 
 						<?php if (! empty($mrent_bullets)) : ?>
-							<div class="flex flex-col gap-[15px] 2xl:gap-[20px] text-mrent-white leading-[1.2]">
+							<div class="flex flex-col gap-[15px] xl:gap-[20px] text-mrent-white leading-[1.2]">
 								<?php if ($mrent_bullets_title !== '') : ?>
-									<p class="font-display font-[600] text-[16px] 2xl:text-[30px]">
+									<p class="font-display font-[600] text-[clamp(16px,12.60px+0.91vw,30px)]">
 										<?php echo esc_html($mrent_bullets_title); ?>
 									</p>
 								<?php endif; ?>
 								<ul class="flex flex-col gap-[10px]">
 									<?php foreach ($mrent_bullets as $mrent_bullet) : ?>
 										<li class="flex gap-[10px] items-center">
-											<span class="size-[5px] 2xl:size-[7px] rounded-full bg-mrent-white shrink-0" aria-hidden="true"></span>
-											<span class="text-[14px] 2xl:text-[24px]"><?php echo esc_html($mrent_bullet); ?></span>
+											<span class="size-[5px] xl:size-[7px] rounded-full bg-mrent-white shrink-0" aria-hidden="true"></span>
+											<span class="text-[clamp(14px,13.03px+0.26vw,18px)]"><?php echo esc_html($mrent_bullet); ?></span>
 										</li>
 									<?php endforeach; ?>
 								</ul>

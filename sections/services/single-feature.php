@@ -35,12 +35,12 @@ if (empty($mrent_title)) {
 		<?php if ($mrent_title !== '' || $mrent_description !== '') : ?>
 			<div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[15px] xl:gap-[20px] text-mrent-white w-full">
 				<?php if ($mrent_title !== '') : ?>
-					<h2 class="font-[700] text-[28px] xl:text-[74px] leading-[1.2] xl:w-[548px] shrink-0">
+					<h2 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] xl:w-[548px] shrink-0">
 						<?php echo esc_html($mrent_title); ?>
 					</h2>
 				<?php endif; ?>
 				<?php if ($mrent_description !== '') : ?>
-					<p class="font-[400] text-[16px] xl:text-[30px] leading-[1.2] xl:w-[1015px]">
+					<p class="font-[400] text-[clamp(14px,12.54px+0.39vw,20px)] leading-[1.2] xl:w-[1015px]">
 						<?php echo esc_html($mrent_description); ?>
 					</p>
 				<?php endif; ?>

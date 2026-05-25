@@ -1,4 +1,5 @@
 <?php
+
 /**
  * «Аренда для юр. лиц»: секция «Условия аренды» (Figma 2809:7264 desktop / 2846:7047 mobile).
  *
@@ -17,84 +18,83 @@
  *   • biz_conditions_image    — Image;    fallback assets/images/business-conditions-bmw.png
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
-$mrent_title = (string) get_field( 'biz_conditions_title' );
-if ( $mrent_title === '' ) {
-	$mrent_title = __( 'Условия аренды для юридических лиц', 'm-rent' );
+$mrent_title = (string) get_field('biz_conditions_title');
+if ($mrent_title === '') {
+	$mrent_title = __('Условия аренды для юридических лиц', 'm-rent');
 }
 
-$mrent_subtitle = (string) get_field( 'biz_conditions_subtitle' );
-if ( $mrent_subtitle === '' ) {
-	$mrent_subtitle = __( 'Для оформления аренды необходимы:', 'm-rent' );
+$mrent_subtitle = (string) get_field('biz_conditions_subtitle');
+if ($mrent_subtitle === '') {
+	$mrent_subtitle = __('Для оформления аренды необходимы:', 'm-rent');
 }
 
-$mrent_items_raw = (array) get_field( 'biz_conditions_items' );
+$mrent_items_raw = (array) get_field('biz_conditions_items');
 $mrent_items     = [];
-foreach ( $mrent_items_raw as $mrent_row ) {
-	$mrent_text = (string) ( $mrent_row['text'] ?? '' );
-	if ( $mrent_text !== '' ) {
+foreach ($mrent_items_raw as $mrent_row) {
+	$mrent_text = (string) ($mrent_row['text'] ?? '');
+	if ($mrent_text !== '') {
 		$mrent_items[] = $mrent_text;
 	}
 }
-if ( ! $mrent_items ) {
+if (! $mrent_items) {
 	$mrent_items = [
-		__( 'реквизиты юридического лица;', 'm-rent' ),
-		__( 'свидетельство о регистрации юридического лица;', 'm-rent' ),
-		__( 'доверенность на право подписания договоров аренды и актов приема-передачи транспортного средства;', 'm-rent' ),
-		__( 'паспорт доверенного лица;', 'm-rent' ),
-		__( 'водительское удостоверение категории «B»;', 'm-rent' ),
-		__( 'оплата полного срока аренды и залоговой стоимости автомобиля.', 'm-rent' ),
+		__('реквизиты юридического лица;', 'm-rent'),
+		__('свидетельство о регистрации юридического лица;', 'm-rent'),
+		__('доверенность на право подписания договоров аренды и актов приема-передачи транспортного средства;', 'm-rent'),
+		__('паспорт доверенного лица;', 'm-rent'),
+		__('водительское удостоверение категории «B»;', 'm-rent'),
+		__('оплата полного срока аренды и залоговой стоимости автомобиля.', 'm-rent'),
 	];
 }
 
-$mrent_image_acf = get_field( 'biz_conditions_image' );
+$mrent_image_acf = get_field('biz_conditions_image');
 $mrent_image_url = '';
 $mrent_image_alt = '';
-if ( is_array( $mrent_image_acf ) ) {
-	if ( ! empty( $mrent_image_acf['url'] ) ) {
+if (is_array($mrent_image_acf)) {
+	if (! empty($mrent_image_acf['url'])) {
 		$mrent_image_url = (string) $mrent_image_acf['url'];
 	}
-	if ( ! empty( $mrent_image_acf['alt'] ) ) {
+	if (! empty($mrent_image_acf['alt'])) {
 		$mrent_image_alt = (string) $mrent_image_acf['alt'];
 	}
 }
-if ( $mrent_image_url === '' ) {
+if ($mrent_image_url === '') {
 	$mrent_image_url = get_template_directory_uri() . '/assets/images/business-conditions-bmw.png';
 }
 ?>
 
 <section class="bg-mrent-black px-[15px] xl:px-[100px] pt-[30px] xl:pt-[60px]">
-	<div class="max-w-[1720px] mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[30px] xl:gap-[100px]">
+	<div class="max-w-[1720px] mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[30px] xl:gap-[clamp(24px,3vw,100px)]">
 
-		<div class="flex flex-col gap-[20px] xl:gap-[60px] xl:w-[717px] xl:shrink-0">
-			<h2 class="font-display font-[700] text-[28px] xl:text-[74px] leading-[1.2] text-mrent-white">
-				<?php echo esc_html( $mrent_title ); ?>
+		<div class="flex flex-col gap-[20px] xl:gap-[60px] min-w-0 xl:basis-[717px] xl:max-w-[717px]">
+			<h2 class="font-display font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] text-mrent-white">
+				<?php echo esc_html($mrent_title); ?>
 			</h2>
 			<div class="flex flex-col gap-[15px] xl:gap-[20px]">
-				<p class="font-display font-[600] text-[16px] xl:text-[35px] leading-[1.2] text-mrent-white">
-					<?php echo esc_html( $mrent_subtitle ); ?>
+				<p class="font-display font-[600] text-[clamp(16px,14.06px+0.52vw,24px)] leading-[1.2] text-mrent-white">
+					<?php echo esc_html($mrent_subtitle); ?>
 				</p>
-				<ul class="flex flex-col gap-[10px] xl:gap-[15px] font-[400] text-[14px] xl:text-[30px] leading-[1.2] text-mrent-white">
-					<?php foreach ( $mrent_items as $mrent_item ) : ?>
+				<ul class="flex flex-col gap-[10px] xl:gap-[15px] font-[400] text-[clamp(14px,13.03px+0.26vw,18px)] leading-[1.2] text-mrent-white">
+					<?php foreach ($mrent_items as $mrent_item) : ?>
 						<li class="list-disc ms-[21px] xl:ms-[45px]">
-							<?php echo esc_html( $mrent_item ); ?>
+							<?php echo esc_html($mrent_item); ?>
 						</li>
 					<?php endforeach; ?>
 				</ul>
 			</div>
 		</div>
 
-		<div class="relative w-full h-[254px] xl:w-[854px] xl:h-[658px] xl:shrink-0">
+		<div class="relative w-full h-[254px] min-w-0 xl:h-auto xl:basis-[854px] xl:max-w-[854px] xl:aspect-[854/658]">
 			<img
-				src="<?php echo esc_url( $mrent_image_url ); ?>"
-				alt="<?php echo esc_attr( $mrent_image_alt ); ?>"
+				src="<?php echo esc_url($mrent_image_url); ?>"
+				alt="<?php echo esc_attr($mrent_image_alt); ?>"
 				class="absolute inset-0 size-full object-bottom object-contain"
 				loading="lazy"
-				decoding="async"
-			>
+				decoding="async">
 		</div>
 
 	</div>

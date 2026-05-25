@@ -44,11 +44,11 @@ if ($mrent_title === '' || empty($mrent_items)) {
 	<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px] text-mrent-white">
 
 		<div class="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-[15px] xl:gap-[20px]">
-			<h2 class="font-[700] text-[28px] xl:text-[73px] leading-[1.2] xl:basis-[887px] xl:max-w-[887px] min-w-0">
+			<h2 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] xl:basis-[887px] xl:max-w-[887px] min-w-0">
 				<?php echo esc_html($mrent_title); ?>
 			</h2>
 			<?php if ($mrent_subtitle !== '') : ?>
-				<p class="font-[400] text-[16px] xl:text-[30px] leading-[1.2] xl:basis-[724px] xl:max-w-[724px] min-w-0 whitespace-pre-line">
+				<p class="font-[400] text-[clamp(14px,12.54px+0.39vw,20px)] leading-[1.2] xl:basis-[724px] xl:max-w-[724px] min-w-0 whitespace-pre-line">
 					<?php echo esc_html($mrent_subtitle); ?>
 				</p>
 			<?php endif; ?>
@@ -80,12 +80,12 @@ if ($mrent_title === '' || empty($mrent_items)) {
 							<?php endif; ?>
 							<div class="flex flex-col gap-[10px] xl:gap-[15px]">
 								<?php if ($mrent_item_title !== '') : ?>
-									<h3 class="font-[600] text-[18px] xl:text-[30px] leading-[1.2]">
+									<h3 class="font-[600] text-[clamp(16px,14.06px+0.52vw,24px)] leading-[1.2]">
 										<?php echo esc_html($mrent_item_title); ?>
 									</h3>
 								<?php endif; ?>
 								<?php if ($mrent_item_text !== '') : ?>
-									<p class="font-[400] text-[14px] xl:text-[24px] leading-[1.2]">
+									<p class="font-[400] text-[clamp(14px,13.03px+0.26vw,18px)] leading-[1.2]">
 										<?php echo esc_html($mrent_item_text); ?>
 									</p>
 								<?php endif; ?>

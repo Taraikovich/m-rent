@@ -64,7 +64,7 @@ if ($mrent_pkg_has_options) {
 			<div class="relative xl:hidden">
 				<select
 					data-mrent-pkg-select
-					class="appearance-none bg-mrent-white text-mrent-black w-full h-[55px] rounded-[15px] pl-[15px] pr-[40px] font-[500] text-[14px] cursor-pointer">
+					class="appearance-none bg-mrent-white text-mrent-black w-full h-[55px] rounded-[15px] pl-[15px] pr-[40px] font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] cursor-pointer">
 					<?php foreach ($mrent_pkg_tabs as $mrent_pkg_t) : ?>
 						<option value="<?php echo esc_attr($mrent_pkg_t['id']); ?>"><?php echo esc_html($mrent_pkg_t['label']); ?></option>
 					<?php endforeach; ?>
@@ -83,7 +83,7 @@ if ($mrent_pkg_has_options) {
 				<div class="flex flex-col gap-[20px] xl:gap-[30px]">
 					<div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[20px]">
 						<?php if ($mrent_pkg_title !== '') : ?>
-							<h2 class="font-[700] text-[28px] xl:text-[74px] leading-[1.2]">
+							<h2 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2]">
 								<?php echo esc_html($mrent_pkg_title); ?>
 							</h2>
 						<?php endif; ?>
@@ -95,14 +95,14 @@ if ($mrent_pkg_has_options) {
 									data-mrent-pkg-trigger
 									data-mrent-pkg-id="packages"
 									aria-current="true"
-									class="bg-[#252426] text-mrent-white aria-[current=true]:bg-mrent-white aria-[current=true]:text-mrent-black flex items-center justify-center rounded-[15px] h-[65px] w-[300px] px-[15px] font-[500] text-[20px] whitespace-nowrap transition-colors cursor-pointer">
+									class="bg-[#252426] text-mrent-white aria-[current=true]:bg-mrent-white aria-[current=true]:text-mrent-black flex items-center justify-center rounded-[15px] h-[65px] w-[300px] px-[15px] font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] whitespace-nowrap transition-colors cursor-pointer">
 									<?php echo esc_html($mrent_pkg_tab1); ?>
 								</button>
 								<button
 									type="button"
 									data-mrent-pkg-trigger
 									data-mrent-pkg-id="options"
-									class="bg-[#252426] text-mrent-white aria-[current=true]:bg-mrent-white aria-[current=true]:text-mrent-black flex items-center justify-center rounded-[15px] h-[65px] w-[300px] px-[15px] font-[500] text-[20px] whitespace-nowrap transition-colors cursor-pointer">
+									class="bg-[#252426] text-mrent-white aria-[current=true]:bg-mrent-white aria-[current=true]:text-mrent-black flex items-center justify-center rounded-[15px] h-[65px] w-[300px] px-[15px] font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] whitespace-nowrap transition-colors cursor-pointer">
 									<?php echo esc_html($mrent_pkg_tab2); ?>
 								</button>
 							</div>
@@ -110,7 +110,7 @@ if ($mrent_pkg_has_options) {
 					</div>
 
 					<?php if ($mrent_pkg_subtitle !== '') : ?>
-						<p class="font-[400] text-[16px] xl:text-[30px] leading-[1.2] whitespace-pre-line">
+						<p class="font-[400] text-[clamp(14px,12.54px+0.39vw,20px)] leading-[1.2] whitespace-pre-line">
 							<?php echo esc_html($mrent_pkg_subtitle); ?>
 						</p>
 					<?php endif; ?>
@@ -140,12 +140,12 @@ if ($mrent_pkg_has_options) {
 										<div class="flex flex-col gap-[15px] xl:gap-[20px] xl:min-h-[160px] xl:justify-between">
 											<div class="flex flex-col gap-[15px] xl:gap-[20px]">
 												<?php if ($mrent_pkg_item_title !== '') : ?>
-													<h3 class="font-[600] text-[22px] xl:text-[35px] leading-[1.2]">
+													<h3 class="font-[600] text-[clamp(16px,14.06px+0.52vw,24px)] leading-[1.2]">
 														<?php echo esc_html($mrent_pkg_item_title); ?>
 													</h3>
 												<?php endif; ?>
 												<?php if ($mrent_pkg_item_subtitle !== '') : ?>
-													<p class="font-[400] text-[16px] xl:text-[24px] leading-[1.2]">
+													<p class="font-[400] text-[clamp(14px,13.03px+0.26vw,18px)] leading-[1.2]">
 														<?php echo esc_html($mrent_pkg_item_subtitle); ?>
 													</p>
 												<?php endif; ?>
@@ -162,7 +162,7 @@ if ($mrent_pkg_has_options) {
 														continue;
 													}
 												?>
-													<li class="text-[14px] xl:text-[22px] leading-[1.24]">
+													<li class="text-[clamp(14px,13.03px+0.26vw,18px)] leading-[1.24]">
 														<?php if ($mrent_spec_label !== '') : ?>
 															<span class="font-[700]"><?php echo esc_html($mrent_spec_label); ?></span>
 														<?php endif; ?>
@@ -180,16 +180,16 @@ if ($mrent_pkg_has_options) {
 										<?php if ($mrent_pkg_item_price !== '' || $mrent_pkg_item_unit !== '') : ?>
 											<p class="leading-[1.2]">
 												<?php if ($mrent_pkg_item_price !== '') : ?>
-													<span class="font-[800] text-[34px] xl:text-[50px]"><?php echo esc_html($mrent_pkg_item_price); ?></span>
+													<span class="font-[800] text-[clamp(28px,22.66px+1.42vw,50px)]"><?php echo esc_html($mrent_pkg_item_price); ?></span>
 												<?php endif; ?>
 												<?php if ($mrent_pkg_item_unit !== '') : ?>
-													<span class="font-[400] text-[20px] xl:text-[30px]"><?php echo $mrent_pkg_item_price !== '' ? '/' : ''; ?><?php echo esc_html($mrent_pkg_item_unit); ?></span>
+													<span class="font-[400] text-[clamp(16px,12.60px+0.91vw,30px)]"><?php echo $mrent_pkg_item_price !== '' ? '/' : ''; ?><?php echo esc_html($mrent_pkg_item_unit); ?></span>
 												<?php endif; ?>
 											</p>
 										<?php endif; ?>
 										<a
 											href="<?php echo esc_url($mrent_pkg_item_url); ?>"
-											class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[55px] xl:h-[65px] shrink-0 w-full px-[15px] text-mrent-black font-[500] text-[14px] xl:text-[20px] whitespace-nowrap transition-colors">
+											class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[55px] xl:h-[65px] shrink-0 w-full px-[15px] text-mrent-black font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] whitespace-nowrap transition-colors">
 											<?php echo esc_html($mrent_pkg_item_cta); ?>
 										</a>
 									</div>
@@ -221,7 +221,7 @@ if ($mrent_pkg_has_options) {
 				</div>
 
 				<?php if ($mrent_pkg_note !== '') : ?>
-					<p class="font-[400] text-[16px] xl:text-[30px] leading-[1.2]">
+					<p class="font-[400] text-[clamp(16px,12.60px+0.91vw,20px)] leading-[1.2]">
 						<?php if ($mrent_pkg_note_label !== '') : ?>
 							<span class="font-[700] uppercase"><?php echo esc_html($mrent_pkg_note_label); ?>: </span>
 						<?php endif; ?>
@@ -241,7 +241,7 @@ if ($mrent_pkg_has_options) {
 				<?php /* Шапка опций — те же пилюли, но активна вторая. */ ?>
 				<div class="flex flex-col gap-[20px] xl:gap-[30px]">
 					<div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[20px]">
-						<h2 class="font-[700] text-[28px] xl:text-[74px] leading-[1.2]">
+						<h2 class="font-[700] text-[24px] xl:text-[50px] leading-[1.2]">
 							<?php echo esc_html($mrent_pkg_options_title); ?>
 						</h2>
 
@@ -251,7 +251,7 @@ if ($mrent_pkg_has_options) {
 									type="button"
 									data-mrent-pkg-trigger
 									data-mrent-pkg-id="packages"
-									class="bg-[#252426] text-mrent-white aria-[current=true]:bg-mrent-white aria-[current=true]:text-mrent-black flex items-center justify-center rounded-[15px] h-[65px] w-[300px] px-[15px] font-[500] text-[20px] whitespace-nowrap transition-colors cursor-pointer">
+									class="bg-[#252426] text-mrent-white aria-[current=true]:bg-mrent-white aria-[current=true]:text-mrent-black flex items-center justify-center rounded-[15px] h-[65px] w-[300px] px-[15px] font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] whitespace-nowrap transition-colors cursor-pointer">
 									<?php echo esc_html($mrent_pkg_tab1); ?>
 								</button>
 								<button
@@ -259,7 +259,7 @@ if ($mrent_pkg_has_options) {
 									data-mrent-pkg-trigger
 									data-mrent-pkg-id="options"
 									aria-current="true"
-									class="bg-[#252426] text-mrent-white aria-[current=true]:bg-mrent-white aria-[current=true]:text-mrent-black flex items-center justify-center rounded-[15px] h-[65px] w-[300px] px-[15px] font-[500] text-[20px] whitespace-nowrap transition-colors cursor-pointer">
+									class="bg-[#252426] text-mrent-white aria-[current=true]:bg-mrent-white aria-[current=true]:text-mrent-black flex items-center justify-center rounded-[15px] h-[65px] w-[300px] px-[15px] font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] whitespace-nowrap transition-colors cursor-pointer">
 									<?php echo esc_html($mrent_pkg_tab2); ?>
 								</button>
 							</div>
@@ -293,17 +293,17 @@ if ($mrent_pkg_has_options) {
 
 									<div class="flex flex-col gap-[15px] xl:gap-[30px] flex-1">
 										<?php if ($mrent_opt_title !== '') : ?>
-											<p class="font-[400] text-[16px] xl:text-[30px] leading-[1.2]">
+											<p class="font-[400] text-[clamp(14px,12.54px+0.39vw,20px)] leading-[1.2]">
 												<?php echo esc_html($mrent_opt_title); ?>
 											</p>
 										<?php endif; ?>
 										<?php if ($mrent_opt_price !== '' || $mrent_opt_unit !== '') : ?>
 											<p class="leading-[1.2]">
 												<?php if ($mrent_opt_price !== '') : ?>
-													<span class="font-[800] text-[24px] xl:text-[40px]"><?php echo esc_html($mrent_opt_price); ?></span>
+													<span class="font-[800] text-[clamp(24px,20.12px+1.04vw,40px)]"><?php echo esc_html($mrent_opt_price); ?></span>
 												<?php endif; ?>
 												<?php if ($mrent_opt_unit !== '') : ?>
-													<span class="font-[400] text-[14px] xl:text-[24px]"><?php echo $mrent_opt_price !== '' ? '/' : ''; ?><?php echo esc_html($mrent_opt_unit); ?></span>
+													<span class="font-[400] text-[clamp(14px,11.57px+0.65vw,24px)]"><?php echo $mrent_opt_price !== '' ? '/' : ''; ?><?php echo esc_html($mrent_opt_unit); ?></span>
 												<?php endif; ?>
 											</p>
 										<?php endif; ?>
@@ -311,7 +311,7 @@ if ($mrent_pkg_has_options) {
 
 									<a
 										href="<?php echo esc_url($mrent_opt_url); ?>"
-										class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[55px] xl:h-[65px] shrink-0 w-full px-[15px] text-mrent-black font-[500] text-[14px] xl:text-[20px] whitespace-nowrap transition-colors">
+										class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[55px] xl:h-[65px] shrink-0 w-full px-[15px] text-mrent-black font-[500] text-[14px] xl:text-[18px] whitespace-nowrap transition-colors">
 										<?php echo esc_html($mrent_opt_cta); ?>
 									</a>
 								</article>

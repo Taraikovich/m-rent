@@ -50,17 +50,17 @@ if (is_array($mrent_image) && ! empty($mrent_image['url'])) {
 		<?php /* Левая колонка: заголовок, лид, CTA. */ ?>
 		<div class="flex flex-col gap-[30px] xl:gap-[50px] xl:w-[665px] xl:shrink-0">
 			<div class="flex flex-col gap-[1px] xl:gap-[30px] text-mrent-white leading-[1.2]">
-				<h1 class="font-display font-bold text-[28px] xl:text-[74px]">
+				<h1 class="font-display font-bold text-[clamp(24px,17.69px+1.68vw,50px)]">
 					<?php echo esc_html($mrent_title); ?>
 				</h1>
-				<p class="font-display text-[16px] xl:text-[30px]">
+				<p class="font-display text-[clamp(14px,12.54px+0.39vw,20px)]">
 					<?php echo nl2br(esc_html($mrent_text)); ?>
 				</p>
 			</div>
 
 			<a
 				href="<?php echo esc_url($mrent_cta_url); ?>"
-				class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center w-full xl:w-[300px] h-[55px] xl:h-[65px] rounded-[15px] font-display font-medium text-mrent-black text-[14px] xl:text-[20px] leading-none transition-colors">
+				class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center w-full xl:w-[300px] h-[55px] xl:h-[65px] rounded-[15px] font-display font-medium text-mrent-black text-[clamp(14px,13.03px+0.26vw,18px)] leading-none transition-colors">
 				<?php echo esc_html($mrent_cta_text); ?>
 			</a>
 		</div>

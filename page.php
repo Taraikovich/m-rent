@@ -23,7 +23,7 @@ while (have_posts()) :
 
 		<nav class="bg-mrent-black pt-[20px] xl:pt-[40px]" aria-label="<?php esc_attr_e('Хлебные крошки', 'm-rent'); ?>">
 			<div class="px-[15px] xl:px-[100px]">
-				<ol class="max-w-[1720px] mx-auto flex flex-wrap items-center gap-[10px] text-[16px] xl:text-[24px] leading-[1.2]">
+				<ol class="max-w-[1720px] mx-auto flex flex-wrap items-center gap-[10px] text-[clamp(16px,14.06px+0.52vw,24px)] leading-[1.2]">
 					<li class="flex items-center gap-[10px]">
 						<a href="<?php echo esc_url(home_url('/')); ?>" class="text-mrent-white hover:text-mrent-yellow transition-colors font-[400]">
 							<?php esc_html_e('Главная', 'm-rent'); ?>
@@ -41,7 +41,7 @@ while (have_posts()) :
 
 		<section class="bg-mrent-black px-[15px] xl:px-[100px] mt-[40px] xl:mt-[80px]">
 			<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px] text-mrent-white">
-				<h1 class="font-[700] text-[28px] xl:text-[74px] leading-[1.2] w-full">
+				<h1 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] w-full">
 					<?php the_title(); ?>
 				</h1>
 

@@ -145,7 +145,7 @@ $mrent_tabs = [
 					type="button"
 					data-mrent-tab-trigger
 					data-mrent-tab-id="<?php echo esc_attr($mrent_tab['id']); ?>"
-					class="bg-[#252426] text-mrent-white aria-[current=true]:bg-mrent-white aria-[current=true]:text-mrent-black flex items-center justify-center rounded-[15px] h-[65px] w-[330px] px-[15px] font-[500] text-[20px] whitespace-nowrap transition-colors cursor-pointer">
+					class="bg-[#252426] text-mrent-white aria-[current=true]:bg-mrent-white aria-[current=true]:text-mrent-black flex items-center justify-center rounded-[15px] h-[65px] w-[330px] px-[15px] font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] whitespace-nowrap transition-colors cursor-pointer">
 					<?php echo esc_html($mrent_tab['name']); ?>
 				</button>
 			<?php endforeach; ?>
@@ -155,7 +155,7 @@ $mrent_tabs = [
 		<div class="xl:hidden relative">
 			<select
 				data-mrent-tab-select
-				class="appearance-none bg-white text-mrent-black w-full h-[55px] rounded-[15px] pl-[15px] pr-[40px] font-[500] text-[14px] cursor-pointer">
+				class="appearance-none bg-white text-mrent-black w-full h-[55px] rounded-[15px] pl-[15px] pr-[40px] font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] cursor-pointer">
 				<?php foreach ($mrent_tabs as $mrent_tab) : ?>
 					<option value="<?php echo esc_attr($mrent_tab['id']); ?>"><?php echo esc_html($mrent_tab['name']); ?></option>
 				<?php endforeach; ?>
@@ -175,12 +175,12 @@ $mrent_tabs = [
 					<?php if ($mrent_title !== '' || $mrent_lead !== '') : ?>
 						<div class="flex flex-col gap-[15px] xl:gap-[30px] text-mrent-white leading-[1.2]">
 							<?php if ($mrent_title !== '') : ?>
-								<h2 class="font-display font-[700] text-[28px] xl:text-[56px] 2xl:text-[74px]">
+								<h2 class="font-display font-[700] text-[clamp(24px,17.69px+1.68vw,50px)]">
 									<?php echo esc_html($mrent_title); ?>
 								</h2>
 							<?php endif; ?>
 							<?php if ($mrent_lead !== '') : ?>
-								<p class="font-[400] text-[16px] xl:text-[24px]">
+								<p class="font-[400] text-[clamp(14px,13.03px+0.26vw,18px)]">
 									<?php echo esc_html($mrent_lead); ?>
 								</p>
 							<?php endif; ?>
@@ -196,20 +196,23 @@ $mrent_tabs = [
 								<path d="M1.875 0C1.37772 0 0.900806 0.197544 0.549175 0.549175C0.197544 0.900806 0 1.37772 0 1.875L0 16.875C0 17.3723 0.197544 17.8492 0.549175 18.2008C0.900806 18.5525 1.37772 18.75 1.875 18.75H9.53063C9.64063 18.1038 9.80188 17.4787 10.0144 16.875H5.625C5.625 15.8804 5.22991 14.9266 4.52665 14.2233C3.82339 13.5201 2.86956 13.125 1.875 13.125V5.625C2.86956 5.625 3.82339 5.22991 4.52665 4.52665C5.22991 3.82339 5.625 2.86956 5.625 1.875H24.375C24.375 2.86956 24.7701 3.82339 25.4734 4.52665C26.1766 5.22991 27.1304 5.625 28.125 5.625V12.24C28.8375 12.8775 29.4694 13.605 30 14.4038V1.875C30 1.37772 29.8025 0.900806 29.4508 0.549175C29.0992 0.197544 28.6223 0 28.125 0L1.875 0Z" />
 								<path d="M18.7463 9.53063L18.75 9.375C18.7496 8.72923 18.5825 8.09451 18.2648 7.5323C17.9471 6.97009 17.4896 6.49946 16.9366 6.16597C16.3836 5.83249 15.7538 5.64745 15.1083 5.6288C14.4628 5.61014 13.8235 5.75849 13.2521 6.05948C12.6808 6.36047 12.1969 6.80389 11.8472 7.34681C11.4976 7.88973 11.2941 8.51374 11.2564 9.15841C11.2187 9.80307 11.3481 10.4465 11.6322 11.0265C11.9162 11.6065 12.3451 12.1032 12.8775 12.4688C14.4982 10.9278 16.5415 9.90492 18.7463 9.53063Z" />
 							</svg>
-							<p class="leading-[1.2] text-[16px] xl:text-[28px] 2xl:text-[35px]">
+							<p class="leading-[1.2] text-[clamp(16px,14.06px+0.52vw,24px)]">
 								<span class="font-[800]"><?php esc_html_e('Стоимость услуги', 'm-rent'); ?></span><span class="font-[400]"> — <?php echo esc_html($mrent_cost); ?></span>
 							</p>
 						</div>
 					<?php endif; ?>
 				</div>
 
-				<?php /* Правая колонка: на десктопе фото абсолютно сверху-справа, карточка слева. */ ?>
-				<div class="flex flex-col gap-[30px] xl:block xl:relative xl:basis-[972px] xl:shrink xl:min-w-0 xl:self-stretch">
+				<?php /* Правая колонка: на десктопе высоту задаёт карточка (в потоке),
+				         фото — absolute поверх неё, тянется по той же высоте.
+				         xl:self-start не даёт колонке растянуться выше карточки. */ ?>
+				<div class="flex flex-col gap-[30px] xl:block xl:relative xl:basis-[972px] xl:shrink xl:min-w-0 xl:self-start">
 
-					<?php /* Карточка сроков. На мобайле — первой, на десктопе — поверх фото. */ ?>
-					<div class="order-1 xl:order-none relative z-10 bg-[#252426] border border-[#302f31] rounded-[15px] p-[25px] xl:p-[30px] flex flex-col gap-[30px] xl:gap-[60px] xl:w-[380px] 2xl:w-[443px] xl:absolute xl:left-0 xl:top-1/2 xl:-translate-y-1/2">
+					<?php /* Карточка сроков. На мобайле — первой, на десктопе — в потоке:
+					         именно она задаёт высоту правой колонки (и, как следствие, фото). */ ?>
+					<div class="order-1 xl:order-none relative z-10 bg-[#252426] border border-[#302f31] rounded-[15px] p-[25px] xl:p-[30px] flex flex-col gap-[30px] xl:gap-[60px] xl:w-[380px] 2xl:w-[443px]">
 						<div class="flex flex-col gap-[20px]">
-							<p class="font-[800] text-[20px] xl:text-[28px] 2xl:text-[35px] leading-[1.2] text-mrent-white">
+							<p class="font-[800] text-[clamp(16px,14.06px+0.52vw,24px)] leading-[1.2] text-mrent-white">
 								<?php echo esc_html($mrent_card_title); ?>
 							</p>
 
@@ -221,7 +224,7 @@ $mrent_tabs = [
 											continue;
 										}
 									?>
-										<li class="flex items-center gap-[15px] text-mrent-white text-[14px] xl:text-[24px] leading-[1.2]">
+										<li class="flex items-center gap-[15px] text-mrent-white text-[clamp(14px,13.03px+0.26vw,18px)] leading-[1.2]">
 											<span class="size-[6px] shrink-0 rounded-full bg-mrent-white" aria-hidden="true"></span>
 											<span><?php echo esc_html($mrent_item_text); ?></span>
 										</li>
@@ -232,14 +235,14 @@ $mrent_tabs = [
 
 						<a
 							href="<?php echo esc_url($mrent_cta_url); ?>"
-							class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[50px] xl:h-[55px] px-[15px] text-mrent-black font-[500] text-[14px] xl:text-[20px] whitespace-nowrap transition-colors">
+							class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[50px] xl:h-[55px] px-[15px] text-mrent-black font-[500] text-[clamp(14px,12.54px+0.39vw,20px)] whitespace-nowrap transition-colors">
 							<?php echo esc_html($mrent_cta_text); ?>
 						</a>
 					</div>
 
 					<?php /* Фото. Mobile: ниже карточки, квадрат на всю ширину.
-					         Desktop: absolute left-419, тянется по высоте карточки (top-0 bottom-0),
-					         чтобы фото и карточка были одной высоты. */ ?>
+					         Desktop: absolute top-0/bottom-0 → высота = высота правой колонки,
+					         а её задаёт карточка → фото и карточка всегда одной высоты. */ ?>
 					<?php if ($mrent_image_url !== '') : ?>
 						<div class="order-2 xl:order-none rounded-[15px] overflow-hidden xl:absolute xl:top-0 xl:bottom-0 xl:right-0 xl:left-[356px] 2xl:left-[419px]">
 							<img
@@ -271,10 +274,10 @@ $mrent_tabs = [
 									<?php /* Описание */ ?>
 									<div class="flex flex-col gap-[15px] xl:gap-[30px] leading-[1.2] text-mrent-white xl:flex-1 xl:min-w-0">
 										<?php if ($mrent_slide['title'] !== '') : ?>
-											<h3 class="font-[800] text-[20px] xl:text-[28px] 2xl:text-[35px]"><?php echo esc_html($mrent_slide['title']); ?></h3>
+											<h3 class="font-[800] text-[clamp(16px,14.06px+0.52vw,24px)]"><?php echo esc_html($mrent_slide['title']); ?></h3>
 										<?php endif; ?>
 										<?php if ($mrent_slide['description'] !== '') : ?>
-											<p class="font-[400] text-[14px] xl:text-[24px]"><?php echo esc_html($mrent_slide['description']); ?></p>
+											<p class="font-[400] text-[clamp(14px,13.03px+0.26vw,18px)]"><?php echo esc_html($mrent_slide['description']); ?></p>
 										<?php endif; ?>
 									</div>
 
@@ -294,12 +297,12 @@ $mrent_tabs = [
 									<?php if ($mrent_slide['benefits_title'] !== '' || ! empty($mrent_slide['benefits_items'])) : ?>
 										<div class="flex flex-col gap-[15px] xl:gap-[20px] leading-[1.2] text-mrent-white xl:flex-1 xl:min-w-0">
 											<?php if ($mrent_slide['benefits_title'] !== '') : ?>
-												<h3 class="font-[800] text-[20px] xl:text-[28px] 2xl:text-[35px]"><?php echo esc_html($mrent_slide['benefits_title']); ?></h3>
+												<h3 class="font-[800] text-[clamp(16px,14.06px+0.52vw,24px)]"><?php echo esc_html($mrent_slide['benefits_title']); ?></h3>
 											<?php endif; ?>
 											<?php if (! empty($mrent_slide['benefits_items'])) : ?>
 												<ul class="flex flex-col gap-[10px]">
 													<?php foreach ($mrent_slide['benefits_items'] as $mrent_item) : ?>
-														<li class="flex items-center gap-[10px] xl:gap-[15px] text-[14px] xl:text-[24px]">
+														<li class="flex items-center gap-[10px] xl:gap-[15px] text-[clamp(14px,13.03px+0.26vw,18px)]">
 															<span class="size-[4px] xl:size-[6px] shrink-0 rounded-full bg-mrent-white" aria-hidden="true"></span>
 															<span><?php echo esc_html($mrent_item); ?></span>
 														</li>
@@ -351,7 +354,7 @@ $mrent_tabs = [
 		<div data-mrent-tab-panel data-mrent-tab-id="faq" hidden>
 			<div class="flex flex-col gap-[30px] xl:gap-[60px]">
 
-				<h2 class="font-display font-[700] text-[28px] xl:text-[74px] leading-[1.2] text-mrent-white">
+				<h2 class="font-display font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] text-mrent-white">
 					<?php echo esc_html($mrent_tab3_title); ?>
 				</h2>
 
@@ -359,7 +362,7 @@ $mrent_tabs = [
 					<?php foreach ($mrent_tab3_items as $mrent_qa) : ?>
 						<details class="mrent-faq-item bg-[#252426] border border-[#302f31] rounded-[15px]">
 							<summary class="flex items-center justify-between gap-[15px] xl:gap-[20px] p-[20px] xl:p-[40px] cursor-pointer select-none">
-								<h3 class="font-[800] text-[18px] xl:text-[35px] leading-[1.2] text-mrent-white">
+								<h3 class="font-[800] text-[clamp(16px,14.06px+0.52vw,24px)] leading-[1.2] text-mrent-white">
 									<?php echo esc_html($mrent_qa['question']); ?>
 								</h3>
 								<span class="mrent-faq-icon shrink-0 flex items-center justify-center bg-mrent-yellow rounded-[8px] size-[25px] xl:size-[36px] text-mrent-black">
@@ -369,7 +372,7 @@ $mrent_tabs = [
 								</span>
 							</summary>
 							<?php if ($mrent_qa['answer'] !== '') : ?>
-								<div class="px-[20px] xl:px-[40px] pb-[20px] xl:pb-[40px] pt-0 text-mrent-white font-[400] text-[14px] xl:text-[24px] leading-[1.4]">
+								<div class="px-[20px] xl:px-[40px] pb-[20px] xl:pb-[40px] pt-0 text-mrent-white font-[400] text-[clamp(14px,12.54px+0.39vw,20px)] leading-[1.4]">
 									<?php echo wp_kses_post($mrent_qa['answer']); ?>
 								</div>
 							<?php endif; ?>
