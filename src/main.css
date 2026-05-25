@@ -332,6 +332,12 @@
     flex-direction: column;
     gap: 8px;
   }
+  .mrent-article ul {
+    list-style: disc;
+  }
+  .mrent-article ul li::marker {
+    color: #fff;
+  }
   /* Картинка-блок Гутенберга. Десктоп h-600, мобайл h-220. */
   .mrent-article figure,
   .mrent-article .wp-block-image {

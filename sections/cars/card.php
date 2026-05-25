@@ -30,6 +30,9 @@ if (! $mrent_thumb_url) {
 		$mrent_thumb_url = $mrent_gallery[0]['url'];
 	}
 }
+
+$mrent_hover_image = get_field('car_hover_image');
+$mrent_hover_url   = is_array($mrent_hover_image) && ! empty($mrent_hover_image['url']) ? $mrent_hover_image['url'] : '';
 ?>
 
 <?php /* h-full + flex-col, чтобы карточки внутри grid-row растягивались до общей
@@ -38,12 +41,21 @@ if (! $mrent_thumb_url) {
 <article class="flex flex-col gap-[15px] xl:gap-[30px] items-stretch w-full h-full">
 	<?php /* Мобайл: высота фото тянется за шириной карточки (соотношение 5:7),
 	         но зажата в диапазон 130–300px. На xl+ — фиксированные 300px. */ ?>
-	<a href="<?php echo esc_url($mrent_permalink); ?>" class="block relative rounded-[15px] overflow-hidden aspect-[5/7] min-h-[130px] max-h-[300px] xl:aspect-auto xl:h-[300px] xl:min-h-0 xl:max-h-none bg-[#252426] shrink-0">
+	<a href="<?php echo esc_url($mrent_permalink); ?>" class="group block relative rounded-[15px] overflow-hidden aspect-[5/7] min-h-[130px] max-h-[300px] xl:aspect-auto xl:h-[300px] xl:min-h-0 xl:max-h-none bg-[#252426] shrink-0">
 		<?php if ($mrent_thumb_url) : ?>
 			<img
 				src="<?php echo esc_url($mrent_thumb_url); ?>"
 				alt="<?php echo esc_attr(get_the_title()); ?>"
-				class="absolute inset-0 size-full object-cover"
+				class="absolute inset-0 size-full object-cover transition-opacity duration-300<?php echo $mrent_hover_url ? ' group-hover:opacity-0' : ''; ?>"
+				loading="lazy"
+				decoding="async">
+		<?php endif; ?>
+		<?php if ($mrent_hover_url) : ?>
+			<img
+				src="<?php echo esc_url($mrent_hover_url); ?>"
+				alt=""
+				aria-hidden="true"
+				class="absolute inset-0 size-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
 				loading="lazy"
 				decoding="async">
 		<?php endif; ?>

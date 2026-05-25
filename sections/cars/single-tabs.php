@@ -94,7 +94,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 	: [];
 ?>
 
-<section class="px-[15px] xl:px-[100px] mt-[40px] xl:mt-[100px]" data-car-tabs>
+<section class="px-[15px] xl:px-[100px] mt-[40px] xl:my-[200px]" data-car-tabs>
 	<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px]">
 
 		<?php /* ── Mobile: dropdown с активным табом ── */ ?>
