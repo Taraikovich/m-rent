@@ -690,7 +690,7 @@
   .mrent-consultation-form .mrent-cf7-label {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(14px, 13.03px + 0.26vw, 18px);
+    font-size: clamp(14px, 13.03px + 0.26vw, 16px);
     line-height: 1.2;
     color: var(--color-mrent-white);
     display: block;

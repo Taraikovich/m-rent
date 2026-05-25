@@ -62,7 +62,7 @@ $mrent_messenger_icons = [
 	'telegram'  => 'contact-telegram-chat.png',
 ];
 
-$mrent_icon_class = 'block size-10 xl:size-[50px]';
+$mrent_icon_class = 'block size-7.5 xl:size-[38px]';
 ?>
 
 <section class="bg-mrent-black px-3.75 py-15 xl:px-25 xl:py-25">
@@ -94,7 +94,7 @@ $mrent_icon_class = 'block size-10 xl:size-[50px]';
 
 					<?php if ($mrent_socials) : ?>
 						<div class="flex flex-col gap-3.75 xl:gap-7.5">
-							<p class="font-display font-bold text-[clamp(16px,calc(17.57px+0.65vw),30px)] text-mrent-white leading-[1.2]">
+							<p class="font-display font-bold text-[clamp(12px,calc(13.18px+0.49vw),22px)] text-mrent-white leading-[1.2]">
 								<?php esc_html_e('Мы в соцсетях:', 'm-rent'); ?>
 							</p>
 							<div class="flex gap-2.5 items-center">
@@ -115,7 +115,7 @@ $mrent_icon_class = 'block size-10 xl:size-[50px]';
 
 					<?php if ($mrent_messengers) : ?>
 						<div class="flex flex-col gap-3.75 xl:gap-7.5">
-							<p class="font-display font-bold text-[clamp(20px,calc(17.57px+0.65vw),30px)] text-mrent-white leading-[1.2]">
+							<p class="font-display font-bold text-[clamp(15px,calc(13.18px+0.49vw),22px)] text-mrent-white leading-[1.2]">
 								<?php esc_html_e('Свяжитесь с нами:', 'm-rent'); ?>
 							</p>
 							<div class="flex gap-2.5 items-center">

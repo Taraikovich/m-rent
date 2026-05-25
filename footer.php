@@ -134,7 +134,7 @@ $mrent_privacy_url  = '#privacy';
 										continue;
 									} ?>
 									<?php $mrent_msgr = $mrent_messenger_icons[$mrent_slug]; ?>
-									<a href="<?php echo esc_url($mrent_url); ?>" class="block size-[35px] xl:size-[56.143px] hover:opacity-80 transition-opacity" aria-label="<?php echo esc_attr($mrent_msgr['label']); ?>">
+									<a href="<?php echo esc_url($mrent_url); ?>" class="block size-7.5 xl:size-[38px] hover:opacity-80 transition-opacity" aria-label="<?php echo esc_attr($mrent_msgr['label']); ?>">
 										<img src="<?php echo esc_url($mrent_icons_url . $mrent_msgr['src']); ?>" alt="<?php echo esc_attr($mrent_msgr['label']); ?>" class="size-full object-contain" width="56" height="56" loading="lazy">
 									</a>
 								<?php endforeach; ?>
@@ -147,7 +147,7 @@ $mrent_privacy_url  = '#privacy';
 								<div class="flex gap-[10px] xl:gap-[15px] items-center text-white">
 									<?php foreach ($mrent_socials_footer as $name => $href) : ?>
 										<a href="<?php echo esc_url($href); ?>" class="hover:text-mrent-yellow transition-colors" aria-label="<?php echo esc_attr(ucfirst($name)); ?>">
-											<?php echo mrent_icon($name, ['class' => 'w-[32px] h-[32px] xl:w-[40px] xl:h-[40px]']); ?>
+											<?php echo mrent_icon($name, ['class' => 'w-[30px] h-[30px] xl:w-[38px] xl:h-[38px]']); ?>
 										</a>
 									<?php endforeach; ?>
 								</div>

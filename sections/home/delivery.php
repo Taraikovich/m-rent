@@ -51,7 +51,7 @@ $mrent_image_alt = $mrent_image['alt'] ?? '';
 		         left-aligned, gap-50 между блоком текста и кнопкой (по Figma 326:261). */ ?>
 		<div class="flex flex-col items-center xl:items-start gap-7.5 xl:gap-12.5 w-full xl:w-160.5 xl:shrink-0">
 			<div class="flex flex-col items-center xl:items-start gap-3.75 xl:gap-7.5 text-mrent-white text-center xl:text-left leading-[1.2] w-full">
-				<h2 class="font-display font-bold text-[clamp(24px,calc(16.83px+2.98vw),50px)] max-w-56 xl:max-w-none">
+				<h2 class="font-display font-bold text-[clamp(24px,calc(16.83px+2.98vw),50px)] max-w-65 xl:max-w-none">
 					<?php echo esc_html($mrent_title); ?>
 				</h2>
 				<?php if ($mrent_lead) : ?>

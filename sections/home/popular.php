@@ -109,7 +109,7 @@ $mrent_catalog_url = get_post_type_archive_link('car') ?: home_url('/cars/');
 			<?php /* ── Mobile-only: пагинация-полоски + ссылка «Смотреть каталог» ── */ ?>
 			<div class="xl:hidden flex flex-col items-center gap-[30px]">
 				<div class="mrent-popular-pagination flex flex-wrap gap-[10px] justify-center"></div>
-				<a href="<?php echo esc_url($mrent_catalog_url); ?>" class="text-mrent-yellow underline font-[500] text-[14px] hover:text-[#FFF831] transition-colors">
+				<a href="<?php echo esc_url($mrent_catalog_url); ?>" class="text-mrent-yellow underline font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] hover:text-[#FFF831] transition-colors">
 					<?php esc_html_e('Смотреть каталог', 'm-rent'); ?>
 				</a>
 			</div>
