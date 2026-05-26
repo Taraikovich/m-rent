@@ -36,11 +36,11 @@ function initReviewsSwiper(el) {
       navigation: prev && next ? { prevEl: prev, nextEl: next } : false,
       pagination: paginationEl
         ? {
-            el: paginationEl,
-            clickable: true,
-            bulletClass: 'mrent-bullet-bar',
-            bulletActiveClass: 'mrent-bullet-bar-active',
-          }
+          el: paginationEl,
+          clickable: true,
+          bulletClass: 'mrent-bullet-bar',
+          bulletActiveClass: 'mrent-bullet-bar-active',
+        }
         : false,
     });
   };
@@ -57,6 +57,19 @@ function initReviewsSwiper(el) {
   // Swiper при смене layout (rows / slidesPerView) не пересчитывает Grid
   // корректно — пересоздаём инстанс на переходе mobile↔desktop.
   MQ_DESKTOP.addEventListener('change', rebuild);
+
+  // На мобильном карточка свайпера часто выше экрана: после клика по стрелке
+  // прокручиваем страницу к верху свайпера, чтобы пользователь видел новую карточку.
+  const scrollToTop = () => {
+    if (MQ_DESKTOP.matches) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 70;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+  prev && prev.addEventListener('click', scrollToTop);
+  next && next.addEventListener('click', scrollToTop);
+  paginationEl && paginationEl.addEventListener('click', (e) => {
+    if (e.target.closest('.mrent-bullet-bar')) scrollToTop();
+  });
 }
 
 document.querySelectorAll('[data-mrent-reviews]').forEach(initReviewsSwiper);

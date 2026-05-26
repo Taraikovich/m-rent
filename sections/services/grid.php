@@ -13,7 +13,7 @@
  *
  * Мобайл (<xl):
  *   • count ≤ 7  → обычный stack (одна колонка).
- *   • count > 7  → Swiper с пагинацией: 4 карточки в слайде (один под другим),
+ *   • count > 7  → Swiper с пагинацией: 2 карточки в слайде (один под другим),
  *                  кнопки prev/next + полоски-табы (Figma 2535:5717).
  *
  * NB: card.php читает `global $post` и `get_field()`, поэтому для рендера по ID
@@ -138,7 +138,7 @@ $mrent_card_width = static function (int $n): float {
 
 				$mrent_rows          = ($mrent_count <= 4) ? [$mrent_post_ids] : $mrent_chunks_alternating($mrent_post_ids);
 				$mrent_mobile_swiper = $mrent_count > 7;
-				$mrent_pages         = $mrent_mobile_swiper ? array_chunk($mrent_post_ids, 4) : [];
+				$mrent_pages         = $mrent_mobile_swiper ? array_chunk($mrent_post_ids, 2) : [];
 			?>
 
 				<div class="flex flex-col gap-[30px] xl:gap-[60px]" id="cat-<?php echo esc_attr($mrent_term->slug); ?>">
@@ -199,7 +199,7 @@ $mrent_card_width = static function (int $n): float {
 										<polyline points="8 1 1 8 8 15" />
 									</svg>
 								</button>
-								<div class="mrent-services-pagination flex items-center gap-[10px]"></div>
+								<div class="mrent-services-pagination flex flex-wrap items-center justify-center gap-[10px] flex-1 min-w-0"></div>
 								<button
 									type="button"
 									class="mrent-services-next bg-mrent-yellow rounded-[15px] size-[55px] shrink-0 flex items-center justify-center text-mrent-black"

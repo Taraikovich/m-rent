@@ -1,4 +1,5 @@
 <?php
+
 /**
  * «Авто под заказ»: фото-карусель Swiper.
  *
@@ -12,20 +13,20 @@
  * Init: src/cars.js → initCarImportGallery() ловит `[data-mrent-car-import-gallery]`.
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
-$mrent_gallery = function_exists( 'get_field' ) ? (array) get_field( 'car_import_gallery' ) : [];
+$mrent_gallery = function_exists('get_field') ? (array) get_field('car_import_gallery') : [];
 $mrent_slides  = [];
 
-foreach ( $mrent_gallery as $img ) {
-	if ( ! empty( $img['url'] ) ) {
-		$mrent_slides[] = [ 'url' => $img['url'], 'alt' => $img['alt'] ?? '' ];
+foreach ($mrent_gallery as $img) {
+	if (! empty($img['url'])) {
+		$mrent_slides[] = ['url' => $img['url'], 'alt' => $img['alt'] ?? ''];
 	}
 }
 
-if ( empty( $mrent_slides ) ) {
+if (empty($mrent_slides)) {
 	$mrent_slides[] = [
 		'url' => get_template_directory_uri() . '/assets/images/car-import.jpg',
 		'alt' => '',
@@ -33,34 +34,32 @@ if ( empty( $mrent_slides ) ) {
 }
 ?>
 
-<section class="bg-mrent-black px-3.75 xl:px-25 pt-5 xl:pt-10">
+<section class="bg-mrent-black px-3.75 xl:px-25 pt-5 xl:py-25">
 	<div class="max-w-430 mx-auto">
 		<div class="mrent-car-import-gallery swiper relative rounded-[15px] overflow-hidden h-70 xl:h-200 bg-[#252426]" data-mrent-car-import-gallery>
 			<div class="swiper-wrapper">
-				<?php foreach ( $mrent_slides as $slide ) : ?>
+				<?php foreach ($mrent_slides as $slide) : ?>
 					<div class="swiper-slide">
-						<img src="<?php echo esc_url( $slide['url'] ); ?>" alt="<?php echo esc_attr( $slide['alt'] ); ?>" class="size-full object-cover" loading="lazy" decoding="async">
+						<img src="<?php echo esc_url($slide['url']); ?>" alt="<?php echo esc_attr($slide['alt']); ?>" class="size-full object-cover" loading="lazy" decoding="async">
 					</div>
 				<?php endforeach; ?>
 			</div>
 
-			<?php if ( count( $mrent_slides ) > 1 ) : ?>
+			<?php if (count($mrent_slides) > 1) : ?>
 				<button
 					type="button"
 					class="mrent-car-import-prev absolute left-3.75 xl:left-12.5 top-1/2 -translate-y-1/2 size-12.5 xl:size-16.25 flex items-center justify-center rounded-lg bg-mrent-white/20 hover:bg-mrent-white/30 backdrop-blur-sm text-mrent-white transition-colors z-10"
-					aria-label="<?php esc_attr_e( 'Предыдущее фото', 'm-rent' ); ?>"
-				>
+					aria-label="<?php esc_attr_e('Предыдущее фото', 'm-rent'); ?>">
 					<svg class="w-[18px] h-[18px] xl:w-6 xl:h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-						<path d="M15.5 4.5 8 12l7.5 7.5 1.5-1.5L11 12l6-6z"/>
+						<path d="M15.5 4.5 8 12l7.5 7.5 1.5-1.5L11 12l6-6z" />
 					</svg>
 				</button>
 				<button
 					type="button"
 					class="mrent-car-import-next absolute right-3.75 xl:right-12.5 top-1/2 -translate-y-1/2 size-12.5 xl:size-16.25 flex items-center justify-center rounded-lg bg-mrent-white/20 hover:bg-mrent-white/30 backdrop-blur-sm text-mrent-white transition-colors z-10"
-					aria-label="<?php esc_attr_e( 'Следующее фото', 'm-rent' ); ?>"
-				>
+					aria-label="<?php esc_attr_e('Следующее фото', 'm-rent'); ?>">
 					<svg class="w-[18px] h-[18px] xl:w-6 xl:h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-						<path d="M8.5 4.5 16 12l-7.5 7.5L7 18l6-6-6-6z"/>
+						<path d="M8.5 4.5 16 12l-7.5 7.5L7 18l6-6-6-6z" />
 					</svg>
 				</button>
 			<?php endif; ?>

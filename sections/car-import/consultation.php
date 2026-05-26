@@ -48,11 +48,11 @@ $mrent_messenger_icons = [
 ];
 ?>
 
-<section class="bg-mrent-black px-[15px] xl:px-[100px] py-[60px] xl:py-[100px]">
+<section class="bg-mrent-black px-[15px] xl:px-[100px] py-[60px] xl:py-25">
 	<div class="max-w-[1720px] mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[30px] xl:gap-[40px] min-w-0">
 
 		<?php /* Левая колонка: заголовок + контакты. На desktop растягивается на всю высоту, justify-between. */ ?>
-		<div class="flex flex-col xl:justify-between xl:self-center gap-[30px] xl:gap-10">
+		<div class="flex flex-col xl:justify-between xl:self-center gap-[30px] xl:gap-20">
 
 			<?php /* Заголовок + лид. */ ?>
 			<div class="flex flex-col gap-[20px] text-mrent-white leading-[1.2]">
@@ -72,7 +72,7 @@ $mrent_messenger_icons = [
 						<?php esc_html_e('Либо свяжитесь с нами удобным для вас способом', 'm-rent'); ?>
 					</p>
 
-					<div class="flex items-center justify-between">
+					<div class="flex items-center justify-start gap-10">
 
 						<?php /* Телефон. */ ?>
 						<?php if ($mrent_phone !== '') : ?>
@@ -97,7 +97,7 @@ $mrent_messenger_icons = [
 									<?php if (! $mrent_file || $mrent_url === '') continue; ?>
 									<a
 										href="<?php echo esc_url($mrent_url); ?>"
-										class="block size-[40px] xl:size-[55px] hover:opacity-80 transition-opacity shrink-0"
+										class="block size-7.5 xl:size-9.5 hover:opacity-80 transition-opacity shrink-0"
 										aria-label="<?php echo esc_attr(ucfirst($mrent_slug)); ?>"
 										target="_blank" rel="noopener noreferrer">
 										<img

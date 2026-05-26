@@ -68,9 +68,9 @@ $mrent_hero_alt = $mrent_hero_image['alt'] ?? '';
 	         картинки — поэтому ниже стоит spacer, добавляющий высоту секции. */ ?>
 	<div class="absolute inset-x-0 top-[325px] xl:top-[515px] px-[15px] xl:px-[100px]">
 		<div class="max-w-[1720px] mx-auto flex justify-center">
-			<div class="w-full max-w-[330px] xl:w-[1013px] xl:max-w-none flex flex-col gap-[30px] xl:gap-[50px] items-center">
+			<div class="w-full max-w-[330px] xl:max-w-full flex flex-col gap-[30px] xl:gap-[50px] items-center">
 				<div class="flex flex-col gap-[15px] xl:gap-[20px] items-center text-center text-white w-full">
-					<h1 class="font-display font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] xl:max-w-[913px]">
+					<h1 class="font-display font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2]">
 						<?php echo esc_html($mrent_title); ?>
 					</h1>
 					<?php if ($mrent_lead !== '') : ?>

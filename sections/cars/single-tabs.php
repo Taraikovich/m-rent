@@ -33,10 +33,8 @@ $mrent_terms_items   = (array) get_field('car_terms_items');
 $mrent_reviews       = (array) get_field('car_reviews');
 $mrent_faq_items     = (array) get_field('car_faq_items');
 
-/* Картинки: «Характеристики» (полупрозрачный фон) и «Условия аренды»
-   (рядом с текстом) — отдельные ACF-поля. Если поле пустое — каскад:
+/* Картинка таба «Условия аренды» — отдельное ACF-поле. Если пусто — каскад:
    первое фото галереи → featured. */
-$mrent_specs_image_field = get_field('car_specs_image');
 $mrent_terms_image_field = get_field('car_terms_image');
 
 $mrent_gallery     = (array) get_field('car_gallery');
@@ -46,10 +44,6 @@ if (! empty($mrent_gallery[0]['url'])) {
 } else {
 	$mrent_image_fallback = (string) get_the_post_thumbnail_url(get_the_ID(), 'large');
 }
-
-$mrent_specs_bg = is_array($mrent_specs_image_field) && ! empty($mrent_specs_image_field['url'])
-	? (string) $mrent_specs_image_field['url']
-	: $mrent_image_fallback;
 
 $mrent_terms_image = is_array($mrent_terms_image_field) && ! empty($mrent_terms_image_field['url'])
 	? (string) $mrent_terms_image_field['url']
@@ -191,15 +185,9 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 <?php /* ─────────────── Tab: Характеристики ─────────────── */ ?>
 <?php if (isset($mrent_tabs['specifications'])) : ?>
 	<div<?php echo $mrent_active === 'specifications' ? '' : ' hidden'; ?> class="flex flex-col gap-[20px] xl:gap-[60px]" data-tab-panel="specifications">
-		<div class="relative">
-			<?php if ($mrent_specs_bg) : ?>
-				<img src="<?php echo esc_url($mrent_specs_bg); ?>" alt="" aria-hidden="true"
-					class="hidden xl:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[707px] h-[319px] object-cover object-bottom pointer-events-none">
-			<?php endif; ?>
-
-			<?php /* 3 колонки на десктопе; mobile: только specs, остальное прячется `max-xl:hidden`,
-					         JS снимает класс по «Подробнее». */ ?>
-			<div class="relative flex flex-col xl:flex-row xl:items-start xl:justify-between gap-[20px] xl:gap-[40px] text-mrent-white">
+		<?php /* 3 колонки на десктопе; mobile: только specs, остальное прячется `max-xl:hidden`,
+				         JS снимает класс по «Подробнее». */ ?>
+		<div class="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-[20px] xl:gap-[40px] text-mrent-white">
 
 				<?php if (! empty($mrent_specs_rows)) : ?>
 					<div class="xl:flex-1 xl:basis-0 xl:min-w-0 flex flex-col gap-[10px] text-[clamp(14px,11.57px+0.65vw,24px)] leading-[1.24]">
@@ -242,7 +230,6 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 				<?php endif; ?>
 
 			</div>
-		</div>
 
 		<?php if (! empty($mrent_specs_ideal_lines) || ! empty($mrent_specs_pros_lines)) : ?>
 			<button type="button" class="xl:hidden text-mrent-yellow underline font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] self-start"
@@ -302,7 +289,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 									<?php for ($i = 0; $i < 5; $i++) :
 										$on = $i < $rev_rating;
 									?>
-										<svg width="20" height="19" viewBox="0 0 20 19" fill="<?php echo $on ? '#FFD700' : '#3a393b'; ?>" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="xl:w-[28px] xl:h-[27px]">
+										<svg width="15" height="14" viewBox="0 0 20 19" fill="<?php echo $on ? '#FFD700' : '#3a393b'; ?>" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="xl:w-[21px] xl:h-[20px]">
 											<path d="M10 0l2.939 6.038 6.661.967-4.82 4.69 1.138 6.626L10 15.2l-5.918 3.121 1.138-6.626L.4 7.005l6.661-.967L10 0z" />
 										</svg>
 									<?php endfor; ?>

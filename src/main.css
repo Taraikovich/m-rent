@@ -344,6 +344,7 @@
     width: 100%;
     border-radius: 15px;
     overflow: hidden;
+    margin: 1em 0 !important;
   }
   .mrent-article figure img,
   .mrent-article .wp-block-image img {

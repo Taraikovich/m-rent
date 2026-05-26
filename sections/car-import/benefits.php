@@ -53,7 +53,7 @@ if (! $mrent_benefits) {
 $mrent_chunks = array_chunk($mrent_benefits, 3);
 ?>
 
-<section class="bg-mrent-black px-[15px] xl:px-[100px] pt-[30px] xl:pt-[60px]">
+<section class="bg-mrent-black px-[15px] xl:px-[100px] pt-[30px] xl:py-25">
 	<div class="max-w-[1720px] mx-auto flex flex-col items-center xl:items-start gap-[30px] xl:gap-[60px]">
 
 		<h2 class="font-display font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] text-mrent-white text-center xl:text-left">

@@ -491,18 +491,6 @@
             "placeholder": "M-пакет\nяркий цвет"
         },
         {
-            "key": "field_mrent_car_specs_image",
-            "label": "Характеристики — фоновое фото (опц.)",
-            "name": "car_specs_image",
-            "type": "image",
-            "instructions": "Полупрозрачный фон за 3 колонками на десктопе. Если пусто — берётся первая фотка из галереи или featured.",
-            "required": 0,
-            "wrapper": { "width": "", "class": "", "id": "" },
-            "return_format": "array",
-            "preview_size": "medium",
-            "library": "all"
-        },
-        {
             "key": "field_mrent_car_terms_items",
             "label": "Условия аренды — пункты",
             "name": "car_terms_items",

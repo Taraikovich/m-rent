@@ -63,7 +63,7 @@ $mrent_hover_url   = is_array($mrent_hover_image) && ! empty($mrent_hover_image[
 
 	<div class="flex flex-col gap-[15px] xl:gap-[30px] items-start w-full flex-1">
 		<?php /* Название показываем и на мобайле (16px), и на xl+ (26px Bold, Figma 390:386). */ ?>
-		<h3 class="block w-full font-[700] text-[clamp(12px,9.09px+0.78vw,24px)] leading-[1.2] text-mrent-white">
+		<h3 class="block w-full font-[700] text-[clamp(12px,10.54px+0.39vw,18px)] leading-[1.2] text-mrent-white">
 			<a href="<?php echo esc_url($mrent_permalink); ?>" class="hover:text-mrent-yellow transition-colors">
 				<?php the_title(); ?>
 			</a>

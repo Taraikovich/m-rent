@@ -8,7 +8,7 @@ if (!$title && !$body) {
 }
 
 ?>
-<section class="bg-mrent-black px-3.75 xl:px-25 pt-7.5 xl:pt-15">
+<section class="bg-mrent-black px-3.75 xl:px-25 pt-7.5 xl:py-25">
     <div class="max-w-430 mx-auto w-full flex flex-col gap-3.75 xl:gap-7.5 text-mrent-white leading-[1.2]">
         <?php if ($title): ?>
             <h2 class="font-display font-bold text-[clamp(24px,17.69px+1.68vw,50px)] max-w-275"><?= esc_html($title) ?></h2>

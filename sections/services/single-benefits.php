@@ -44,7 +44,7 @@ if ($mrent_title === '' || empty($mrent_items)) {
 	<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px] text-mrent-white">
 
 		<div class="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-[15px] xl:gap-[20px]">
-			<h2 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] xl:basis-[887px] xl:max-w-[887px] min-w-0">
+			<h2 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] xl:basis-[725px] xl:max-w-[887px] min-w-0">
 				<?php echo esc_html($mrent_title); ?>
 			</h2>
 			<?php if ($mrent_subtitle !== '') : ?>

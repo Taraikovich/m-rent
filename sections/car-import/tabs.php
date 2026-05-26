@@ -135,7 +135,7 @@ $mrent_tabs = [
 ];
 ?>
 
-<section class="bg-mrent-black px-[15px] xl:px-[100px] pt-[30px] xl:pt-[60px]">
+<section class="bg-mrent-black px-[15px] xl:px-[100px] pt-[30px] xl:py-25">
 	<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px]" data-mrent-services-tabbed>
 
 		<?php /* Desktop: ряд из трёх pill-табов */ ?>

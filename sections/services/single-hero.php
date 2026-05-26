@@ -82,7 +82,7 @@ if ($mrent_image_url === '') {
 					<?php the_title(); ?>
 				</h1>
 				<?php if ($mrent_subtitle !== '') : ?>
-					<p class="text-mrent-white font-[400] text-[clamp(14px,12.54px+0.39vw,20px)] leading-[1.2] w-full">
+					<p class="text-mrent-white font-[400] text-[clamp(14px,12.54px+0.39vw,20px)] leading-[1.2] w-full xl:max-w-175">
 						<?php echo esc_html($mrent_subtitle); ?>
 					</p>
 				<?php endif; ?>
