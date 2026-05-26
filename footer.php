@@ -28,7 +28,7 @@ $mrent_email_url    = mrent_options_email_url();
 
 $mrent_logo_url   = get_stylesheet_directory_uri() . '/assets/images/logo.png';
 $mrent_home_url   = esc_url(home_url('/'));
-$mrent_contact_url = '#booking-form';
+$mrent_contact_url = '#booking-form-short';
 
 // Колонки футера тянутся из WP-меню локации `footer` (Внешний вид → Меню).
 // Верхний уровень меню = колонки (title — заголовок), дочерние = ссылки.
@@ -169,7 +169,15 @@ $mrent_privacy_url  = '#privacy';
 	</div>
 </footer>
 
-<?php get_template_part('sections/common/booking-modal'); ?>
+<?php get_template_part('sections/common/booking-modal', null, [
+	'id'          => 'booking-form',
+	'form_titles' => ['Заявка (модальное окно)', 'Бронирование автомобиля'],
+]); ?>
+
+<?php get_template_part('sections/common/booking-modal', null, [
+	'id'          => 'booking-form-short',
+	'form_titles' => ['Заявка (короткая)'],
+]); ?>
 
 <?php wp_footer(); ?>
 </body>
