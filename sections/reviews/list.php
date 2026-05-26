@@ -88,7 +88,7 @@ if (empty($mrent_items)) {
 											<?php for ($mrent_s = 1; $mrent_s <= 5; $mrent_s++) :
 												$mrent_filled = $mrent_s <= $mrent_item['rating'];
 											?>
-												<svg class="w-[27px] h-[25px] <?php echo $mrent_filled ? '' : 'opacity-25'; ?>" viewBox="0 0 27 25" fill="currentColor" aria-hidden="true">
+												<svg class="w-[20px] h-[19px] <?php echo $mrent_filled ? '' : 'opacity-25'; ?>" viewBox="0 0 27 25" fill="currentColor" aria-hidden="true">
 													<path d="M13.5 0l3.708 8.292L26 9.55l-6.5 6.342L21.034 25 13.5 20.792 5.966 25l1.534-9.108L1 9.55l8.792-1.258L13.5 0z" />
 												</svg>
 											<?php endfor; ?>

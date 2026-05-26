@@ -34,9 +34,11 @@ function closeModal() {
   modal.hidden = true;
   document.documentElement.classList.remove(OPEN_CLASS);
   setState(modal, 'form');
-  const form = modal.querySelector('.wpcf7');
+  // CF7 ждёт сам `<form>` (`.wpcf7-form`), а не враппер `.wpcf7` —
+  // иначе `new FormData(...)` бросает TypeError и роняет close-хендлер.
+  const form = modal.querySelector('form.wpcf7-form');
   if (form && typeof window.wpcf7?.reset === 'function') {
-    window.wpcf7.reset(form);
+    try { window.wpcf7.reset(form); } catch (_) { /* не блокируем закрытие */ }
   }
 }
 

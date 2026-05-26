@@ -32,7 +32,7 @@ if (! $mrent_form_id) {
 
 <div
 	id="review-modal"
-	class="mrent-booking-modal fixed inset-0 z-[100] flex items-center justify-center p-[15px] xl:p-[100px]"
+	class="mrent-booking-modal fixed inset-0 z-[100] flex items-center justify-center p-[8px] xl:p-[50px]"
 	data-state="form"
 	role="dialog"
 	aria-modal="true"
@@ -41,16 +41,16 @@ if (! $mrent_form_id) {
 
 	<div class="mrent-booking-modal__overlay absolute inset-0 bg-[rgba(30,29,31,0.6)] backdrop-blur-[12px]" data-review-modal-close aria-hidden="true"></div>
 
-	<div class="mrent-booking-modal__card relative w-full max-w-[1720px] max-h-full overflow-y-auto bg-[rgba(30,29,31,0.95)] xl:bg-[rgba(30,29,31,0.8)] xl:backdrop-blur-[80px] rounded-[15px] p-[25px] xl:px-[100px] xl:py-[100px]">
+	<div class="mrent-booking-modal__card relative w-full max-w-[860px] max-h-full overflow-y-auto bg-[rgba(30,29,31,0.95)] xl:bg-[rgba(30,29,31,0.8)] xl:backdrop-blur-[40px] rounded-[8px] p-[13px] xl:px-[50px] xl:py-[50px]">
 
 		<?php /* ─── Состояние: форма ─── */ ?>
-		<div class="mrent-booking-modal__form flex flex-col gap-[30px] xl:gap-[50px]">
+		<div class="mrent-booking-modal__form flex flex-col gap-[15px] xl:gap-[25px]">
 
-			<div class="flex flex-col gap-[30px] xl:gap-0 xl:flex-row xl:items-start xl:justify-between">
-				<a href="#" data-review-modal-close class="order-1 xl:order-2 self-center xl:self-auto font-display font-medium text-mrent-yellow text-[18px] xl:text-[30px] leading-none underline underline-offset-2 hover:opacity-80 transition-opacity">
+			<div class="flex flex-col gap-[15px] xl:gap-0 xl:flex-row xl:items-start xl:justify-between">
+				<a href="#" data-review-modal-close class="order-1 xl:order-2 self-center xl:self-auto font-display font-medium text-mrent-yellow text-[12px] xl:text-[15px] leading-none underline underline-offset-2 hover:opacity-80 transition-opacity">
 					<?php esc_html_e('Закрыть', 'm-rent'); ?>
 				</a>
-				<h2 id="review-modal-title" class="order-2 xl:order-1 font-display font-bold text-mrent-white text-[28px] xl:text-[74px] leading-[1.2] text-center xl:text-left">
+				<h2 id="review-modal-title" class="order-2 xl:order-1 font-display font-bold text-mrent-white text-[14px] xl:text-[37px] leading-[1.2] text-center xl:text-left">
 					<?php esc_html_e('Оставьте отзыв', 'm-rent'); ?>
 				</h2>
 			</div>
@@ -61,17 +61,17 @@ if (! $mrent_form_id) {
 		</div>
 
 		<?php /* ─── Состояние: успешная отправка ─── */ ?>
-		<div class="mrent-booking-modal__success flex flex-col items-center gap-[30px] xl:gap-[60px] text-center">
-			<div class="flex flex-col items-center gap-[15px] xl:gap-[30px] text-mrent-white">
-				<p class="font-display font-bold text-[28px] xl:text-[74px] leading-[1.2]">
+		<div class="mrent-booking-modal__success flex flex-col items-center gap-[15px] xl:gap-[30px] text-center">
+			<div class="flex flex-col items-center gap-[8px] xl:gap-[15px] text-mrent-white">
+				<p class="font-display font-bold text-[14px] xl:text-[37px] leading-[1.2]">
 					<?php esc_html_e('Спасибо за отзыв!', 'm-rent'); ?>
 				</p>
-				<p class="font-display text-[16px] xl:text-[30px] leading-[1.2] xl:max-w-[748px]">
+				<p class="font-display text-[8px] xl:text-[15px] leading-[1.2] xl:max-w-[374px]">
 					<?php esc_html_e('Мы опубликуем ваш отзыв после модерации. Спасибо, что делитесь впечатлениями.', 'm-rent'); ?>
 				</p>
 			</div>
 
-			<a href="#" data-review-modal-close class="font-display font-medium text-mrent-yellow text-[18px] xl:text-[30px] leading-none underline underline-offset-2 hover:opacity-80 transition-opacity">
+			<a href="#" data-review-modal-close class="font-display font-medium text-mrent-yellow text-[12px] xl:text-[15px] leading-none underline underline-offset-2 hover:opacity-80 transition-opacity">
 				<?php esc_html_e('Закрыть', 'm-rent'); ?>
 			</a>
 		</div>
