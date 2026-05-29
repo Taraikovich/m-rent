@@ -179,6 +179,8 @@ $mrent_privacy_url  = '#privacy';
 	'form_titles' => ['Заявка (короткая)'],
 ]); ?>
 
+<?php get_template_part('sections/common/messenger-fab'); ?>
+
 <?php wp_footer(); ?>
 </body>
 

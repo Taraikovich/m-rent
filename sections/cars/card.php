@@ -19,7 +19,7 @@ if (! defined('ABSPATH')) {
 global $post;
 
 $mrent_price       = (float) get_field('car_price_per_day');
-$mrent_booking_url = get_field('car_booking_url') ?: '#booking';
+$mrent_booking_url = get_field('car_booking_url') ?: '#booking-form';
 $mrent_permalink   = get_permalink();
 $mrent_thumb_url   = get_the_post_thumbnail_url($post, 'large');
 

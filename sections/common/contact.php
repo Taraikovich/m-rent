@@ -81,7 +81,7 @@ $mrent_icon_class = 'block size-7.5 xl:size-[38px]';
 						<?php esc_html_e('Оставьте заявку, и мы свяжемся с вами, чтобы помочь выбрать лучший вариант.', 'm-rent'); ?>
 					</p>
 				</div>
-				<a href="#" class="self-start font-display font-medium text-mrent-yellow text-[clamp(14px,calc(15.09px+0.78vw),18px)] underline underline-offset-2 hover:opacity-80 transition-opacity">
+				<a href="#booking-form-short" class="self-start font-display font-medium text-mrent-yellow text-[clamp(14px,calc(15.09px+0.78vw),18px)] underline underline-offset-2 hover:opacity-80 transition-opacity">
 					<?php esc_html_e('Оставить заявку', 'm-rent'); ?>
 				</a>
 			</div>

@@ -9,3 +9,4 @@ import './booking-modal.js';
 import './review-modal.js';
 import './reviews.js';
 import './cards-grid.js';
+import './messenger-fab.js';

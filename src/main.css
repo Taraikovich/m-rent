@@ -974,4 +974,15 @@
   .mrent-booking-modal .wpcf7-response-output {
     display: none !important;
   }
+
+  /* ──────────────────────────────────────────────────────────
+     Плавающая кнопка мессенджеров (sections/common/messenger-fab.php)
+     ────────────────────────────────────────────────────────── */
+  .mrent-msg-fab[data-state="open"] .mrent-msg-fab__list {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+  .mrent-msg-fab[data-state="open"] .mrent-msg-fab__icon-closed { display: none !important; }
+  .mrent-msg-fab[data-state="open"] .mrent-msg-fab__icon-open { display: inline-flex !important; }
 }
