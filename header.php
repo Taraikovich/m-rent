@@ -69,9 +69,7 @@ if (! function_exists('mrent_nav_fallback')) {
 
 			<div class="flex items-center justify-between gap-6 2xl:gap-8 w-full">
 				<div class="flex gap-[10px] items-center shrink-0">
-					<button type="button" class="border border-white px-[7px] py-[5px] rounded-[5px] inline-flex items-center" aria-label="<?php esc_attr_e('Сменить язык', 'm-rent'); ?>">
-						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="RU">RU</span>
-					</button>
+					<?php echo mrent_lang_switcher(); ?>
 					<button type="button" class="border border-white px-[7px] py-[5px] rounded-[5px] inline-flex items-center gap-[2px]" aria-label="<?php esc_attr_e('Сменить валюту', 'm-rent'); ?>">
 						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="USD">USD</span>
 						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="$">$</span>
@@ -112,9 +110,7 @@ if (! function_exists('mrent_nav_fallback')) {
 			</a>
 
 			<div class="flex gap-[5px] items-center shrink-0">
-				<button type="button" class="border border-white h-[30px] px-[7px] py-[5px] rounded-[5px] inline-flex items-center" aria-label="<?php esc_attr_e('Сменить язык', 'm-rent'); ?>">
-					<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="RU">RU</span>
-				</button>
+				<?php echo mrent_lang_switcher(true); ?>
 				<button type="button" class="border border-white h-[30px] px-[7px] py-[5px] rounded-[5px] inline-flex items-center gap-[2px]" aria-label="<?php esc_attr_e('Сменить валюту', 'm-rent'); ?>">
 					<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="USD">USD</span>
 					<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="$">$</span>
@@ -136,9 +132,7 @@ if (! function_exists('mrent_nav_fallback')) {
 				</a>
 
 				<div class="flex gap-[5px] items-center shrink-0">
-					<button type="button" class="border border-white h-[30px] px-[7px] py-[5px] rounded-[5px] inline-flex items-center" aria-label="<?php esc_attr_e('Сменить язык', 'm-rent'); ?>">
-						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="RU">RU</span>
-					</button>
+					<?php echo mrent_lang_switcher(true); ?>
 					<button type="button" class="border border-white h-[30px] px-[7px] py-[5px] rounded-[5px] inline-flex items-center gap-[2px]" aria-label="<?php esc_attr_e('Сменить валюту', 'm-rent'); ?>">
 						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="USD">USD</span>
 						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="$">$</span>

@@ -15,6 +15,7 @@ require_once __DIR__ . '/inc/cars.php';
 require_once __DIR__ . '/inc/services.php';
 require_once __DIR__ . '/inc/options.php';
 require_once __DIR__ . '/inc/exchange-rate.php';
+require_once __DIR__ . '/inc/gtranslate.php';
 
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'title-tag' );

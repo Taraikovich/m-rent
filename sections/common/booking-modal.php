@@ -76,7 +76,7 @@ $mrent_messengers = mrent_options_messengers();
 			<?php /* Шапка: на мобайле — кнопка «Закрыть» сверху + заголовок ниже (по центру). На десктопе — заголовок слева, «Закрыть» справа в линию. */ ?>
 			<div class="flex flex-col gap-[15px] xl:gap-0 xl:flex-row xl:items-start xl:justify-between">
 				<a href="#" data-booking-modal-close class="order-1 xl:order-2 self-center xl:self-auto font-display font-medium text-mrent-yellow text-[12px] xl:text-[15px] leading-none underline underline-offset-2 hover:opacity-80 transition-opacity">
-					<?php esc_html_e('Закрыть', 'm-rent'); ?>
+					<?php esc_html_e('Назад', 'm-rent'); ?>
 				</a>
 				<h2 id="<?php echo esc_attr($mrent_id); ?>-title" class="order-2 xl:order-1 font-display font-bold text-mrent-white text-[21px] xl:text-[50px] leading-[1.2] text-center xl:text-left">
 					<?php esc_html_e('Оставьте заявку', 'm-rent'); ?>
@@ -171,7 +171,7 @@ $mrent_messengers = mrent_options_messengers();
 			<?php endif; ?>
 
 			<a href="#" data-booking-modal-close class="font-display font-medium text-mrent-yellow text-[12px] xl:text-[15px] leading-none underline underline-offset-2 hover:opacity-80 transition-opacity">
-				<?php esc_html_e('Закрыть', 'm-rent'); ?>
+				<?php esc_html_e('Назад', 'm-rent'); ?>
 			</a>
 		</div>
 	</div>

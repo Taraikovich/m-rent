@@ -122,6 +122,54 @@
     pointer-events: none;
   }
 
+  /* Переключатель языков (на базе плагина GTranslate, см. inc/gtranslate.php).
+     Скрытый бутстрап плагина в подвале + дефолтный плавающий виджет не показываем. */
+  .mrent-gt-hidden,
+  .gtranslate_wrapper,
+  .gt_float_switcher {
+    display: none !important;
+  }
+
+  .mrent-lang-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 150px;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    background: var(--color-mrent-black);
+    border: 1px solid rgb(255 255 255 / 0.2);
+    border-radius: 8px;
+    box-shadow: 0 12px 32px rgb(0 0 0 / 0.45);
+  }
+  .mrent-lang-menu[hidden] {
+    display: none;
+  }
+  .mrent-lang-option {
+    display: block;
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 5px;
+    color: var(--color-mrent-white);
+    font-size: 15px;
+    line-height: 1.2;
+    text-align: left;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 0.15s, background-color 0.15s;
+  }
+  .mrent-lang-option:hover {
+    color: var(--color-mrent-yellow);
+  }
+  .mrent-lang-option.is-active {
+    color: var(--color-mrent-yellow);
+  }
+
   /* Главное меню — общие стили списка */
   .mrent-nav-list {
     list-style: none;

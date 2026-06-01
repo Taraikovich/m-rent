@@ -1,5 +1,6 @@
 import './main.css';
 import './header.js';
+import './lang-switcher.js';
 import './cars.js';
 import './single-car-tabs.js';
 import './services.js';
