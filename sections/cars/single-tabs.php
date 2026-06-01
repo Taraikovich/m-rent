@@ -89,7 +89,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 ?>
 
 <section class="px-[15px] xl:px-[100px] mt-[40px] xl:my-[200px]" data-car-tabs>
-	<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px]">
+	<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[30px] xl:h-full">
 
 		<?php /* ── Mobile: dropdown с активным табом ── */ ?>
 		<details class="xl:hidden relative" data-car-tabs-mobile>
@@ -128,7 +128,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 
 		<?php /* ─────────────── Tab: Доп. услуги ─────────────── */ ?>
 		<?php if (isset($mrent_tabs['services'])) : ?>
-			<div<?php echo $mrent_active === 'services' ? '' : ' hidden'; ?> class="flex flex-col gap-[15px] xl:gap-[60px]" data-tab-panel="services">
+			<div<?php echo $mrent_active === 'services' ? '' : ' hidden'; ?> class="flex flex-col gap-[15px] xl:gap-[30px] xl:flex-1 xl:min-h-0" data-tab-panel="services">
 				<h2 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] text-mrent-white">
 					<?php esc_html_e('Дополнительные услуги', 'm-rent'); ?>
 				</h2>
@@ -145,9 +145,9 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 						$svc_btn_text     = (string) ($svc['button_text'] ?? '');
 						$svc_btn_url      = (string) ($svc['button_url'] ?? '#booking');
 					?>
-						<div class="bg-[#252426] border border-[#302f31] rounded-[15px] p-[25px] xl:p-[40px] flex flex-col gap-[25px] xl:gap-[40px] flex-1 xl:min-h-[406px]">
-							<div class="flex flex-col gap-[15px] xl:gap-[30px] text-mrent-white flex-1">
-								<div class="flex flex-col gap-[15px] xl:gap-[20px]">
+						<div class="bg-[#252426] border border-[#302f31] rounded-[15px] p-[25px] xl:p-[25px] flex flex-col gap-[25px] xl:gap-[20px] flex-1">
+							<div class="flex flex-col gap-[15px] xl:gap-[20px] text-mrent-white flex-1">
+								<div class="flex flex-col gap-[15px] xl:gap-[15px]">
 									<h3 class="font-[800] text-[clamp(16px,14.06px+0.52vw,24px)] leading-[1.2]">
 										<?php echo esc_html($svc_title); ?>
 										<?php if ($svc_title_accent !== '') : ?>
@@ -172,7 +172,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 								<?php endif; ?>
 							</div>
 							<?php if ($svc_btn_text !== '') : ?>
-								<a href="<?php echo esc_url($svc_btn_url ?: '#booking'); ?>" class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center h-[50px] xl:h-[65px] rounded-[15px] text-mrent-black font-[500] text-[clamp(14px,12.54px+0.39vw,20px)] transition-colors">
+								<a href="<?php echo esc_url($svc_btn_url ?: '#booking'); ?>" class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center h-[50px] xl:h-[55px] rounded-[15px] text-mrent-black font-[500] text-[clamp(14px,12.54px+0.39vw,20px)] transition-colors">
 									<?php echo esc_html($svc_btn_text); ?>
 								</a>
 							<?php endif; ?>
@@ -184,52 +184,52 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 
 <?php /* ─────────────── Tab: Характеристики ─────────────── */ ?>
 <?php if (isset($mrent_tabs['specifications'])) : ?>
-	<div<?php echo $mrent_active === 'specifications' ? '' : ' hidden'; ?> class="flex flex-col gap-[20px] xl:gap-[60px]" data-tab-panel="specifications">
+	<div<?php echo $mrent_active === 'specifications' ? '' : ' hidden'; ?> class="flex flex-col gap-[20px] xl:gap-[30px] xl:flex-1 xl:min-h-0" data-tab-panel="specifications">
 		<?php /* 3 колонки на десктопе; mobile: только specs, остальное прячется `max-xl:hidden`,
 				         JS снимает класс по «Подробнее». */ ?>
 		<div class="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-[20px] xl:gap-[40px] text-mrent-white">
 
-				<?php if (! empty($mrent_specs_rows)) : ?>
-					<div class="xl:flex-1 xl:basis-0 xl:min-w-0 flex flex-col gap-[10px] text-[clamp(14px,11.57px+0.65vw,24px)] leading-[1.24]">
-						<?php foreach ($mrent_specs_rows as $row) :
-							$row_label  = (string) ($row['label'] ?? '');
-							$row_value  = (string) ($row['value'] ?? '');
-							$mobile_only = ! empty($row['mobile_only']);
-							$row_class  = $mobile_only ? 'xl:hidden' : '';
-						?>
-							<p class="<?php echo esc_attr($row_class); ?>">
-								<?php if ($row_label !== '') : ?>
-									<span class="font-[700]"><?php echo esc_html($row_label); ?>:</span>
-								<?php endif; ?>
-								<span class="font-[400]"><?php echo $row_label !== '' ? ' ' : ''; ?><?php echo esc_html($row_value); ?></span>
-							</p>
+			<?php if (! empty($mrent_specs_rows)) : ?>
+				<div class="xl:flex-1 xl:basis-0 xl:min-w-0 flex flex-col gap-[10px] text-[clamp(14px,11.57px+0.65vw,24px)] leading-[1.24]">
+					<?php foreach ($mrent_specs_rows as $row) :
+						$row_label  = (string) ($row['label'] ?? '');
+						$row_value  = (string) ($row['value'] ?? '');
+						$mobile_only = ! empty($row['mobile_only']);
+						$row_class  = $mobile_only ? 'xl:hidden' : '';
+					?>
+						<p class="<?php echo esc_attr($row_class); ?>">
+							<?php if ($row_label !== '') : ?>
+								<span class="font-[700]"><?php echo esc_html($row_label); ?>:</span>
+							<?php endif; ?>
+							<span class="font-[400]"><?php echo $row_label !== '' ? ' ' : ''; ?><?php echo esc_html($row_value); ?></span>
+						</p>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
+
+			<?php if (! empty($mrent_specs_ideal_lines)) : ?>
+				<div data-spec-extra class="max-xl:hidden xl:flex-1 xl:basis-0 xl:min-w-0 flex flex-col gap-[10px] text-[clamp(14px,11.57px+0.65vw,24px)] leading-[1.24]">
+					<p class="font-[700]"><?php echo esc_html($mrent_specs_ideal_title); ?></p>
+					<ul class="list-disc pl-[20px] xl:pl-[45px] flex flex-col gap-[2px] xl:gap-0 font-[400]">
+						<?php foreach ($mrent_specs_ideal_lines as $line) : ?>
+							<li><?php echo esc_html($line); ?></li>
 						<?php endforeach; ?>
-					</div>
-				<?php endif; ?>
+					</ul>
+				</div>
+			<?php endif; ?>
 
-				<?php if (! empty($mrent_specs_ideal_lines)) : ?>
-					<div data-spec-extra class="max-xl:hidden xl:flex-1 xl:basis-0 xl:min-w-0 flex flex-col gap-[10px] text-[clamp(14px,11.57px+0.65vw,24px)] leading-[1.24]">
-						<p class="font-[700]"><?php echo esc_html($mrent_specs_ideal_title); ?></p>
-						<ul class="list-disc pl-[20px] xl:pl-[45px] flex flex-col gap-[2px] xl:gap-0 font-[400]">
-							<?php foreach ($mrent_specs_ideal_lines as $line) : ?>
-								<li><?php echo esc_html($line); ?></li>
-							<?php endforeach; ?>
-						</ul>
-					</div>
-				<?php endif; ?>
+			<?php if (! empty($mrent_specs_pros_lines)) : ?>
+				<div data-spec-extra class="max-xl:hidden xl:flex-1 xl:basis-0 xl:min-w-0 flex flex-col gap-[10px] text-[clamp(14px,11.57px+0.65vw,24px)] leading-[1.24]">
+					<p class="font-[700]"><?php echo esc_html($mrent_specs_pros_title); ?></p>
+					<ul class="list-disc pl-[20px] xl:pl-[45px] flex flex-col gap-[2px] xl:gap-0 font-[400]">
+						<?php foreach ($mrent_specs_pros_lines as $line) : ?>
+							<li><?php echo esc_html($line); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			<?php endif; ?>
 
-				<?php if (! empty($mrent_specs_pros_lines)) : ?>
-					<div data-spec-extra class="max-xl:hidden xl:flex-1 xl:basis-0 xl:min-w-0 flex flex-col gap-[10px] text-[clamp(14px,11.57px+0.65vw,24px)] leading-[1.24]">
-						<p class="font-[700]"><?php echo esc_html($mrent_specs_pros_title); ?></p>
-						<ul class="list-disc pl-[20px] xl:pl-[45px] flex flex-col gap-[2px] xl:gap-0 font-[400]">
-							<?php foreach ($mrent_specs_pros_lines as $line) : ?>
-								<li><?php echo esc_html($line); ?></li>
-							<?php endforeach; ?>
-						</ul>
-					</div>
-				<?php endif; ?>
-
-			</div>
+		</div>
 
 		<?php if (! empty($mrent_specs_ideal_lines) || ! empty($mrent_specs_pros_lines)) : ?>
 			<button type="button" class="xl:hidden text-mrent-yellow underline font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] self-start"
@@ -244,7 +244,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 
 	<?php /* ─────────────── Tab: Условия аренды ─────────────── */ ?>
 	<?php if (isset($mrent_tabs['terms'])) : ?>
-		<div<?php echo $mrent_active === 'terms' ? '' : ' hidden'; ?> class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[30px] xl:gap-[40px]" data-tab-panel="terms">
+		<div<?php echo $mrent_active === 'terms' ? '' : ' hidden'; ?> class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[30px] xl:gap-[40px] xl:flex-1 xl:min-h-0" data-tab-panel="terms">
 			<div class="flex flex-col gap-[15px] xl:gap-[30px] text-mrent-white xl:w-[756px] xl:shrink-0">
 				<h2 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2]">
 					<?php esc_html_e('Условия аренды', 'm-rent'); ?>
@@ -265,7 +265,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 			</div>
 
 			<?php if ($mrent_terms_image) : ?>
-				<div class="rounded-[15px] overflow-hidden w-full xl:w-auto xl:flex-1 xl:min-w-0 h-[267px] xl:h-[480px]">
+				<div class="rounded-[15px] overflow-hidden w-full xl:w-auto xl:flex-1 xl:min-w-0 h-[267px] xl:h-full xl:max-h-[480px]">
 					<img src="<?php echo esc_url($mrent_terms_image); ?>" alt="" class="w-full h-full object-cover">
 				</div>
 			<?php endif; ?>
@@ -274,7 +274,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 
 		<?php /* ─────────────── Tab: Отзывы ─────────────── */ ?>
 		<?php if (isset($mrent_tabs['reviews'])) : ?>
-			<div<?php echo $mrent_active === 'reviews' ? '' : ' hidden'; ?> class="flex flex-col xl:flex-row gap-[10px] xl:gap-[29px] xl:items-stretch" data-tab-panel="reviews">
+			<div<?php echo $mrent_active === 'reviews' ? '' : ' hidden'; ?> class="flex flex-col xl:flex-row gap-[10px] xl:gap-[29px] xl:items-stretch xl:flex-1 xl:min-h-0" data-tab-panel="reviews">
 				<?php foreach ($mrent_reviews as $r) :
 					$rev_author = (string) ($r['author'] ?? '');
 					$rev_car    = (string) ($r['car'] ?? '');
@@ -282,7 +282,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 					$rev_rating = (int) ($r['rating'] ?? 5);
 					$rev_rating = max(0, min(5, $rev_rating));
 				?>
-					<div class="bg-[#252426] border border-[#302f31] rounded-[15px] p-[25px] xl:p-[35px] flex flex-col gap-[20px] flex-1 xl:min-h-[419px] text-mrent-white">
+					<div class="bg-[#252426] border border-[#302f31] rounded-[15px] p-[25px] xl:p-[25px] flex flex-col gap-[20px] flex-1 text-mrent-white">
 						<div class="flex flex-col gap-[15px]">
 							<div class="flex flex-col gap-[15px] xl:gap-[20px]">
 								<div class="flex items-center gap-[6px]" aria-label="<?php echo esc_attr(sprintf(__('Рейтинг %d из 5', 'm-rent'), $rev_rating)); ?>">
@@ -314,7 +314,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 
 			<?php /* ─────────────── Tab: Вопрос-ответ ─────────────── */ ?>
 			<?php if (isset($mrent_tabs['faq'])) : ?>
-				<div<?php echo $mrent_active === 'faq' ? '' : ' hidden'; ?> class="flex flex-col gap-[30px] xl:gap-[60px]" data-tab-panel="faq">
+				<div<?php echo $mrent_active === 'faq' ? '' : ' hidden'; ?> class="flex flex-col gap-[30px] xl:gap-[30px] xl:flex-1 xl:min-h-0 xl:overflow-y-auto" data-tab-panel="faq">
 					<h2 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] text-mrent-white">
 						<?php esc_html_e('Часто задаваемые вопросы', 'm-rent'); ?>
 					</h2>
@@ -327,7 +327,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 								continue;
 							}
 						?>
-							<details class="mrent-faq-item group bg-[#252426] border border-[#302F31] rounded-[15px] p-[20px] xl:p-[40px]">
+							<details class="mrent-faq-item group bg-[#252426] border border-[#302F31] rounded-[15px] p-[20px] xl:p-[25px]">
 								<summary class="flex items-center justify-between gap-[20px] cursor-pointer">
 									<span class="font-[600] text-[clamp(16px,14.06px+0.52vw,24px)] leading-[1.2] text-mrent-white">
 										<?php echo esc_html($faq_q); ?>

@@ -72,8 +72,8 @@ $mrent_messenger_icons = [
 ];
 ?>
 
-<section id="booking" class="bg-mrent-black px-[15px] xl:px-[100px] mt-[40px] xl:mt-[100px]">
-	<div class="max-w-[1720px] mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[30px] xl:gap-[40px] min-w-0">
+<section id="booking" class="bg-mrent-black px-[15px] xl:px-[100px] mt-[40px] xl:my-[100px] xl:min-h-[calc(100vh-100px)] xl:flex xl:items-center">
+	<div class="w-full max-w-[1720px] mx-auto flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[30px] xl:gap-[40px] min-w-0">
 
 		<?php /* Левая колонка: заголовок + контакты. На desktop тянется на всю высоту правой колонки и распределяется justify-between. */ ?>
 		<div class="flex flex-col xl:grow xl:shrink xl:basis-[639px] xl:max-w-[639px] xl:min-w-0 xl:justify-between xl:self-stretch gap-[30px] xl:gap-0 xl:pb-8.75">

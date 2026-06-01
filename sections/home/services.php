@@ -55,9 +55,9 @@ if (! $mrent_query->have_posts()) {
 }
 ?>
 
-<section class="bg-mrent-black py-[60px] xl:py-[100px]">
-	<div class="px-[15px] xl:px-[100px]">
-		<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px] items-center">
+<section class="bg-mrent-black py-[60px] xl:py-[clamp(40px,6vh,100px)] xl:h-[calc(100vh-100px)]">
+	<div class="px-[15px] xl:px-[100px] xl:h-full">
+		<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[clamp(20px,4vh,60px)] items-center xl:h-full">
 
 			<?php /* ── Заголовок (+ кнопка справа на десктопе) ── */ ?>
 			<div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[15px] w-full">
@@ -72,7 +72,7 @@ if (! $mrent_query->have_posts()) {
 			</div>
 
 			<?php /* ── Swiper с карточками ── */ ?>
-			<div class="mrent-home-services swiper w-full min-w-0" data-mrent-home-services>
+			<div class="mrent-home-services swiper w-full min-w-0 xl:flex-1 xl:min-h-0 xl:h-full" data-mrent-home-services>
 				<div class="swiper-wrapper">
 					<?php while ($mrent_query->have_posts()) :
 						$mrent_query->the_post();
@@ -93,7 +93,7 @@ if (! $mrent_query->have_posts()) {
 						<div class="swiper-slide">
 							<a
 								href="<?php the_permalink(); ?>"
-								class="group relative flex flex-col items-start aspect-[850/600] w-full p-[25px] xl:p-[50px] rounded-[15px] border border-[#302f31] overflow-hidden bg-[#252426]">
+								class="group relative flex flex-col items-start aspect-[850/600] xl:aspect-auto xl:h-full w-full p-[25px] xl:p-[50px] rounded-[15px] border border-[#302f31] overflow-hidden bg-[#252426]">
 								<?php if ($mrent_image_url) : ?>
 									<img
 										src="<?php echo esc_url($mrent_image_url); ?>"

@@ -78,9 +78,9 @@ $mrent_cols_class = match ($mrent_count) {
 };
 ?>
 
-<section class="bg-mrent-black py-[60px] xl:py-[100px]">
-	<div class="px-[15px] xl:px-[100px]">
-		<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[50px] items-center">
+<section class="bg-mrent-black py-[60px] xl:py-[100px] xl:flex xl:items-center">
+	<div class="px-[15px] xl:px-[100px] w-full xl:h-[calc(100vh-100px)]">
+		<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[clamp(20px,2.78vh,50px)] items-center">
 
 			<?php /* ── Заголовок + подзаголовок (центрированный) ── */ ?>
 			<div class="flex flex-col gap-[15px] xl:gap-[30px] items-center text-center text-mrent-white">

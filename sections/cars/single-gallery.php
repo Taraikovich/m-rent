@@ -45,7 +45,7 @@ if (empty($mrent_slides)) {
          Стрелки 50/65px фростед-белые, прижаты к краям с отступом 20/50px.
          Absolute-позиционирование — Swiper-wrapper занимает весь контейнер. */ ?>
 <div class="px-[15px] xl:px-[100px] my-[30px] xl:my-[70px]">
-	<div class="mrent-car-gallery swiper relative max-w-[1720px] mx-auto rounded-[15px] overflow-hidden h-[280px] xl:h-[800px] bg-[#252426]" data-mrent-car-gallery>
+	<div class="mrent-car-gallery swiper relative max-w-[1720px] mx-auto rounded-[15px] overflow-hidden h-[280px] xl:h-[calc(100vh-100px)] bg-[#252426]" data-mrent-car-gallery>
 		<div class="swiper-wrapper">
 			<?php foreach ($mrent_slides as $slide) : ?>
 				<div class="swiper-slide">

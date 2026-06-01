@@ -32,10 +32,10 @@ $mrent_excerpt   = has_excerpt() ? get_the_excerpt() : wp_trim_words(wp_strip_al
 
 <a
 	href="<?php echo esc_url($mrent_permalink); ?>"
-	class="group bg-[#252426] rounded-[15px] flex flex-col h-full gap-[30px] xl:gap-[40px] pb-[25px] xl:pb-[40px] px-[25px] xl:px-[40px] overflow-hidden">
+	class="group bg-[#252426] rounded-[15px] flex flex-col h-full gap-[30px] xl:gap-[clamp(20px,2.22vh,40px)] pb-[25px] xl:pb-[clamp(20px,2.22vh,40px)] px-[25px] xl:px-[40px] overflow-hidden">
 	<?php /* Картинка вылезает за внутренний padding (px-25/40), чтобы прилегать
 	         к боковым и верхней кромке карточки. Скругляем только верх. */ ?>
-	<div class="-mx-[25px] xl:-mx-[40px] h-[179px] xl:h-[300px] rounded-tl-[15px] rounded-tr-[15px] overflow-hidden bg-[#d9d9d9] shrink-0">
+	<div class="-mx-[25px] xl:-mx-[40px] h-[179px] rounded-tl-[15px] rounded-tr-[15px] overflow-hidden bg-[#d9d9d9] shrink-0">
 		<?php if ($mrent_thumb_url) : ?>
 			<img
 				src="<?php echo esc_url($mrent_thumb_url); ?>"

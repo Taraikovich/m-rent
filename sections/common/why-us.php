@@ -50,9 +50,13 @@ if (! $mrent_items) {
 $mrent_chunks = array_chunk($mrent_items, 3);
 ?>
 
-<section class="bg-mrent-black py-[60px] xl:py-[100px]">
-	<div class="px-[15px] xl:px-[100px]">
-		<div class="max-w-[1720px] mx-auto flex flex-col items-center gap-[30px] xl:gap-[60px]">
+<?php /* На xl секция фиксируется по высоте на 100vh-100px. Внутренние отступы
+         (gap у обёртки, gap в карточке, размер иконки, padding карточки) масштабируются
+         через clamp по vh, чтобы контент всегда укладывался без скролла. Карточки
+         растягиваются на всю высоту строки grid'а (h-full + items-stretch by default). */ ?>
+<section class="bg-mrent-black py-[60px] xl:py-[clamp(40px,6vh,100px)] xl:h-[calc(100vh-100px)] xl:flex xl:flex-col">
+	<div class="px-[15px] xl:px-[100px] xl:flex-1 xl:flex xl:flex-col xl:min-h-0">
+		<div class="max-w-[1720px] mx-auto flex flex-col items-center gap-[30px] xl:gap-[clamp(20px,4vh,60px)] xl:flex-1 xl:w-full xl:min-h-0">
 
 			<h2 class="font-[700] text-[clamp(24px,16.84px_+_2.98vw,50px)] leading-[1.2] text-mrent-white text-center">
 				<?php echo esc_html($mrent_title); ?>
@@ -62,18 +66,18 @@ $mrent_chunks = array_chunk($mrent_items, 3);
 			         обёрток в `display: contents`. `min-w-0` обязателен — без него
 			         flex-item с intrinsic-content может бесконечно разрастаться
 			         (та же проблема, что и в popular). */ ?>
-			<div class="mrent-why-us swiper w-full min-w-0 xl:!overflow-visible" data-mrent-why-us>
-				<div class="swiper-wrapper xl:!grid xl:!grid-cols-3 xl:!gap-[30px]">
+			<div class="mrent-why-us swiper w-full min-w-0 xl:!overflow-visible xl:flex-1 xl:min-h-0" data-mrent-why-us>
+				<div class="swiper-wrapper xl:!grid xl:!grid-cols-3 xl:!gap-[30px] xl:!h-full">
 					<?php foreach ($mrent_chunks as $chunk) : ?>
 						<div class="swiper-slide xl:!contents">
 							<div class="flex flex-col gap-[10px] xl:contents">
 								<?php foreach ($chunk as $item) : ?>
-									<div class="bg-[#252426] border border-[#302f31] flex flex-col items-start gap-[30px] xl:gap-[70px] p-[25px] xl:p-[40px] rounded-[15px] w-full">
+									<div class="bg-[#252426] border border-[#302f31] flex flex-col items-start gap-[30px] xl:gap-[clamp(20px,5vh,70px)] p-[25px] xl:p-[clamp(20px,3vh,40px)] rounded-[15px] w-full xl:h-full">
 										<?php if (! empty($item['why_us_icon']['url'])) : ?>
 											<img
 												src="<?php echo esc_url($item['why_us_icon']['url']); ?>"
 												alt="<?php echo esc_attr($item['why_us_icon']['alt'] ?? ''); ?>"
-												class="shrink-0 size-[30px] xl:size-[60px]"
+												class="shrink-0 size-[30px] xl:size-[clamp(36px,6vh,60px)]"
 												loading="lazy"
 												decoding="async"
 												aria-hidden="true">

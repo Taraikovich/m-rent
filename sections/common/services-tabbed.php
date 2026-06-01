@@ -61,9 +61,9 @@ if (! $mrent_tabs) {
 }
 ?>
 
-<section class="bg-mrent-black py-[60px] xl:py-[100px]">
-	<div class="px-[15px] xl:px-[100px]">
-		<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px]" data-mrent-services-tabbed>
+<section class="bg-mrent-black py-[60px] xl:py-[clamp(40px,6vh,100px)] xl:h-[calc(100vh-100px)]">
+	<div class="px-[15px] xl:px-[100px] xl:h-full">
+		<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[clamp(20px,4vh,60px)] xl:h-full" data-mrent-services-tabbed>
 
 			<?php if ($mrent_title !== '') : ?>
 				<h2 class="font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] text-mrent-white text-center xl:text-left">
@@ -116,9 +116,9 @@ if (! $mrent_tabs) {
 				<div
 					data-mrent-tab-panel
 					data-mrent-tab-id="<?php echo esc_attr($mrent_tab['id']); ?>"
-					class="flex flex-col gap-[30px] xl:gap-[60px] items-center"
+					class="flex flex-col gap-[30px] xl:gap-[clamp(20px,4vh,60px)] items-center xl:flex-1 xl:min-h-0 xl:w-full"
 					<?php if ($mrent_index > 0) : ?>hidden<?php endif; ?>>
-					<div class="mrent-services-tabbed-swiper swiper w-full min-w-0">
+					<div class="mrent-services-tabbed-swiper swiper w-full min-w-0 xl:flex-1 xl:min-h-0 xl:h-full">
 						<div class="swiper-wrapper">
 							<?php foreach ($mrent_tab['services'] as $mrent_service) :
 								$mrent_service_url   = (string) ($mrent_service['url'] ?? '#');
@@ -128,7 +128,7 @@ if (! $mrent_tabs) {
 								<div class="swiper-slide">
 									<a
 										href="<?php echo esc_url($mrent_service_url); ?>"
-										class="group relative flex flex-col items-start h-[233px] xl:h-auto xl:aspect-850/600 w-full p-[25px] xl:p-[50px] rounded-[15px] border border-[#302f31] overflow-hidden bg-[#252426]">
+										class="group relative flex flex-col items-start h-[233px] xl:h-full w-full p-[25px] xl:p-[50px] rounded-[15px] border border-[#302f31] overflow-hidden bg-[#252426]">
 										<?php if ($mrent_service_image !== '') : ?>
 											<img
 												src="<?php echo esc_url($mrent_service_image); ?>"

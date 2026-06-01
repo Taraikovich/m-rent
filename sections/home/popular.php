@@ -43,9 +43,9 @@ if (! $mrent_popular->have_posts()) {
 $mrent_catalog_url = get_post_type_archive_link('car') ?: home_url('/cars/');
 ?>
 
-<section class="bg-mrent-black py-[60px] xl:py-[100px]">
-	<div class="px-[15px] xl:px-[100px]">
-		<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px]">
+<section class="bg-mrent-black py-[60px] xl:py-[60px] xl:h-[calc(100vh-100px)] xl:flex xl:flex-col">
+	<div class="px-[15px] xl:px-[100px] xl:flex-1 xl:min-h-0 xl:w-full xl:flex xl:flex-col">
+		<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[60px] xl:flex-1 xl:min-h-0 xl:w-full">
 
 			<?php /* ── Заголовок (+ ссылка на каталог справа на десктопе) ── */ ?>
 			<div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[15px]">
@@ -62,7 +62,7 @@ $mrent_catalog_url = get_post_type_archive_link('car') ?: home_url('/cars/');
 			         `flex flex-col`, у flex-items по умолчанию `min-width: auto`,
 			         поэтому Swiper может бесконечно расширяться, подстраиваясь под
 			         intrinsic width контента. min-w-0 фиксирует это. */ ?>
-			<div class="mrent-popular swiper w-full min-w-0" data-mrent-popular>
+			<div class="mrent-popular swiper w-full min-w-0 xl:flex-1 xl:min-h-0" data-mrent-popular>
 				<div class="swiper-wrapper">
 					<?php while ($mrent_popular->have_posts()) :
 						$mrent_popular->the_post();
@@ -72,14 +72,14 @@ $mrent_catalog_url = get_post_type_archive_link('car') ?: home_url('/cars/');
 					?>
 						<div class="swiper-slide">
 							<article class="flex flex-col gap-[20px] xl:gap-[30px] w-full h-full">
-								<a href="<?php the_permalink(); ?>" class="block relative rounded-[15px] overflow-hidden h-[225px] xl:h-[300px] bg-[#252426]">
+								<a href="<?php the_permalink(); ?>" class="block relative rounded-[15px] overflow-hidden h-[225px] xl:h-auto xl:flex-1 xl:min-h-0 bg-[#252426]">
 									<?php if ($mrent_thumb_url) : ?>
 										<img src="<?php echo esc_url($mrent_thumb_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" class="absolute inset-0 size-full object-cover" loading="lazy" decoding="async">
 									<?php endif; ?>
 								</a>
 
 								<div class="flex flex-col gap-[15px] xl:gap-[30px] items-start w-full flex-1">
-									<h3 class="w-full font-[700] text-[clamp(16px,13.57px+0.65vw,24px)] leading-[1.2] text-mrent-white">
+									<h3 class="w-full font-[700] text-[clamp(12px,10.54px+0.39vw,18px)] leading-[1.2] text-mrent-white">
 										<a href="<?php the_permalink(); ?>" class="hover:text-mrent-yellow transition-colors">
 											<?php the_title(); ?>
 										</a>

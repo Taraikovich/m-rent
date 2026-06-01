@@ -41,7 +41,7 @@ $mrent_hover_url   = is_array($mrent_hover_image) && ! empty($mrent_hover_image[
 <article class="flex flex-col gap-[15px] xl:gap-[30px] items-stretch w-full h-full">
 	<?php /* Мобайл: высота фото тянется за шириной карточки (соотношение 5:7),
 	         но зажата в диапазон 130–300px. На xl+ — фиксированные 300px. */ ?>
-	<a href="<?php echo esc_url($mrent_permalink); ?>" class="group block relative rounded-[15px] overflow-hidden aspect-[5/7] min-h-[130px] max-h-[300px] xl:aspect-auto xl:h-[300px] xl:min-h-0 xl:max-h-none bg-[#252426] shrink-0">
+	<a href="<?php echo esc_url($mrent_permalink); ?>" class="group block relative rounded-[15px] overflow-hidden aspect-[5/7] min-h-[130px] max-h-[150px] xl:max-h-[300px] xl:aspect-auto xl:h-[300px] xl:min-h-0 xl:max-h-none bg-[#252426] shrink-0">
 		<?php if ($mrent_thumb_url) : ?>
 			<img
 				src="<?php echo esc_url($mrent_thumb_url); ?>"

@@ -906,19 +906,20 @@
     }
     /* * внутри поля — сдвиг под увеличенный padding на desktop */
     .mrent-consultation-form .wpcf7-form-control-wrap:has(.wpcf7-validates-as-required)::after {
-      right: 25px;
+      right: clamp(20px, 15px + 0.39vw, 25px);
     }
     .mrent-consultation-form .mrent-cf7-input,
     .mrent-consultation-form .mrent-cf7-select {
-      padding: 25px;
-      padding-right: 56px; /* место под * */
-      height: 75px;
+      padding: clamp(20px, 15px + 0.39vw, 25px);
+      padding-right: clamp(44px, 32px + 0.94vw, 56px); /* место под * */
+      height: clamp(55px, 35px + 1.5625vw, 75px);
     }
     .mrent-consultation-form .mrent-cf7-textarea {
-      padding: 25px;
+      padding: clamp(20px, 15px + 0.39vw, 25px);
+      height: clamp(130px, 110px + 1.5625vw, 150px);
     }
     .mrent-consultation-form .mrent-cf7-submit {
-      height: 65px;
+      height: clamp(55px, 45px + 0.78vw, 65px);
     }
     .mrent-consultation-form .wpcf7-not-valid-tip {
       font-size: 14px;
