@@ -52,31 +52,27 @@ if ($mrent_image_url === '') {
 }
 ?>
 
-<section class="relative bg-mrent-black">
+<?php /* Hero всегда во всю высоту экрана: section = 100svh (без скачка на мобайле
+         из-за адресной строки). Картинка-фон растянута на всю секцию, контент
+         (текст + кнопка) прижат к низу через mt-auto. */ ?>
+<section class="relative bg-mrent-black min-h-[80svh] xl:min-h-[100svh] flex flex-col overflow-hidden">
 
-	<?php /* Картинка hero. overflow-hidden — клипает <img> по краям блока,
-	         но не клипает текст-overlay (он сиблинг этому блоку, а не ребёнок). */ ?>
-	<div class="relative w-full h-[450px] xl:h-[805px] overflow-hidden">
-		<?php if ($mrent_image_url) : ?>
-			<img
-				src="<?php echo esc_url($mrent_image_url); ?>"
-				alt="<?php echo esc_attr(get_the_title()); ?>"
-				class="absolute inset-0 size-full object-cover"
-				loading="eager"
-				decoding="async">
-		<?php endif; ?>
-		<?php /* Градиент → #1E1D1F. На мобайле начало плавнее (38%), на десктопе
-		         позже (60%) — чтобы не съедать центр картинки. */ ?>
-		<span class="absolute inset-0 bg-gradient-to-b from-transparent from-[38%] xl:from-[60%] to-mrent-black to-[80%] xl:to-[92%]" aria-hidden="true"></span>
-	</div>
+	<?php /* Картинка hero — фон на всю секцию. */ ?>
+	<?php if ($mrent_image_url) : ?>
+		<img
+			src="<?php echo esc_url($mrent_image_url); ?>"
+			alt="<?php echo esc_attr(get_the_title()); ?>"
+			class="absolute inset-0 size-full object-cover"
+			loading="eager"
+			decoding="async">
+	<?php endif; ?>
+	<?php /* Градиент → #1E1D1F. На мобайле начало плавнее (38%), на десктопе
+	         позже (60%) — чтобы не съедать центр картинки. */ ?>
+	<span class="absolute inset-0 bg-gradient-to-b from-transparent from-[38%] xl:from-[60%] to-mrent-black to-[80%] xl:to-[92%]" aria-hidden="true"></span>
 
-	<?php /* Текст-overlay в потоке после картинки с отрицательным mt — визуально
-	         сидит поверх низа картинки (как в макете: top:325 на мобайле,
-	         top:574 на десктопе), но занимает реальную высоту, поэтому кнопка
-	         ниже не подъезжает под текст при длинном подзаголовке.
-	         Мобайл: 450 - 325 = 125. Десктоп: 805 - 574 = 231. */ ?>
-	<div class="relative -mt-[125px] xl:-mt-[231px] px-[15px] xl:px-[100px]">
-		<div class="max-w-[1720px] mx-auto flex justify-center">
+	<?php /* Контент прижат к низу секции (mt-auto), снизу — отступ. */ ?>
+	<div class="relative mt-auto px-[15px] xl:px-[100px] pb-[40px] xl:pb-[60px]">
+		<div class="max-w-[1720px] mx-auto flex flex-col items-center gap-[30px]">
 			<div class="w-full max-w-[330px] xl:w-[915px] xl:max-w-none flex flex-col gap-[15px] xl:gap-[20px] items-center text-center">
 				<h1 class="text-mrent-white font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] w-full">
 					<?php the_title(); ?>
@@ -87,16 +83,6 @@ if ($mrent_image_url === '') {
 					</p>
 				<?php endif; ?>
 			</div>
-		</div>
-	</div>
-
-	<?php /* CTA-кнопка идёт в потоке после текста, mt-[30px] = гарантированный
-	         отступ от низа текста. В макете на десктопе кнопка ровно у низа
-	         картинки (top:805), но реальная вертикальная позиция теперь зависит
-	         от высоты подзаголовка — это сознательный компромисс, чтобы кнопка
-	         никогда не уезжала под текст. */ ?>
-	<div class="relative px-[15px] xl:px-[100px] mt-[30px]">
-		<div class="max-w-[1720px] mx-auto flex justify-center">
 			<a
 				href="<?php echo esc_url($mrent_cta_url); ?>"
 				class="bg-mrent-yellow hover:bg-[#FFF831] flex items-center justify-center rounded-[15px] h-[55px] xl:h-[65px] w-full max-w-[330px] xl:w-[300px] xl:max-w-none px-[15px] text-mrent-black font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] whitespace-nowrap transition-colors">
@@ -104,9 +90,5 @@ if ($mrent_image_url === '') {
 			</a>
 		</div>
 	</div>
-
-	<?php /* Нижний отступ section. На десктопе кнопка свешивается на 65px ниже
-	         картинки → дальше нужен ещё небольшой gap до следующей секции. */ ?>
-	<div class="h-[40px]"></div>
 
 </section>

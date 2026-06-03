@@ -69,12 +69,17 @@ $mrent_catalog_url = get_post_type_archive_link('car') ?: home_url('/cars/');
 						$mrent_price       = (float) get_field('car_price_per_day');
 						$mrent_booking_url = get_field('car_booking_url') ?: '#booking';
 						$mrent_thumb_url   = get_the_post_thumbnail_url(get_post(), 'large');
+						$mrent_hover_image = get_field('car_hover_image');
+						$mrent_hover_url   = is_array($mrent_hover_image) && ! empty($mrent_hover_image['url']) ? $mrent_hover_image['url'] : '';
 					?>
 						<div class="swiper-slide">
 							<article class="flex flex-col gap-[20px] xl:gap-[30px] w-full h-full">
-								<a href="<?php the_permalink(); ?>" class="block relative rounded-[15px] overflow-hidden h-[225px] xl:h-auto xl:flex-1 xl:min-h-0 bg-[#252426]">
+								<a href="<?php the_permalink(); ?>" class="group block relative rounded-[15px] overflow-hidden h-[225px] xl:h-auto xl:flex-1 xl:min-h-0 bg-[#252426]">
 									<?php if ($mrent_thumb_url) : ?>
-										<img src="<?php echo esc_url($mrent_thumb_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" class="absolute inset-0 size-full object-cover" loading="lazy" decoding="async">
+										<img src="<?php echo esc_url($mrent_thumb_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" class="absolute inset-0 size-full object-cover transition-opacity duration-300<?php echo $mrent_hover_url ? ' group-hover:opacity-0' : ''; ?>" loading="lazy" decoding="async">
+									<?php endif; ?>
+									<?php if ($mrent_hover_url) : ?>
+										<img src="<?php echo esc_url($mrent_hover_url); ?>" alt="" aria-hidden="true" class="absolute inset-0 size-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300" loading="lazy" decoding="async">
 									<?php endif; ?>
 								</a>
 

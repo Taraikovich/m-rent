@@ -81,11 +81,11 @@ $mrent_hover_url   = is_array($mrent_hover_image) && ! empty($mrent_hover_image[
 			         текст whitespace-nowrap. Десктоп (199:117): в ряд, flex-1 делит ширину.
 			         Использовать flex-1 на мобайле опасно — в flex-col оно конфликтует с
 			         фиксированной h-55 при растянутом родителе (например, через mt-auto). */ ?>
-			<div class="flex flex-col xl:flex-row gap-[10px] items-stretch w-full">
-				<a href="<?php echo esc_url($mrent_booking_url); ?>" class="bg-mrent-yellow hover:bg-[#FFF831] w-full xl:w-auto xl:flex-1 shrink-0 h-[55px] xl:h-[60px] flex items-center justify-center rounded-[15px] text-mrent-black font-[500] text-[clamp(12px,10.54px+0.39vw,18px)] whitespace-nowrap transition-colors">
+			<div class="flex flex-row gap-[10px] items-stretch w-full">
+				<a href="<?php echo esc_url($mrent_booking_url); ?>" class="bg-mrent-yellow hover:bg-[#FFF831] flex-1 min-w-0 h-[55px] xl:h-[60px] flex items-center justify-center rounded-[15px] text-mrent-black font-[500] text-[clamp(12px,10.54px+0.39vw,18px)] whitespace-nowrap transition-colors">
 					<?php esc_html_e('Забронировать', 'm-rent'); ?>
 				</a>
-				<a href="<?php echo esc_url($mrent_permalink); ?>" class="border border-mrent-white hover:bg-mrent-white/10 w-full xl:w-auto xl:flex-1 shrink-0 h-[55px] xl:h-[60px] flex items-center justify-center rounded-[15px] text-mrent-white font-[500] text-[clamp(12px,10.54px+0.39vw,18px)] whitespace-nowrap transition-colors">
+				<a href="<?php echo esc_url($mrent_permalink); ?>" class="border border-mrent-white hover:bg-mrent-white/10 flex-1 min-w-0 h-[55px] xl:h-[60px] flex items-center justify-center rounded-[15px] text-mrent-white font-[500] text-[clamp(12px,10.54px+0.39vw,18px)] whitespace-nowrap transition-colors">
 					<?php esc_html_e('Подробнее', 'm-rent'); ?>
 				</a>
 			</div>

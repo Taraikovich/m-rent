@@ -47,34 +47,27 @@ if ($mrent_image_url === '') {
 }
 ?>
 
-<section class="relative bg-mrent-black h-[603px] xl:h-[870px]">
+<?php /* Hero всегда во всю высоту экрана: 100svh (без скачка на мобайле из-за
+         адресной строки). Картинка-фон на всю секцию, контент прижат к низу. */ ?>
+<section class="relative bg-mrent-black min-h-[80svh] xl:min-h-[100svh] flex flex-col overflow-hidden">
 
-	<?php /* Картинка.
-	         Мобайл: h-[450px], сверху — ниже идёт чёрная область секции.
-	         Десктоп: h-full — заполняет всю секцию (870px). */ ?>
-	<div class="absolute inset-x-0 top-0 h-[450px] xl:h-full overflow-hidden">
-		<?php if ($mrent_image_url) : ?>
-			<img
-				src="<?php echo esc_url($mrent_image_url); ?>"
-				alt="<?php echo esc_attr(get_the_title()); ?>"
-				class="absolute inset-0 size-full object-cover"
-				loading="eager"
-				decoding="async">
-		<?php endif; ?>
-		<?php /* Мобайл: transparent 38% → #1E1D1F 81% (Figma 2846:7010).
-		         Десктоп: transparent 49% → rgba(30,29,31,0.8) 64% → #1E1D1F 100% (Figma 2809:7254). */ ?>
-		<span
-			class="absolute inset-0 bg-gradient-to-b from-transparent from-[38%] to-mrent-black to-[81%] xl:from-[49%] xl:via-[rgba(30,29,31,0.8)] xl:via-[64%] xl:to-[100%]"
-			aria-hidden="true"></span>
-	</div>
+	<?php /* Картинка-фон на всю секцию. */ ?>
+	<?php if ($mrent_image_url) : ?>
+		<img
+			src="<?php echo esc_url($mrent_image_url); ?>"
+			alt="<?php echo esc_attr(get_the_title()); ?>"
+			class="absolute inset-0 size-full object-cover"
+			loading="eager"
+			decoding="async">
+	<?php endif; ?>
+	<?php /* Мобайл: transparent 38% → #1E1D1F 81% (Figma 2846:7010).
+	         Десктоп: transparent 49% → rgba(30,29,31,0.8) 64% → #1E1D1F 100% (Figma 2809:7254). */ ?>
+	<span
+		class="absolute inset-0 bg-gradient-to-b from-transparent from-[38%] to-mrent-black to-[81%] xl:from-[49%] xl:via-[rgba(30,29,31,0.8)] xl:via-[64%] xl:to-[100%]"
+		aria-hidden="true"></span>
 
-	<?php /* Текст + кнопка.
-	         absolute bottom-0: нижний край блока = нижний край секции.
-	         Высота блока определяется контентом, поэтому на обоих брейкпоинтах
-	         верхний край встаёт ровно туда, куда нужно:
-	           мобайл  603 − 320 (235 текст + 30 gap + 55 кнопка) = 283px ✓
-	           десктоп 870 − 368 (253 текст + 50 gap + 65 кнопка) = 502px ✓ */ ?>
-	<div class="absolute bottom-0 inset-x-0 px-[15px] xl:px-0">
+	<?php /* Текст + кнопка прижаты к низу секции (mt-auto), снизу — отступ. */ ?>
+	<div class="relative mt-auto inset-x-0 px-[15px] xl:px-0 pb-[40px] xl:pb-[60px]">
 		<div class="flex flex-col gap-[30px] xl:gap-[50px] items-center w-full xl:max-w-[1316px] xl:mx-auto">
 
 			<div class="flex flex-col gap-[15px] xl:gap-[20px] items-center text-center w-full">

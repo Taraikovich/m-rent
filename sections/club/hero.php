@@ -29,28 +29,24 @@ $mrent_hero_url = $mrent_hero_image['url'] ?? '';
 $mrent_hero_alt = $mrent_hero_image['alt'] ?? '';
 ?>
 
-<section class="relative bg-mrent-black">
+<?php /* Hero всегда во всю высоту экрана: мобайл 80svh, десктоп 100svh
+         (svh — без скачка из-за адресной строки). Картинка-фон на всю
+         секцию, контент прижат к низу через mt-auto. */ ?>
+<section class="relative bg-mrent-black min-h-[80svh] xl:min-h-[100svh] flex flex-col overflow-hidden">
 
-	<div class="relative h-[450px] xl:h-[900px] overflow-hidden">
-		<?php if ($mrent_hero_url) : ?>
-			<img
-				src="<?php echo esc_url($mrent_hero_url); ?>"
-				alt="<?php echo esc_attr($mrent_hero_alt); ?>"
-				class="absolute inset-0 size-full object-cover"
-				loading="eager"
-				decoding="async"
-				fetchpriority="high">
-		<?php endif; ?>
-		<span class="absolute inset-0 bg-gradient-to-b from-transparent from-[49.666%] to-mrent-black to-[86.653%]" aria-hidden="true"></span>
-	</div>
+	<?php if ($mrent_hero_url) : ?>
+		<img
+			src="<?php echo esc_url($mrent_hero_url); ?>"
+			alt="<?php echo esc_attr($mrent_hero_alt); ?>"
+			class="absolute inset-0 size-full object-cover"
+			loading="eager"
+			decoding="async"
+			fetchpriority="high">
+	<?php endif; ?>
+	<span class="absolute inset-0 bg-gradient-to-b from-transparent from-[49.666%] to-mrent-black to-[86.653%]" aria-hidden="true"></span>
 
-	<?php /* Текст-overlay (h1 + p + кнопка).
-	         Mobile: в потоке, поднят `-mt-[125px]` — попадает на тёмную часть
-	         градиента (450 - 125 = 325, как top-[325px] из макета) и автоматически
-	         расширяет высоту секции по контенту. Spacer не нужен.
-	         Desktop (≥xl): абсолютное позиционирование, `top-[515px]` внутри
-	         900px-картинки. */ ?>
-	<div class="relative z-10 -mt-[125px] px-[15px] pb-[40px] xl:absolute xl:inset-x-0 xl:top-[515px] xl:mt-0 xl:pb-0 xl:px-[100px]">
+	<?php /* Текст + кнопка прижаты к низу секции (mt-auto), снизу — отступ. */ ?>
+	<div class="relative z-10 mt-auto px-[15px] pb-[40px] xl:px-[100px] xl:pb-[60px]">
 		<div class="max-w-[1720px] mx-auto flex justify-center">
 			<div class="w-full max-w-[330px] xl:w-[1013px] xl:max-w-none flex flex-col gap-[30px] xl:gap-[50px] items-center">
 				<div class="flex flex-col gap-[15px] xl:gap-[20px] items-center text-center text-white w-full">

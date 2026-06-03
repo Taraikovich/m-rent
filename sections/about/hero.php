@@ -43,30 +43,27 @@ $mrent_hero_url = $mrent_hero_image['url'] ?? '';
 $mrent_hero_alt = $mrent_hero_image['alt'] ?? '';
 ?>
 
-<section class="relative bg-mrent-black">
+<?php /* Hero всегда во всю высоту экрана: мобайл 80svh, десктоп 100svh
+         (svh — без скачка из-за адресной строки). Картинка-фон на всю
+         секцию, контент прижат к низу через mt-auto. */ ?>
+<section class="relative bg-mrent-black min-h-[80svh] xl:min-h-[100svh] flex flex-col overflow-hidden">
 
-	<?php /* Картинка hero в потоке: задаёт высоту секции снизу.
-	         overflow-hidden клипает <img> по краям блока.
-	         Текст-overlay — сиблинг этому блоку, не клипается. */ ?>
-	<div class="relative h-[450px] xl:h-[900px] overflow-hidden">
-		<?php if ($mrent_hero_url) : ?>
-			<img
-				src="<?php echo esc_url($mrent_hero_url); ?>"
-				alt="<?php echo esc_attr($mrent_hero_alt); ?>"
-				class="absolute inset-0 size-full object-cover"
-				loading="eager"
-				decoding="async"
-				fetchpriority="high">
-		<?php endif; ?>
-		<?php /* Градиент → #1E1D1F. Стопы 49.666%..86.653% одинаковые
-		         для мобайла и десктопа (по Figma). */ ?>
-		<span class="absolute inset-0 bg-gradient-to-b from-transparent from-[49.666%] to-mrent-black to-[86.653%]" aria-hidden="true"></span>
-	</div>
+	<?php /* Картинка-фон на всю секцию. */ ?>
+	<?php if ($mrent_hero_url) : ?>
+		<img
+			src="<?php echo esc_url($mrent_hero_url); ?>"
+			alt="<?php echo esc_attr($mrent_hero_alt); ?>"
+			class="absolute inset-0 size-full object-cover"
+			loading="eager"
+			decoding="async"
+			fetchpriority="high">
+	<?php endif; ?>
+	<?php /* Градиент → #1E1D1F. Стопы 49.666%..86.653% одинаковые
+	         для мобайла и десктопа (по Figma). */ ?>
+	<span class="absolute inset-0 bg-gradient-to-b from-transparent from-[49.666%] to-mrent-black to-[86.653%]" aria-hidden="true"></span>
 
-	<?php /* Текст-overlay (h1 + p + кнопка). Абсолютное позиционирование
-	         относительно <section>. На мобайле блок может выходить за низ
-	         картинки — поэтому ниже стоит spacer, добавляющий высоту секции. */ ?>
-	<div class="absolute inset-x-0 top-[325px] xl:top-[515px] px-[15px] xl:px-[100px]">
+	<?php /* Текст + кнопка прижаты к низу секции (mt-auto), снизу — отступ. */ ?>
+	<div class="relative mt-auto inset-x-0 px-[15px] xl:px-[100px] pb-[40px] xl:pb-[60px]">
 		<div class="max-w-[1720px] mx-auto flex justify-center">
 			<div class="w-full max-w-[330px] xl:max-w-full flex flex-col gap-[30px] xl:gap-[50px] items-center">
 				<div class="flex flex-col gap-[15px] xl:gap-[20px] items-center text-center text-white w-full">
@@ -89,10 +86,5 @@ $mrent_hero_alt = $mrent_hero_image['alt'] ?? '';
 			</div>
 		</div>
 	</div>
-
-	<?php /* Spacer под картинкой — на мобайле текст+кнопка свешиваются
-	         ниже картинки на ~120px. На десктопе блок умещается внутри
-	         900px — spacer не нужен. */ ?>
-	<div class="h-[120px] xl:h-0"></div>
 
 </section>
