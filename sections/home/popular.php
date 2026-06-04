@@ -90,9 +90,16 @@ $mrent_catalog_url = get_post_type_archive_link('car') ?: home_url('/cars/');
 										</a>
 									</h3>
 
-									<p class="w-full font-[400] text-[clamp(14px,12.6px+0.91vw,20px)] leading-[1.2] text-mrent-white mt-auto">
-										<?php echo esc_html(mrent_byn_price($mrent_price, '/' . __('сутки', 'm-rent'))); ?>
-									</p>
+									<div class="w-full mt-auto">
+										<p class="font-[400] text-[clamp(14px,12.6px+0.91vw,20px)] leading-[1.2] text-mrent-white">
+											<?php echo esc_html(mrent_byn_price($mrent_price, '/' . __('сутки', 'm-rent'))); ?>
+										</p>
+										<p class="mt-[4px] font-[400] text-[clamp(11px,9.95px+0.68vw,15px)] leading-[1.2] text-mrent-white/60">
+											<?php echo esc_html(mrent_usd_price($mrent_price, '/' . __('сутки', 'm-rent'))); ?>
+											<span class="px-[4px]">·</span>
+											<?php echo esc_html(mrent_rub_price($mrent_price, '/' . __('сутки', 'm-rent'))); ?>
+										</p>
+									</div>
 
 									<?php /* В отличие от каталога мобильные кнопки здесь — в ряд (Figma 2994:8984). */ ?>
 									<div class="flex gap-[10px] items-stretch w-full">

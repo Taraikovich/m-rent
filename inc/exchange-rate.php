@@ -10,6 +10,7 @@
  *
  * Опции:
  *   • mrent_usd_rate         — float, BYN за 1 USD (учтён Cur_Scale)
+ *   • mrent_rub_rate         — float, BYN за 1 RUB (учтён Cur_Scale)
  *   • mrent_usd_rate_updated — int,   unix-timestamp последнего успеха
  *   • mrent_usd_markup       — float, наценка в процентах
  */
@@ -18,9 +19,10 @@ if (! defined('ABSPATH')) {
 	exit;
 }
 
-const MRENT_EXCHANGE_HOOK     = 'mrent_update_usd_rate';
-const MRENT_EXCHANGE_SCHEDULE = 'mrent_every_5h';
-const MRENT_EXCHANGE_API_URL  = 'https://api.nbrb.by/exrates/rates/431';
+const MRENT_EXCHANGE_HOOK        = 'mrent_update_usd_rate';
+const MRENT_EXCHANGE_SCHEDULE    = 'mrent_every_5h';
+const MRENT_EXCHANGE_API_URL_USD = 'https://api.nbrb.by/exrates/rates/431';
+const MRENT_EXCHANGE_API_URL_RUB = 'https://api.nbrb.by/exrates/rates/456';
 
 /* ---------- cron ---------- */
 
@@ -50,43 +52,64 @@ add_action(MRENT_EXCHANGE_HOOK, 'mrent_exchange_fetch_and_store');
 /* ---------- fetch ---------- */
 
 /**
- * Тянет курс с НБРБ и сохраняет в опции. Возвращает true при успехе.
+ * Тянет курс одной валюты с НБРБ. Возвращает BYN за 1 единицу (с учётом
+ * Cur_Scale) или null при любой ошибке.
  */
-function mrent_exchange_fetch_and_store(): bool
+function mrent_exchange_fetch_rate(string $url): ?float
 {
-	$response = wp_remote_get(MRENT_EXCHANGE_API_URL, [
+	$response = wp_remote_get($url, [
 		'timeout' => 10,
 		'headers' => ['Accept' => 'application/json'],
 	]);
 
 	if (is_wp_error($response)) {
 		error_log('[mrent_exchange] fetch failed: ' . $response->get_error_message());
-		return false;
+		return null;
 	}
 
 	$code = wp_remote_retrieve_response_code($response);
 	if ($code !== 200) {
 		error_log('[mrent_exchange] HTTP ' . $code);
-		return false;
+		return null;
 	}
 
 	$body = json_decode(wp_remote_retrieve_body($response), true);
 	if (! is_array($body) || ! isset($body['Cur_OfficialRate'], $body['Cur_Scale'])) {
 		error_log('[mrent_exchange] unexpected payload: ' . wp_remote_retrieve_body($response));
-		return false;
+		return null;
 	}
 
 	$scale = (float) $body['Cur_Scale'];
 	if ($scale <= 0) {
-		return false;
+		return null;
 	}
 
 	$rate = (float) $body['Cur_OfficialRate'] / $scale;
 	if ($rate <= 0) {
+		return null;
+	}
+
+	return $rate;
+}
+
+/**
+ * Тянет курсы USD и RUB с НБРБ и сохраняет в опции. Возвращает true, если
+ * получен основной курс (USD); курс RUB обновляется независимо при наличии.
+ */
+function mrent_exchange_fetch_and_store(): bool
+{
+	$usd = mrent_exchange_fetch_rate(MRENT_EXCHANGE_API_URL_USD);
+	$rub = mrent_exchange_fetch_rate(MRENT_EXCHANGE_API_URL_RUB);
+
+	if ($rub !== null) {
+		update_option('mrent_rub_rate', $rub);
+	}
+
+	if ($usd === null) {
 		return false;
 	}
 
-	update_option('mrent_usd_rate', $rate);
+	update_option('mrent_usd_rate', $usd);
 	update_option('mrent_usd_rate_updated', time());
 	return true;
 }
@@ -96,6 +119,11 @@ function mrent_exchange_fetch_and_store(): bool
 function mrent_usd_rate(): float
 {
 	return (float) get_option('mrent_usd_rate', 0);
+}
+
+function mrent_rub_rate(): float
+{
+	return (float) get_option('mrent_rub_rate', 0);
 }
 
 function mrent_usd_rate_updated(): int
@@ -121,6 +149,15 @@ function mrent_usd_to_byn(float $usd): float
 }
 
 /**
+ * Готовая строка цены в исходных долларах вида «$120».
+ * $suffix добавляется в конец без пробела: передайте '/сутки' для «$120/сутки».
+ */
+function mrent_usd_price(float $usd, string $suffix = ''): string
+{
+	return '$' . mrent_format_price($usd) . $suffix;
+}
+
+/**
  * Готовая строка вида «335.4 руб.» — округляется до десятых.
  * $suffix добавляется в конец без пробела: передайте '/сутки' для «335.4 руб./сутки».
  */
@@ -131,24 +168,77 @@ function mrent_byn_price(float $usd, string $suffix = ''): string
 }
 
 /**
+ * Пересчёт USD → RUB (российский рубль) с применением той же наценки.
+ * Считается через BYN: USD→BYN по курсу НБРБ, затем BYN→RUB.
+ * 0.0 если какой-либо из курсов ещё не получен.
+ */
+function mrent_usd_to_rub(float $usd): float
+{
+	$rubRate = mrent_rub_rate();
+	if ($rubRate <= 0) {
+		return 0.0;
+	}
+	$byn = mrent_usd_to_byn($usd);
+	if ($byn <= 0) {
+		return 0.0;
+	}
+	return $byn / $rubRate;
+}
+
+/**
+ * Готовая строка вида «3 350 ₽» — округляется до десятков.
+ * $suffix добавляется в конец без пробела: передайте '/сутки' для «3 350 ₽/сутки».
+ */
+function mrent_rub_price(float $usd, string $suffix = ''): string
+{
+	$rub = round(mrent_usd_to_rub($usd), -1);
+	return mrent_format_price($rub) . ' ' . __('₽', 'm-rent') . $suffix;
+}
+
+/**
  * Конвертация цен прямо в произвольном тексте/HTML (WYSIWYG-поля ACF).
  * Ищет последовательности вида «120$», «99.5$», «1 200$», «120 $» и заменяет
- * на эквивалент в BYN через mrent_byn_price(). Остальной HTML не трогает.
- *
+ * каждую на результат $formatter($usd). Остальной HTML не трогает.
+ */
+function mrent_convert_usd_in_text_with(string $html, callable $formatter): string
+{
+	return (string) preg_replace_callback(
+		'/(\d{1,3}(?:[ \xC2\xA0]\d{3})*|\d+)(?:[.,](\d+))?\s*\$/u',
+		static function (array $m) use ($formatter): string {
+			$int  = preg_replace('/[ \xC2\xA0]/u', '', $m[1]);
+			$frac = $m[2] ?? '';
+			$usd  = (float) ($frac !== '' ? $int . '.' . $frac : $int);
+			return (string) $formatter($usd);
+		},
+		$html
+	);
+}
+
+/**
+ * Конвертация USD-цен в тексте в BYN через mrent_byn_price().
  * Пример: «Цена 120$ в сутки» → «Цена 335 руб. в сутки».
  */
 function mrent_convert_usd_in_text(string $html): string
 {
-	return (string) preg_replace_callback(
-		'/(\d{1,3}(?:[ \xC2\xA0]\d{3})*|\d+)(?:[.,](\d+))?\s*\$/u',
-		static function (array $m): string {
-			$int  = preg_replace('/[ \xC2\xA0]/u', '', $m[1]);
-			$frac = $m[2] ?? '';
-			$usd  = (float) ($frac !== '' ? $int . '.' . $frac : $int);
-			return mrent_byn_price($usd);
-		},
-		$html
-	);
+	return mrent_convert_usd_in_text_with($html, 'mrent_byn_price');
+}
+
+/**
+ * Конвертация USD-цен в тексте в российские рубли через mrent_rub_price().
+ * Пример: «Цена 120$ в сутки» → «Цена 9 000 ₽ в сутки».
+ */
+function mrent_convert_usd_in_text_rub(string $html): string
+{
+	return mrent_convert_usd_in_text_with($html, 'mrent_rub_price');
+}
+
+/**
+ * Нормализация USD-цен в тексте к единому виду «$120» через mrent_usd_price().
+ * Пример: «Цена 120$ в сутки» → «Цена $120 в сутки».
+ */
+function mrent_convert_usd_in_text_usd(string $html): string
+{
+	return mrent_convert_usd_in_text_with($html, 'mrent_usd_price');
 }
 
 /* ---------- admin page ---------- */
@@ -172,9 +262,12 @@ function mrent_exchange_render_page(): void
 	}
 
 	$rate    = mrent_usd_rate();
+	$rubRate = mrent_rub_rate();
 	$updated = mrent_usd_rate_updated();
 	$markup  = mrent_usd_markup();
 	$final   = $rate * (1 + $markup / 100);
+	// USD → RUB с наценкой (для наглядности): сколько RUB за 1 USD.
+	$usdRub  = $rubRate > 0 ? $final / $rubRate : 0.0;
 
 	$notice = '';
 	if (isset($_GET['updated'])) {
@@ -201,12 +294,20 @@ function mrent_exchange_render_page(): void
 					<td><strong><?php echo $rate > 0 ? esc_html(number_format($rate, 4, '.', ' ')) : '—'; ?></strong></td>
 				</tr>
 				<tr>
+					<th><?php esc_html_e('Курс НБРБ (BYN за 1 RUB)', 'm-rent'); ?></th>
+					<td><strong><?php echo $rubRate > 0 ? esc_html(number_format($rubRate, 4, '.', ' ')) : '—'; ?></strong></td>
+				</tr>
+				<tr>
 					<th><?php esc_html_e('Последнее обновление', 'm-rent'); ?></th>
 					<td><?php echo $updated > 0 ? esc_html(wp_date('d.m.Y H:i', $updated)) : '—'; ?></td>
 				</tr>
 				<tr>
 					<th><?php esc_html_e('Курс с наценкой', 'm-rent'); ?></th>
 					<td><strong><?php echo $rate > 0 ? esc_html(number_format($final, 4, '.', ' ')) : '—'; ?></strong></td>
+				</tr>
+				<tr>
+					<th><?php esc_html_e('1 USD в RUB (с наценкой)', 'm-rent'); ?></th>
+					<td><strong><?php echo $usdRub > 0 ? esc_html(number_format($usdRub, 2, '.', ' ')) : '—'; ?></strong></td>
 				</tr>
 			</tbody>
 		</table>

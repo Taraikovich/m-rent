@@ -125,8 +125,11 @@ if ($mrent_pkg_has_options) {
 							$mrent_pkg_item_title    = (string) ($mrent_pkg['title'] ?? '');
 							$mrent_pkg_item_subtitle = (string) ($mrent_pkg['subtitle'] ?? '');
 							$mrent_pkg_item_specs    = (array) ($mrent_pkg['specs'] ?? []);
-							$mrent_pkg_item_price    = mrent_convert_usd_in_text((string) ($mrent_pkg['price'] ?? ''));
+							$mrent_pkg_raw_price     = (string) ($mrent_pkg['price'] ?? '');
+							$mrent_pkg_item_price    = mrent_convert_usd_in_text($mrent_pkg_raw_price);
+							$mrent_pkg_has_usd       = $mrent_pkg_item_price !== $mrent_pkg_raw_price;
 							$mrent_pkg_item_unit     = (string) ($mrent_pkg['price_unit'] ?? '');
+							$mrent_pkg_unit_suffix   = $mrent_pkg_item_unit !== '' ? '/' . $mrent_pkg_item_unit : '';
 							$mrent_pkg_item_cta      = $mrent_pkg['cta_text'] ?? '';
 							if (! $mrent_pkg_item_cta) {
 								$mrent_pkg_item_cta = __('Забронировать услугу', 'm-rent');
@@ -134,10 +137,10 @@ if ($mrent_pkg_has_options) {
 							$mrent_pkg_item_url = ! empty($mrent_pkg['cta_url']) ? (string) $mrent_pkg['cta_url'] : '#booking';
 						?>
 							<div class="swiper-slide !h-auto xl:!flex-1 xl:!w-auto">
-								<article class="bg-[#252426] border border-[#302F31] rounded-[15px] p-[20px] xl:p-[40px] flex flex-col gap-[30px] xl:gap-[40px] xl:min-w-0 xl:min-h-[872px] xl:justify-between">
+								<article class="bg-[#252426] border border-[#302F31] rounded-[15px] p-[20px] xl:p-[40px] flex flex-col gap-[30px] xl:gap-[40px] xl:min-w-0 xl:min-h-[800px] xl:justify-between">
 
 									<div class="flex flex-col gap-[30px] xl:gap-[40px]">
-										<div class="flex flex-col gap-[15px] xl:gap-[20px] xl:min-h-[160px] xl:justify-between">
+										<div class="flex flex-col gap-[15px] xl:gap-[20px] xl:justify-between">
 											<div class="flex flex-col gap-[15px] xl:gap-[20px]">
 												<?php if ($mrent_pkg_item_title !== '') : ?>
 													<h3 class="font-[600] text-[clamp(16px,14.06px+0.52vw,24px)] leading-[1.2]">
@@ -184,6 +187,13 @@ if ($mrent_pkg_has_options) {
 												<?php endif; ?>
 												<?php if ($mrent_pkg_item_unit !== '') : ?>
 													<span class="font-[400] text-[clamp(16px,12.60px+0.91vw,30px)]"><?php echo $mrent_pkg_item_price !== '' ? '/' : ''; ?><?php echo esc_html($mrent_pkg_item_unit); ?></span>
+												<?php endif; ?>
+												<?php if ($mrent_pkg_has_usd) : ?>
+													<span class="block mt-[10px] font-[400] text-[clamp(14px,12.54px+0.39vw,20px)] text-mrent-white/60">
+														<?php echo esc_html(mrent_convert_usd_in_text_usd($mrent_pkg_raw_price) . $mrent_pkg_unit_suffix); ?>
+														<span class="px-[4px]">·</span>
+														<?php echo esc_html(mrent_convert_usd_in_text_rub($mrent_pkg_raw_price) . $mrent_pkg_unit_suffix); ?>
+													</span>
 												<?php endif; ?>
 											</p>
 										<?php endif; ?>
@@ -272,8 +282,11 @@ if ($mrent_pkg_has_options) {
 						<?php foreach ($mrent_pkg_options as $mrent_opt) :
 							$mrent_opt_icon  = is_array($mrent_opt['icon'] ?? null) ? $mrent_opt['icon'] : null;
 							$mrent_opt_title = (string) ($mrent_opt['title'] ?? '');
-							$mrent_opt_price = mrent_convert_usd_in_text((string) ($mrent_opt['price'] ?? ''));
+							$mrent_opt_raw_price = (string) ($mrent_opt['price'] ?? '');
+							$mrent_opt_price = mrent_convert_usd_in_text($mrent_opt_raw_price);
+							$mrent_opt_has_usd = $mrent_opt_price !== $mrent_opt_raw_price;
 							$mrent_opt_unit  = (string) ($mrent_opt['price_unit'] ?? '');
+							$mrent_opt_unit_suffix = $mrent_opt_unit !== '' ? '/' . $mrent_opt_unit : '';
 							$mrent_opt_cta   = $mrent_opt['cta_text'] ?? '';
 							if (! $mrent_opt_cta) {
 								$mrent_opt_cta = __('Забронировать услугу', 'm-rent');
@@ -300,10 +313,17 @@ if ($mrent_pkg_has_options) {
 										<?php if ($mrent_opt_price !== '' || $mrent_opt_unit !== '') : ?>
 											<p class="leading-[1.2]">
 												<?php if ($mrent_opt_price !== '') : ?>
-													<span class="font-[800] text-[clamp(24px,20.12px+1.04vw,40px)]"><?php echo esc_html($mrent_opt_price); ?></span>
+													<span class="font-[800] text-[clamp(24px,20.12px+1.04vw,30px)]"><?php echo esc_html($mrent_opt_price); ?></span>
 												<?php endif; ?>
 												<?php if ($mrent_opt_unit !== '') : ?>
 													<span class="font-[400] text-[clamp(14px,11.57px+0.65vw,24px)]"><?php echo $mrent_opt_price !== '' ? '/' : ''; ?><?php echo esc_html($mrent_opt_unit); ?></span>
+												<?php endif; ?>
+												<?php if ($mrent_opt_has_usd) : ?>
+													<span class="block mt-[10px] font-[400] text-[clamp(12px,10.94px+0.39vw,18px)] text-mrent-white/60">
+														<?php echo esc_html(mrent_convert_usd_in_text_usd($mrent_opt_raw_price) . $mrent_opt_unit_suffix); ?>
+														<span class="px-[4px]">·</span>
+														<?php echo esc_html(mrent_convert_usd_in_text_rub($mrent_opt_raw_price) . $mrent_opt_unit_suffix); ?>
+													</span>
 												<?php endif; ?>
 											</p>
 										<?php endif; ?>

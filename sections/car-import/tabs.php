@@ -22,7 +22,9 @@ if (! defined('ABSPATH')) {
 
 $mrent_title      = (string) get_field('car_import_intro_title');
 $mrent_lead       = (string) get_field('car_import_intro_lead');
-$mrent_cost       = (string) mrent_convert_usd_in_text(get_field('car_import_tab1_cost'));
+$mrent_cost_raw   = (string) get_field('car_import_tab1_cost');
+$mrent_cost       = (string) mrent_convert_usd_in_text($mrent_cost_raw);
+$mrent_cost_has_usd = $mrent_cost !== $mrent_cost_raw;
 $mrent_card_title = (string) get_field('car_import_tab1_card_title');
 $mrent_card_items = (array)  get_field('car_import_tab1_card_items');
 $mrent_cta_text   = (string) get_field('car_import_tab1_cta_text');
@@ -198,6 +200,13 @@ $mrent_tabs = [
 							</svg>
 							<p class="leading-[1.2] text-[clamp(16px,14.06px+0.52vw,24px)]">
 								<span class="font-[800]"><?php esc_html_e('Стоимость услуги', 'm-rent'); ?></span><span class="font-[400]"> — <?php echo esc_html($mrent_cost); ?></span>
+								<?php if ($mrent_cost_has_usd) : ?>
+									<span class="block mt-[6px] font-[400] text-[clamp(13px,11.94px+0.39vw,18px)] text-mrent-white/60">
+										<?php echo esc_html(mrent_convert_usd_in_text_usd($mrent_cost_raw)); ?>
+										<span class="px-[4px]">·</span>
+										<?php echo esc_html(mrent_convert_usd_in_text_rub($mrent_cost_raw)); ?>
+									</span>
+								<?php endif; ?>
 							</p>
 						</div>
 					<?php endif; ?>

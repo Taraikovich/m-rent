@@ -56,11 +56,18 @@ $mrent_booking_url = get_field('car_booking_url') ?: '#booking';
 					<div class="bg-[#252426] flex items-center justify-center px-[10px] py-[15px] xl:p-[clamp(14px,1.2vw,18px)] text-[clamp(10px,11.06px+0.52vw,24px)] text-center leading-[1.2] min-h-[50px]">
 						<?php echo esc_html($row['duration']); ?>
 					</div>
-					<div class="bg-[#252426] flex items-center justify-center px-[10px] py-[15px] xl:p-[clamp(14px,1.2vw,20px)] text-[clamp(10px,11.03px+0.26vw,20px)] text-center leading-[1.2] min-h-[50px] font-[800] whitespace-nowrap">
-						<?php echo esc_html(mrent_byn_price((float) $row['price'], (string) ($row['price_suffix'] ?? ''))); ?>
-						<?php if (! empty($row['discount'])) : ?>
-							<sup class="ml-[2px] text-mrent-yellow text-[clamp(9px,8.03px+0.26vw,13px)] font-[800]"><?php echo esc_html($row['discount']); ?></sup>
-						<?php endif; ?>
+					<div class="bg-[#252426] flex flex-col items-center justify-center gap-[2px] px-[10px] py-[15px] xl:p-[clamp(14px,1.2vw,20px)] text-center leading-[1.2] min-h-[50px]">
+						<span class="text-[clamp(10px,11.03px+0.26vw,20px)] font-[800] whitespace-nowrap">
+							<?php echo esc_html(mrent_byn_price((float) $row['price'], (string) ($row['price_suffix'] ?? ''))); ?>
+							<?php if (! empty($row['discount'])) : ?>
+								<sup class="ml-[2px] text-mrent-yellow text-[clamp(9px,8.03px+0.26vw,13px)] font-[800]"><?php echo esc_html($row['discount']); ?></sup>
+							<?php endif; ?>
+						</span>
+						<span class="text-[clamp(8px,7.2px+0.39vw,12px)] font-[400] text-mrent-white/60 whitespace-nowrap">
+							<?php echo esc_html(mrent_usd_price((float) $row['price'], (string) ($row['price_suffix'] ?? ''))); ?>
+							<span class="px-[3px]">·</span>
+							<?php echo esc_html(mrent_rub_price((float) $row['price'], (string) ($row['price_suffix'] ?? ''))); ?>
+						</span>
 					</div>
 				<?php endforeach; ?>
 			</div>
@@ -87,6 +94,11 @@ $mrent_booking_url = get_field('car_booking_url') ?: '#booking';
 					<p class="leading-[1.2] text-[clamp(14px,11.57px+0.65vw,24px)]">
 						<span class="font-[700]"><?php esc_html_e('Депозит:', 'm-rent'); ?></span>
 						<?php echo esc_html(mrent_byn_price($mrent_deposit)); ?>
+						<span class="block mt-[4px] text-[clamp(11px,9.95px+0.68vw,15px)] text-mrent-white/60">
+							<?php echo esc_html(mrent_usd_price($mrent_deposit)); ?>
+							<span class="px-[4px]">·</span>
+							<?php echo esc_html(mrent_rub_price($mrent_deposit)); ?>
+						</span>
 					</p>
 				</div>
 			<?php endif; ?>

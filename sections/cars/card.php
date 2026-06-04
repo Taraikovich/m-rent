@@ -73,9 +73,16 @@ $mrent_hover_url   = is_array($mrent_hover_image) && ! empty($mrent_hover_image[
 		         mt-auto активен на всех брейкпойнтах: название теперь есть и на мобайле,
 		         так что разная длина заголовка не двигает цену и кнопки по вертикали. */ ?>
 		<div class="flex flex-col gap-[15px] xl:gap-[30px] items-start w-full mt-auto">
-			<p class="w-full font-[400] text-[clamp(12px,11.27px+0.19vw,15px)] leading-[1.2] text-mrent-white">
-				<?php echo esc_html(mrent_byn_price($mrent_price, '/' . __('сутки', 'm-rent'))); ?>
-			</p>
+			<div class="w-full">
+				<p class="font-[400] text-[clamp(12px,11.27px+0.19vw,15px)] leading-[1.2] text-mrent-white">
+					<?php echo esc_html(mrent_byn_price($mrent_price, '/' . __('сутки', 'm-rent'))); ?>
+				</p>
+				<p class="mt-[4px] font-[400] text-[clamp(10px,9.27px+0.19vw,13px)] leading-[1.2] text-mrent-white/60">
+					<?php echo esc_html(mrent_usd_price($mrent_price, '/' . __('сутки', 'm-rent'))); ?>
+					<span class="px-[4px]">·</span>
+					<?php echo esc_html(mrent_rub_price($mrent_price, '/' . __('сутки', 'm-rent'))); ?>
+				</p>
+			</div>
 
 			<?php /* Мобайл (2326:3645): кнопки колонкой, каждая w-full + shrink-0 + h-55,
 			         текст whitespace-nowrap. Десктоп (199:117): в ряд, flex-1 делит ширину.
