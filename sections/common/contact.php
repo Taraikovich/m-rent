@@ -86,7 +86,7 @@ $mrent_icon_class = 'block size-7.5 xl:size-[38px]';
 						<?php esc_html_e('Оставьте заявку, и мы свяжемся с вами, чтобы помочь выбрать лучший вариант.', 'm-rent'); ?>
 					</p>
 				</div>
-				<a href="#booking-form-short" class="self-start font-display font-medium text-mrent-yellow text-[clamp(14px,calc(15.09px+0.78vw),18px)] underline underline-offset-2 hover:opacity-80 transition-opacity">
+				<a href="#booking-form-short" class="hidden xl:inline-block self-start font-display font-medium text-mrent-yellow text-[clamp(14px,calc(15.09px+0.78vw),18px)] underline underline-offset-2 hover:opacity-80 transition-opacity">
 					<?php esc_html_e('Оставить заявку', 'm-rent'); ?>
 				</a>
 			</div>
@@ -94,11 +94,24 @@ $mrent_icon_class = 'block size-7.5 xl:size-[38px]';
 			<?php /* Соц-секция. Mobile flex-col gap-20 / desktop flex-col gap-40 (внутри две колонки иконок + ряд ссылок-«Подписаться»). */ ?>
 			<div class="flex flex-col gap-5 xl:gap-10">
 
+				<?php /* Mobile-only: крупная жёлтая кнопка «Написать в Telegram» перед мессенджерами + серый подпись «приоритетный способ связи». */ ?>
+				<?php if (! empty($mrent_messengers['telegram'])) : ?>
+					<div class="flex flex-col gap-2.5 xl:hidden">
+						<a href="<?php echo esc_url($mrent_messengers['telegram']); ?>" class="flex items-center justify-center gap-2.5 rounded-[15px] bg-mrent-yellow text-mrent-black font-display font-medium text-[16px] leading-none py-4 px-5 hover:opacity-80 transition-opacity" target="_blank" rel="noopener">
+							<?php echo mrent_icon('telegram', ['class' => 'size-6 shrink-0']); ?>
+							<?php esc_html_e('Написать в Telegram', 'm-rent'); ?>
+						</a>
+						<p class="font-display text-[14px] text-gray-400 text-center">
+							<?php esc_html_e('приоритетный способ связи', 'm-rent'); ?>
+						</p>
+					</div>
+				<?php endif; ?>
+
 				<?php /* Две колонки: соцсети (Мы в соцсетях) + мессенджеры (Свяжитесь с нами). На <xl — друг под другом, на ≥xl — рядом. */ ?>
 				<div class="flex flex-col xl:flex-row gap-5 xl:gap-10">
 
 					<?php if ($mrent_socials) : ?>
-						<div class="flex flex-col gap-3.75 xl:gap-7.5">
+						<div class="hidden xl:flex flex-col gap-3.75 xl:gap-7.5">
 							<p class="font-display font-bold text-[clamp(12px,calc(13.18px+0.49vw),22px)] text-mrent-white leading-[1.2]">
 								<?php esc_html_e('Мы в соцсетях:', 'm-rent'); ?>
 							</p>
@@ -143,7 +156,7 @@ $mrent_icon_class = 'block size-7.5 xl:size-[38px]';
 
 				<?php /* «Подписаться» — ссылки на канал/профиль. Mobile flex-col gap-15 / desktop flex-row gap-30. */ ?>
 				<?php if ($mrent_subscribe_ig || $mrent_subscribe_tg) : ?>
-					<div class="flex flex-col xl:flex-row gap-3.75 xl:gap-7.5">
+					<div class="hidden xl:flex flex-col xl:flex-row gap-3.75 xl:gap-7.5">
 						<?php if ($mrent_subscribe_ig) : ?>
 							<a href="<?php echo esc_url($mrent_subscribe_ig); ?>" class="self-start font-display font-medium xl:font-normal text-[clamp(10px,calc(17.51px+0.13vw),24px)] text-mrent-white underline underline-offset-2 hover:opacity-80 transition-opacity" target="_blank" rel="noopener">
 								<?php esc_html_e('Подписаться в Instagram', 'm-rent'); ?>

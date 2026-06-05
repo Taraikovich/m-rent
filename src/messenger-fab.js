@@ -14,7 +14,20 @@ function setState(root, state) {
   if (btn) btn.setAttribute('aria-expanded', state === 'open' ? 'true' : 'false');
 }
 
+const SCROLL_TOP_SELECTOR = '[data-mrent-scroll-top]';
+
+function initScrollTop() {
+  const btn = document.querySelector(SCROLL_TOP_SELECTOR);
+  if (!btn) return;
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 function init() {
+  initScrollTop();
+
   const root = document.querySelector(ROOT_SELECTOR);
   if (!root) return;
 

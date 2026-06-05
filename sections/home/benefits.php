@@ -18,5 +18,6 @@ get_template_part(
 	[
 		'benefits' => (array) get_field( 'home_benefits', $mrent_page_id ),
 		'image'    => get_field( 'home_benefits_image', $mrent_page_id ) ?: [],
+		'title'    => (string) get_field( 'home_benefits_title', $mrent_page_id ),
 	]
 );

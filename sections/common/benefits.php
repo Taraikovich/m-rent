@@ -10,9 +10,11 @@
  *     get_template_part( 'sections/common/benefits', null, [
  *         'benefits' => [ ['benefit_icon'=>..., 'benefit_title'=>..., 'benefit_description'=>...], ...6 ],
  *         'image'    => [ 'url' => ..., 'alt' => ... ],
+ *         'title'    => '...', // необязательный; выводится только на мобайле (xl:hidden)
  *     ] );
  *
- * Если `benefits` пустой — секция не выводится.
+ * Если `benefits` пустой — секция не выводится. Центральное фото скрыто на
+ * мобайле (`hidden xl:block`); вместо него можно показать `title`.
  *
  * Иконки — SVG/PNG из медиатеки. SVG-MIME включён в inc/svg.php.
  *
@@ -37,6 +39,8 @@ if (! $mrent_benefits) {
 	return;
 }
 
+$mrent_title = isset($args['title']) ? trim((string) $args['title']) : '';
+
 $mrent_image     = isset($args['image']) && is_array($args['image']) ? $args['image'] : [];
 $mrent_image_url = $mrent_image['url'] ?? '';
 $mrent_image_alt = $mrent_image['alt'] ?? '';
@@ -46,6 +50,10 @@ $mrent_right = array_slice($mrent_benefits, 3, 3);
 ?>
 
 <section class="bg-mrent-black px-3.75 py-15 xl:px-25 xl:py-25">
+	<?php if ($mrent_title) : ?>
+		<h2 class="xl:hidden max-w-[1720px] mx-auto mb-7.5 font-display font-extrabold text-white text-2xl leading-[1.2]"><?php echo esc_html($mrent_title); ?></h2>
+	<?php endif; ?>
+
 	<div class="max-w-[1720px] mx-auto flex flex-col items-center gap-7.5 xl:flex-row xl:items-stretch xl:justify-center xl:gap-[clamp(20px,3vw,58px)]">
 
 		<?php /* Левая колонка. На мобайле — w-full стек, на десктопе — фикс 548px по Figma. */ ?>
@@ -63,7 +71,7 @@ $mrent_right = array_slice($mrent_benefits, 3, 3);
 
 		<?php /* Центральное фото — 244×229 на мобайле, 458×419 на десктопе.
 		         object-contain: картинка целиком вписывается в бокс, без обрезки. */ ?>
-		<div class="w-61 h-57.25 xl:w-[clamp(400px,21.97vw,458px)] xl:h-auto shrink-0">
+		<div class="hidden xl:block w-61 h-57.25 xl:w-[clamp(400px,21.97vw,458px)] xl:h-auto shrink-0">
 			<img src="<?php echo esc_url($mrent_image_url); ?>" alt="<?php echo esc_attr($mrent_image_alt); ?>" class="block w-full h-full object-contain loading=" lazy" decoding="async">
 		</div>
 

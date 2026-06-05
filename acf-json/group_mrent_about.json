@@ -328,6 +328,26 @@
             "endpoint": 0
         },
         {
+            "key": "field_mrent_about_benefits_title",
+            "label": "Заголовок (только моб.)",
+            "name": "about_benefits_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Необязательный заголовок секции. Показывается только на мобильном (на десктопе скрыт). Можно оставить пустым.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_mrent_about_benefits_image",
             "label": "Фото автомобиля",
             "name": "about_benefits_image",
@@ -763,5 +783,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1778991000
+    "modified": 1780660800
 }

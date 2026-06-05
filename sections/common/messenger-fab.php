@@ -29,13 +29,24 @@ $mrent_fab_icons_url = get_stylesheet_directory_uri() . '/assets/icons/';
 ?>
 
 <div
-	class="mrent-msg-fab xl:hidden fixed right-4 bottom-4 z-[60] flex flex-col items-center gap-3"
+	class="mrent-msg-fab fixed right-4 bottom-4 z-[60] flex flex-col items-center gap-3"
 	data-mrent-msg-fab
 	data-state="closed">
 
 	<ul
-		class="mrent-msg-fab__list flex flex-col items-center gap-3 transition-all duration-300 ease-out opacity-0 translate-y-2 pointer-events-none"
+		class="mrent-msg-fab__list xl:hidden flex flex-col items-center gap-3 transition-all duration-300 ease-out opacity-0 translate-y-2 pointer-events-none"
 		data-mrent-msg-fab-list>
+		<?php $mrent_fab_phone = mrent_options_phone_url(); ?>
+		<?php if ($mrent_fab_phone) : ?>
+			<li>
+				<a
+					href="<?php echo esc_url($mrent_fab_phone); ?>"
+					class="flex items-center justify-center size-12 rounded-full bg-[#34C759] text-white shadow-md hover:scale-110 transition-transform"
+					aria-label="<?php esc_attr_e('Позвонить', 'mrent'); ?>">
+					<?php echo mrent_icon('phone-call', ['class' => 'w-6 h-6']); ?>
+				</a>
+			</li>
+		<?php endif; ?>
 		<?php foreach ($mrent_fab_links as $mrent_fab_slug => $mrent_fab_url) : ?>
 			<?php if (! isset($mrent_fab_icons[$mrent_fab_slug])) {
 				continue;
@@ -60,7 +71,7 @@ $mrent_fab_icons_url = get_stylesheet_directory_uri() . '/assets/icons/';
 
 	<button
 		type="button"
-		class="mrent-msg-fab__btn relative flex items-center justify-center size-14 rounded-2xl bg-[#1f1e20] text-white border border-white shadow-lg transition-transform active:scale-95"
+		class="mrent-msg-fab__btn xl:hidden relative flex items-center justify-center size-14 rounded-2xl bg-mrent-yellow hover:bg-[#FFF831] text-mrent-black shadow-lg transition-colors active:scale-95"
 		aria-label="Связаться в мессенджере"
 		aria-expanded="false"
 		data-mrent-msg-fab-toggle>
@@ -70,5 +81,13 @@ $mrent_fab_icons_url = get_stylesheet_directory_uri() . '/assets/icons/';
 		<span class="mrent-msg-fab__icon-open absolute inset-0 hidden items-center justify-center" aria-hidden="true">
 			<?php echo mrent_icon('close', ['class' => 'w-6 h-6']); ?>
 		</span>
+	</button>
+
+	<button
+		type="button"
+		class="mrent-scroll-top flex items-center justify-center size-14 rounded-2xl bg-mrent-black text-white border border-white shadow-lg transition-transform active:scale-95 hover:scale-105"
+		aria-label="Наверх"
+		data-mrent-scroll-top>
+		<?php echo mrent_icon('arrow-up', ['class' => 'w-7 h-7']); ?>
 	</button>
 </div>
