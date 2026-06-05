@@ -18,7 +18,12 @@ get_header();
 
 <main>
 	<?php get_template_part('sections/home/hero'); ?>
-	<?php get_template_part('sections/home/benefits'); ?>
+	<div class="block md:hidden">
+		<?php get_template_part('sections/home/benefits-2'); ?>
+	</div>
+	<div class="hidden md:block">
+		<?php get_template_part('sections/home/benefits'); ?>
+	</div>
 	<?php get_template_part('sections/home/popular'); ?>
 	<div class="hidden md:block">
 		<?php get_template_part('sections/home/why-us'); ?>

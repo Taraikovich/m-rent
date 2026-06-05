@@ -80,7 +80,7 @@ if (! function_exists('mrent_nav_fallback')) {
 				<div class="flex gap-[24px] items-center shrink-0">
 					<?php if ($mrent_phone_url) : ?>
 						<a href="<?php echo esc_url($mrent_phone_url); ?>" class="flex gap-[8px] items-center text-white text-[16px] leading-[1.2] whitespace-nowrap hover:text-mrent-yellow transition-colors">
-							<span class="text-white"><?php echo mrent_icon('phone', ['width' => '14', 'height' => '20']); ?></span>
+							<span class="text-white"><?php echo mrent_icon('phone', ['width' => '18', 'height' => '18']); ?></span>
 							<?php echo esc_html($mrent_phone); ?>
 						</a>
 					<?php endif; ?>
@@ -121,8 +121,8 @@ if (! function_exists('mrent_nav_fallback')) {
 	</header>
 
 	<?php /* ─── Мобильный оверлей ─── */ ?>
-	<div id="mrent-mobile-menu" class="mrent-mobile-panel header:hidden" data-mrent-mobile-menu aria-hidden="true">
-		<div class="flex flex-col items-center gap-[40px] px-[15px] pt-[15px] pb-[30px] min-h-screen">
+	<div id="mrent-mobile-menu" class="mrent-mobile-panel header:hidden bg-mrent-black/50 backdrop-blur-[11.8px]" data-mrent-mobile-menu aria-hidden="true">
+		<div class="flex flex-col items-center gap-[30px] px-[11px] pt-[11px] pb-[22px] min-h-screen">
 			<div class="flex items-center justify-between w-full">
 				<a href="<?php echo $mrent_home_url; ?>" class="block shrink-0" aria-label="<?php esc_attr_e('M-RENT.BY — на главную', 'm-rent'); ?>">
 					<img src="<?php echo esc_url($mrent_logo_url); ?>" alt="M-RENT.BY" class="h-[30px] w-auto" width="136" height="30">
@@ -146,7 +146,7 @@ if (! function_exists('mrent_nav_fallback')) {
 					<div class="flex flex-col items-center gap-[24px]">
 						<?php if ($mrent_phone_url) : ?>
 							<a href="<?php echo esc_url($mrent_phone_url); ?>" class="flex gap-[10px] items-center text-white text-[16px] leading-[1.2] whitespace-nowrap">
-								<span class="text-white"><?php echo mrent_icon('phone', ['width' => '14', 'height' => '20']); ?></span>
+								<span class="text-white"><?php echo mrent_icon('phone', ['width' => '18', 'height' => '18']); ?></span>
 								<?php echo esc_html($mrent_phone); ?>
 							</a>
 						<?php endif; ?>

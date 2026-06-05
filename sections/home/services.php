@@ -60,8 +60,8 @@ if (! $mrent_query->have_posts()) {
 		<div class="max-w-[1720px] mx-auto flex flex-col gap-[30px] xl:gap-[clamp(20px,4vh,60px)] items-center xl:h-full">
 
 			<?php /* ── Заголовок (+ кнопка справа на десктопе) ── */ ?>
-			<div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[15px] w-full">
-				<h2 class="font-[700] text-[clamp(24px,calc(16.83px+2.98vw),50px)] leading-[1.2] text-mrent-white text-center xl:text-left">
+			<div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-[15px] w-full -mb-[15px] xl:mb-0">
+				<h2 class="font-[700] text-[clamp(24px,calc(16.83px+2.98vw),50px)] leading-[1.2] text-mrent-white text-left">
 					<?php echo esc_html($mrent_title); ?>
 				</h2>
 				<a

@@ -138,7 +138,8 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 						$svc_title_accent = (string) ($svc['title_accent'] ?? '');
 						$svc_body         = (string) ($svc['body'] ?? '');
 						$svc_price_usd    = (float) ($svc['price_usd'] ?? 0);
-						$svc_price_main   = $svc_price_usd > 0
+						$svc_has_usd      = $svc_price_usd > 0;
+						$svc_price_main   = $svc_has_usd
 							? '+ ' . mrent_byn_price($svc_price_usd)
 							: (string) ($svc['price_main'] ?? '');
 						$svc_price_suffix = (string) ($svc['price_suffix'] ?? '');
@@ -156,7 +157,7 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 									</h3>
 									<?php if ($svc_body !== '') : ?>
 										<div class="mrent-article text-[clamp(14px,13.03px+0.26vw,18px)] leading-[1.2]">
-											<?php echo wp_kses_post(mrent_convert_usd_in_text($svc_body)); ?>
+											<?php echo wp_kses_post(mrent_convert_usd_in_text_all($svc_body)); ?>
 										</div>
 									<?php endif; ?>
 								</div>
@@ -167,6 +168,13 @@ $mrent_specs_pros_lines  = $mrent_specs_pros !== ''
 										<?php endif; ?>
 										<?php if ($svc_price_suffix !== '') : ?>
 											<span class="text-[clamp(14px,13.03px+0.26vw,18px)]"> <?php echo esc_html($svc_price_suffix); ?></span>
+										<?php endif; ?>
+										<?php if ($svc_has_usd) : ?>
+											<span class="block mt-[6px] font-[400] text-[clamp(13px,11.94px+0.39vw,18px)] text-mrent-white/60">
+												+ <?php echo esc_html(mrent_usd_price($svc_price_usd)); ?>
+												<span class="px-[4px]">·</span>
+												<?php echo esc_html(mrent_rub_price($svc_price_usd)); ?>
+											</span>
 										<?php endif; ?>
 									</p>
 								<?php endif; ?>

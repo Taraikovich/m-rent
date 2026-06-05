@@ -241,6 +241,26 @@ function mrent_convert_usd_in_text_usd(string $html): string
 	return mrent_convert_usd_in_text_with($html, 'mrent_usd_price');
 }
 
+/**
+ * Цена сразу в трёх валютах: «350 руб. / $120 / 9 000 ₽».
+ * $suffix добавляется к каждой валюте без пробела (например '/сутки').
+ */
+function mrent_all_prices(float $usd, string $suffix = ''): string
+{
+	return mrent_byn_price($usd, $suffix)
+		. ' / ' . mrent_usd_price($usd, $suffix)
+		. ' / ' . mrent_rub_price($usd, $suffix);
+}
+
+/**
+ * Конвертация USD-цен в тексте сразу в три валюты через mrent_all_prices().
+ * Пример: «Цена 120$ в сутки» → «Цена 350 руб. / $120 / 9 000 ₽ в сутки».
+ */
+function mrent_convert_usd_in_text_all(string $html): string
+{
+	return mrent_convert_usd_in_text_with($html, 'mrent_all_prices');
+}
+
 /* ---------- admin page ---------- */
 
 add_action('admin_menu', function (): void {

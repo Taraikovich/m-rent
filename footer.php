@@ -111,7 +111,7 @@ $mrent_privacy_url  = '#privacy';
 								<?php if ($mrent_phone_url) : ?>
 									<a href="<?php echo esc_url($mrent_phone_url); ?>" class="flex gap-[8px] items-center text-[clamp(14px,calc(12.6px+0.91vw),18px)] leading-[1.2] whitespace-nowrap hover:text-mrent-yellow transition-colors">
 										<span class="inline-flex items-center justify-center size-[18px] xl:size-[30px] shrink-0 text-white">
-											<?php echo mrent_icon('phone', ['class' => 'w-[11px] h-[16px] xl:w-[18px] xl:h-[27px]']); ?>
+											<?php echo mrent_icon('phone', ['class' => 'size-full']); ?>
 										</span>
 										<?php echo esc_html($mrent_phone); ?>
 									</a>

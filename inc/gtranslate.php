@@ -36,13 +36,6 @@ function mrent_gtranslate_languages()
 	$labels = [
 		'ru'    => ['РУ', 'Русский'],
 		'en'    => ['EN', 'English'],
-		'es'    => ['ES', 'Español'],
-		'it'    => ['IT', 'Italiano'],
-		'pt'    => ['PT', 'Português'],
-		'de'    => ['DE', 'Deutsch'],
-		'fr'    => ['FR', 'Français'],
-		'nl'    => ['NL', 'Nederlands'],
-		'ar'    => ['AR', 'العربية'],
 		'zh-CN' => ['ZH', '中文'],
 	];
 

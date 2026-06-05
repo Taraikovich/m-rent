@@ -233,7 +233,7 @@
                     "name": "category_slug",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "latin\/digits\/dash, для якоря href=\"#category-{slug}\". Пусто → из названия.",
+                    "instructions": "latin/digits/dash, для якоря href=\"#category-{slug}\". Пусто → из названия.",
                     "required": false,
                     "conditional_logic": false,
                     "wrapper": {
@@ -451,6 +451,159 @@
             ]
         },
         {
+            "key": "field_mrent_home_tab_benefits_2",
+            "label": "Преимущества 2",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_mrent_home_benefit2s_title",
+            "label": "Заголовок (только моб.)",
+            "name": "home_benefits_2_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Необязательный заголовок секции. Показывается только на мобильном (на десктопе скрыт). Можно оставить пустым.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_mrent_home_benefit2s_image",
+            "label": "Фото автомобиля",
+            "name": "home_benefits_2_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Картинка по центру блока (вид сверху). Рекомендуем 1536×1024.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_mrent_home_benefit2s",
+            "label": "Преимущества",
+            "name": "home_benefits_2",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Ровно 6 пунктов — по дизайну (3 слева, 3 справа от фото).",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 6,
+            "max": 6,
+            "layout": "block",
+            "button_label": "Добавить",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_mrent_home_benefit2_icon",
+                    "label": "Иконка",
+                    "name": "benefit_icon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "SVG, ~50×50.",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": "svg,png",
+                    "parent_repeater": "field_mrent_home_benefit2s"
+                },
+                {
+                    "key": "field_mrent_home_benefit2_title",
+                    "label": "Заголовок",
+                    "name": "benefit_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_mrent_home_benefit2s"
+                },
+                {
+                    "key": "field_mrent_home_benefit2_description",
+                    "label": "Описание",
+                    "name": "benefit_description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 3,
+                    "new_lines": "",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_mrent_home_benefit2s"
+                }
+            ]
+        },
+        {
             "key": "field_mrent_home_tab_why_us",
             "label": "Почему выбирают нас",
             "name": "",
@@ -459,7 +612,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
             "endpoint": 0
         },
@@ -472,7 +629,11 @@
             "instructions": "Ровно 6 карточек по дизайну (3 кол × 2 строки на десктопе; 2 свайпа по 3 карточки на мобайле). Каждая карточка: иконка + жирный заголовок + описание.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "min": 6,
             "max": 6,
             "layout": "block",
@@ -489,7 +650,11 @@
                     "instructions": "SVG, ~60×60.",
                     "required": false,
                     "conditional_logic": false,
-                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "return_format": "array",
                     "preview_size": "thumbnail",
                     "library": "all",
@@ -511,7 +676,11 @@
                     "instructions": "Жирная вступительная фраза (например, «Полная конфиденциальность.»). Точку добавляет редактор.",
                     "required": false,
                     "conditional_logic": false,
-                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -528,7 +697,11 @@
                     "instructions": "Идёт сразу после заголовка инлайном.",
                     "required": false,
                     "conditional_logic": false,
-                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "rows": 3,
                     "new_lines": "",
                     "default_value": "",
@@ -547,7 +720,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
             "endpoint": 0
         },
@@ -560,7 +737,11 @@
             "instructions": "Заголовок над свайпером услуг (Figma 92:402). Если пусто — секция не выводится.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "Аренда авто для мероприятий",
@@ -576,7 +757,11 @@
             "instructions": "Подпись на жёлтой кнопке. По умолчанию — «Все услуги».",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "Все услуги",
             "maxlength": "",
             "placeholder": "",
@@ -592,7 +777,11 @@
             "instructions": "Куда ведёт кнопка. Если пусто — на архив /services/.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "/services/",
@@ -608,7 +797,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
             "endpoint": 0
         },
@@ -621,7 +814,11 @@
             "instructions": "Заголовок над свайпером (Figma 171:389). Пусто → «Спецпредложения».",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "Спецпредложения",
@@ -637,7 +834,11 @@
             "instructions": "Картинки-баннеры. Пропорции 408×613 (≈ 2:3). Если пусто — используются дефолтные баннеры из assets/images/special-offer-1..4.png.",
             "required": false,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array",
             "preview_size": "medium",
             "library": "all",
@@ -661,7 +862,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
             "endpoint": 0
         },
@@ -674,7 +879,11 @@
             "instructions": "Главный заголовок баннера (Figma 329:292). Если пусто — секция не выводится.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "M-RENT: от Бреста до Минска",
@@ -690,7 +899,11 @@
             "instructions": "Текст под заголовком.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "rows": 3,
@@ -706,7 +919,11 @@
             "instructions": "Подпись на жёлтой кнопке.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "Выбрать авто",
             "maxlength": "",
             "placeholder": "",
@@ -722,7 +939,11 @@
             "instructions": "Куда ведёт кнопка. Если пусто — на архив /cars/.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "/cars/",
@@ -738,7 +959,11 @@
             "instructions": "Картинка справа (десктоп) / снизу (мобайл). Если пусто — используется assets/images/delivery-bmw.png.",
             "required": false,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array",
             "preview_size": "medium",
             "library": "all",
@@ -759,7 +984,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
             "endpoint": 0
         },
@@ -772,7 +1001,11 @@
             "instructions": "Главный заголовок баннера (Figma 2786:7366). Если пусто — секция не выводится.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "Импорт BMW",
@@ -788,7 +1021,11 @@
             "instructions": "Текст под заголовком.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "rows": 3,
@@ -804,7 +1041,11 @@
             "instructions": "Подпись на жёлтой кнопке.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "Подробнее",
             "maxlength": "",
             "placeholder": "",
@@ -820,7 +1061,11 @@
             "instructions": "Куда ведёт кнопка. Если пусто — # (без перехода).",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
@@ -836,7 +1081,11 @@
             "instructions": "Картинка справа (десктоп) / снизу (мобайл). Если пусто — используется assets/images/import-bmw.jpg.",
             "required": false,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array",
             "preview_size": "medium",
             "library": "all",
@@ -857,7 +1106,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
             "endpoint": 0
         },
@@ -870,7 +1123,11 @@
             "instructions": "Заголовок секции (Figma 334:302). Если пусто — секция не выводится.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "Клубные карты",
@@ -886,7 +1143,11 @@
             "instructions": "Текст под заголовком.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "Для членов клуба до 50% скидки на аренду авто",
@@ -902,7 +1163,11 @@
             "instructions": "Жёлтая подчёркнутая ссылка под текстом. Если пусто — не выводится.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "Подробнее",
             "maxlength": "",
             "placeholder": "",
@@ -918,7 +1183,11 @@
             "instructions": "URL или якорь (#section). По умолчанию — `#`.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "/club/",
@@ -934,7 +1203,11 @@
             "instructions": "Верхняя карточка (Gold) — справа-сверху на десктопе / справа-сверху на мобайле. 430×257 (≈1.67:1). Если пусто — assets/images/club-card-gold.png.",
             "required": false,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array",
             "preview_size": "medium",
             "library": "all",
@@ -955,7 +1228,11 @@
             "instructions": "Нижняя карточка (Silver) — слева-снизу. Перекрывает верхнюю на пересечении. 430×257 (≈1.67:1). Если пусто — assets/images/club-card-silver.png.",
             "required": false,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array",
             "preview_size": "medium",
             "library": "all",
@@ -976,7 +1253,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
             "endpoint": 0
         },
@@ -989,7 +1270,11 @@
             "instructions": "Заголовок секции (Figma 243:708). Если пусто — секция не выводится.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "Знакомьтесь с нами",
@@ -1005,7 +1290,11 @@
             "instructions": "Лид под заголовком. Перевод строки в редакторе = перенос строки в вёрстке (без отступа между абзацами, как в Figma).",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "rows": 5,
@@ -1021,7 +1310,11 @@
             "instructions": "Жёлтая подчёркнутая ссылка под текстом. Если пусто — не выводится.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "Подробнее о нас",
             "maxlength": "",
             "placeholder": "",
@@ -1037,7 +1330,11 @@
             "instructions": "URL или якорь (#section). По умолчанию — `#`.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "/about/",
@@ -1053,7 +1350,11 @@
             "instructions": "Картинка справа (десктоп) / снизу (мобайл). Соотношение 806×433 (≈1.86:1). Если пусто — фото не выводится.",
             "required": false,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array",
             "preview_size": "medium",
             "library": "all",
@@ -1074,7 +1375,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
             "endpoint": 0
         },
@@ -1087,7 +1392,11 @@
             "instructions": "Заголовок SEO-блока (Figma 2760:7230). Если пусто — секция не выводится.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "Аренда авто в Минске и Бресте",
@@ -1103,7 +1412,11 @@
             "instructions": "SEO-описание под заголовком. Поддерживает форматирование (абзацы, списки, ссылки, жирный/курсив). На странице плавно затухает к низу — полный текст раскрывается по кнопке «Подробнее».",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "tabs": "all",
             "toolbar": "full",
@@ -1119,7 +1432,11 @@
             "instructions": "Подпись жёлтой кнопки в свёрнутом состоянии. Клик плавно разворачивает текст.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "Подробнее",
             "maxlength": "",
             "placeholder": "",
@@ -1135,7 +1452,11 @@
             "instructions": "Подпись жёлтой кнопки в раскрытом состоянии.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": { "width": "", "class": "", "id": "" },
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "Свернуть",
             "maxlength": "",
             "placeholder": "",
@@ -1161,5 +1482,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1780660800
+    "modified": 1780672314
 }

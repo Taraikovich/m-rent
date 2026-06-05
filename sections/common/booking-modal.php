@@ -149,7 +149,7 @@ $mrent_messengers = mrent_options_messengers();
 						<?php if ($mrent_phone !== '') : ?>
 							<a href="<?php echo esc_url($mrent_phone_url); ?>" class="flex items-center gap-[11px] group">
 								<span class="inline-flex items-center justify-center size-[15px] xl:size-[19px] shrink-0 text-mrent-yellow">
-									<?php echo mrent_icon('phone', ['width' => '14', 'height' => '20']); ?>
+									<?php echo mrent_icon('phone', ['class' => 'size-full']); ?>
 								</span>
 								<span class="font-display text-mrent-white text-[12px] xl:text-[23px] leading-[1.2] group-hover:opacity-80 transition-opacity">
 									<?php echo esc_html($mrent_phone); ?>
