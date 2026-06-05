@@ -194,10 +194,10 @@ function mrent_options_map_iframe_src(): string
 function mrent_options_messengers(): array
 {
 	$map = [
+		'telegram'  => mrent_options_get('contact_telegram'),
 		'whatsapp'  => mrent_options_get('contact_whatsapp'),
 		'viber'     => mrent_options_get('contact_viber'),
 		'messenger' => mrent_options_get('contact_messenger'),
-		'telegram'  => mrent_options_get('contact_telegram'),
 	];
 	return array_filter($map, static fn(string $url) => $url !== '');
 }

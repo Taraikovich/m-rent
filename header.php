@@ -51,6 +51,11 @@ if (! function_exists('mrent_nav_fallback')) {
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php wp_head(); ?>
+	<?php /* Страховка scroll-reveal: без JS карточки [data-mrent-reveal] не должны
+	         остаться скрытыми (скрытие задаёт CSS в src/main.css). */ ?>
+	<noscript>
+		<style>[data-mrent-reveal]>*{opacity:1 !important;transform:none !important;}</style>
+	</noscript>
 </head>
 
 <body <?php body_class('min-h-screen antialiased'); ?>>
@@ -70,10 +75,6 @@ if (! function_exists('mrent_nav_fallback')) {
 			<div class="flex items-center justify-between gap-6 2xl:gap-8 w-full">
 				<div class="flex gap-[10px] items-center shrink-0">
 					<?php echo mrent_lang_switcher(); ?>
-					<button type="button" class="border border-white px-[7px] py-[5px] rounded-[5px] inline-flex items-center gap-[2px]" aria-label="<?php esc_attr_e('Сменить валюту', 'm-rent'); ?>">
-						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="USD">USD</span>
-						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="$">$</span>
-					</button>
 				</div>
 
 				<div class="flex gap-[24px] items-center shrink-0">
@@ -111,10 +112,6 @@ if (! function_exists('mrent_nav_fallback')) {
 
 			<div class="flex gap-[5px] items-center shrink-0">
 				<?php echo mrent_lang_switcher(true); ?>
-				<button type="button" class="border border-white h-[30px] px-[7px] py-[5px] rounded-[5px] inline-flex items-center gap-[2px]" aria-label="<?php esc_attr_e('Сменить валюту', 'm-rent'); ?>">
-					<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="USD">USD</span>
-					<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="$">$</span>
-				</button>
 			</div>
 
 			<button type="button" class="text-white shrink-0 inline-flex items-center justify-center w-[40px] h-[24px]" aria-label="<?php esc_attr_e('Открыть меню', 'm-rent'); ?>" aria-expanded="false" aria-controls="mrent-mobile-menu" data-mrent-burger>
@@ -133,10 +130,6 @@ if (! function_exists('mrent_nav_fallback')) {
 
 				<div class="flex gap-[5px] items-center shrink-0">
 					<?php echo mrent_lang_switcher(true); ?>
-					<button type="button" class="border border-white h-[30px] px-[7px] py-[5px] rounded-[5px] inline-flex items-center gap-[2px]" aria-label="<?php esc_attr_e('Сменить валюту', 'm-rent'); ?>">
-						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="USD">USD</span>
-						<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="$">$</span>
-					</button>
 				</div>
 
 				<button type="button" class="text-white shrink-0 inline-flex items-center justify-center w-[23px] h-[23px]" aria-label="<?php esc_attr_e('Закрыть меню', 'm-rent'); ?>" data-mrent-burger-close>

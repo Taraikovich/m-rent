@@ -65,7 +65,7 @@ $mrent_fab_icons_url = get_stylesheet_directory_uri() . '/assets/icons/';
 		aria-expanded="false"
 		data-mrent-msg-fab-toggle>
 		<span class="mrent-msg-fab__icon-closed inline-flex" aria-hidden="true">
-			<?php echo mrent_icon('phone-chat', ['class' => 'w-7 h-7']); ?>
+			<?php echo mrent_icon('phone-call', ['class' => 'w-7 h-7']); ?>
 		</span>
 		<span class="mrent-msg-fab__icon-open absolute inset-0 hidden items-center justify-center" aria-hidden="true">
 			<?php echo mrent_icon('close', ['class' => 'w-6 h-6']); ?>

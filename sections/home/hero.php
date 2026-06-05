@@ -38,16 +38,14 @@ $mrent_hero_alt = $mrent_hero_image['alt'] ?? '';
 
 <section class="relative bg-mrent-black overflow-hidden xl:overflow-visible">
 	<?php /* ─── Пилюли категорий — только мобайл (< xl) ─── */ ?>
-	<div class="xl:hidden relative z-10 pt-[72px] px-[15px] flex flex-wrap gap-[6px] items-center justify-center">
+	<div class="xl:hidden relative z-10 pt-[72px] px-[15px] flex flex-nowrap gap-[10px] items-center overflow-x-auto no-scrollbar">
 		<?php foreach ($mrent_categories as $i => $cat) :
 			$slug = $cat['category_slug'] ?: sanitize_title($cat['category_label']);
-			$mrent_pill_width_class = match ($i) {
-				0, 1, 5, 6 => 'w-[162px]',
-				2, 3, 4    => 'w-[106px]',
-				default    => 'w-[162px]',
-			};
+			$mrent_pill_class = $i === 0
+				? 'bg-mrent-yellow hover:bg-[#FFF831] border-mrent-yellow text-mrent-black'
+				: 'bg-mrent-black hover:bg-[#252426] border-white text-white';
 		?>
-			<a href="<?php echo esc_attr($slug); ?>" class="<?php echo $mrent_pill_width_class; ?> bg-[#252426] hover:bg-[#2f2e30] transition-colors rounded-[15px] px-[15px] py-[12px] flex items-center justify-center text-white text-[clamp(0.875rem,0.826rem+0.217vw,18px)] leading-[1.2] whitespace-nowrap">
+			<a href="<?php echo esc_attr($slug); ?>" class="shrink-0 <?php echo $mrent_pill_class; ?> border transition-colors rounded-full px-[15px] py-[12px] flex items-center justify-center text-[clamp(0.875rem,0.826rem+0.217vw,18px)] leading-[1.2] whitespace-nowrap">
 				<?php echo esc_html($cat['category_label']); ?>
 			</a>
 		<?php endforeach; ?>
@@ -65,11 +63,11 @@ $mrent_hero_alt = $mrent_hero_image['alt'] ?? '';
 		</div>
 
 		<div class="relative z-10 -mt-[74px] pb-[20px] px-[15px] flex flex-col gap-[30px] items-center text-white xl:mt-0 xl:pt-[457px] xl:px-[100px] xl:gap-0">
-			<div class="flex flex-col gap-[15px] items-center text-center xl:max-w-[980px] xl:gap-[19px]">
+			<div class="w-full flex flex-col gap-[15px] items-start text-left xl:w-auto xl:items-center xl:text-center xl:max-w-[980px] xl:gap-[19px]">
 				<h1 class="font-display font-[700] text-[clamp(24px,1.456rem+1.304vw,50px)] leading-[1.2] xl:leading-[1.24]"><?php echo esc_html($mrent_title); ?></h1>
 				<p class="text-[clamp(14px,0.902rem+0.435vw,20px)] leading-[1.2] xl:leading-[1.24]"><?php echo esc_html($mrent_lead); ?></p>
 			</div>
-			<a href="<?php echo esc_url($mrent_cta_url); ?>" class="bg-mrent-yellow hover:bg-[#FFF831] text-mrent-black flex items-center justify-center w-full max-w-[330px] h-[55px] px-[15px] rounded-[15px] font-display font-medium text-[clamp(15px,0.826rem+0.217vw,18px)] xl:text-[clamp(1rem,1.0417vw,1.25rem)] leading-none transition-colors xl:w-[300px] xl:max-w-none xl:h-[65px] xl:px-0 xl:mt-[50px]">
+			<a href="<?php echo esc_url($mrent_cta_url); ?>" class="bg-mrent-yellow hover:bg-[#FFF831] text-mrent-black flex items-center justify-center w-full sm:max-w-[330px] h-[55px] px-[15px] rounded-[15px] font-display font-medium text-[clamp(15px,0.826rem+0.217vw,18px)] xl:text-[clamp(1rem,1.0417vw,1.25rem)] leading-none transition-colors xl:w-[300px] xl:max-w-none xl:h-[65px] xl:px-0 xl:mt-[50px]">
 				<?php echo esc_html($mrent_cta_label); ?>
 			</a>
 		</div>

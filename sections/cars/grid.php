@@ -28,7 +28,7 @@ if (! defined('ABSPATH')) {
 	<div class="px-[15px] xl:px-[100px]">
 		<div class="max-w-[1720px] mx-auto">
 			<?php if (have_posts()) : ?>
-				<div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-[30px] xl:gap-[29px]">
+				<div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-[30px] xl:gap-[29px]" data-mrent-reveal>
 					<?php while (have_posts()) :
 						the_post();
 						get_template_part('sections/cars/card');

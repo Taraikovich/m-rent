@@ -43,6 +43,11 @@ $mrent_messengers   = mrent_options_messengers();
 $mrent_subscribe_ig = $mrent_socials['instagram'] ?? '';
 $mrent_subscribe_tg = $mrent_socials['telegram'] ?? '';
 
+/* Telegram — на первое место в ряду мессенджеров (порядок берётся из массива). */
+if (isset($mrent_messengers['telegram'])) {
+	$mrent_messengers = ['telegram' => $mrent_messengers['telegram']] + $mrent_messengers;
+}
+
 $mrent_image_url = get_template_directory_uri() . '/assets/images/contact-cars.jpg';
 $mrent_icons_url = get_template_directory_uri() . '/assets/icons/';
 

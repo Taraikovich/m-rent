@@ -151,7 +151,9 @@
     display: none;
   }
   .mrent-lang-option {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     width: 100%;
     padding: 8px 10px;
     border-radius: 5px;
@@ -168,6 +170,15 @@
   }
   .mrent-lang-option.is-active {
     color: var(--color-mrent-yellow);
+  }
+
+  /* Флаг языка (SVG из плагина GTranslate, flags/svg/{code}.svg). */
+  .mrent-lang-flag {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
   /* Главное меню — общие стили списка */
@@ -1034,4 +1045,41 @@
   }
   .mrent-msg-fab[data-state="open"] .mrent-msg-fab__icon-closed { display: none !important; }
   .mrent-msg-fab[data-state="open"] .mrent-msg-fab__icon-open { display: inline-flex !important; }
+
+  /* ──────────────────────────────────────────────────────────
+     Scroll-reveal (src/reveal.js): прямые дети [data-mrent-reveal]
+     выезжают снизу с нарастанием непрозрачности при попадании в видимость.
+
+     Скрытое состояние задаём СРАЗУ через CSS (атрибут есть в HTML с сервера,
+     стиль применяется до первой отрисовки) — поэтому нет «вспышки» видимых
+     карточек до запуска JS, и для уже видимых карточек переход проигрывается
+     корректно (скрытый кадр успевает отрисоваться задолго до того, как JS
+     навесит .is-visible). JS только добавляет .is-visible.
+
+     Страховка на случай, если JS не загрузится, — <noscript> в header.php.
+     ────────────────────────────────────────────────────────── */
+  [data-mrent-reveal] > * {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+  }
+  [data-mrent-reveal] > *.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-mrent-reveal] > * {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+/* Скрыть скроллбар, но оставить скролл (горизонтальные ряды пилюль и т.п.). */
+@utility no-scrollbar {
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;     /* Firefox */
+  &::-webkit-scrollbar { display: none; } /* WebKit */
 }

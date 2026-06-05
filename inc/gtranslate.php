@@ -68,6 +68,15 @@ function mrent_gtranslate_languages()
 }
 
 /**
+ * URL SVG-флага из плагина GTranslate по коду языка.
+ * Файлы лежат в gtranslate/flags/svg/{code}.svg (имена совпадают с кодами языков).
+ */
+function mrent_gtranslate_flag_url($code)
+{
+	return plugins_url('gtranslate/flags/svg/' . $code . '.svg');
+}
+
+/**
  * Язык-источник сайта (дефолт GTranslate).
  */
 function mrent_gtranslate_default_lang()
@@ -126,10 +135,11 @@ function mrent_lang_switcher($compact = false)
 	ob_start(); ?>
 	<div class="relative notranslate" translate="no" data-mrent-lang data-default="<?php echo esc_attr($default); ?>">
 		<button type="button"
-			class="border border-white <?php echo $btn_h; ?>px-[7px] py-[5px] rounded-[5px] inline-flex items-center"
+			class="border border-white <?php echo $btn_h; ?>px-[7px] py-[5px] rounded-[5px] inline-flex items-center gap-[6px]"
 			aria-haspopup="true" aria-expanded="false"
 			aria-label="<?php esc_attr_e('Сменить язык', 'm-rent'); ?>"
 			data-mrent-lang-toggle>
+			<img src="<?php echo esc_url(mrent_gtranslate_flag_url($current)); ?>" alt="" width="20" height="20" class="mrent-lang-flag" data-mrent-lang-flag>
 			<span class="mrent-stack-text text-[clamp(14px,calc(13.03px+0.26vw),18px)] leading-none" data-text="<?php echo esc_attr($cur['code']); ?>" data-mrent-lang-current><?php echo esc_html($cur['code']); ?></span>
 		</button>
 		<ul class="mrent-lang-menu" role="menu" data-mrent-lang-menu hidden>
@@ -138,7 +148,9 @@ function mrent_lang_switcher($compact = false)
 					<button type="button" role="menuitem"
 						class="mrent-lang-option<?php echo $code === $current ? ' is-active' : ''; ?>"
 						data-lang="<?php echo esc_attr($code); ?>"
-						data-code="<?php echo esc_attr($l['code']); ?>">
+						data-code="<?php echo esc_attr($l['code']); ?>"
+						data-flag="<?php echo esc_url(mrent_gtranslate_flag_url($code)); ?>">
+						<img src="<?php echo esc_url(mrent_gtranslate_flag_url($code)); ?>" alt="" width="20" height="20" class="mrent-lang-flag">
 						<?php echo esc_html($l['name']); ?>
 					</button>
 				</li>
