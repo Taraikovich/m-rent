@@ -25,6 +25,18 @@ if (! defined('ABSPATH')) {
 	exit;
 }
 
+/**
+ * Разрешаем схему `viber:` в esc_url()/wp_kses.
+ *
+ * Без этого esc_url('viber://chat?number=...') возвращает пустую строку —
+ * `viber` нет в дефолтном wp_allowed_protocols(), и ссылка из ACF (contact_viber)
+ * вырезается во всех шаблонах (contact.php, footer.php, single-booking.php и т.д.).
+ */
+add_filter('kses_allowed_protocols', static function (array $protocols): array {
+	$protocols[] = 'viber';
+	return $protocols;
+});
+
 add_action('acf/init', function () {
 	if (! function_exists('acf_add_options_page')) {
 		return;

@@ -45,6 +45,15 @@ $mrent_image     = isset($args['image']) && is_array($args['image']) ? $args['im
 $mrent_image_url = $mrent_image['url'] ?? '';
 $mrent_image_alt = $mrent_image['alt'] ?? '';
 
+// Пункты без иконки пропускаем целиком.
+$mrent_benefits = array_values(array_filter($mrent_benefits, static function ($b) {
+	return ! empty($b['benefit_icon']['url']);
+}));
+
+if (! $mrent_benefits) {
+	return;
+}
+
 $mrent_left  = array_slice($mrent_benefits, 0, 3);
 $mrent_right = array_slice($mrent_benefits, 3, 3);
 ?>

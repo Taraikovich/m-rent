@@ -22,6 +22,13 @@ add_action( 'after_setup_theme', function () {
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5', [ 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' ] );
 
+	// Блочный редактор: широкие/полноширинные блоки, адаптивные эмбеды и
+	// дефолтные стили блоков ядра (подписи, галереи и т.п.). Нужно, чтобы
+	// выравнивание/размеры картинок из Гутенберга реально переносились на фронт.
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'responsive-embeds' );
+	add_theme_support( 'wp-block-styles' );
+
 	register_nav_menus( [
 		'primary' => __( 'Главное меню', 'm-rent' ),
 		'footer'  => __( 'Меню в подвале', 'm-rent' ),

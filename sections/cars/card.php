@@ -39,12 +39,14 @@ $mrent_hover_url   = is_array($mrent_hover_image) && ! empty($mrent_hover_image[
          высоты, а блок «цена + кнопки» прижимался к низу через mt-auto.
          Тогда длина названия больше не двигает кнопки и цену по вертикали. */ ?>
 <article class="flex flex-col gap-[15px] xl:gap-[30px] items-stretch w-full h-full">
-	<?php /* Мобайл: высота фото тянется за шириной карточки (соотношение 5:7),
-	         но зажата в диапазон 130–300px. На xl+ — фиксированные 300px. */ ?>
+	<?php /* Фото всегда прямоугольное: задаём фиксированное соотношение сторон (4:3),
+	         а не фиксированную высоту. Иначе при сужении карточки ширина приближается
+	         к высоте и фото визуально становится квадратным. aspect-ratio тянет высоту
+	         за шириной, сохраняя форму прямоугольника на любом масштабе. */ ?>
 	<?php /* data-mrent-card-flip: на тач-устройствах (no hover) первый тап по фото
 	         показывает hover-изображение, повторный — переходит по ссылке (см. src/card-flip.js).
 	         data-flipped="true" дублирует hover-состояние через group-data-варианты. */ ?>
-	<a href="<?php echo esc_url($mrent_permalink); ?>"<?php echo $mrent_hover_url ? ' data-mrent-card-flip' : ''; ?> class="group block relative rounded-[15px] overflow-hidden aspect-[5/7] min-h-[130px] max-h-[150px] xl:max-h-[300px] xl:aspect-auto xl:h-[300px] xl:min-h-0 xl:max-h-none bg-[#252426] shrink-0">
+	<a href="<?php echo esc_url($mrent_permalink); ?>"<?php echo $mrent_hover_url ? ' data-mrent-card-flip' : ''; ?> class="group block relative rounded-[15px] overflow-hidden aspect-4/3 bg-[#252426] shrink-0">
 		<?php if ($mrent_thumb_url) : ?>
 			<img
 				src="<?php echo esc_url($mrent_thumb_url); ?>"
