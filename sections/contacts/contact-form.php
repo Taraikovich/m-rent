@@ -82,9 +82,9 @@ foreach ($mrent_brand_icons as $mrent_slug => $mrent_file) {
 /* Захардкоженные тексты (плейсхолдеры из Figma — ACF-полей нет). */
 $mrent_company  = __('Индивидуальный предприниматель Бура А.П ', 'm-rent');
 $mrent_unp      = __('УНП 291913690', 'm-rent');
-$mrent_addr_1   = __('г. Брест, Варшавское шоссе 43 Бизнес- центр „IQ”', 'm-rent');
+$mrent_addr_1   = __('г. Брест, Варшавское шоссе 43 <br> Бизнес- центр „IQ”', 'm-rent');
 $mrent_addr_2   = __('г. Минск, Пимена Панченко 7', 'm-rent');
-$mrent_hours    = __('Мы работаем круглосуточно', 'm-rent');
+$mrent_hours    = __('График работы с 00:00 до 00:00', 'm-rent');
 ?>
 
 <section class="bg-mrent-black px-[15px] xl:px-[40px] 2xl:px-[100px] pt-[30px] xl:pt-[70px] pb-[40px] xl:pb-[100px]">
@@ -157,7 +157,7 @@ $mrent_hours    = __('Мы работаем круглосуточно', 'm-rent
 								<circle cx="12" cy="10" r="3" />
 							</svg>
 							<span class="font-display text-[clamp(14px,13.03px+0.26vw,18px)] text-mrent-white leading-[1.2] whitespace-nowrap">
-								<?php echo esc_html($mrent_addr_1); ?><br>
+								<?php echo $mrent_addr_1; ?><br>
 								<?php echo esc_html($mrent_addr_2); ?>
 							</span>
 						</div>

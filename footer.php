@@ -50,7 +50,7 @@ $mrent_icons_url = get_stylesheet_directory_uri() . '/assets/icons/';
 $mrent_socials_footer = mrent_options_socials();
 
 $mrent_legal_copy   = sprintf('© Все права защищены. %s %s', get_bloginfo('name'), date_i18n('Y'));
-$mrent_privacy_url  = '#privacy';
+$mrent_privacy_url  = '/privacy-policy/';
 ?>
 
 <footer class="bg-[#252426] text-white">

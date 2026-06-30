@@ -25,6 +25,7 @@ if (! defined('ABSPATH')) {
 
 $mrent_short       = (string) get_field('car_short_description');
 $mrent_deposit     = (float) get_field('car_deposit');
+$car_price_per_day = (float) get_field('car_price_per_day');
 $mrent_prices      = (array) get_field('car_prices');
 $mrent_booking_url = get_field('car_booking_url') ?: '#booking';
 ?>
@@ -93,11 +94,11 @@ $mrent_booking_url = get_field('car_booking_url') ?: '#booking';
 					</svg>
 					<p class="leading-[1.2] text-[clamp(14px,11.57px+0.65vw,24px)]">
 						<span class="font-[700]"><?php esc_html_e('Депозит:', 'm-rent'); ?></span>
-						<?php echo esc_html(mrent_byn_price($mrent_deposit)); ?>
+						<?php echo esc_html(mrent_byn_price($car_price_per_day)); ?>
 						<span class="block mt-[4px] text-[clamp(11px,9.95px+0.68vw,15px)] text-mrent-white/60">
-							<?php echo esc_html(mrent_usd_price($mrent_deposit)); ?>
+							<?php echo esc_html(mrent_usd_price($car_price_per_day)); ?>
 							<span class="px-[4px]">·</span>
-							<?php echo esc_html(mrent_rub_price($mrent_deposit)); ?>
+							<?php echo esc_html(mrent_rub_price($car_price_per_day)); ?>
 						</span>
 					</p>
 				</div>
