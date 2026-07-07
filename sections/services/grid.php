@@ -142,9 +142,13 @@ $mrent_card_width = static function (int $n): float {
 			?>
 
 				<div class="flex flex-col gap-[30px] xl:gap-[60px]" id="cat-<?php echo esc_attr($mrent_term->slug); ?>">
-					<h2 class="text-mrent-white font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] w-full">
-						<?php echo esc_html($mrent_heading); ?>
-					</h2>
+					<?php /* При активном фильтре по конкретной категории заголовок уже
+					           выводит h1 в sections/services/filters.php — не дублируем. */ ?>
+					<?php if ($mrent_active_slug === '') : ?>
+						<h2 class="text-mrent-white font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2] w-full">
+							<?php echo esc_html($mrent_heading); ?>
+						</h2>
+					<?php endif; ?>
 
 					<?php /* ── Desktop: чередующиеся ряды через flex-1 (ширина карточки
 					           зависит от количества в ряду — 3 или 4 — автоматически).

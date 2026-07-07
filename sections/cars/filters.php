@@ -23,8 +23,11 @@ if (! defined('ABSPATH')) {
 $mrent_terms = mrent_get_car_categories();
 
 $mrent_active_slug = '';
+$mrent_heading     = __('Все автомобили', 'm-rent');
 if (is_tax('car_category')) {
-	$mrent_active_slug = (string) get_queried_object()->slug;
+	$mrent_queried     = get_queried_object();
+	$mrent_active_slug = (string) $mrent_queried->slug;
+	$mrent_heading     = $mrent_queried->name;
 }
 
 $mrent_archive_url = get_post_type_archive_link('car') ?: home_url('/cars/');
@@ -64,6 +67,10 @@ $mrent_render_pill = function (string $url, string $label, ?array $image, bool $
 ?>
 
 <section class="bg-mrent-black pt-[30px] xl:pt-[50px] xl:!px-[100px] ">
+	<h1 class="max-w-[1720px] xl:mx-auto px-[15px] xl:px-0 mb-[30px] xl:mb-[50px] text-mrent-white font-[600] text-[clamp(24px,18.18px+1.55vw,48px)] leading-[1.1]">
+		<?php echo esc_html($mrent_heading); ?>
+	</h1>
+
 	<?php /* Wrapper Swiper'а. До xl (1280px) — горизонтальная карусель
 	         (свободный скролл, edge-bleed справа). На xl+ — статичный flex-ряд
 	         без JS: пилюли flex-1 равной ширины масштабируются под контейнер

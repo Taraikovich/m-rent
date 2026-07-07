@@ -41,11 +41,24 @@ foreach ($mrent_terms as $term) {
 		'url'   => add_query_arg('cat', $term->slug, $mrent_archive_url),
 	];
 }
+
+// Заголовок — метка активной категории (по умолчанию «Все услуги»).
+$mrent_heading = $mrent_pills[0]['label'];
+foreach ($mrent_pills as $mrent_pill) {
+	if ($mrent_pill['slug'] === $mrent_active_slug) {
+		$mrent_heading = $mrent_pill['label'];
+		break;
+	}
+}
 ?>
 
 <section class="bg-mrent-black pt-[30px] xl:pt-[50px]">
 	<div class="px-[15px] xl:px-[100px]">
 		<div class="max-w-[1720px] mx-auto">
+
+			<h1 class="mb-[30px] xl:mb-[50px] text-mrent-white font-[600] text-[clamp(24px,18.18px+1.55vw,48px)] leading-[1.1]">
+				<?php echo esc_html($mrent_heading); ?>
+			</h1>
 
 			<?php /* Mobile: дропдаун. Превращается в обычный <select> поверх кастомной
 			         «пилюли» — нативный пикер для UX, кастомный визуал. Стрелка справа —

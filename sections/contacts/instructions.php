@@ -106,9 +106,9 @@ if (! $mrent_steps) {
 
 			<?php /* Заголовок + (десктопная) CTA */ ?>
 			<div class="flex items-center justify-between gap-[20px] xl:h-[89px]">
-				<h2 class="text-mrent-white font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2]">
+				<h1 class="text-mrent-white font-[700] text-[clamp(24px,17.69px+1.68vw,50px)] leading-[1.2]">
 					<?php echo esc_html($mrent_title); ?>
-				</h2>
+				</h1>
 				<a
 					href="<?php echo esc_url($mrent_cta_url); ?>"
 					class="hidden xl:flex bg-mrent-yellow hover:bg-[#FFF831] rounded-[15px] h-[65px] w-[300px] items-center justify-center text-mrent-black font-[500] text-[clamp(14px,13.03px+0.26vw,18px)] whitespace-nowrap transition-colors shrink-0">
